@@ -1,0 +1,206 @@
+\documentclass[a4paper,11pt]{report}
+
+\addtolength{\textwidth}{5.2cm}
+\addtolength{\voffset}{-3cm}
+\addtolength{\hoffset}{-2.5cm}
+\addtolength{\textheight}{5cm}
+\addtolength{\headheight}{14.0pt}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm} % para los teoremas
+\usepackage[spanish,activeacute]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{caratula}
+\usepackage{framed}
+\usepackage{caption}
+\usepackage{newalgo3}
+%\usepackage{otrosComandos}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+%\usepackage{hyperref}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{tikz} %viene del paquete pgf (graficar adentro de latex)
+\usepackage{listings} % es para resaltado de codigo fuente y pseudocodigos
+\usepackage[noend]{algorithmic} % es para pseudocodigos
+% \usepackage[ruled,lined,algonl]{algorithm2e}
+\usepackage{algorithm} % es para pseudocodigos
+\usepackage{enumerate} % para que los items salgan lindos
+\usepackage{titlesec}
+\usepackage{colortbl}
+\usepackage{xcolor}
+%\usepackage[table]{xcolor}
+% Defino el estilo para el paquete amsthm --------------------
+\theoremstyle{plain}% default
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{lem}[thm]{Lema}
+\newtheorem{prop}[thm]{Proposici\'on}
+\newtheorem*{cor}{Corolario}
+\newtheorem*{KL}{Klein's Lemma}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definici\'on}[section]
+\newtheorem{conj}{Conjectura}[section]
+\newtheorem{exmp}{Ejemlo}[section]
+%-------------------------------------------------
+\usepackage{eqparbox}
+\newcommand{\asd}[1]{\hfill\eqparbox{COMMENT}{#1}\\}
+
+%\usetikzlibrary{chains} % para ubicar nodos en una cadena (lineal, circular o cualquier otra)
+%\usetikzlibrary{arrows,%
+ %               petri,%
+  %              topaths}%
+
+% ----Cosas que usa listings ---------------
+\usepackage{color}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+\lstset{ frame=Ltb,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray97},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle=\small\ttfamily,
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+   }
+
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+% Para formatear la consola
+\lstdefinestyle{consola}
+   {basicstyle=\small\bf\ttfamily,
+    backgroundcolor=\color{gray97},
+   }
+
+
+%------Fin cosas que usa listings -------------------
+
+% valores razonables para las figuras (para que no aparezcan figuras solas
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75} % este valor no debe superar topfraction
+
+\date{7/9/12}
+
+
+%Redefino algunos nombres (como uso babel, lo tengo que hacer asi):
+% Donde dice \chapter quiero que aparezca Problema en lugar de Capitulo
+
+%Donde dice Indice general, quiero que aparezca Contenidos
+\addto\captionsspanish{% esto lo necesito porque uso babel
+  \renewcommand{\contentsname}%
+    {Contenidos}%
+}
+
+%Donde dice Indice general, quiero que aparezca Contenidos
+\addto\captionsspanish{% esto lo necesito porque uso babel
+  \renewcommand{\appendixname}%
+    {Anexo}%
+}
+
+%Donde dice Cuadro, quiero que aparezca Tabla
+\addto\captionsspanish{% esto lo necesito porque uso babel
+  \renewcommand{\tablename}%
+    {Tabla}%
+}
+% Paquetes para dibujar los ejes de coordenadas del ejercicio LaCajaEnElPlano
+
+% \usepackage{multido}
+% \usepackage{pstricks-add}
+% \usepackage{pst-node}
+\usepackage{pst-plot}
+% \usepackage{pstcol}
+% \usepackage{pst-all}
+
+
+
+
+%Algunas definiciones
+%marca el numero de footnote actual: \marcar{nombre} nombre es un counter nuevo
+\def\marcar#1{\newcounter{#1}\setcounter{#1}{\value{footnote}}}
+%para hacer referencia a una footnote marcada: \nota{contador}
+\newcounter{auxiliar} %lo uso para guardar footnote
+\def\nota#1{\setcounter{auxiliar}{\value{footnote}}\footnotemark[\value{#1}]\setcounter{footnote}{\value{auxiliar}}}
+
+\begin{document}
+    \materia{Algoritmos y Estructuras de Datos III}
+
+    \titulo{Trabajo Práctico 1}
+
+    \subtitulo{Primer Cuatrimestre 2014}
+
+    \grupo{}
+    \integrante{Marta, Cristian Gabriel}{079/12}{cristiangmarta@gmail.com}
+    \integrante{Ishikame, Emiliano}{861/11}{Emilianoishikame@yahoo.com.ar}
+    \integrante{Negri, Franco}{893/13}{franconegri2004@hotmail.com}
+    \integrante{Nuñez Morales, Carlos Daniel}{732/08}{cdani.nm@gmail.com}
+
+
+    \maketitle
+
+%\markright{}
+
+\tableofcontents
+%\pagebreak
+\pagestyle{fancy}
+\rfoot{}
+\cfoot{\thepage ~ de \pageref{LastPage}}
+\lfoot{}
+\rhead{}
+\lhead{\nouppercase\leftmark}
+\chead{}
+
+
+
+\chapter{Camiones Sospechosos}  \input{./camionesSospechosos/camionesSospechosos.tex}
+
+\chapter{La Joya Del Rio De La Plata}  \input{./laJoya/laJoya.tex}
+
+\chapter{Rompecolores}  \input{./rompecolores/rompecolores.tex}
+
+
+\chapter{Ap\'endice}
+%\input{./Aclaraciones.tex}
+
+%\pagebreak
+%\clearpage
+%\phantomsection %esto lo pide el paquete hyperref
+%\addcontentsline{toc}{chapter}{Bibliograf\'ia}
+
+%bibliografia con bibtex
+ %\bibliographystyle{plain}
+ %\bibliography{biblioAlgo3}
+
+%bibliografia con el entorno thebibliography
+%\input{./bibliografia.tex}
+
+\pagebreak
+
+
+
+\end{document}
+
