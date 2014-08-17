@@ -1,5 +1,13 @@
 #include "Ej3.h"
 
+
+// de la manera en que esta creado el algoritmo,
+// busca la solucion de abajo para arriba
+// esto signigica, al principio intenta meter todos los productos en el camion 1
+// si no, mete uno en el camion 2, y asi...
+// todavía tengo que justificar, que en el momento de parar, entrega la mejor solo
+// pero a simple vista me parece que falta algo.
+
 using namespace std;
 
 // n-> cantidad de productos a transportar
@@ -14,6 +22,8 @@ using namespace std;
 TablaDePeligrosidad::TablaDePeligrosidad()
 {
   cin >> n;
+  if(n == 0)
+    exit(0);
   cin >> m;
   peligrosidad.resize(n-1);
   for (int i = 0; i < n; i++)
@@ -37,10 +47,13 @@ bool backtracking(TablaDePeligrosidad &tab, vector <int> &camiones)
     
     camiones.push_back(i);
     resultadoCheck = check(tab,camiones);
-    if(resultadoCheck = 2)
+    
+    if(resultadoCheck == 2)
       return true;
-    if(resultadoCheck = 1)
+    if(resultadoCheck == 1)
       backtracking(tab,camiones);
+    
+    camiones.pop_back();
   }
   return false; // solo para completar casos, es imposible que se llegue a este punto.
 }
@@ -51,37 +64,21 @@ bool backtracking(TablaDePeligrosidad &tab, vector <int> &camiones)
 
 int check(TablaDePeligrosidad &tab, vector<int> &camiones)
 {
-  
-  // esta funcion es la muelte.
   vector<int> peligrosidad;
-  peligrosidad.resize(tab.n);
-  vector<vector<int> > productosQueVanEnMismoCamion;
-  productosQueVanEnMismoCamion.resize(tab.n);
-  for(int w = 0; w < camiones.size(); w++)
-  {
-      productosQueVanEnMismoCamion[camiones[w]].push_back(w);
-  }
-  // 	   p1 p2 p3 p4
-  //camion 1  2  1  3
-  for(int i = 0;  i < productosQueVanEnMismoCamion.size(); i++)
-    for(int j = 0;j < productosQueVanEnMismoCamion[i].size()-1; j++)
-    {
-      cout << i << endl;
-      //cout << j << endl;
-      peligrosidad[i] = tab.peligrosidad[productosQueVanEnMismoCamion[i][j]] [productosQueVanEnMismoCamion[i][j+1]];
-    }
-  for(int i = 0; i < tab.n; i++)
+  for(int i = 0; i < camiones.size(); i++) //seteo los n valores del vector en 0.
+    peligrosidad.push_back(0);
+
+  for(int i = 0; i < camiones.size(); i++) //determino la peligrosidad por camion.
+    for(int j = i + 1; j< camiones.size() ; j++)
+      if(camiones[i] == camiones[j])
+	peligrosidad[camiones[i]] =+ tab.peligrosidad[i][j];
+  
+  for(int i = 0; i < camiones.size(); i++)
     if(tab.m < peligrosidad[i])
       return 0;
   if(tab.n == camiones.size())
     return 2;
   return 1;
-  
-  //	   	c1 	c2 	c3 	c4
-  //producto	1  	2  	4  	-
-  //		3
-  //peligr:	h1,3
-  
 }
 
 void imprimirResultado(vector<int> camiones)
@@ -90,21 +87,25 @@ void imprimirResultado(vector<int> camiones)
  for(int i = 1; i < camiones.size(); i++)
    if(camiones[i] > max)
      max = camiones[i];
-  cout << max;
- for(int i = 1; i < camiones.size(); i++)
-   cout << camiones[i] << endl;
+ cout << max + 1<< " ";
+ for(int i = 0; i < camiones.size(); i++)
+   cout << camiones[i] + 1 << " ";
+ cout << endl;
 }
 
 int main()
 {
-  TablaDePeligrosidad tab = TablaDePeligrosidad();
-  vector<int> camiones;
-  
-  cout << "tabla terminada!" << endl;
-  //auto start = chrono::high_resolution_clock::now();
-  bool sol = backtracking(tab, camiones);
-  //auto finish = chrono::high_resolution_clock::now();
-  //cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
-  imprimirResultado(camiones);
+  while(cin.peek() != 48) 
+  {
+    TablaDePeligrosidad tab = TablaDePeligrosidad();
+    vector<int> camiones;
+    
+    //auto start = chrono::high_resolution_clock::now();
+    bool sol = backtracking(tab, camiones);
+    //auto finish = chrono::high_resolution_clock::now();
+    //cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
+    imprimirResultado(camiones);
+    cin.get();
+  }
   return 0;
 }

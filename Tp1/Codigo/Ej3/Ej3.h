@@ -11,6 +11,7 @@ public:
   int  n,m;
   vector<vector <int> > peligrosidad;
   TablaDePeligrosidad();
+  ~TablaDePeligrosidad(){};
 }; 
 
 void imprimirResultado(vector<int> camiones);
