@@ -1,1 +1,52 @@
- 
+\section{Introducci\'on}
+En este problema, se nos pide que ideemos un algoritmo que dados $n$ productos quimicos que deben transportarse en camiones de un lugar a otro, tales que si un elemento $i$ va en el mismo cambion que otro elemento $j$, esto conlleva una "peligrosidad" asociada $h_i_j$. El objetivo aqu\'i es utilizar la menor cantidad de cami\'ones posibles, pero que cada cami\'on tenga una peligrosidad menor a una cota $m$.
+\\
+La entrada del problema consiste en:
+\\
+\begin{itemize}
+\item Un entero \textbf{n} $\rightarrow$ Representar\'an el n\'umero de productos quimicos a transportar.
+\item Un entero \textbf{m} $\rightarrow$ Representar\'a la cota de peligrosidad que ningun cami\'on puede superar.
+\item \textbf{n-1} filas donde, para cada fila $i$ consta de $n-i$ enteros:
+\begin{itemize}
+\item $h_i_{i+1}, h_i_{i+2}$ ... $h_i_{n}$ $\rightarrow$ Representar\'an la peligrosidad asociada del elemento $i$ con los elementos $i+1$, $i+2$ ... $n$.
+\end{itemize}
+\end{itemize}
+\\
+La salida, por su parte, constar\'a de una fila con:
+\\
+\begin{itemize}
+\item Un entero \textbf{C} $\rightarrow$ Representar\'a la cantidad indispensable de cami\'ones que es necesaria para transportar los productos bajo las condiciones del problema.
+\item $n$ enteros $\rightarrow$ Representar\'an en que cami\'on viaja cada producto.
+\end{itemize}
+
+\subsection{Ejemplo de entrada valida}
+Hagamos un pequeño ejemplo para que pueda ilustrarse bien el problema.
+\\
+Supongamos que tenemos $3$ productos quimicos, el producto $1$ es muy inestable, por lo que si es transportado con el producto $2$ la peligrosidad asciende a $40$, y si se transporta con el producto $3$ la peligrosidad es de $35$. El producto $2$ en cambio es de naturaleza mas estable, por lo que si es transportado con el producto $3$ solo produce una peligrosidad de $3$.
+\\
+Por otro lado queremos que la peligrosidad por cami\'on no supere el valor de $39$.
+\\
+Entonces la entrada para este problema ser\'a:
+\\
+\\
+$\textbf{3 39}$
+\\
+$\textbf{40 35}$
+\\
+$\textbf{3}$
+\\
+\\
+Para una entrada de estas dimenciones es posible buscar la mejor solucio\'on a mano.
+\\
+Las posibles combinaciones son que los tres productos viajen juntos, que los tres viajen separados, que $1$ y $2$ viajen juntos, que $1$ y $3$ viajen juntos y que $2$ y $3$ viajen juntos y el producto sobrante viaje en otro cami\'on.
+\\
+La primera d\'a una peligrosidad de $40+35+3$ por lo que es inviable, la segunda es valida, pero se necesitan $3$ camiones. Que $1$ y $2$ viajen juntos, tampoco es valida (peligrosidad muy alta), y finalmente las ultimas dos son validas (peligrosidad $35$ y $3$, respectivamente) y solo son necesarios dos camiones.
+\\
+Luego las dos salidas que podr\'a devolver el algoritmo son:
+\begin{itemize}
+\item $2$ $1$ $2$ $1$
+\end{itemize}
+o
+\begin{itemize}
+\item $2$ $1$ $2$ $2$
+\end{itemize}
