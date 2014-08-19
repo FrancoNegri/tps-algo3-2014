@@ -11,9 +11,15 @@ public:
   int  n,m;
   vector<vector <int> > peligrosidad;
   TablaDePeligrosidad();
-  ~TablaDePeligrosidad(){};
+  ~TablaDePeligrosidad()
+  {
+    cout << "mama mia" << endl;
+    for(int i = 0; i < peligrosidad.size(); i++) 
+	peligrosidad[i].clear(); 
+    peligrosidad.clear();
+  };
 }; 
 
 void imprimirResultado(vector<int> camiones);
-int check(TablaDePeligrosidad &tab, vector<int> &camiones);
-bool backtracking(TablaDePeligrosidad &tab, vector<int> &camiones);
+int check(TablaDePeligrosidad &tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones);
+bool backtracking(TablaDePeligrosidad &tab, vector<int> &camiones,vector <int> &solFinalCamiones);
