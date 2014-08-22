@@ -203,6 +203,7 @@ int main(int argc, char *argv[]){
         edificio* edificiosIzq = NULL;
         edificio* edificiosDer = NULL;
         int leidas = 1;
+         timeval tm1, tm2;
         //Si no llegue al final del archivo y sigo obteniendo lineas sigo guardando
         while ( getline (cin,line) )
         {
@@ -248,10 +249,19 @@ int main(int argc, char *argv[]){
                   primerLinea = true;
                   //Aca llamamos a resolver
             
+                  //para medir tiempos , mido antes de empezar
+                  gettimeofday(&tm1, NULL);
                   vector<sol> resultado = resolver(cantEdificios,edificiosIzq,edificiosDer);
+                  // mido cuando termino
+                  gettimeofday(&tm2, NULL);
+                  unsigned long long t = 1000 * (tm2.tv_sec - tm1.tv_sec) + (tm2.tv_usec - tm1.tv_usec) / 1000;
+                  //solo para imprimir tiempos descomentar la linea siguiente
+                    //cout << cantEdificios << " " << t << endl;
+
+
             //Una vez obtenida la solucion imprimimos el resultado
                    for(int i =0;i< resultado.size();i++){
-                        cout << resultado[i] << " " << resultado[i] << " "
+                        cout << resultado[i].x << " " << resultado[i].alt << " ";
                     }
                     cout << "\n";
                 }
