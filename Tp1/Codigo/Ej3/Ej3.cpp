@@ -39,72 +39,124 @@ TablaDePeligrosidad::TablaDePeligrosidad()
 
 
 
-bool backtracking(TablaDePeligrosidad &tab, vector <int> &camiones)
+bool backtracking(TablaDePeligrosidad &tab, vector <int> &solParcialCamiones,vector <int> &solFinalCamiones)
 {
   int resultadoCheck;
   for(int i = 0; i < tab.n; i++)
   {
+    solParcialCamiones.push_back(i);
+    resultadoCheck = check(tab,solParcialCamiones,solFinalCamiones);
     
-    camiones.push_back(i);
-    resultadoCheck = check(tab,camiones);
     
-    if(resultadoCheck == 2)
-      return true;
     if(resultadoCheck == 1)
-      backtracking(tab,camiones);
+      backtracking(tab,solParcialCamiones,solFinalCamiones);
+    if(resultadoCheck == 2)
+    {
+      solFinalCamiones = solParcialCamiones;
+      return true;
+    }
+    if(resultadoCheck == 3)
+      return false;
     
-    camiones.pop_back();
+    
+    solParcialCamiones.pop_back();
   }
   return false; // solo para completar casos, es imposible que se llegue a este punto.
 }
 
-// check si retorna 2 es solucion valida
-// si retorna 1, es valida pero falta agregar camiones
-// si retorna 0 no es sol valida
 
-int check(TablaDePeligrosidad &tab, vector<int> &camiones)
+//Si la solucion parcial usa mas camiones que la mejor solucion, podo.
+
+bool solucionFinalUsaMenosCamiones(vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones)
+{
+  int maxSolPar = solParcialCamiones[1];
+  int maxSolFin = solFinalCamiones[1];
+  for(int i = 0; i < solParcialCamiones.size(); i++)
+    if(maxSolPar < solParcialCamiones[i])
+      maxSolPar = solParcialCamiones[i];
+    
+  for(int i = 0; i < solFinalCamiones.size(); i++)
+    if(maxSolFin < solFinalCamiones[i])
+      maxSolFin = solFinalCamiones[i];
+    
+  if(maxSolFin < maxSolPar)
+    return true;
+  return false;
+}
+
+bool cotaDePeligrosidadSobrepasada(TablaDePeligrosidad &tab, vector<int> &solParcialCamiones)
 {
   vector<int> peligrosidad;
-  for(int i = 0; i < camiones.size(); i++) //seteo los n valores del vector en 0.
+  for(int i = 0; i < solParcialCamiones.size(); i++) //seteo los n valores del vector en 0.
     peligrosidad.push_back(0);
 
-  for(int i = 0; i < camiones.size(); i++) //determino la peligrosidad por camion.
-    for(int j = i + 1; j< camiones.size() ; j++)
-      if(camiones[i] == camiones[j])
-	peligrosidad[camiones[i]] =+ tab.peligrosidad[i][j];
+  for(int i = 0; i < solParcialCamiones.size(); i++) //determino la peligrosidad por camion.
+    for(int j = i + 1; j< solParcialCamiones.size() ; j++)
+      if(solParcialCamiones[i] == solParcialCamiones[j])
+	peligrosidad[solParcialCamiones[i]] =+ tab.peligrosidad[i][j];
   
-  for(int i = 0; i < camiones.size(); i++)
+  for(int i = 0; i < solParcialCamiones.size(); i++)
     if(tab.m < peligrosidad[i])
-      return 0;
-  if(tab.n == camiones.size())
+      return true;
+  return false;
+}
+
+// check:
+// si retorna 0 no es sol valida
+// si retorna 1, es valida pero falta agregar camiones
+// si retorna 3 la solucion anterior usa menos camiones
+// si retorna 2 es solucion valida
+int check(TablaDePeligrosidad &tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones)
+{
+  
+  if(solucionFinalUsaMenosCamiones(solParcialCamiones,solFinalCamiones))
+    return 3;
+  
+  if(cotaDePeligrosidadSobrepasada(tab,solParcialCamiones))
+    return 0;
+  
+  if(tab.n == solParcialCamiones.size())
     return 2;
+  
   return 1;
 }
 
-void imprimirResultado(vector<int> camiones)
+void imprimirResultado(vector<int> solParcialCamiones)
 {
- int max = camiones[0];
- for(int i = 1; i < camiones.size(); i++)
-   if(camiones[i] > max)
-     max = camiones[i];
+ int max = solParcialCamiones[0];
+ for(int i = 1; i < solParcialCamiones.size(); i++)
+   if(solParcialCamiones[i] > max)
+     max = solParcialCamiones[i];
  cout << max + 1<< " ";
- for(int i = 0; i < camiones.size(); i++)
-   cout << camiones[i] + 1 << " ";
+ for(int i = 0; i < solParcialCamiones.size(); i++)
+   cout << solParcialCamiones[i] + 1 << " ";
  cout << endl;
 }
+
+void inicializarPeorSol(vector<int> &sol,int n)
+{
+  sol.clear();
+  for(int i = 0; i < n; i++)
+      sol.push_back(i);
+}
+
 
 int main()
 {
   while(cin.peek() != 48) 
   {
     TablaDePeligrosidad tab = TablaDePeligrosidad();
-    vector<int> camiones;
+    vector<int> solParcialCamiones;
+    vector<int> solFinalCamiones;
+    inicializarPeorSol(solFinalCamiones,tab.n);
+    
     
     //auto start = chrono::high_resolution_clock::now();
-    bool sol = backtracking(tab, camiones);
+    bool sol = backtracking(tab, solParcialCamiones,solFinalCamiones);
     //auto finish = chrono::high_resolution_clock::now();
     //cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
-    imprimirResultado(camiones);
+    solParcialCamiones.clear();
+    imprimirResultado(solFinalCamiones);
     cin.get();
   }
   return 0;

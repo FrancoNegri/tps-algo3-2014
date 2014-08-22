@@ -31,18 +31,13 @@ vector<int> obtener_recorrido(vector<int> distancias, int largo_del_salto)
 
 {
   vector<int> recorrido;
-  for (int i = distancias.size() - 1; i > 0;)
-  {
-    int k;
-    if( i - largo_del_salto <= 0){
-      k = 0;
-    } else {
-      k = i - largo_del_salto;
-    }
-
-    int pos_salto = min_element(distancias.begin() + k , distancias.begin() + i) - distancias.begin();
+  recorrido.push_back(distancias.size() + 1);
+  for (int i = (distancias.size() - 1); i > 0;)
+  { 
+    int pos_salto = min_element(distancias.begin() + i - largo_del_salto , distancias.begin() + i) - distancias.begin();
+    cout << "valor: " << distancias[i] << " i: " << i <<  " minimo en: " << pos_salto << "\n";
     i = pos_salto;
-    recorrido.push_back(pos_salto);
+    recorrido.push_back(pos_salto + 1);
   }
   return recorrido;
 }
@@ -98,11 +93,12 @@ int main()
   cout << "distancias: ";
   imprimir_vector(distancias);
 
-  cout << "recorrido: ";
+  cout << "recorrido: \n";
   vector<int> recorrido = obtener_recorrido(distancias, largo_del_salto);
   std::reverse(recorrido.begin(),recorrido.end());
 
   imprimir_vector(recorrido);
+  
   /*has_result = true;
   if(has_result) {
     cout << "distancias: ";

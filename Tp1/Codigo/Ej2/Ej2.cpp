@@ -28,7 +28,12 @@ struct sol{
 };
 
 bool operator <(const edificio& a, const edificio& b){
-  return a.alt < b.alt;
+
+  if(a.alt == b.alt) {
+    return a.der < b.der;
+  } else {
+    return a.alt < b.alt;  
+  }
 }
 vector<sol> resolver(int cantEdificios, edificio* edificiosIzq, edificio* edificiosDer);
 
@@ -162,9 +167,9 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
   multiset<edificio> magiheap;
   int posDer = 0;
   int posIzq =0;
-  edificio max = edificiosIzq[0];
+  edificio max = {0,0,0,0};
   int posMax = 0;
-
+/*
 //Busco mi primer salto
   int actual = 1 ;
 
@@ -179,49 +184,54 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
   sol nueva = {max.izq,max.alt};
   res.push_back(nueva);
   posIzq++;
-
-
+*/
+  sol nueva = {0,0};
+  bool finIzq = false;
   while(posDer != cantEdificios){
-        if(edificiosIzq[posIzq].izq > edificiosDer[posDer].der ){
-          //Saco un edificio
-          multiset<edificio>::iterator it = magiheap.lower_bound(edificiosDer[posDer]);
-          if (it->id == max.id){
-            if(magiheap.begin()!=it){
+        if((finIzq) || (edificiosIzq[posIzq].izq > edificiosDer[posDer].der)){
+          //Saco edificio o edificios
+          int base = posDer;
+          int maxAnt = max.alt;
+          while ((edificiosDer[posDer].der == edificiosDer[base].der) && (posDer != cantEdificios)){
+            multiset<edificio>::iterator it = magiheap.lower_bound(edificiosDer[posDer]);
+            if (it->id == max.id){
+              if(magiheap.begin()!=it){
               it--;
               max = *(it);
-            }else{
+              }else{
               max.id = 0;
               max.izq = 0;
               max.alt = 0;
-              max.der = (*it).der;
+              max.der = 0;
+              }           
             }
-            //nueva = {max.izq,max.alt};
-            nueva.x = max.der;
-            nueva.alt = max.alt;
-
-            res.push_back(nueva);
+            magiheap.erase(edificiosDer[posDer]);
+            posDer++;
           }
-          magiheap.erase(edificiosDer[posDer]);
-          posDer++;
+          if (maxAnt > max.alt){
+              nueva.x = edificiosDer[base].der;
+              nueva.alt = max.alt;
+              res.push_back(nueva);
+          }
         }else{
-          //Agrego edificio
-          if (max.alt==0){
-              max = *(magiheap.insert(edificiosIzq[posIzq]));
-              //nueva = {max.izq,max.alt};
+          //Agrego edificio o edificios
+          int base = posIzq;
+          int maxAnt = max.alt;
+          while ((edificiosIzq[posIzq].izq == edificiosIzq[base].izq) && (posIzq != cantEdificios)){
+            edificio nuevoEdi = *(magiheap.insert(edificiosIzq[posIzq]));
+            if (nuevoEdi.alt > max.alt){
+              max = nuevoEdi;
+            }
+            posIzq++;
+          }
+          if (maxAnt < max.alt){
               nueva.x = max.izq;
               nueva.alt = max.alt;
               res.push_back(nueva);
-          }else{
-              edificio nuevoEdi = *(magiheap.insert(edificiosIzq[posIzq]));
-              if (nuevoEdi.alt > max.alt){
-                max = nuevoEdi;
-                //nueva = {max.izq,max.alt};
-                nueva.x = max.izq;
-                nueva.alt = max.alt;
-                res.push_back(nueva);
-              }
           }
-          posIzq++;
+          if (posIzq==cantEdificios){
+            finIzq = true;
+          }
         }
   }
 
