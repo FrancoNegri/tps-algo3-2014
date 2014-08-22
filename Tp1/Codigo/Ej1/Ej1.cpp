@@ -17,10 +17,16 @@ void imprimir_vector(vector<int> vec)
   cout << "\n";
 }
 
-bool check_solution(vector<int> distancias){
-  for (int i = 0; i < distancias.size(); ++i)
+bool check_solution(vector<int> puente, int largo_del_salto){
+  int contador_de_escalones_rotos_seguidos = 0;
+  for (int i = 0; i < puente.size(); ++i)
   {
-    if(distancias[i] < 0) {
+    if(puente[i] == 1) {
+      contador_de_escalones_rotos_seguidos++;
+    } else{
+      contador_de_escalones_rotos_seguidos = 0;
+    } 
+    if(contador_de_escalones_rotos_seguidos == largo_del_salto) {
       return false;
     }
   }
@@ -32,12 +38,14 @@ vector<int> obtener_recorrido(vector<int> distancias, int largo_del_salto)
 {
   vector<int> recorrido;
   recorrido.push_back(distancias.size() + 1);
-  for (int i = (distancias.size() - 1); i > 0;)
+  for (int i = (distancias.size()); i > 0;)
   { 
-    int pos_salto = min_element(distancias.begin() + i - largo_del_salto , distancias.begin() + i) - distancias.begin();
+    int pos_salto = min_element(distancias.begin() + i - largo_del_salto, distancias.begin() + i) - distancias.begin();
     cout << "valor: " << distancias[i] << " i: " << i <<  " minimo en: " << pos_salto << "\n";
     i = pos_salto;
-    recorrido.push_back(pos_salto + 1);
+    if( i > 0 ) {
+      recorrido.push_back(pos_salto + 1);
+    }
   }
   return recorrido;
 }
@@ -62,7 +70,12 @@ int main()
     distancias.push_back(INT_MAX) ; //inicializo todo en inf, que para mi es INT_MAX
   }
 
-  
+  //miro si tiene solucion
+  if(!check_solution(puente,largo_del_salto)){
+    cout << "no\n";
+    return 0;
+  }
+
   //El algoritmo!
   for (int pos_puente = 0; pos_puente < distancias.size(); ++pos_puente)
   {
@@ -95,6 +108,7 @@ int main()
 
   cout << "recorrido: \n";
   vector<int> recorrido = obtener_recorrido(distancias, largo_del_salto);
+  recorrido.push_back(recorrido.size());
   std::reverse(recorrido.begin(),recorrido.end());
 
   imprimir_vector(recorrido);
