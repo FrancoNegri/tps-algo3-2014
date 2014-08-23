@@ -99,37 +99,6 @@ void merge(edificio *a,edificio *b, int low, int pivot, int high,int control)
 }
 
 
-/*
-unsigned long long int ordenaredificios(edificio* edificios, int cantEdificios){
-
-        unsigned long long int perdida = 0;
-
-        edificio* auxiliarParaOrdenar = new edificio[cantEdificios];
-
-        operaciones += cantEdificios+1;
-
-        mergesort(edificios,auxiliarParaOrdenar,0, cantEdificios-1);
-
-        //Guardo la sumatoria de los di para evitar calcularla varias veces
-        unsigned long long int sumatoriaCostos = 0;
-        for(int k = 0; k<cantEdificios ; k++)
-                sumatoriaCostos += edificios[k].costo;
-
-
-        for(int k = 0;k<cantEdificios;k++){
-        //SUM di * tk  para la joya k la perdida es la suma de los di por el tiempo de construccion de la joya k
-        perdida += sumatoriaCostos * edificios[k].tiempo;
-        //resto a la suma de los di la joya que se construyo
-        //Sum di - dk para sacar la que ya construi
-        sumatoriaCostos -= edificios[k].costo;
-    }
-        return perdida;
-
-}
-
-*/
-
-
 vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edificiosDer){
   vector<sol> res;
   //ordernar por izq
@@ -138,15 +107,15 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
   mergesort(edificiosIzq,auxiliarParaOrdenar,0, cantEdificios-1,0);
 
   //SOlo para test
-    cout << "orden por izq \n";
-    for(int i = 0; i<cantEdificios; i++){
-      cout <<"( " << edificiosIzq[i].id  << "," ;
-      cout << edificiosIzq[i].izq  << ",";
-      cout << edificiosIzq[i].alt  << ",";
-      cout << edificiosIzq[i].der  << ");";
+    // cout << "orden por izq \n";
+    // for(int i = 0; i<cantEdificios; i++){
+    //   cout <<"( " << edificiosIzq[i].id  << "," ;
+    //   cout << edificiosIzq[i].izq  << ",";
+    //   cout << edificiosIzq[i].alt  << ",";
+    //   cout << edificiosIzq[i].der  << ");";
 
-    }
-    cout << "\n";
+    // }
+    // cout << "\n";
   //FIN TEST
 
 
@@ -154,14 +123,14 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
   mergesort(edificiosDer,auxiliarParaOrdenar,0, cantEdificios-1,1);
 
   //Solo para test
-    cout << "orden por der \n";
-    for(int i = 0; i<cantEdificios; i++){
-      cout <<"( " << edificiosDer[i].id  << ",";
-      cout << edificiosDer[i].izq  << ",";
-      cout <<  edificiosDer[i].alt  << ",";
-      cout << edificiosDer[i].der  << ");";
-    }
-    cout << "\n";
+    // cout << "orden por der \n";
+    // for(int i = 0; i<cantEdificios; i++){
+    //   cout <<"( " << edificiosDer[i].id  << ",";
+    //   cout << edificiosDer[i].izq  << ",";
+    //   cout <<  edificiosDer[i].alt  << ",";
+    //   cout << edificiosDer[i].der  << ");";
+    // }
+    // cout << "\n";
   //FIN TEST
 
   multiset<edificio> magiheap;
@@ -169,22 +138,7 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
   int posIzq =0;
   edificio max = {0,0,0,0};
   int posMax = 0;
-/*
-//Busco mi primer salto
-  int actual = 1 ;
 
-  while( edificiosIzq[actual].izq == max.izq ){
-    if(edificiosIzq[actual].alt >max.alt){
-      posMax = actual;
-      max = edificiosIzq[actual];
-    }
-    actual++;
-  }
-  max = *(magiheap.insert(edificiosIzq[posMax]));
-  sol nueva = {max.izq,max.alt};
-  res.push_back(nueva);
-  posIzq++;
-*/
   sol nueva = {0,0};
   bool finIzq = false;
   while(posDer != cantEdificios){
@@ -235,12 +189,7 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
         }
   }
 
-  cout << "Resultado \n";
-  for(int i = 0; i < res.size();i++){
-    cout << "(" << res[i].x << ",";
-    cout << res[i].alt  << ");" ;
-  }
-  cout << "\n";
+  
   return res;
 
 }
@@ -254,6 +203,7 @@ int main(int argc, char *argv[]){
         edificio* edificiosIzq = NULL;
         edificio* edificiosDer = NULL;
         int leidas = 1;
+         timeval tm1, tm2;
         //Si no llegue al final del archivo y sigo obteniendo lineas sigo guardando
         while ( getline (cin,line) )
         {
@@ -298,32 +248,22 @@ int main(int argc, char *argv[]){
                 if(leidas == cantEdificios){
                   primerLinea = true;
                   //Aca llamamos a resolver
-  /*                cout << "edificiios izq \n";
-                  for(int i = 0; i<cantEdificios;i++){
-                      cout << edificiosIzq[i].id << " " << edificiosIzq[i].izq << " ";
-                      cout <<  edificiosIzq[i].alt << " " <<  edificiosIzq[i].der << "\n";
-                  }
-
-                  multiset<edificio> test;
-                  cout << "multiset \n" ;
-                  for(int i =0;i<cantEdificios;i++){
-                    test.insert(edificiosIzq[i]);
-                  }
-
-                  for(multiset<edificio>::iterator it= test.begin();it!=test.end();it++){
-                   cout<< (*it).alt << " " ;
-                  }
-                  cout << "\n";
-                  cout << "edificios : ";
-                  cout << edificiosIzq[0].id << "\n";
-
-                  multiset<edificio>::iterator altura = test.lower_bound(edificiosIzq[6]);
-                  altura--;
-                  cout << "lower 64: " << (*altura).alt ;
-                  cout << "\n";
-*/
+            
+                  //para medir tiempos , mido antes de empezar
+                  gettimeofday(&tm1, NULL);
                   vector<sol> resultado = resolver(cantEdificios,edificiosIzq,edificiosDer);
+                  // mido cuando termino
+                  gettimeofday(&tm2, NULL);
+                  unsigned long long t = 1000 * (tm2.tv_sec - tm1.tv_sec) + (tm2.tv_usec - tm1.tv_usec) / 1000;
+                  //solo para imprimir tiempos descomentar la linea siguiente
+                    //cout << cantEdificios << " " << t << endl;
 
+
+            //Una vez obtenida la solucion imprimimos el resultado
+                   for(int i =0;i< resultado.size();i++){
+                        cout << resultado[i].x << " " << resultado[i].alt << " ";
+                    }
+                    cout << "\n";
                 }
 
                 leidas++;
