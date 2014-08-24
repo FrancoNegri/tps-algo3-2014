@@ -107,15 +107,15 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
   mergesort(edificiosIzq,auxiliarParaOrdenar,0, cantEdificios-1,0);
 
   //SOlo para test
-    // cout << "orden por izq \n";
-    // for(int i = 0; i<cantEdificios; i++){
-    //   cout <<"( " << edificiosIzq[i].id  << "," ;
-    //   cout << edificiosIzq[i].izq  << ",";
-    //   cout << edificiosIzq[i].alt  << ",";
-    //   cout << edificiosIzq[i].der  << ");";
+     cout << "orden por izq \n";
+     for(int i = 0; i<cantEdificios; i++){
+       cout <<"( " << edificiosIzq[i].id  << "," ;
+       cout << edificiosIzq[i].izq  << ",";
+       cout << edificiosIzq[i].alt  << ",";
+       cout << edificiosIzq[i].der  << ");";
 
-    // }
-    // cout << "\n";
+     }
+     cout << "\n";
   //FIN TEST
 
 
@@ -123,14 +123,14 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
   mergesort(edificiosDer,auxiliarParaOrdenar,0, cantEdificios-1,1);
 
   //Solo para test
-    // cout << "orden por der \n";
-    // for(int i = 0; i<cantEdificios; i++){
-    //   cout <<"( " << edificiosDer[i].id  << ",";
-    //   cout << edificiosDer[i].izq  << ",";
-    //   cout <<  edificiosDer[i].alt  << ",";
-    //   cout << edificiosDer[i].der  << ");";
-    // }
-    // cout << "\n";
+     cout << "orden por der \n";
+     for(int i = 0; i<cantEdificios; i++){
+       cout <<"( " << edificiosDer[i].id  << ",";
+       cout << edificiosDer[i].izq  << ",";
+       cout <<  edificiosDer[i].alt  << ",";
+       cout << edificiosDer[i].der  << ");";
+     }
+     cout << "\n";
   //FIN TEST
 
   multiset<edificio> magiheap;
@@ -142,21 +142,35 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
   sol nueva = {0,0};
   bool finIzq = false;
   while(posDer != cantEdificios){
+
+        cout << " multiset : ";
+        for( multiset<edificio>::iterator it = magiheap.begin() ; it != magiheap.end();it++ ){
+            cout << (*it).id << " " << (*it).alt  << ", ";
+
+        }
+        cout << "\n";
         if((finIzq) || (edificiosIzq[posIzq].izq > edificiosDer[posDer].der)){
           //Saco edificio o edificios
           int base = posDer;
           int maxAnt = max.alt;
           while ((edificiosDer[posDer].der == edificiosDer[base].der) && (posDer != cantEdificios)){
             multiset<edificio>::iterator it = magiheap.lower_bound(edificiosDer[posDer]);
+            
             if (it->id == max.id){
-              if(magiheap.begin()!=it){
-              it--;
-              max = *(it);
+              if(magiheap.size() > 1){
+                if(it == magiheap.begin()){ //hay otros maximos con mi misma altura
+                  it++;
+                }else{ //soy el unico maximo
+                  it--;  
+                }
+                
+                max =  (*it);
+                
               }else{
-              max.id = 0;
-              max.izq = 0;
-              max.alt = 0;
-              max.der = 0;
+                  max.id = 0;
+                  max.izq = 0;
+                  max.alt = 0;
+                  max.der = 0;
               }           
             }
             magiheap.erase(edificiosDer[posDer]);
