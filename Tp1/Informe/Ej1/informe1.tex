@@ -1,1 +1,27 @@
+\subsection{Introduccion} 
+Cada participante de una competencia debe cruzar un puente dando saltos de tablon en tablon, teniendo en cuenta que pueden saltar una cantidad maxima de tablones de una sola vez. Sin embargo algunos de estos tablones estan rotos y se sabe de antemano cuales son los mismos. 
+Se desea calcular la cantidad minima de saltos requerida para cruzar el puente.
+
+\subsection{Ejemplos y Soluciones}
+
+
+\subsection{Desarrollo}
+Para la solucion de este problema recurrimos a la tecnica denominada programacion dinamica. 
+Por el enunciado sabemos que tenemos n tablones, el participante puede saltar C tablones de una sola vez y cuales son las posiciones de los tablones rotos.Nos armamos dos arreglos donde cada posicion representa un tablon, en el primero guardamos 0 y 1 para indicar su estado (sano o roto respectivamente) llenando el mismo segun la entrada, llamemoslo puente, en el otro iremos guardando la cantidad minima de saltos para llegar a cada tablon,llamemoslo Distancias.
+Nuestro algoritmo ira recorriendo un tablon por vez, viendo si el mismo esta roto o no. En el caso de que el tablon este roto (segun indica nuestro arreglo puente) continuo al siguiente tablon.
+Para los primeros C tablones que esten sanos pondremos 1 en el arreglo Distancias, cuando el algoritmo se encuentre en el tablon i , con C $\leq$ i $\leq $ n-1, calculamos su cantidad minima de saltos de la siguiente manera:\\
+- Buscamos el minimo entre i - C y i-1, en el arreglo de Distancias.\\
+- Al minimo encontrado le sumamos uno y lo colocamos en la posicion i del arreglo Distancias.\\
+Una vez completado el arreglo distancias debemos armar el recorrido, para el cual en primer paso buscamos dentro de las C ultimas posiciones del arreglo Distancias el minimo, llamemos j a su posicion. Luego agregamos este j a la solucion como el ultimo tablon.
+A partir de ahi en cada paso buscamos el minimo entre j-C y j-1, y lo agregamos adelante de nuestra solucion y reemplazamos el j con la posicion del nuevo minimo.
+\subsection{Demostracion}
+
+
+
+\subsection{Complejidad}
+
+\subsection{Experimentacion}
+
+  
+
  
