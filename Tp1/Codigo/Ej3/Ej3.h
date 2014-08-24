@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class TablaDePeligrosidad{
+/*class TablaDePeligrosidad{
 public:
   int  n,m;
   vector<vector <int> > peligrosidad;
@@ -15,11 +15,18 @@ public:
   {
     cout << "mama mia" << endl;
     for(int i = 0; i < peligrosidad.size(); i++) 
-	peligrosidad[i].clear(); 
+      cout << "mama mia!!! : " << i << endl;
+      peligrosidad[i].clear(); 
     peligrosidad.clear();
   };
 }; 
+*/
+struct tablaDePeligrosidad
+{
+  int  n,m;
+  vector<vector <int> > peligrosidad;
+};
 
 void imprimirResultado(vector<int> camiones);
-int check(TablaDePeligrosidad &tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones);
-bool backtracking(TablaDePeligrosidad &tab, vector<int> &camiones,vector <int> &solFinalCamiones);
+int check(tablaDePeligrosidad &tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones);
+bool backtracking(tablaDePeligrosidad &tab, vector<int> &camiones,vector <int> &solFinalCamiones);
