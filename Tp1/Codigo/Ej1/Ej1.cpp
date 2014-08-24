@@ -34,15 +34,24 @@ bool check_solution(vector<int> puente, int largo_del_salto){
 }
 
 vector<int> obtener_recorrido(vector<int> distancias, int largo_del_salto)
-
 {
   vector<int> recorrido;
   recorrido.push_back(distancias.size() + 1);
   for (int i = (distancias.size()); i > 0;)
   { 
-    int pos_salto = min_element(distancias.begin() + i - largo_del_salto, distancias.begin() + i) - distancias.begin();
-    cout << "valor: " << distancias[i] << " i: " << i <<  " minimo en: " << pos_salto << "\n";
+
+    
+    int inicio_del_recorrido = 0;
+    int pos_salto = 0;
+    if ( i - largo_del_salto < 0) {
+      pos_salto = min_element( distancias.begin(), distancias.begin() + i) - distancias.begin();
+    } else {
+      pos_salto = min_element( distancias.begin() + i - largo_del_salto, distancias.begin() + i) - distancias.begin();
+    }
+
+    //cout << "valor: " << distancias[i] << " i: " << i <<  " minimo en: " << pos_salto << "\n";
     i = pos_salto;
+
     if( i > 0 ) {
       recorrido.push_back(pos_salto + 1);
     }
@@ -52,77 +61,65 @@ vector<int> obtener_recorrido(vector<int> distancias, int largo_del_salto)
 
 int main()
 {
-  int n, largo_del_salto;
-  cin >> n;
-  cin >> largo_del_salto;
-  vector<int> puente;
-  vector<int> distancias;
+  while(true){
+    int n, largo_del_salto;
+    cin >> n;
+    if(n == 0) {
+      return 0;
+    }
 
-  //Creacion del primer elemento artificial con cantidad de saltos 0
-/*  distancias.push_back(0);
-  puente.push_back(-1);*/
+    cin >> largo_del_salto;
 
-  for (int i = 0; i < n; ++i)
-  {
-    int tablon;
-    cin >> tablon;
-    puente.push_back(tablon);
-    distancias.push_back(INT_MAX) ; //inicializo todo en inf, que para mi es INT_MAX
-  }
+    vector<int> puente;
+    vector<int> distancias;
 
-  //miro si tiene solucion
-  if(!check_solution(puente,largo_del_salto)){
-    cout << "no\n";
-    return 0;
-  }
+    //Creacion del primer elemento artificial con cantidad de saltos 0
+    for (int i = 0; i < n; ++i)
+    {
+      int tablon;
+      cin >> tablon;
+      puente.push_back(tablon);
+      distancias.push_back(INT_MAX) ; //inicializo todo en inf, que para mi es INT_MAX
+    }
 
-  //El algoritmo!
-  for (int pos_puente = 0; pos_puente < distancias.size(); ++pos_puente)
-  {
-    //Si el escalon esta roto, lo salteo
-    if(puente[pos_puente] != 0) {
+    //miro si tiene solucion
+    if(!check_solution(puente,largo_del_salto)){
+      cout << "no\n";
       continue;
     }
 
-    //Busco el rango de tablones que puedo pisar
-    int pos_puente_inf;
-    int dist_min;
-    if( pos_puente - largo_del_salto <= 0){
-      pos_puente_inf = 0;
-      dist_min = 1;
-    } else {
-      pos_puente_inf = pos_puente - largo_del_salto;
-      dist_min = *(min_element(distancias.begin() + pos_puente_inf , distancias.begin() + pos_puente));
-      dist_min = dist_min + 1;
+
+    if(largo_del_salto > n){
+      cout << "1 " << n+1 << endl;
+      continue;
     }
-    
-    distancias[pos_puente] = dist_min;
-  }
 
-  cout << "largo del salto: " << largo_del_salto << "\n";
-  cout << "puente: ";
-  imprimir_vector(puente);
+    //El algoritmo!
+    for (int pos_puente = 0; pos_puente < distancias.size(); ++pos_puente)
+    {
+      //Si el escalon esta roto, lo salteo
+      if(puente[pos_puente] != 0) {
+        continue;
+      }
 
-  cout << "distancias: ";
-  imprimir_vector(distancias);
-
-  cout << "recorrido: \n";
-  vector<int> recorrido = obtener_recorrido(distancias, largo_del_salto);
-  recorrido.push_back(recorrido.size());
-  std::reverse(recorrido.begin(),recorrido.end());
-
-  imprimir_vector(recorrido);
-  
-  /*has_result = true;
-  if(has_result) {
-    cout << "distancias: ";
-    imprimir_vector(distancias);  
-    //cout << "recorrido: ";
+      //Busco el rango de tablones que puedo pisar
+      int pos_puente_inf;
+      int dist_min;
+      if( pos_puente - largo_del_salto <= 0){
+        pos_puente_inf = 0;
+        dist_min = 1;
+      } else {
+        pos_puente_inf = pos_puente - largo_del_salto;
+        dist_min = *(min_element(distancias.begin() + pos_puente_inf , distancias.begin() + pos_puente));
+        dist_min = dist_min + 1;
+      }
+      distancias[pos_puente] = dist_min;
+    }
     vector<int> recorrido = obtener_recorrido(distancias, largo_del_salto);
+    recorrido.push_back(recorrido.size());
+    std::reverse(recorrido.begin(),recorrido.end());
+
     imprimir_vector(recorrido);
-    cout << "\n";
-  } else {
-    cout << "no" << "\n";
-  }*/
+  }
   return 0;
 }
