@@ -75,22 +75,24 @@ bool backtracking(tablaDePeligrosidad &tab, vector <int> &solParcialCamiones,vec
     return false;
   }
 
-  resultadoCheck = check(tab,solParcialCamiones,solFinalCamiones);
-
-  //es una olucion
-  if(resultadoCheck == 2)
+  if(solParcialCamiones.size() == tab.n)
   {
-      solFinalCamiones = solParcialCamiones;
-      return true;
+    resultadoCheck = check(tab,solParcialCamiones,solFinalCamiones);
+    if(resultadoCheck == 2)
+    {
+        solFinalCamiones = solParcialCamiones;
+        return true;
+    }
+    return false;
   }
   // solParcial usa mas camiones que solFinal
-  if(resultadoCheck == 3) {
-    return false;
-  }
+  //if(resultadoCheck == 3) {
+  //  return false;
+  //}
 
-  if(resultadoCheck == 0) {
-    return false;
-  }
+  //if(resultadoCheck == 0) {
+  //  return false;
+  //}
 
   //Me faltan asignar un producto a un camion
   for(int i = 0; i < tab.n; i++)
@@ -202,8 +204,7 @@ void inicializarPeorSol(vector<int> &sol,int n)
       sol.push_back(i);
 }
 
-#include <chrono>
-//compilar con g++ -std=c++0x Ej3.cpp
+
 int main()
 {
   timeval tm1, tm2;
@@ -215,18 +216,18 @@ int main()
 
     inicializarPeorSol(solFinalCamiones,tab.n);
 
-    auto start = chrono::high_resolution_clock::now();
+    //auto start = chrono::high_resolution_clock::now();
     //Agrego el primer producto al camion y lanzo la recursion
     solParcialCamiones.push_back(0);
-    //gettimeofday(&tm1, NULL);
+    gettimeofday(&tm1, NULL);
     bool sol = backtracking(tab, solParcialCamiones,solFinalCamiones);
-    //gettimeofday(&tm2, NULL);
-    //unsigned long long t = 1000 * (tm2.tv_sec - tm1.tv_sec) + (tm2.tv_usec - tm1.tv_usec) / 1000;
-    //cout << t << endl;
-    auto finish = chrono::high_resolution_clock::now();
-    cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
+    gettimeofday(&tm2, NULL);
+    unsigned long long t = 1000 * (tm2.tv_sec - tm1.tv_sec) + (tm2.tv_usec - tm1.tv_usec) / 1000;
+    cout << "tarde tanto: " <<t << endl;
+    //auto finish = chrono::high_resolution_clock::now();
+    //cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
     
-    //imprimirResultado(solFinalCamiones);
+    imprimirResultado(solFinalCamiones);
     solParcialCamiones.clear();
     solFinalCamiones.clear();
   }

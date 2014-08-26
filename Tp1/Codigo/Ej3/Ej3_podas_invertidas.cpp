@@ -164,14 +164,12 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solPar
 // si retorna 2 es solucion valida
 int check(tablaDePeligrosidad &tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones)
 {
-
-  //mi resultado final sigue siendo mejor
-  if(solucionFinalUsaMenosCamiones(solParcialCamiones,solFinalCamiones))
-    return 3;
-  
   //me pase, abort!
   if(cotaDePeligrosidadSobrepasada(tab,solParcialCamiones))
     return 0;
+  //mi resultado final sigue siendo mejor
+  if(solucionFinalUsaMenosCamiones(solParcialCamiones,solFinalCamiones))
+    return 3;
 
   //
   if(tab.n == solParcialCamiones.size())
@@ -202,8 +200,7 @@ void inicializarPeorSol(vector<int> &sol,int n)
       sol.push_back(i);
 }
 
-#include <chrono>
-//compilar con g++ -std=c++0x Ej3.cpp
+
 int main()
 {
   timeval tm1, tm2;
@@ -215,18 +212,18 @@ int main()
 
     inicializarPeorSol(solFinalCamiones,tab.n);
 
-    auto start = chrono::high_resolution_clock::now();
+    //auto start = chrono::high_resolution_clock::now();
     //Agrego el primer producto al camion y lanzo la recursion
     solParcialCamiones.push_back(0);
-    //gettimeofday(&tm1, NULL);
+    gettimeofday(&tm1, NULL);
     bool sol = backtracking(tab, solParcialCamiones,solFinalCamiones);
-    //gettimeofday(&tm2, NULL);
-    //unsigned long long t = 1000 * (tm2.tv_sec - tm1.tv_sec) + (tm2.tv_usec - tm1.tv_usec) / 1000;
-    //cout << t << endl;
-    auto finish = chrono::high_resolution_clock::now();
-    cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
+    gettimeofday(&tm2, NULL);
+    unsigned long long t = 1000 * (tm2.tv_sec - tm1.tv_sec) + (tm2.tv_usec - tm1.tv_usec) / 1000;
+    cout << "tarde tanto: " <<t << endl;
+    //auto finish = chrono::high_resolution_clock::now();
+    //cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
     
-    //imprimirResultado(solFinalCamiones);
+    imprimirResultado(solFinalCamiones);
     solParcialCamiones.clear();
     solFinalCamiones.clear();
   }
