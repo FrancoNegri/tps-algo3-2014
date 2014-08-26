@@ -1,6 +1,7 @@
 #include "Ej3.h"
 #include <sys/time.h>
 #include <sys/timeb.h>
+#include <set>
 
 // de la manera en que esta creado el algoritmo,
 // busca la solucion de abajo para arriba
@@ -75,29 +76,30 @@ bool backtracking(tablaDePeligrosidad &tab, vector <int> &solParcialCamiones,vec
     return false;
   }
 
-  if(solParcialCamiones.size() == tab.n)
+  resultadoCheck = check(tab,solParcialCamiones,solFinalCamiones);
+
+  //es una olucion
+  if(resultadoCheck == 2)
   {
-    resultadoCheck = check(tab,solParcialCamiones,solFinalCamiones);
-    if(resultadoCheck == 2)
-    {
-        solFinalCamiones = solParcialCamiones;
-        return true;
-    }
-    return false;
+      solFinalCamiones = solParcialCamiones;
+      return true;
   }
   // solParcial usa mas camiones que solFinal
-  //if(resultadoCheck == 3) {
-  //  return false;
-  //}
+  if(resultadoCheck == 3) {
+    return false;
+  }
 
-  //if(resultadoCheck == 0) {
-  //  return false;
-  //}
-
+  if(resultadoCheck == 0) {
+    return false;
+  }
+  vector<int> espacioDeSol;
+  for(int i= 0; i < tab.n; i++)
+    espacioDeSol.push_back(i);
+  random_shuffle ( espacioDeSol.begin(), espacioDeSol.end() );
   //Me faltan asignar un producto a un camion
-  for(int i = 0; i < tab.n; i++)
+  for (std::vector<int>::iterator i = espacioDeSol.begin(); i != espacioDeSol.end(); ++i) 
   {
-    solParcialCamiones.push_back(i);
+    solParcialCamiones.push_back(*i);
     backtracking(tab,solParcialCamiones,solFinalCamiones);
     solParcialCamiones.pop_back();
   }
@@ -220,6 +222,7 @@ int main()
     //Agrego el primer producto al camion y lanzo la recursion
     solParcialCamiones.push_back(0);
     bool sol = backtracking(tab, solParcialCamiones,solFinalCamiones);
+    gettimeofday(&tm2, NULL);
     //auto finish = chrono::high_resolution_clock::now();
     //cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
     
