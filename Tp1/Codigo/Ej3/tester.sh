@@ -24,7 +24,7 @@ echo "OK!"
 
 sl="/"
 ext=".txt"
-for VARIABLE in {1..7}
+for VARIABLE in {1..14}
 do
 	
 	python generador.py $VARIABLE

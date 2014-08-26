@@ -204,7 +204,7 @@ void inicializarPeorSol(vector<int> &sol,int n)
       sol.push_back(i);
 }
 
-
+#include <chrono>
 int main()
 {
   timeval tm1, tm2;
@@ -216,14 +216,14 @@ int main()
 
     inicializarPeorSol(solFinalCamiones,tab.n);
 
-    //auto start = chrono::high_resolution_clock::now();
+    auto start = chrono::high_resolution_clock::now();
     //Agrego el primer producto al camion y lanzo la recursion
     solParcialCamiones.push_back(0);
     bool sol = backtracking(tab, solParcialCamiones,solFinalCamiones);
-    //auto finish = chrono::high_resolution_clock::now();
-    //cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
+    auto finish = chrono::high_resolution_clock::now();
+    cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
     
-    imprimirResultado(solFinalCamiones);
+    //imprimirResultado(solFinalCamiones);
     solParcialCamiones.clear();
     solFinalCamiones.clear();
   }
