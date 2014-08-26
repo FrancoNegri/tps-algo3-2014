@@ -16,6 +16,19 @@ Una vez completado el arreglo distancias debemos armar el recorrido, para el cua
 A partir de ahi en cada paso buscamos el minimo entre j-C y j-1, y lo agregamos adelante de nuestra solucion y reemplazamos el j con la posicion del nuevo minimo.
 \subsection{Demostracion}
 
+Demostraremos por induccion que en cada paso de este algoritmo obtenemos la minima cantidad de saltos posible para llegar a ese tablon:
+
+P(i) = "El valor guardado en la posicion i-1 del arreglo Distancias es la cantidad minima de saltos hasta el tablon i"
+
+Caso base, P(i) con 0 $\leq$ i $<$ C :
+El caso base son los primeros C tablones, donde C es la cantidad maxima de tablones que un participante puede saltar de una sola vez. En este caso la cantidad minima de saltos para cada tablon es trivialmente 1, ya que es el primer salto desde el punto de partida.
+
+Paso inductivo, P(n) $ \Rightarrow $ P(n+1) con n $\geq$ C :
+Por hipotesis inductiva sabemos que tenemos la cantidad de saltos minima hasta el tablon n en el arreglo Distancias (entre las posiciones 0 y n-1). Si el tablon esta roto entonces la cantidad de saltos minima sera infinito. En el caso contrario, para calcular la minima cantidad de saltos para llegar al tablon n+1 revisamos los ultimos C tablones previos, y nos quedamos con el que requiera la menor cantidad de saltos para llegar hasta el, y llamaremos a esta cantidad Min. Entonces la cantidad minima de saltos para llegar al tablon n+1 seria Min+1, y ahora veremos que efectivamente lo es.
+Sin Min+1 no fuera la cantidad minima de saltos para llegar al tablon n+1 entonces existe un tablon entre n-C y n-1 cuya cantidad minima de saltos para llegar hasta el es menor a Min, lo cual es absurdo porque seleccione al minimo.
+Puede pasar que exista un tablon entre n-C y n-1, distinto al seleccionado, cuya cantidad minima de saltos para llegar hasta el coincida con Min. En ese caso esta solucion es tan buena como la mia. Por lo tanto la cantidad de saltos minima para llegar al tablon n+1 es efectivamente Min+1.
+
+Para armar el recorrido, realizamos lo ya descripto en la seccion de desarrollo y como siempre vamos tomando el minimo en cada paso recorriendo el arreglo Distancias hacia atras llegamos a una solucion optima, que como vimos previamente, puede haber mas de una. 
 
 
 \subsection{Complejidad}

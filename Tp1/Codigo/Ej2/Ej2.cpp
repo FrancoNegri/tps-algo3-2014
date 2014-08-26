@@ -106,16 +106,16 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
 
   mergesort(edificiosIzq,auxiliarParaOrdenar,0, cantEdificios-1,0);
 
-  //SOlo para test
-     cout << "orden por izq \n";
-     for(int i = 0; i<cantEdificios; i++){
-       cout <<"( " << edificiosIzq[i].id  << "," ;
-       cout << edificiosIzq[i].izq  << ",";
-       cout << edificiosIzq[i].alt  << ",";
-       cout << edificiosIzq[i].der  << ");";
+  // //SOlo para test
+  //    cout << "orden por izq \n";
+  //    for(int i = 0; i<cantEdificios; i++){
+  //      cout <<"( " << edificiosIzq[i].id  << "," ;
+  //      cout << edificiosIzq[i].izq  << ",";
+  //      cout << edificiosIzq[i].alt  << ",";
+  //      cout << edificiosIzq[i].der  << ");";
 
-     }
-     cout << "\n";
+  //    }
+  //    cout << "\n";
   //FIN TEST
 
 
@@ -123,14 +123,14 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
   mergesort(edificiosDer,auxiliarParaOrdenar,0, cantEdificios-1,1);
 
   //Solo para test
-     cout << "orden por der \n";
-     for(int i = 0; i<cantEdificios; i++){
-       cout <<"( " << edificiosDer[i].id  << ",";
-       cout << edificiosDer[i].izq  << ",";
-       cout <<  edificiosDer[i].alt  << ",";
-       cout << edificiosDer[i].der  << ");";
-     }
-     cout << "\n";
+     // cout << "orden por der \n";
+     // for(int i = 0; i<cantEdificios; i++){
+     //   cout <<"( " << edificiosDer[i].id  << ",";
+     //   cout << edificiosDer[i].izq  << ",";
+     //   cout <<  edificiosDer[i].alt  << ",";
+     //   cout << edificiosDer[i].der  << ");";
+     // }
+     // cout << "\n";
   //FIN TEST
 
   multiset<edificio> magiheap;
@@ -143,12 +143,7 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
   bool finIzq = false;
   while(posDer != cantEdificios){
 
-        cout << " multiset : ";
-        for( multiset<edificio>::iterator it = magiheap.begin() ; it != magiheap.end();it++ ){
-            cout << (*it).id << " " << (*it).alt  << ", ";
-
-        }
-        cout << "\n";
+        
         if((finIzq) || (edificiosIzq[posIzq].izq > edificiosDer[posDer].der)){
           //Saco edificio o edificios
           int base = posDer;
@@ -270,14 +265,14 @@ int main(int argc, char *argv[]){
                   gettimeofday(&tm2, NULL);
                   unsigned long long t = 1000 * (tm2.tv_sec - tm1.tv_sec) + (tm2.tv_usec - tm1.tv_usec) / 1000;
                   //solo para imprimir tiempos descomentar la linea siguiente
-                    //cout << cantEdificios << " " << t << endl;
+                    cout << cantEdificios << " " << t << endl;
 
 
             //Una vez obtenida la solucion imprimimos el resultado
-                   for(int i =0;i< resultado.size();i++){
-                        cout << resultado[i].x << " " << resultado[i].alt << " ";
-                    }
-                    cout << "\n";
+                   // for(int i =0;i< resultado.size();i++){
+                   //      cout << resultado[i].x << " " << resultado[i].alt << " ";
+                   //  }
+                   //  cout << "\n";
                 }
 
                 leidas++;
