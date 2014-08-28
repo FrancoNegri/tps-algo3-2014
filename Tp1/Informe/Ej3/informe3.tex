@@ -53,10 +53,101 @@ o
 
 \newpage
 \section{Idea General de Resoluci\'on}
-De el ejemplo anterior, se desprende algo crucial para la resoluci\'on de este algoritmo, y es que no es necesario probar todas las combinaciones de camiones, por ejemplo, no probamos la combionacion $\textbf{2 2 2}$ o $\textbf{3 3 3}$, estas combinaciones son identicas a la soluci\'on $\textbf{1 1 1}$ y no aportan nada nuevo al problema.
+Luego la idea del algoritmo es simple, probar todas las combinaciones posibles de camiones y de entre todas determinar cual es la que cumple con la cota de peligrosidad pedida y usa la menor cantidad de camiones posible. Ademas, se ir\'a podando algunas ramas de una manera mas o menos inteligente para intentar lograr una mejor performance.
 \\
-De la misma manera obviamos la posible soluci\'on $\textbf{1 3 3}$ ya que estaba contemplada con la solucio\'on $\textbf{1 2 2}$.
+Antes de presentar el pseudocodigo vale aclarar un punto importante y es que este algoritmo encontra\'a siempre una soluci\'on. Esto se debe a que siempre es posible poner todos los productos quimicos en camiones separados, lo que nos d\'a  una peligrosidad $0$. Luego es posible usar esta como una cota contra la cual parar de chequear, si tenemos $n$ productos quimicos, es simple ver que a lo sumo usar\'emos $n$ camiones. Denominaremos a esta como la "peor soluci\'on" ya que es claro que es una soluci\'on valida, pero que usa la maxima cantidad de camiones.
 \\
-Esto ya nos d\'a un excelente punto de arranque para plantear el algoritmo:
+En cuanto a las podas, utilizamos dos, una que en cada paso del backtrack chequea si la soluci\'on final que encontramos hasta el momento usa una cantidad menor de camiones que la solucion parcial que se esta construyendo. Es claro que de ser as\'i, estamos la solucion parcial nunca podr\'a ser mejor, por lo tanto se poda.
 \\
-Por una parte, sabemos que al menos existe una solucion, y es aquella donde todos los productos viajan separados. Por otro lado sabemos que si 
+La segunda chequea que la soluci\'on parcial que estamos construyendo no exceda el limite de peligrosidad pedido por el ejercicio. En caso de que esto suceda, tambien se poda.
+\\
+Finalmente el pseudocodigo para resolver este problema queda as\'i:
+
+\begin{algorithm}
+\begin{algorithmic}[1]\parskip=1mm
+\caption{void FuncionPrincipal()}
+
+  \STATE{Generar una matriz con las peligrosidades entre los distintos productos}
+  
+  \STATE{Se inicializa la solucion final, como la peor de las soluciones}
+  
+  \STATE{Backtrack(tabla_de_peligrosidad, solucion_parcial, solucion_final)}
+  
+  \STATE{Mostar la soluci\'on final}
+ 
+ \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\begin{algorithmic}[1]\parskip=1mm
+\caption{Bool Backtrack(tabla_de_peligrosidad, solucion_parcial, solucion_final)}
+	
+	\STATE{Llamo a la funcion check(tabla_de_peligrosidad, solucion_parcial, solucion_final)}
+	
+	\STATE{\quad Si check devuelve $2$, la solucion parcial es mejor que la final}
+	\STATE{\quad \quad Pongo la solucion parcial como final} 
+	\STATE{\quad \quad Corto la recursi\'on y busco por otra rama}
+
+	\STATE{\quad Si check devuelve $3$, la solucion anterior usa menos camiones}
+	\STATE{\quad \quad esta rama no me sirve, podo}
+
+	\STATE{\quad Si check devuelve $0$, la cota de peligrosidad fu\'e sobrepasada}
+	\STATE{\quad \quad esta rama no me sirve, podo}
+
+	\STATE{\quad Si check devuelve $1$, la solucion es valida, pero no est\'a completa}
+	\STATE{\quad \quad contin\'uo agregando camiones}
+
+	\STATE{Para cada valor $i$ de $1$ hasta $n$ prueba meter el siguiente producto de la lista en el camion $i$ y se llama a la funcion Backtrack()}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\begin{algorithmic}[1]\parskip=1mm
+\caption{int check(tabla_de_peligrosidad, solucion_parcial, solucion_final)}
+
+
+\STATE{Checkeo si la solucion final usa menos camiones ~~~~~~~~~~~~ $O(n)$}
+\STATE{\quad Si es verdad}
+\STATE{\quad \quad Devuelvo $3$}
+
+
+\STATE{Checkeo si la cota de peligrosidad fue sobrepasada ~~~~~~~~~~~~ $O(n^2)$}
+\STATE{\quad Si es verdad}
+\STATE{\quad \quad Devuelvo $0$}
+
+
+\STATE{Checkeo si la cada producto tiene un camion asignado ~~~~~~~~~~~~ $O(1)$}
+\STATE{\quad Si es verdad}
+\STATE{\quad \quad Devuelvo $2$}
+
+\STATE{Devuelvo $1$}
+
+\end{algorithmic}
+\end{algorithm}
+
+
+\newpage
+\section{Complegidad}
+Por cada producto quimico, el algoritmo de backtrack intenta ponerlo en cualquiera de los $n$ posibles camiones, y realiza $O(n^2)$ chequeos intentando podar.
+\\
+Entonces la formula quedar\'a:
+\\
+$$T(i) = T(i-1)n + n^2$$
+\\
+$$T(1) = n + n^2$$
+\\
+Luego para el peor de los casos el algoritmo tendr\'a una complegidad de $O(n^n)$.
+\\
+\section{Testing}
+\subsection{Caso Random}
+Para testear la performance de nuestro algoritmo se cre\'o un generador de entradas que fabricar\'a instancias random. Luego se comparar\'a el tiempo que tarda nuestro algoritmo comparado contra uno que encuentre la soluci\'on utilizando fuerza bruta. Tambien se comparar\'a contra nuestro algoritmo, pero con las podas invertidas, para ver si esto var\'ia de alguna manera la complegidad.
+\\
+
+
+
+\subsection{Peor caso}
+
+
+
+\newpage
+\section{Resultados}
