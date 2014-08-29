@@ -65,8 +65,6 @@ tablaDePeligrosidad InicializarTablaDePeligrosidad() {
 }
 
 
-
-
 bool backtracking(tablaDePeligrosidad &tab, vector <int> &solParcialCamiones,vector <int> &solFinalCamiones)
 {
   //imprimirResultado(solParcialCamiones);
@@ -129,6 +127,7 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solPar
 {
   //por cada camion, pongo su peligrosidad en 0
   vector<int> peligrosidad;
+  cout << "hola1" endl;
   for(int k = 0; k < solParcialCamiones.size(); k++) {//seteo los n valores del vector en 0.
     peligrosidad.push_back(0);
   }
@@ -147,13 +146,13 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solPar
       }
     }    
   }
-
   //reviso si alguna peligrosidad se paso de la cota
-  for(int h = 0; h < solParcialCamiones.size(); h++)
+  for(int h = 0; h < peligrosidad.size(); h++)
   {
     if(tab.m < peligrosidad[h])
       return true;
   }
+  cout << "hola3" endl;
   return false;
 }
 
@@ -214,8 +213,8 @@ int main()
     vector<int> solFinalCamiones;
 
     inicializarPeorSol(solFinalCamiones,tab.n);
-
-    //auto start = chrono::high_resolution_clock::now();
+    imprimir_tab(tab);
+    auto start = chrono::high_resolution_clock::now();
     //Agrego el primer producto al camion y lanzo la recursion
     solParcialCamiones.push_back(0);
     //gettimeofday(&tm1, NULL);
@@ -223,8 +222,8 @@ int main()
     //gettimeofday(&tm2, NULL);
     //unsigned long long t = 1000 * (tm2.tv_sec - tm1.tv_sec) + (tm2.tv_usec - tm1.tv_usec) / 1000;
     //cout << t << endl;
-    //auto finish = chrono::high_resolution_clock::now();
-    //cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
+    auto finish = chrono::high_resolution_clock::now();
+    cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
     
     //imprimirResultado(solFinalCamiones);
     solParcialCamiones.clear();

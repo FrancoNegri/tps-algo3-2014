@@ -3,13 +3,14 @@
 #include <stdlib.h>
 using namespace std;
 
+//argumentos que recibe: ruta en la que escribir, n, m
 int main(int argc, char *argv[])
 { 
-	ofstream fout("test.txt");
+	ofstream fout( "testingPeorCaso/test.txt");
 	int n;
 	int m;
-	m = 10;
-	n = atoi(argv[1]);
+	m = atoi(argv[1]);
+	n = atoi(argv[2]);
 	if(fout.is_open())
 	{
 		for(int nueroDeTests = 0; nueroDeTests < 40; nueroDeTests++)

@@ -15,10 +15,10 @@
 \contentsline {chapter}{\numberline {3}Biohazard}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Introducci\'on}{7}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Ejemplo de entrada valida}{7}{subsection.3.1.1}
-\contentsline {section}{\numberline {3.2}Idea General de Resoluci\'on}{9}{section.3.2}
-\contentsline {section}{\numberline {3.3}Complegidad}{10}{section.3.3}
-\contentsline {section}{\numberline {3.4}Testing}{10}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Caso Random}{10}{subsection.3.4.1}
+\contentsline {section}{\numberline {3.2}Idea General de Resoluci\'on}{8}{section.3.2}
+\contentsline {section}{\numberline {3.3}Complejidad}{9}{section.3.3}
+\contentsline {section}{\numberline {3.4}Testing}{9}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Caso Random}{9}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}Peor caso}{10}{subsection.3.4.2}
 \contentsline {section}{\numberline {3.5}Resultados}{11}{section.3.5}
 \contentsline {chapter}{\numberline {4}Ap\'endice}{12}{chapter.4}
