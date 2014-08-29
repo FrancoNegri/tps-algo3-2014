@@ -2,25 +2,9 @@
 #include <algorithm>    // std::sort
 #include <vector>       // std::vector
 
-//#include <chrono>
+#include <chrono>
 
 using namespace std;
-
-/*class TablaDePeligrosidad{
-public:
-  int  n,m;
-  vector<vector <int> > peligrosidad;
-  TablaDePeligrosidad();
-  ~TablaDePeligrosidad()
-  {
-    cout << "mama mia" << endl;
-    for(int i = 0; i < peligrosidad.size(); i++) 
-      cout << "mama mia!!! : " << i << endl;
-      peligrosidad[i].clear(); 
-    peligrosidad.clear();
-  };
-}; 
-*/
 struct tablaDePeligrosidad
 {
   int  n,m;
