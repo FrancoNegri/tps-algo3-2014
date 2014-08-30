@@ -1,23 +1,24 @@
-\BOOKMARK [0][-]{chapter.1}{Puentes sobre lava caliente}{}% 1
-\BOOKMARK [1][-]{subsection.1.0.1}{Introduccion}{chapter.1}% 2
-\BOOKMARK [2][-]{subsection.1.0.2}{Ejemplos y Soluciones}{subsection.1.0.1}% 3
-\BOOKMARK [2][-]{subsection.1.0.3}{Desarrollo}{subsection.1.0.1}% 4
-\BOOKMARK [2][-]{subsection.1.0.4}{Demostracion}{subsection.1.0.1}% 5
-\BOOKMARK [2][-]{subsection.1.0.5}{Complejidad}{subsection.1.0.1}% 6
-\BOOKMARK [2][-]{subsection.1.0.6}{Experimentacion}{subsection.1.0.1}% 7
-\BOOKMARK [0][-]{chapter.2}{Horizontes lejanos}{}% 8
-\BOOKMARK [1][-]{subsection.2.0.7}{Introduccion}{chapter.2}% 9
-\BOOKMARK [2][-]{subsection.2.0.8}{Ejemplos y Soluciones}{subsection.2.0.7}% 10
-\BOOKMARK [2][-]{subsection.2.0.9}{Demostracion}{subsection.2.0.7}% 11
-\BOOKMARK [2][-]{subsection.2.0.10}{Complejidad}{subsection.2.0.7}% 12
-\BOOKMARK [2][-]{subsection.2.0.11}{Experimentacion}{subsection.2.0.7}% 13
-\BOOKMARK [0][-]{chapter.3}{Biohazard}{}% 14
-\BOOKMARK [1][-]{section.3.1}{Introducci\363n}{chapter.3}% 15
-\BOOKMARK [2][-]{subsection.3.1.1}{Ejemplo de entrada valida}{section.3.1}% 16
-\BOOKMARK [1][-]{section.3.2}{Idea General de Resoluci\363n}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.3}{Complejidad}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.4}{Testing}{chapter.3}% 19
-\BOOKMARK [2][-]{subsection.3.4.1}{Caso Random}{section.3.4}% 20
-\BOOKMARK [2][-]{subsection.3.4.2}{Peor caso}{section.3.4}% 21
-\BOOKMARK [1][-]{section.3.5}{Resultados}{chapter.3}% 22
-\BOOKMARK [0][-]{chapter.4}{Ap\351ndice}{}% 23
+\BOOKMARK [0][-]{chapter.1}{Puentes sobre lava caliente}{}
+\BOOKMARK [1][-]{subsection.1.0.1}{Introduccion}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.0.2}{Ejemplos y Soluciones}{subsection.1.0.1}
+\BOOKMARK [2][-]{subsection.1.0.3}{Desarrollo}{subsection.1.0.1}
+\BOOKMARK [2][-]{subsection.1.0.4}{Demostracion}{subsection.1.0.1}
+\BOOKMARK [2][-]{subsection.1.0.5}{Complejidad}{subsection.1.0.1}
+\BOOKMARK [2][-]{subsection.1.0.6}{Experimentacion}{subsection.1.0.1}
+\BOOKMARK [0][-]{chapter.2}{Horizontes lejanos}{}
+\BOOKMARK [1][-]{subsection.2.0.7}{Introduccion}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.0.8}{Ejemplos y Soluciones}{subsection.2.0.7}
+\BOOKMARK [2][-]{subsection.2.0.9}{Desarrollo}{subsection.2.0.7}
+\BOOKMARK [2][-]{subsection.2.0.10}{Demostracion}{subsection.2.0.7}
+\BOOKMARK [2][-]{subsection.2.0.11}{Complejidad}{subsection.2.0.7}
+\BOOKMARK [2][-]{subsection.2.0.12}{Experimentacion}{subsection.2.0.7}
+\BOOKMARK [0][-]{chapter.3}{Biohazard}{}
+\BOOKMARK [1][-]{section.3.1}{Introducci\363n}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.1.1}{Ejemplo de entrada valida}{section.3.1}
+\BOOKMARK [1][-]{section.3.2}{Idea General de Resoluci\363n}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{Complejidad}{chapter.3}
+\BOOKMARK [1][-]{section.3.4}{Testing}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.4.1}{Caso Random}{section.3.4}
+\BOOKMARK [2][-]{subsection.3.4.2}{Peor caso}{section.3.4}
+\BOOKMARK [1][-]{section.3.5}{Resultados}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Ap\351ndice}{}

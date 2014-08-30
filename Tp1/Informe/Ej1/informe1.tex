@@ -32,7 +32,24 @@ Para armar el recorrido, realizamos lo ya descripto en la seccion de desarrollo 
 
 
 \subsection{Complejidad}
+El siguiente es un pseudo-codigo de nuestro algoritmo.
 
+    Saltos( saltoMax : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)
+		posActual \leftarrow 0
+		mientras posActual < cantidadTablones
+			SI puente.indice(posActual) es 0
+				posActual \leftarrow posActual + 1
+			SI NO
+				SI posActual - saltoMax < 0
+					distancias.indice(posActual) <- 1
+					posActual \leftarrow posActual + 1
+				SI NO
+					minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)
+					distancias.indice(posActual) \leftarrow minimoSalto + 1
+					posActual \leftarrow posActual + 1
+			
+			
+			
 \subsection{Experimentacion}
 
   

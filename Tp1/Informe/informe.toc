@@ -9,9 +9,10 @@
 \contentsline {chapter}{\numberline {2}Horizontes lejanos}{5}{chapter.2}
 \contentsline {subsection}{\numberline {2.0.7}Introduccion}{5}{subsection.2.0.7}
 \contentsline {subsection}{\numberline {2.0.8}Ejemplos y Soluciones}{5}{subsection.2.0.8}
-\contentsline {subsection}{\numberline {2.0.9}Demostracion}{5}{subsection.2.0.9}
-\contentsline {subsection}{\numberline {2.0.10}Complejidad}{6}{subsection.2.0.10}
-\contentsline {subsection}{\numberline {2.0.11}Experimentacion}{6}{subsection.2.0.11}
+\contentsline {subsection}{\numberline {2.0.9}Desarrollo}{5}{subsection.2.0.9}
+\contentsline {subsection}{\numberline {2.0.10}Demostracion}{6}{subsection.2.0.10}
+\contentsline {subsection}{\numberline {2.0.11}Complejidad}{6}{subsection.2.0.11}
+\contentsline {subsection}{\numberline {2.0.12}Experimentacion}{6}{subsection.2.0.12}
 \contentsline {chapter}{\numberline {3}Biohazard}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Introducci\'on}{7}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Ejemplo de entrada valida}{7}{subsection.3.1.1}
@@ -20,5 +21,5 @@
 \contentsline {section}{\numberline {3.4}Testing}{9}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}Caso Random}{9}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}Peor caso}{10}{subsection.3.4.2}
-\contentsline {section}{\numberline {3.5}Resultados}{11}{section.3.5}
-\contentsline {chapter}{\numberline {4}Ap\'endice}{12}{chapter.4}
+\contentsline {section}{\numberline {3.5}Resultados}{12}{section.3.5}
+\contentsline {chapter}{\numberline {4}Ap\'endice}{13}{chapter.4}

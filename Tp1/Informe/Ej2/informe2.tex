@@ -34,6 +34,43 @@ Teniendo las alturas máximas para cada punto, es trivial armarnos la silueta ya
 
 \subsection{Complejidad}
 
+definimos edificio = < izq :natural x alto : natural x der : natural >
+definimos edificioenCero al que tiene todos sus elementos en cero.
+
+LaSilueta( ciudad: arreglo(edificios) , cantidadEdificios : natural)
+	
+	arregloXIzq \leftarrow ordenarXIzquierda(ciudad)
+	arregloXDer \leftarrow ordenarXDerecha(ciudad)
+	EdificiosActivos \leftarrow Multiconjunto(edificio)
+	
+	posIzquierdo , posDerecho \leftarrow 0
+	max \leftarrow edificioenCero 
+	mientras posIzquierdo < cantidadEdificios && posDerecho < cantidadEdificios 
+		SI arregloXIzq.indice(posIquierdo).izq \leq arregloXDer.indice(posDerecho).der
+			auxiliar \leftarrow arregloXIzq.indice(posIzquierdo)
+			mientras auxiliar.izq = arregloXIzq.indice(posIquierdo).izq && posIzquierdo != cantidadEdificios
+				agregar(arregloXIzq.indice(posIquierdo), EdificiosActivos )
+				SI arregloXIzq.indice(posIquierdo).alto > max.alto
+					max \leftarrow arregloXIzq.indice(posIquierdo)
+		SI NO 
+			auxiliar \leftarrow arregloXDer.indice(posDerecha)
+			mientras auxiliar.der = arregloXDer.indice(posDerecha).der && posDerecha != cantidadEdificios
+					SI  arregloXDer.indice(posDerecha).id = max.id
+							dameMaximoSiguiente( arregloXDer.indice(posDerecha), EdificiosActivos)
+				
+					sacar( arregloXDer.indice(posDerecha), EdificiosActivos)
+			
+Los algoritmos ordenarXizquierda y ordenarXDerecha es el conocido algoritmo mergeSort sacado del libro de brassard, la complejidad es O(n*Log(n))
+El multiconjunto EdificiosActivos esta representado con la estructura Multiset de c++, la relacion de orden sobre los elementos que se definio es por la altura y en el caso que la altura sea igual por derecha.
+Las operacions para agregar, sacar elementos la complejidad es O(Log(n)) y para obtener el maximo lo que se realiza es obtener la referencia al elemento que 
+representa el maximo, esto lleva O(Log(n)) y luego se obtiene el posterior, en caso de no ser posible obtenemos el anterior, siendo n la cantidad de elementos en el multiconjunto, en el peor caso son todos los edificios.
+El algoritmo recorre cada pared izquierda y derecha del edificio con lo cual el total de iteraciones es 2*N, siendo N la cantidad total de edificios, como la complejidad de agregar , sacar y obtener el maximo es O(log(N)) en el peor caso, el total es O(2*N*Log(N)) \in O(N*Log(N))
+ 
+
+
+
+				
+
 \subsection{Experimentacion}
 
   
