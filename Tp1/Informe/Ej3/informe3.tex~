@@ -8,7 +8,7 @@ La entrada del problema consiste en:
 \item Un entero \textbf{m} $\rightarrow$ Representar\'a la cota de peligrosidad que ningun cami\'on puede superar.
 \item \textbf{n-1} filas donde, para cada fila $i$ consta de $n-i$ enteros:
 \begin{itemize}
-\item $h_i_{,i+1}, h_i_{,i+2}$ ... $h_i_{,n}$ $\rightarrow$ Representar\'an la peligrosidad asociada del elemento $i$ con los elementos $i+1$, $i+2$ ... $n$.
+\item $h_i_{i+1}, h_i_{i+2}$ ... $h_i_{n}$ $\rightarrow$ Representar\'an la peligrosidad asociada del elemento $i$ con los elementos $i+1$, $i+2$ ... $n$.
 \end{itemize}
 \end{itemize}
 \\
