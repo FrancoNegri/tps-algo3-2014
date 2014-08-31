@@ -1,53 +1,62 @@
-\subsection{Introduccion} 
-Cada participante de una competencia debe cruzar un puente dando saltos de tablon en tablon, teniendo en cuenta que pueden saltar una cantidad maxima de tablones de una sola vez. Sin embargo algunos de estos tablones estan rotos y se sabe de antemano cuales son los mismos. 
-Se desea calcular la cantidad minima de saltos requerida para cruzar el puente.
+\subsection{Introducci\'on} 
+Cada participante de una competencia debe cruzar un puente dando saltos de tabl\'on en tabl\'on, teniendo en cuenta que pueden saltar una cantidad m\'axima de tablones de una sola vez. Sin embargo algunos de estos tablones est\'an rotos y se sabe de antemano cuales son los mismos. 
+Se desea calcular la cantidad m\'inima de saltos requerida para cruzar el puente.
 
 \subsection{Ejemplos y Soluciones}
 
 
 \subsection{Desarrollo}
-Para la solucion de este problema recurrimos a la tecnica denominada programacion dinamica. 
-Por el enunciado sabemos que tenemos n tablones, el participante puede saltar C tablones de una sola vez y cuales son las posiciones de los tablones rotos.Nos armamos dos arreglos donde cada posicion representa un tablon, en el primero guardamos 0 y 1 para indicar su estado (sano o roto respectivamente) llenando el mismo segun la entrada, llamemoslo puente, en el otro iremos guardando la cantidad minima de saltos para llegar a cada tablon,llamemoslo Distancias.
-Nuestro algoritmo ira recorriendo un tablon por vez, viendo si el mismo esta roto o no. En el caso de que el tablon este roto (segun indica nuestro arreglo puente) continuo al siguiente tablon.
-Para los primeros C tablones que esten sanos pondremos 1 en el arreglo Distancias, cuando el algoritmo se encuentre en el tablon i , con C $\leq$ i $\leq $ n-1, calculamos su cantidad minima de saltos de la siguiente manera:\\
+Para la soluci\'on de este problema recurrimos a la tecnica denominada programaci\'on dinamica. 
+Por el enunciado sabemos que tenemos n tablones, el participante puede saltar C tablones de una sola vez y cuales son las posiciones de los tablones rotos.Nos armamos dos arreglos donde cada posici\'on representa un tabl\'on, en el primero guardamos 0 y 1 para indicar su estado (sano o roto respectivamente) llenando el mismo seg\'un la entrada, llamemoslo puente, en el otro iremos guardando la cantidad m\'inima de saltos para llegar a cada tabl\'on,llamemoslo Distancias.
+Nuestro algoritmo ira recorriendo un tabl\'on por vez, viendo si el mismo esta roto o no. En el caso de que el tabl\'on est\'a roto (seg\'un indica nuestro arreglo puente) continuo al siguiente tabl\'on.
+Para los primeros C tablones que estan sanos pondremos 1 en el arreglo Distancias, cuando el algoritmo se encuentre en el tabl\'on i , con C $\leq$ i $\leq $ n-1, calculamos su cantidad m\'inima de saltos de la siguiente manera:\\
 - Buscamos el minimo entre i - C y i-1, en el arreglo de Distancias.\\
-- Al minimo encontrado le sumamos uno y lo colocamos en la posicion i del arreglo Distancias.\\
-Una vez completado el arreglo distancias debemos armar el recorrido, para el cual en primer paso buscamos dentro de las C ultimas posiciones del arreglo Distancias el minimo, llamemos j a su posicion. Luego agregamos este j a la solucion como el ultimo tablon.
-A partir de ahi en cada paso buscamos el minimo entre j-C y j-1, y lo agregamos adelante de nuestra solucion y reemplazamos el j con la posicion del nuevo minimo.
-\subsection{Demostracion}
+- Al m\'inimo encontrado le sumamos uno y lo colocamos en la posici\'on i del arreglo Distancias.\\
+Una vez completado el arreglo distancias debemos armar el recorrido, para el cual en primer paso buscamos dentro de las C ultimas posiciones del arreglo Distancias el m\'inimo, llamemos j a su posici\'on. Luego agregamos este j a la soluci\'on como el ultimo tabl\'on.
+A partir de ah\'i en cada paso buscamos el m\'inimo entre j-C y j-1, y lo agregamos adelante de nuestra soluci\'on y reemplazamos el j con la posici\'on del nuevo m\'inimo. Una vez recorrido todo el arreglo tendremos nuestra soluci\'on optima.
+\subsection{Demostraci\'on}
 
-Demostraremos por induccion que en cada paso de este algoritmo obtenemos la minima cantidad de saltos posible para llegar a ese tablon:
+Demostraremos por inducci\'on que en cada paso de este algoritmo obtenemos la m\'inima cantidad de saltos posible para llegar a ese tabl\'on:
 
-P(i) = "El valor guardado en la posicion i-1 del arreglo Distancias es la cantidad minima de saltos hasta el tablon i"
+Sea P(i) = `` El valor guardado en la posici\'on i-1 del arreglo Distancias es la cantidad m\'inima de saltos hasta el tabl\'on i''
 
 Caso base, P(i) con 0 $\leq$ i $<$ C :
-El caso base son los primeros C tablones, donde C es la cantidad maxima de tablones que un participante puede saltar de una sola vez. En este caso la cantidad minima de saltos para cada tablon es trivialmente 1, ya que es el primer salto desde el punto de partida.
+El caso base son los primeros C tablones, donde C es la cantidad m\'axima de tablones que un participante puede saltar de una sola vez. En este caso la cantidad m\'inima de saltos para cada tabl\'on es trivialmente 1, ya que es el primer salto desde el punto de partida.
 
 Paso inductivo, P(n) $ \Rightarrow $ P(n+1) con n $\geq$ C :
-Por hipotesis inductiva sabemos que tenemos la cantidad de saltos minima hasta el tablon n en el arreglo Distancias (entre las posiciones 0 y n-1). Si el tablon esta roto entonces la cantidad de saltos minima sera infinito. En el caso contrario, para calcular la minima cantidad de saltos para llegar al tablon n+1 revisamos los ultimos C tablones previos, y nos quedamos con el que requiera la menor cantidad de saltos para llegar hasta el, y llamaremos a esta cantidad Min. Entonces la cantidad minima de saltos para llegar al tablon n+1 seria Min+1, y ahora veremos que efectivamente lo es.
-Sin Min+1 no fuera la cantidad minima de saltos para llegar al tablon n+1 entonces existe un tablon entre n-C y n-1 cuya cantidad minima de saltos para llegar hasta el es menor a Min, lo cual es absurdo porque seleccione al minimo.
-Puede pasar que exista un tablon entre n-C y n-1, distinto al seleccionado, cuya cantidad minima de saltos para llegar hasta el coincida con Min. En ese caso esta solucion es tan buena como la mia. Por lo tanto la cantidad de saltos minima para llegar al tablon n+1 es efectivamente Min+1.
+Por hip\'otesis inductiva sabemos que tenemos la cantidad de saltos m\'inima hasta el tabl\'on n en el arreglo Distancias (entre las posiciones 0 y n-1). Si el tabl\'on esta roto entonces la cantidad de saltos m\'inima ser\'a infinito. En el caso contrario, para calcular la m\'inima cantidad de saltos para llegar al tabl\'on n+1 revisamos los \'ultimos C tablones previos, y nos quedamos con el que requiera la menor cantidad de saltos para llegar hasta el, y llamaremos a esta cantidad Min. Entonces la cantidad m\'inima de saltos para llegar al tabl\'on n+1 seria Min+1, y ahora veremos que efectivamente lo es.
+Si Min+1 no fuera la cantidad m\'inima de saltos para llegar al tabl\'on n+1 entonces existe un tabl\'on entre n-C y n-1 cuya cantidad m\'inima de saltos para llegar hasta el es menor a Min, lo cual es absurdo porque seleccione al m\'inimo.
+Puede pasar que exista un tabl\'on entre n-C y n-1, distinto al seleccionado, cuya cantidad m\'inima de saltos para llegar hasta el coincida con Min. En ese caso esta soluci\'on es tan buena como la m\'ia. Por lo tanto la cantidad de saltos m\'inima para llegar al tabl\'on n+1 es efectivamente Min+1.
 
-Para armar el recorrido, realizamos lo ya descripto en la seccion de desarrollo y como siempre vamos tomando el minimo en cada paso recorriendo el arreglo Distancias hacia atras llegamos a una solucion optima, que como vimos previamente, puede haber mas de una. 
+Para armar el recorrido, realizamos lo ya descripto en la secci\'on de desarrollo y como siempre vamos tomando el m\'inimo en cada paso recorriendo el arreglo Distancias hacia atr\'as llegamos a una soluci\'on optima, que como vimos previamente, puede haber mas de una. 
+
 
 
 \subsection{Complejidad}
-El siguiente es un pseudo-codigo de nuestro algoritmo.
-
-    Saltos( saltoMax : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)
-		posActual \leftarrow 0
-		mientras posActual < cantidadTablones
-			SI puente.indice(posActual) es 0
-				posActual \leftarrow posActual + 1
-			SI NO
-				SI posActual - saltoMax < 0
-					distancias.indice(posActual) <- 1
-					posActual \leftarrow posActual + 1
-				SI NO
-					minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)
-					distancias.indice(posActual) \leftarrow minimoSalto + 1
-					posActual \leftarrow posActual + 1
-			
+El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
+\begin{algorithm}
+\begin{algorithmic}[1]\parskip=1mm
+ \caption{ \\Saltos( saltoMax : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
+		\STATE{Si saltoMax > cantidadTablones} \;\;\tOde{1}
+		\STATE{\quad devolver 1} \;\;\tOde{1}
+		\STATE{posActual \leftarrow 0}  \;\;\tOde{1} \\
+		\STATE{SI NO}\\
+		\STATE{mientras posActual < cantidadTablones} \;\; \tOde{1}
+			\STATE{\quad SI puente.indice(posActual) es 0} \;\; \tOde{1}
+				\STATE{\quad\quad posActual \leftarrow posActual + 1} \;\; \tOde{1}\\
+			\STATE{\quad SI NO}
+				\STATE{\quad\quad SI posActual - saltoMax < 0} \;\;\tOde{1}
+					\STATE{\quad\quad\quad distancias.indice(posActual) \leftarrow 1}\;\; \tOde{1}\\
+					\STATE{\quad\quad\quad posActual \leftarrow posActual + 1} \;\;\tOde{1}\\
+				\STATE{\quad\quad SI NO}
+					\STATE{\quad\quad\quad minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)} \;\; \tOde{saltoMax} \\
+					\STATE{\quad\quad\quad distancias.indice(posActual) \leftarrow minimoSalto + 1}\;\; \tOde{1}\\
+					\STATE{\quad\quad\quad posActual \leftarrow posActual + 1} \;\;\tOde{1}\\
+\\
+Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, para el caso de la funci\'on BuscoMinimo, esta recorre en el arreglo puente buscando el m\'nimo entre las posiciones posActual-saltoMax y posActual, esto tiene una complejidad del orden \Ode{saltoMax}. \\
+El ciclo de las lineas 4 - 14 se realiza n veces con lo cual la complejidad total del algoritmo es \Ode{n*saltoMax}, como saltoMax es una constante menor a n la complejidad total del algoritmo es \Ode{n}.
+\end{algorithmic}
+\end{algorithm}			
 			
 			
 \subsection{Experimentacion}
