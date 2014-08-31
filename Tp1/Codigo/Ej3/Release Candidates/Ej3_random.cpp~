@@ -1,17 +1,9 @@
 #include "Ej3.h"
 #include <sys/time.h>
 #include <sys/timeb.h>
+#include <set>
 
 using namespace std;
-
-
-void borrarTablaDePeligrosidad(tablaDePeligrosidad *tab)
-{
-  for(int i = 0; i < tab->peligrosidad.size(); i++)
-      tab->peligrosidad[i].clear();
-  tab->peligrosidad.clear();
-}
-
 
 tablaDePeligrosidad InicializarTablaDePeligrosidad() {
   tablaDePeligrosidad tab;
@@ -68,11 +60,14 @@ bool backtracking(tablaDePeligrosidad *tab, vector <int> &solParcialCamiones,vec
   if(resultadoCheck == 0) {
     return false;
   }
-
+  vector<int> espacioDeSol;
+  for(int i= 0; i < tab->n; i++)
+    espacioDeSol.push_back(i);
+  random_shuffle ( espacioDeSol.begin(), espacioDeSol.end() );
   //Me faltan asignar un producto a un camion
-  for(int i = 0; i < tab->n; i++)
+  for (std::vector<int>::iterator i = espacioDeSol.begin(); i != espacioDeSol.end(); ++i) 
   {
-    solParcialCamiones.push_back(i);
+    solParcialCamiones.push_back(*i);
     backtracking(tab,solParcialCamiones,solFinalCamiones);
     solParcialCamiones.pop_back();
   }
@@ -139,17 +134,19 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad *tab, vector<int> &solPar
 // si retorna 1, es valida pero falta agregar camiones
 // si retorna 3 la solucion anterior usa menos camiones
 // si retorna 2 es solucion valida
-int check(tablaDePeligrosidad *tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones)
+int check(tablaDePeligrosidad &tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones)
 {
-  //me pase, abort!
-  if(cotaDePeligrosidadSobrepasada(tab,solParcialCamiones))
-    return 0;
+
   //mi resultado final sigue siendo mejor
   if(solucionFinalUsaMenosCamiones(solParcialCamiones,solFinalCamiones))
     return 3;
+  
+  //me pase, abort!
+  if(cotaDePeligrosidadSobrepasada(tab,solParcialCamiones))
+    return 0;
 
   //
-  if(tab->n == solParcialCamiones.size())
+  if(tab.n == solParcialCamiones.size())
     return 2;
 
 
@@ -191,12 +188,11 @@ int main()
 
     solParcialCamiones.push_back(0);
     bool sol = backtracking(&tab, solParcialCamiones,solFinalCamiones);
+    gettimeofday(&tm2, NULL);
     
     imprimirResultado(solFinalCamiones);
     solParcialCamiones.clear();
     solFinalCamiones.clear();
-    borrarTablaDePeligrosidad(&tab);
-    borrarTablaDePeligrosidad(&tab);
   }
 
   return 0;

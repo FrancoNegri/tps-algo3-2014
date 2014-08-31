@@ -20,22 +20,6 @@ using namespace std;
 //	h(n-1),n
 
 
-void imprimir_tab(tablaDePeligrosidad tab)
-{
- for (int i = 0; i < tab.peligrosidad.size(); i++)
- {
-   vector<int> v = tab.peligrosidad[i];
-   for (int j = 0; j < v.size(); j++)
-   {
-     cout << tab.peligrosidad[i][j] << " " ;
-   }
-   cout << endl;
- }
- cout << endl;
-}
-
-
-
 tablaDePeligrosidad InicializarTablaDePeligrosidad() {
   tablaDePeligrosidad tab;
   cin >> tab.n;
@@ -64,18 +48,24 @@ tablaDePeligrosidad InicializarTablaDePeligrosidad() {
   return tab;
 }
 
-
-
-
-bool backtracking(tablaDePeligrosidad &tab, vector <int> &solParcialCamiones,vector <int> &solFinalCamiones)
+void borrarTablaDePeligrosidad(tablaDePeligrosidad *tab)
 {
-  //imprimirResultado(solParcialCamiones);
+  for(int i = 0; i < tab->peligrosidad.size(); i++)
+      tab->peligrosidad[i].clear();
+  tab->peligrosidad.clear();
+}
+
+
+
+
+bool backtracking(tablaDePeligrosidad *tab, vector <int> &solParcialCamiones,vector <int> &solFinalCamiones)
+{
   int resultadoCheck;
-  if(solParcialCamiones.size() > tab.n) {
+  if(solParcialCamiones.size() > tab->n) {
     return false;
   }
 
-  if(solParcialCamiones.size() == tab.n)
+  if(solParcialCamiones.size() == tab->n)
   {
     resultadoCheck = check(tab,solParcialCamiones,solFinalCamiones);
     if(resultadoCheck == 2)
@@ -85,17 +75,8 @@ bool backtracking(tablaDePeligrosidad &tab, vector <int> &solParcialCamiones,vec
     }
     return false;
   }
-  // solParcial usa mas camiones que solFinal
-  //if(resultadoCheck == 3) {
-  //  return false;
-  //}
-
-  //if(resultadoCheck == 0) {
-  //  return false;
-  //}
-
   //Me faltan asignar un producto a un camion
-  for(int i = 0; i < tab.n; i++)
+  for(int i = 0; i < tab->n; i++)
   {
     solParcialCamiones.push_back(i);
     backtracking(tab,solParcialCamiones,solFinalCamiones);
@@ -127,7 +108,7 @@ bool solucionFinalUsaMenosCamiones(vector<int> &solParcialCamiones ,vector <int>
   return cantidad_de_camiones_en_la_solucion_final < cantidad_de_camiones_en_la_solucion_parcial;
 }
 
-bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solParcialCamiones)
+bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad *tab, vector<int> &solParcialCamiones)
 {
   //por cada camion, pongo su peligrosidad en 0
   vector<int> peligrosidad;
@@ -144,7 +125,7 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solPar
       int camion_del_producto_j = solParcialCamiones[j];
       //estan en el mismo camion???
       if(camion_del_producto_j == camion_del_producto_i) {
-        peligrosidad[camion_del_producto_i] += tab.peligrosidad[i][j];
+        peligrosidad[camion_del_producto_i] += tab->peligrosidad[i][j];
 
       }
     }    
@@ -153,7 +134,7 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solPar
   //reviso si alguna peligrosidad se paso de la cota
   for(int h = 0; h < solParcialCamiones.size(); h++)
   {
-    if(tab.m < peligrosidad[h])
+    if(tab->m < peligrosidad[h])
       return true;
   }
   return false;
@@ -164,7 +145,7 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solPar
 // si retorna 1, es valida pero falta agregar camiones
 // si retorna 3 la solucion anterior usa menos camiones
 // si retorna 2 es solucion valida
-int check(tablaDePeligrosidad &tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones)
+int check(tablaDePeligrosidad *tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones)
 {
 
   //mi resultado final sigue siendo mejor
@@ -176,7 +157,7 @@ int check(tablaDePeligrosidad &tab, vector<int> &solParcialCamiones ,vector <int
     return 0;
 
   //
-  if(tab.n == solParcialCamiones.size())
+  if(tab->n == solParcialCamiones.size())
     return 2;
 
 
@@ -216,12 +197,8 @@ int main()
 
     inicializarPeorSol(solFinalCamiones,tab.n);
 
-    //auto start = chrono::high_resolution_clock::now();
-    //Agrego el primer producto al camion y lanzo la recursion
     solParcialCamiones.push_back(0);
-    bool sol = backtracking(tab, solParcialCamiones,solFinalCamiones);
-    //auto finish = chrono::high_resolution_clock::now();
-    //cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
+    bool sol = backtracking(&tab, solParcialCamiones,solFinalCamiones);
     
     imprimirResultado(solFinalCamiones);
     solParcialCamiones.clear();

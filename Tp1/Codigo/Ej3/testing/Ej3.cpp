@@ -2,15 +2,38 @@
 #include <sys/time.h>
 #include <sys/timeb.h>
 
+// de la manera en que esta creado el algoritmo,
+// busca la solucion de abajo para arriba
+// esto signigica, al principio intenta meter todos los productos en el camion 1
+// si no, mete uno en el camion 2, y asi...
+// todavía tengo que justificar, que en el momento de parar, entrega la mejor solo
+// pero a simple vista me parece que falta algo.
+
 using namespace std;
 
+// n-> cantidad de productos a transportar
+// m-> nivel de peligrosidad
+// n-1 lineas:
+// 	h1,2 h1,3 h1,4 ... h1, n
+//	h2,3 h2,4 h1,5 ... h2, n
+//	...
+//	h(n-1),n
 
-void borrarTablaDePeligrosidad(tablaDePeligrosidad *tab)
+
+void imprimir_tab(tablaDePeligrosidad tab)
 {
-  for(int i = 0; i < tab->peligrosidad.size(); i++)
-      tab->peligrosidad[i].clear();
-  tab->peligrosidad.clear();
+ for (int i = 0; i < tab.peligrosidad.size(); i++)
+ {
+   vector<int> v = tab.peligrosidad[i];
+   for (int j = 0; j < v.size(); j++)
+   {
+     cout << tab.peligrosidad[i][j] << " " ;
+   }
+   cout << endl;
+ }
+ cout << endl;
 }
+
 
 
 tablaDePeligrosidad InicializarTablaDePeligrosidad() {
@@ -41,7 +64,12 @@ tablaDePeligrosidad InicializarTablaDePeligrosidad() {
   return tab;
 }
 
-
+void borrarTablaDePeligrosidad(tablaDePeligrosidad *tab)
+{
+  for(int i = 0; i < tab->peligrosidad.size(); i++)
+      tab->peligrosidad[i].clear();
+  tab->peligrosidad.clear();
+}
 
 
 bool backtracking(tablaDePeligrosidad *tab, vector <int> &solParcialCamiones,vector <int> &solFinalCamiones)
@@ -106,7 +134,7 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad *tab, vector<int> &solPar
 {
   //por cada camion, pongo su peligrosidad en 0
   vector<int> peligrosidad;
-  for(int k = 0; k < solParcialCamiones.size(); k++) {//seteo los n valores del vector en 0.
+  for(int k = 0; k < solParcialCamiones.size() +3; k++) {//seteo los n valores del vector en 0.
     peligrosidad.push_back(0);
   }
   
@@ -141,12 +169,14 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad *tab, vector<int> &solPar
 // si retorna 2 es solucion valida
 int check(tablaDePeligrosidad *tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones)
 {
-  //me pase, abort!
-  if(cotaDePeligrosidadSobrepasada(tab,solParcialCamiones))
-    return 0;
+
   //mi resultado final sigue siendo mejor
   if(solucionFinalUsaMenosCamiones(solParcialCamiones,solFinalCamiones))
     return 3;
+  
+  //me pase, abort!
+  if(cotaDePeligrosidadSobrepasada(tab,solParcialCamiones))
+    return 0;
 
   //
   if(tab->n == solParcialCamiones.size())
@@ -177,7 +207,6 @@ void inicializarPeorSol(vector<int> &sol,int n)
       sol.push_back(i);
 }
 
-
 int main()
 {
   timeval tm1, tm2;
@@ -188,14 +217,18 @@ int main()
     vector<int> solFinalCamiones;
 
     inicializarPeorSol(solFinalCamiones,tab.n);
-
+    
+    auto start = chrono::high_resolution_clock::now();
+    
+    //Agrego el primer producto al camion y lanzo la recursion
     solParcialCamiones.push_back(0);
     bool sol = backtracking(&tab, solParcialCamiones,solFinalCamiones);
     
-    imprimirResultado(solFinalCamiones);
+    auto finish = chrono::high_resolution_clock::now();
+    cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
+
     solParcialCamiones.clear();
     solFinalCamiones.clear();
-    borrarTablaDePeligrosidad(&tab);
     borrarTablaDePeligrosidad(&tab);
   }
 

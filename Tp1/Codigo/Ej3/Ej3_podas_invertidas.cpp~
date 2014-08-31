@@ -189,6 +189,8 @@ int main()
 
     inicializarPeorSol(solFinalCamiones,tab.n);
 
+    auto start = chrono::high_resolution_clock::now();
+    
     solParcialCamiones.push_back(0);
     bool sol = backtracking(&tab, solParcialCamiones,solFinalCamiones);
     

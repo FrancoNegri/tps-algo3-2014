@@ -4,15 +4,6 @@
 
 using namespace std;
 
-
-void borrarTablaDePeligrosidad(tablaDePeligrosidad *tab)
-{
-  for(int i = 0; i < tab->peligrosidad.size(); i++)
-      tab->peligrosidad[i].clear();
-  tab->peligrosidad.clear();
-}
-
-
 tablaDePeligrosidad InicializarTablaDePeligrosidad() {
   tablaDePeligrosidad tab;
   cin >> tab.n;
@@ -102,7 +93,7 @@ bool solucionFinalUsaMenosCamiones(vector<int> &solParcialCamiones ,vector <int>
   return cantidad_de_camiones_en_la_solucion_final < cantidad_de_camiones_en_la_solucion_parcial;
 }
 
-bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad *tab, vector<int> &solParcialCamiones)
+bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solParcialCamiones)
 {
   //por cada camion, pongo su peligrosidad en 0
   vector<int> peligrosidad;
@@ -195,8 +186,6 @@ int main()
     imprimirResultado(solFinalCamiones);
     solParcialCamiones.clear();
     solFinalCamiones.clear();
-    borrarTablaDePeligrosidad(&tab);
-    borrarTablaDePeligrosidad(&tab);
   }
 
   return 0;

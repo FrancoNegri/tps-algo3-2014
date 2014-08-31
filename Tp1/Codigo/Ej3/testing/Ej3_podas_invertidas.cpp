@@ -2,38 +2,15 @@
 #include <sys/time.h>
 #include <sys/timeb.h>
 
-// de la manera en que esta creado el algoritmo,
-// busca la solucion de abajo para arriba
-// esto signigica, al principio intenta meter todos los productos en el camion 1
-// si no, mete uno en el camion 2, y asi...
-// todavía tengo que justificar, que en el momento de parar, entrega la mejor solo
-// pero a simple vista me parece que falta algo.
-
 using namespace std;
 
-// n-> cantidad de productos a transportar
-// m-> nivel de peligrosidad
-// n-1 lineas:
-// 	h1,2 h1,3 h1,4 ... h1, n
-//	h2,3 h2,4 h1,5 ... h2, n
-//	...
-//	h(n-1),n
 
-
-void imprimir_tab(tablaDePeligrosidad tab)
+void borrarTablaDePeligrosidad(tablaDePeligrosidad *tab)
 {
- for (int i = 0; i < tab.peligrosidad.size(); i++)
- {
-   vector<int> v = tab.peligrosidad[i];
-   for (int j = 0; j < v.size(); j++)
-   {
-     cout << tab.peligrosidad[i][j] << " " ;
-   }
-   cout << endl;
- }
- cout << endl;
+  for(int i = 0; i < tab->peligrosidad.size(); i++)
+      tab->peligrosidad[i].clear();
+  tab->peligrosidad.clear();
 }
-
 
 
 tablaDePeligrosidad InicializarTablaDePeligrosidad() {
@@ -65,11 +42,13 @@ tablaDePeligrosidad InicializarTablaDePeligrosidad() {
 }
 
 
-bool backtracking(tablaDePeligrosidad &tab, vector <int> &solParcialCamiones,vector <int> &solFinalCamiones)
+
+
+bool backtracking(tablaDePeligrosidad *tab, vector <int> &solParcialCamiones,vector <int> &solFinalCamiones)
 {
   //imprimirResultado(solParcialCamiones);
   int resultadoCheck;
-  if(solParcialCamiones.size() > tab.n) {
+  if(solParcialCamiones.size() > tab->n) {
     return false;
   }
 
@@ -91,7 +70,7 @@ bool backtracking(tablaDePeligrosidad &tab, vector <int> &solParcialCamiones,vec
   }
 
   //Me faltan asignar un producto a un camion
-  for(int i = 0; i < tab.n; i++)
+  for(int i = 0; i < tab->n; i++)
   {
     solParcialCamiones.push_back(i);
     backtracking(tab,solParcialCamiones,solFinalCamiones);
@@ -123,11 +102,10 @@ bool solucionFinalUsaMenosCamiones(vector<int> &solParcialCamiones ,vector <int>
   return cantidad_de_camiones_en_la_solucion_final < cantidad_de_camiones_en_la_solucion_parcial;
 }
 
-bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solParcialCamiones)
+bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad *tab, vector<int> &solParcialCamiones)
 {
   //por cada camion, pongo su peligrosidad en 0
   vector<int> peligrosidad;
-  cout << "hola1" endl;
   for(int k = 0; k < solParcialCamiones.size(); k++) {//seteo los n valores del vector en 0.
     peligrosidad.push_back(0);
   }
@@ -141,18 +119,18 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solPar
       int camion_del_producto_j = solParcialCamiones[j];
       //estan en el mismo camion???
       if(camion_del_producto_j == camion_del_producto_i) {
-        peligrosidad[camion_del_producto_i] += tab.peligrosidad[i][j];
+        peligrosidad[camion_del_producto_i] += tab->peligrosidad[i][j];
 
       }
     }    
   }
+
   //reviso si alguna peligrosidad se paso de la cota
-  for(int h = 0; h < peligrosidad.size(); h++)
+  for(int h = 0; h < solParcialCamiones.size(); h++)
   {
-    if(tab.m < peligrosidad[h])
+    if(tab->m < peligrosidad[h])
       return true;
   }
-  cout << "hola3" endl;
   return false;
 }
 
@@ -161,19 +139,17 @@ bool cotaDePeligrosidadSobrepasada(tablaDePeligrosidad &tab, vector<int> &solPar
 // si retorna 1, es valida pero falta agregar camiones
 // si retorna 3 la solucion anterior usa menos camiones
 // si retorna 2 es solucion valida
-int check(tablaDePeligrosidad &tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones)
+int check(tablaDePeligrosidad *tab, vector<int> &solParcialCamiones ,vector <int> &solFinalCamiones)
 {
-
-  //mi resultado final sigue siendo mejor
-  if(solucionFinalUsaMenosCamiones(solParcialCamiones,solFinalCamiones))
-    return 3;
-  
   //me pase, abort!
   if(cotaDePeligrosidadSobrepasada(tab,solParcialCamiones))
     return 0;
+  //mi resultado final sigue siendo mejor
+  if(solucionFinalUsaMenosCamiones(solParcialCamiones,solFinalCamiones))
+    return 3;
 
   //
-  if(tab.n == solParcialCamiones.size())
+  if(tab->n == solParcialCamiones.size())
     return 2;
 
 
@@ -201,8 +177,7 @@ void inicializarPeorSol(vector<int> &sol,int n)
       sol.push_back(i);
 }
 
-//#include <chrono>
-//compilar con g++ -std=c++0x Ej3.cpp
+
 int main()
 {
   timeval tm1, tm2;
@@ -213,21 +188,20 @@ int main()
     vector<int> solFinalCamiones;
 
     inicializarPeorSol(solFinalCamiones,tab.n);
-    imprimir_tab(tab);
+
     auto start = chrono::high_resolution_clock::now();
-    //Agrego el primer producto al camion y lanzo la recursion
+    
     solParcialCamiones.push_back(0);
-    //gettimeofday(&tm1, NULL);
-    bool sol = backtracking(tab, solParcialCamiones,solFinalCamiones);
-    //gettimeofday(&tm2, NULL);
-    //unsigned long long t = 1000 * (tm2.tv_sec - tm1.tv_sec) + (tm2.tv_usec - tm1.tv_usec) / 1000;
-    //cout << t << endl;
+    bool sol = backtracking(&tab, solParcialCamiones,solFinalCamiones);
+    
+    
     auto finish = chrono::high_resolution_clock::now();
     cout << chrono::duration_cast<chrono::microseconds>(finish - start).count() << endl;
     
-    //imprimirResultado(solFinalCamiones);
     solParcialCamiones.clear();
     solFinalCamiones.clear();
+    borrarTablaDePeligrosidad(&tab);
+    borrarTablaDePeligrosidad(&tab);
   }
 
   return 0;
