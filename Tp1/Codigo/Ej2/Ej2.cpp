@@ -153,14 +153,15 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
             
             if (it->id == max.id){
               if(magiheap.size() > 1){
-                if(it == magiheap.begin()){ //hay otros maximos con mi misma altura
-                  it++;
-                }else{ //soy el unico maximo
-                  it--;  
+                multiset<edificio>::iterator itMax = magiheap.end();
+                itMax--;
+                if (it->id == itMax->id){
+                  itMax--;
                 }
-                
-                max =  (*it);
-                
+                max.alt = itMax->alt;
+                max.izq = itMax->izq;
+                max.der = itMax->der;
+                max.id = itMax->id;
               }else{
                   max.id = 0;
                   max.izq = 0;
@@ -168,7 +169,7 @@ vector< sol > resolver(int cantEdificios, edificio* edificiosIzq, edificio* edif
                   max.der = 0;
               }           
             }
-            magiheap.erase(edificiosDer[posDer]);
+            magiheap.erase(it);
             posDer++;
           }
           if (maxAnt > max.alt){
