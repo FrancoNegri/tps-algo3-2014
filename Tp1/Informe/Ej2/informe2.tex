@@ -72,18 +72,22 @@ El ciclo de las lineas 9-12 se realiza para cada punto x donde haya paredes izqu
 \subsection{Experimentaci\'on}
 Se realizaron experimentaciones sobre varios tipos de caso para observar el comportamiento del algoritmo, en todos los casos se generaron 1000 entradas, a las gráficas resultantes se las comparo con la función n*log(n)*1000, siendo n la cantidad de edificios de entrada.\\
 Para la primer ejecución se realizo un an\'alisis sobre el algoritmo en edificios donde la distancia entre sus paredes izquierda y derecha era corta, estas se encontraban entre las posiciones 1 y 30, pero sus alturas variaban en el orden entre 1 y 10000, dando el siguiente gráfico como resultado.\\
-\includegraphics[scale=0.7]{Ej2/VariacionAlturas.jpg}
-\\
+
+\includegraphics[scale=0.7]{Ej2/VariacionAlturas.jpg}\\
+
 El segundo gr\'afico corresponde a instancias generadas de manera random donde la altura se encontraba entre 1 y 40, pero las distancias entre la primer y la segunda pared de cada edificio varia entre los 1 y 2000 , elegido de manera random la posición de ambos lados pero siempre que sea entrada valida, \'osea el valor de la pared izquierda es mayor estricta a la de la pared derecha.
+
 \includegraphics[scale=0.7]{Ej2/VariacionDistancias.jpg}
-\\
+
+
 Luego para el tercer gr\'afico consideramos que era importante ver como se comportaba el multiconjunto cuando se agregaban todos los edificios de la entrada, de esta manera se generaron entradas donde los edificios eran todos iguales, as\'i se ingresaban todos al multiconjunto y ve\'iamos como se comportaba el algoritmo, obteniendo este gr\'afico como resultado donde se ve que su complejidad es del orden logar\'itmico en la cantidad de edificios de entrada por la cantidad edificios.
-\includegraphics[scale=0.7]{Ej2/iguales.jpg}
-\\
+
+\includegraphics[scale=0.7]{Ej2/iguales.jpg}\\
 Por ultimo realizamos un gráfico con entradas random donde las mismas variaban combinando todas las anteriores, obteniendo de nuevo que el orden era logarítmico al compararlo con la función.
-\includegraphics[scale=0.7]{Ej2/Random.jpg}
-\\
- Concluimos por lo tanto que el algoritmo respeta los ordenes de complejidad ya que el or
+
+\includegraphics[scale=0.7]{Ej2/Random.jpg}\\
+
+ Concluimos por lo tanto que el algoritmo respeta los ordenes de complejidad requeridos.
 
 
 
