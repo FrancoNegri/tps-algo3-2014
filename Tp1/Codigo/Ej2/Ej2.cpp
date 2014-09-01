@@ -259,13 +259,15 @@ int main(int argc, char *argv[]){
                   //Aca llamamos a resolver
             
                   //para medir tiempos , mido antes de empezar
-                  gettimeofday(&tm1, NULL);
-                  vector<sol> resultado = resolver(cantEdificios,edificiosIzq,edificiosDer);
+                  //gettimeofday(&tm1, NULL);
+                auto begin = std::chrono::high_resolution_clock::now();
+                vector<sol> resultado = resolver(cantEdificios,edificiosIzq,edificiosDer);
                   // mido cuando termino
-                  gettimeofday(&tm2, NULL);
-                  unsigned long long t = 1000 * (tm2.tv_sec - tm1.tv_sec) + (tm2.tv_usec - tm1.tv_usec) / 1000;
+                    auto end = std::chrono::high_resolution_clock::now();
+
+                 cout << cantEdificios << " " << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
                   //solo para imprimir tiempos descomentar la linea siguiente
-                    cout << cantEdificios << " " << t << endl;
+                    cout << endl;
 
 
             //Una vez obtenida la solucion imprimimos el resultado

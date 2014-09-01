@@ -3,6 +3,15 @@ Cada participante de una competencia debe cruzar un puente dando saltos de tabl\
 Se desea calcular la cantidad m\'inima de saltos requerida para cruzar el puente.
 
 \subsection{Ejemplos y Soluciones}
+Sea el puente de 14 tablones representado por el siguiente arreglo de 1's y 0's , [0,0,0,1,1,0,0,1,0,1,0,0,1,0] (1 representa que el tabl\'on esta roto y 0 sano) ademas sabemos que la cantidad de saltos m\'aximo para dicho participante es 3.\\
+Para calcular lo que ser\'ia la soluci\'on a este ejercicio con nuestro algoritmo creamos el arreglo de distancias de 14 posiciones inicializado en 0, [0,0,0,0,0,0,0,0,0,0,0,0,0,0].\\
+Para las posiciones que est\'en entre 0 y 2 la cantidad de saltos m\'inimo es 1, con lo cual completamos el arreglo Distancias con 1 en esas posiciones, qued\'andonos de la siguiente manera [1,1,1,0,0,0,0,0,0,0,0,0,0,0]\\
+Luego posici\'on por posici\'on vamos a buscar la cantidad m\'inima de saltos, para los tablones como el 3 y 4 como est\'an rotos, dato conocido por el arreglo puente, colocamos infinito de la siguiente manera [1,1,1,$+ \infinity$,$+ \infinity$,0,0,0,0,0,0,0,0,0].\\
+Siguiendo as\'i con el quinto tablón ,agarramos los \'ultimos 3 desde ah\'i, por ser 3 el salto m\'aximo del participante, y buscamos el m\'inimo entre [1,$+ \infinity$,$+ \infinity$], siendo este 1, le sumamos uno y lo colocamos en la 5 posici\'on como la cantidad de saltos m\'nima hasta ese tabl\'on, qued\'andonos  [1,1,1,$+ \infinity$,$+ \infinity$,2,0,0,0,0,0,0,0,0].
+Continuamos con las siguientes posiciones de la misma forma,  al recorrer todo el arreglo, el Distancias ser\'a el siguiente [1,1,1,$+ \infinity$,$+ \infinity$,2,3,$+ \infinity$,3,$+\infinity$,4,4,$+\infinity$,5].\\
+ Luego para armar la soluci\'on se recorre para atr\'as desde los \'ultimos 3 elementos( [4,$+\infinity$,5] ) elegimos el m\'inimo que en este caso es el 4 y agregamos a la soluci\'on la posici\'on de dicho numero (en este caso el 12) , luego desde ah\'i repetimos la operaci\'on de seleccionar el m\'inimo entre los tres tablones anteriores a ese (  [3,$+\infinity$,4] ) quedanonos el 3 y siendo su posici\'on la novena, agregamos esta a la soluci\'on parcial, repetimos esta operaci\'on hasta recorrer todo el arreglo, nos queda el siguiente resultado [3,6,9,12] siendo estos los tablones a los cuales debe saltar para realizar la m\'inima cantidad de saltos y la cantidad m\'inima de saltos la longitud, en este caso 4.
+ 
+
 
 
 \subsection{Desarrollo}
@@ -30,7 +39,7 @@ Puede pasar que exista un tabl\'on entre n-C y n-1, distinto al seleccionado, cu
 
 Para armar el recorrido, realizamos lo ya descripto en la secci\'on de desarrollo y como siempre vamos tomando el m\'inimo en cada paso recorriendo el arreglo Distancias hacia atr\'as llegamos a una soluci\'on optima, que como vimos previamente, puede haber mas de una. 
 
-
+\newpage
 
 \subsection{Complejidad}
 El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
@@ -39,27 +48,31 @@ El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
  \caption{ \\Saltos( saltoMax : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
 		\STATE{Si saltoMax > cantidadTablones} \;\;\tOde{1}
 		\STATE{\quad devolver 1} \;\;\tOde{1}
-		\STATE{posActual \leftarrow 0}  \;\;\tOde{1} \\
+		\STATE{\quad posActual \leftarrow 0}  \;\;\tOde{1} \\
 		\STATE{SI NO}\\
-		\STATE{mientras posActual < cantidadTablones} \;\; \tOde{1}
-			\STATE{\quad SI puente.indice(posActual) es 0} \;\; \tOde{1}
-				\STATE{\quad\quad posActual \leftarrow posActual + 1} \;\; \tOde{1}\\
-			\STATE{\quad SI NO}
-				\STATE{\quad\quad SI posActual - saltoMax < 0} \;\;\tOde{1}
-					\STATE{\quad\quad\quad distancias.indice(posActual) \leftarrow 1}\;\; \tOde{1}\\
-					\STATE{\quad\quad\quad posActual \leftarrow posActual + 1} \;\;\tOde{1}\\
-				\STATE{\quad\quad SI NO}
-					\STATE{\quad\quad\quad minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)} \;\; \tOde{saltoMax} \\
-					\STATE{\quad\quad\quad distancias.indice(posActual) \leftarrow minimoSalto + 1}\;\; \tOde{1}\\
-					\STATE{\quad\quad\quad posActual \leftarrow posActual + 1} \;\;\tOde{1}\\
+		\STATE{\quad mientras posActual < cantidadTablones} \;\; \tOde{1}
+			\STATE{\quad\quad SI puente.indice(posActual) es 0} \;\; \tOde{1}
+				\STATE{\quad\quad\quad posActual \leftarrow posActual + 1} \;\; \tOde{1}\\
+			\STATE{\quad\quad SI NO}\\
+				\STATE{\quad\quad\quad SI posActual - saltoMax < 0} \;\;\tOde{1}
+					\STATE{\quad\quad\quad\quad distancias.indice(posActual) \leftarrow 1}\;\; \tOde{1}\\
+					\STATE{\quad\quad\quad\quad posActual \leftarrow posActual + 1} \;\;\tOde{1}\\
+				\STATE{\quad\quad\quad SI NO}
+					\STATE{\quad\quad\quad\quad minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)} \;\; \tOde{saltoMax} \\
+					\STATE{\quad\quad\quad\quad distancias.indice(posActual) \leftarrow minimoSalto + 1}\;\; \tOde{1}\\
+					\STATE{\quad\quad\quad\quad posActual \leftarrow posActual + 1} \;\;\tOde{1}\\
 \\
-Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, para el caso de la funci\'on BuscoMinimo, esta recorre en el arreglo puente buscando el m\'nimo entre las posiciones posActual-saltoMax y posActual, esto tiene una complejidad del orden \Ode{saltoMax}. \\
-El ciclo de las lineas 4 - 14 se realiza n veces con lo cual la complejidad total del algoritmo es \Ode{n*saltoMax}, como saltoMax es una constante menor a n la complejidad total del algoritmo es \Ode{n}.
+		
 \end{algorithmic}
-\end{algorithm}			
-			
-			
+Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones, en el caso del infinito este es representado por el máximo entero representable y este esta acotado.\\
+Para el caso de la funci\'on BuscoMinimo, esta recorre en el arreglo puente buscando el m\'nimo entre las posiciones posActual-saltoMax y posActual-1, esto tiene una complejidad del orden \Ode{saltoMax}. \\
+El ciclo de las lineas 5 - 15 se realiza n veces con lo cual la complejidad total del algoritmo es \Ode{n*saltoMax}, como saltoMax es una constante menor a n la complejidad total del algoritmo es \Ode{n}.
+
+\end{algorithm}	
+		
+\newpage			
 \subsection{Experimentacion}
+
 
   
 
