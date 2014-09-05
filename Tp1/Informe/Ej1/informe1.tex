@@ -49,56 +49,42 @@ Para armar el recorrido, realizamos lo ya descripto en la secci\'on de desarroll
 \subsection{Complejidad}
 El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
 
-\begin{algorithm}
-\begin{algorithmic}[1]\parskip=1mm
-\caption{int check(tablaDePeligrosidad, solucionParcial, solucionFinal)}
 
-
-	\STATE{Checkeo si la solucion final usa menos camiones ~~~~~~~~~~~~ $O(n)$}
-	\STATE{\quad Si es verdad}
-	\STATE{\quad \quad Devuelvo $3$}
-
-
-	\STATE{Checkeo si la cota de peligrosidad fue sobrepasada ~~~~~~~~~~~~ $O(n^2)$}
-	\STATE{\quad Si es verdad}
-	\STATE{\quad \quad Devuelvo $0$}
-
-
-	\STATE{Checkeo si la cada producto tiene un camion asignado ~~~~~~~~~~~~ $O(1)$}
-	\STATE{\quad Si es verdad}
-	\STATE{\quad \quad Devuelvo $2$}
-
-\STATE{Devuelvo $1$}
-
-\end{algorithmic}
-\end{algorithm}
-
-% \begin{algorithm}
-% % \begin{algorithmic}[1]\parskip=1mm
-% % \caption{ \\Saltos( saltoMax : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
-% % 		\STATE{Si saltoMax > cantidadTablones} \;\;
-% % 		\STATE{ devolver 1} \;\;
-% % 		% \STATE{ posActual \leftarrow 0}  \;\; \\
-% % 		\STATE{SI NO}\\
-% % 		\STATE{ mientras posActual < cantidadTablones} \;\; 
-% % 			\STATE{ SI puente.indice(posActual) es 0} \;\; 
-% % 				\STATE{ posActual \leftarrow posActual + 1} \;\; \\
-% % 			\STATE{ SI NO}\\
-% % 				\STATE{ SI posActual - saltoMax < 0} \;\;
-% % 					\STATE{ distancias.indice(posActual) \leftarrow 1}\;\; \\
-% % 					\STATE{ posActual \leftarrow posActual + 1} \;\;\\
-% % 				\STATE{ SI NO}
-% % 					\STATE{ minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)} \;\; \tOde{saltoMax} \\
-% % 					\STATE{ distancias.indice(posActual) \leftarrow minimoSalto + 1}\;\; \\
-% % 					\STATE{ posActual \leftarrow posActual + 1} \;\;\\
-% % \\
+ \begin{algorithm}
+  \begin{algorithmic}[1]\parskip=1mm
+ \caption{ \\Saltos( saltoMax : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
+ 		\STATE{Si saltoMax > cantidadTablones} \;\;
+ 		\STATE{ devolver 1} \;\;
+ 		% \STATE{ posActual \leftarrow 0}  \;\; \\
+ 		\STATE{SI NO}\\
+ 		\STATE{ mientras posActual < cantidadTablones} \;\; 
+ 			\STATE{ SI puente.indice(posActual) es 0} \;\; 
+ 				\STATE{ posActual \leftarrow posActual + 1} \;\; \\
+ 			\STATE{ SI NO}\\
+ 				\STATE{ SI posActual - saltoMax < 0} \;\;
+ 					\STATE{ distancias.indice(posActual) \leftarrow 1}\;\; \\
+ 					\STATE{ posActual \leftarrow posActual + 1} \;\;\\
+ 				\STATE{ SI NO}
+ 					\STATE{ minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)} \;\; \tOde{saltoMax} \\
+ 					\STATE{ distancias.indice(posActual) \leftarrow minimoSalto + 1}\;\; \\
+ 					\STATE{ posActual \leftarrow posActual + 1} \;\;\\
+ \\
 		
-% % \end{algorithmic}
-% Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones, en el caso del infinito este es representado por el máximo entero representable y este esta acotado.\\
-% Para el caso de la funci\'on BuscoMinimo, esta recorre en el arreglo puente buscando el m\'nimo entre las posiciones posActual-saltoMax y posActual-1, esto tiene una complejidad del orden \Ode{saltoMax}. \\
-% El ciclo de las lineas 5 - 15 se realiza n veces con lo cual la complejidad total del algoritmo es \Ode{n*saltoMax}, como saltoMax es una constante menor a n la complejidad total del algoritmo es \Ode{n}.
+  \end{algorithmic}
+ Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones, en el caso del infinito este es representado por el máximo entero representable y este esta acotado.\\
+ Para el caso de la funci\'on BuscoMinimo, esta recorre en el arreglo puente buscando el m\'nimo entre las posiciones posActual-saltoMax y posActual-1, esto tiene una complejidad del orden \Ode{saltoMax}. \\
+ El ciclo de las lineas 5 - 15 se realiza n veces con lo cual la complejidad total del algoritmo es \Ode{n*saltoMax}, como saltoMax es una constante menor a n la complejidad total del algoritmo es \Ode{n}.
 
-% \end{algorithm}	
+ \end{algorithm}	
 		
 \newpage			
 \subsection{Experimentacion}
+Para la experimentación del problema en cuestión se realizaron dos test, el primero teniendo en cuenta el peor caso, siendo este que todos los tablones del puente estén sanos y el salto máximo del participante sea uno, para esto se fijo el salto máximo y se crearon 1000 instancias de puentes sanos en tamaños que varian de 1 a 1000 luego se midieron los tiempos de ejecución dando como resultado el siguiente gráfico \\
+\includegraphics[scale=0.7]{Ej1/sanos.jpg}\\
+Como puede verse en el gráfico su complejidad esta en el orden lineal como puede compararse con la función, en el gráfico puede observar que algunos casos excede el orden, este ruido se debe a que puede haber ovaciones donde el sistema operativo este realizando otras tareas y afecte el orden de ejecución.
+
+Para el segundo test se realizo un test aleatorio, para poder observar el comportamiento de todos los casos posibles, para esto se crearon 1000 instancias, en las cuales el tamaño del puente fue creciendo de 1 a 1000  y el salto máximo es un numero random entre 1 y la cantidad de tablones del puente para poder obtener también casos que no sean solución, dando comer resultado el siguiente gráfico.
+\includegraphics[scale=0.7]{Ej1/Random.jpg}\\
+
+Puede observarse que al igual en el test anterior el orden de complejidad esta en el orden lineal, de esta manera podemos concluir que nuestro algoritmo cumple con los ordenes de complejidad impuestos por el enunciado.
+
