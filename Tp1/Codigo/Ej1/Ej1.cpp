@@ -2,16 +2,16 @@
 
 using namespace std;
 
-void imprimir_vector(vector<int> vec)
+void imprimir_vector(list<int> vec)
 {
-  for (int i = 0; i < vec.size(); ++i)
+  for ( std::list<int>::iterator it=vec.begin(); it != vec.end(); ++it)
   {
-    if(vec[i] == INT_MAX) {
+    if((*it) == INT_MAX) {
       cout << "inf ";
-    } else if(vec[i] < 0) {
+    } else if((*it) < 0) {
       continue;
     } else {
-      cout << vec[i] << " ";  
+      cout << (*it) << " ";
     }
   }
   cout << "\n";
@@ -87,13 +87,13 @@ int main()
 
     //miro si tiene solucion
     if(!check_solution(puente,largo_del_salto)){
-    //  cout << "no\n";
+      cout << "no\n";
       continue;
     }
 
 
     if(largo_del_salto > n){
-   //   cout << "1 " << n+1 << endl;
+      cout << "1 " << n+1 << endl;
       continue;
     }
       auto begin = std::chrono::high_resolution_clock::now();
@@ -142,12 +142,12 @@ int main()
     list<int> recorrido = obtener_recorrido(distancias, largo_del_salto,n);
     recorrido.push_back(recorrido.size());
     auto end = std::chrono::high_resolution_clock::now();
-    std::cout << n << ' ' << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
-    cout << std::endl;
+   // std::cout << n << ' ' << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
+   // cout << std::endl;
 
     //std::reverse(recorrido.begin(),recorrido.end());
 
-  //  imprimir_vector(recorrido);
+    imprimir_vector(recorrido);
   }
   return 0;
 }
