@@ -54,20 +54,20 @@ El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
   \begin{algorithmic}[1]\parskip=1mm
  \caption{ \\Saltos( saltoMax : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
  		\STATE{Si saltoMax > cantidadTablones} \;\;
- 		\STATE{ devolver 1} \;\;
+ 		\STATE{\quad devolver 1} \;\;
  		% \STATE{ posActual \leftarrow 0}  \;\; \\
  		\STATE{SI NO}\\
- 		\STATE{ mientras posActual < cantidadTablones} \;\; 
- 			\STATE{ SI puente.indice(posActual) es 0} \;\; 
- 				\STATE{ posActual \leftarrow posActual + 1} \;\; \\
- 			\STATE{ SI NO}\\
- 				\STATE{ SI posActual - saltoMax < 0} \;\;
- 					\STATE{ distancias.indice(posActual) \leftarrow 1}\;\; \\
- 					\STATE{ posActual \leftarrow posActual + 1} \;\;\\
- 				\STATE{ SI NO}
- 					\STATE{ minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)} \;\; \tOde{saltoMax} \\
- 					\STATE{ distancias.indice(posActual) \leftarrow minimoSalto + 1}\;\; \\
- 					\STATE{ posActual \leftarrow posActual + 1} \;\;\\
+ 		\STATE{\quad mientras posActual < cantidadTablones} \;\; O(n)
+ 			\STATE{\quad\quad SI puente.indice(posActual) es 0} \;\; 
+ 				\STATE{\quad\quad\quad posActual \leftarrow posActual + 1} \;\; O(1)\\
+ 			\STATE{\quad\quad SI NO}\\
+ 				\STATE{\quad\quad\quad SI posActual - saltoMax < 0} \;\; 
+ 					\STATE{\quad\quad\quad\quad distancias.indice(posActual) \leftarrow 1}\;\; O(1) \\
+ 					\STATE{\quad\quad\quad\quad posActual \leftarrow posActual + 1} \;\; O(1)\\
+ 				\STATE{\quad\quad\quad SI NO}
+ 					\STATE{\quad\quad\quad\quad minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)} \;\; O(saltoMax) \\
+ 					\STATE{\quad\quad\quad distancias.indice(posActual) \leftarrow minimoSalto + 1}\;\; O(1) \\
+ 					\STATE{\quad\quad\quad posActual \leftarrow posActual + 1} \;\;O(1) \\
  \\
 		
   \end{algorithmic}
