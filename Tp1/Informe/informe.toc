@@ -24,3 +24,8 @@
 \contentsline {subsection}{\numberline {3.5.2}Caso Random}{15}{subsection.3.5.2}
 \contentsline {subsection}{\numberline {3.5.3}Peor caso}{16}{subsection.3.5.3}
 \contentsline {chapter}{\numberline {4}Ap\'endice}{18}{chapter.4}
+\contentsline {section}{\numberline {4.1}Medicion de los tiempos}{18}{section.4.1}
+\contentsline {section}{\numberline {4.2}C\'odigo Fuente}{19}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Ej1.cpp}{19}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Ej2.cpp}{22}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Ej3.cpp}{27}{subsection.4.2.3}
