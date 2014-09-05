@@ -33,11 +33,11 @@ bool check_solution(vector<int> puente, int largo_del_salto){
   return true;
 }
 
-list<int> obtener_recorrido(vector<int> distancias, int largo_del_salto,int n)
+vector<int> obtener_recorrido(vector<int> distancias, int largo_del_salto)
 {
-  list<int> recorrido;
-  recorrido.push_back(n + 1);
-  for (int i = (n); i > 0;)
+  vector<int> recorrido;
+  recorrido.push_back(distancias.size() + 1);
+  for (int i = (distancias.size()); i > 0;)
   { 
 
     
@@ -56,7 +56,7 @@ list<int> obtener_recorrido(vector<int> distancias, int largo_del_salto,int n)
     i = pos_salto;
 
     if( i > 0 ) {
-      recorrido.push_front(pos_salto + 1);
+      recorrido.push_back(pos_salto + 1);
     }
   }
   return recorrido;
@@ -99,6 +99,7 @@ int main()
       auto begin = std::chrono::high_resolution_clock::now();
 
     //El algoritmo!
+
     for (int pos_puente = 0; pos_puente < n; ++pos_puente)
     {
       //Si el escalon esta roto, lo salteo
@@ -113,34 +114,24 @@ int main()
         pos_puente_inf = 0;
         dist_min = 1;
       } else {
-        /* INICIO MODIFICACION RICARDO*/
-        /******* Codigo CHUDI
-        // dist_min = *(min_element(distancias.begin() + pos_puente_inf , distancias.begin() + pos_puente));
-        //dist_min = dist_min + 1;
-          ***/
-        
-        bool encontre = false;
         pos_puente_inf = pos_puente - largo_del_salto;
-        while(pos_puente_inf<=pos_puente && !encontre){
-          if(!puente[pos_puente_inf]){
-            encontre = true;
+        //dist_min = *(min_element(distancias.begin() + pos_puente_inf , distancias.begin() + pos_puente));
+          bool encontreMin = false;
+          int min = pos_puente_inf;
+          for(int i = pos_puente_inf; i< pos_puente;i++){
+              if(puente[i]!=0){
+                  encontreMin = true;
+                  min = i;
+                  break;
+              }
           }
-          pos_puente_inf++;
-        }
-        if (pos_puente_inf == pos_puente)// si recorri todo el rango y estan todos rotos no hay solucion
-        {
-          break;
-        }
-        dist_min = distancias[pos_puente_inf];
-        dist_min = dist_min + 1;
-        /* FIN MODIFICACION RICARDO*/
-
-
+          if(encontreMin)
+              dist_min = distancias[min] + 1;
       }
       distancias[pos_puente] = dist_min;
     }
-    list<int> recorrido = obtener_recorrido(distancias, largo_del_salto,n);
-    recorrido.push_back(recorrido.size());
+   // vector<int> recorrido = obtener_recorrido(distancias, largo_del_salto);
+    //recorrido.push_back(recorrido.size());
     auto end = std::chrono::high_resolution_clock::now();
     std::cout << n << ' ' << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
     cout << std::endl;

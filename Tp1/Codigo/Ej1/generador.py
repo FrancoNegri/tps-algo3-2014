@@ -16,6 +16,7 @@ for x in range(1, cantidad_de_tablones):
 fo.write("\n")
 fo.write("0")
 fo.close()
+
 fo = open("sanos.in", "wb")
 n = 100
 c = 1
