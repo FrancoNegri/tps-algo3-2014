@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.8.24)  5 SEP 2014 15:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.8.24)  5 SEP 2014 15:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -724,8 +724,8 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \c@auxiliar=\count152
 
 (./informe.aux
-LaTeX Info: Redefining \. on input line 19.
-LaTeX Info: Redefining \% on input line 19.
+LaTeX Info: Redefining \. on input line 23.
+LaTeX Info: Redefining \% on input line 23.
 )
 \openout1 = `informe.aux'.
 
@@ -1368,13 +1368,13 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language append on input line 81.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language append on input line 81.
- <Ej1/sanos.jpg, id=167, 440.39531pt x 316.93407pt>
+ <Ej1/sanos.jpg, id=173, 440.39531pt x 316.93407pt>
 File: Ej1/sanos.jpg Graphic file (type jpg)
  <use Ej1/sanos.jpg>
 Package pdftex.def Info: Ej1/sanos.jpg used on input line 83.
 (pdftex.def)             Requested size: 308.27461pt x 221.85233pt.
 
-<Ej1/Random.jpg, id=168, 426.84468pt x 316.93407pt>
+<Ej1/Random.jpg, id=174, 426.84468pt x 316.93407pt>
 File: Ej1/Random.jpg Graphic file (type jpg)
  <use Ej1/Random.jpg>
 Package pdftex.def Info: Ej1/Random.jpg used on input line 87.
@@ -1442,38 +1442,6 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language append on input line 1.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language append on input line 1.
-./Ej2/informe2.tex:2: Missing $ inserted.
-<inserted text> 
-                $
-l.2 Se esta dise√±
-                  ando un software de arquitectura, para el cual es necesari...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./Ej2/informe2.tex:4: Missing $ inserted.
-<inserted text> 
-                $
-l.4 
-    
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (509.00919pt too wide) in paragraph at lines 2--4
-[]\T1/cmr/m/n/10.95 Se es-ta dise√$\OMS/cmsy/m/n/10.95 ^^F\OML/cmm/m/it/10.95 a
-ndounsoftwaredearquitectura; paraelcualesnecesarioquedadounconjuntodeedificiosr
-epresentadoscomorectangulosapoyadossobreunabaseencomun; sedevuelvaelperfildefin
-idoenelhorizonte:[] 
- []
-
-
-Overfull \hbox (672.97906pt too wide) in paragraph at lines 2--4
-\OML/cmm/m/it/10.95 Estosedificiosvienenrepresentadosportuplasdetreselementosqu
-erepresentandondecomienzaeledificio; sualturaydondetermina; delascualestenemosq
-ueirtomandoencadamomentodondecomienzaunedificiolaalturamaximaalcanzadaenesepunt
-o:$ 
- []
-
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language append on input line 5.
 Package babel Info: Redefining spanish shorthand >>
@@ -1526,29 +1494,29 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language append on input line 20.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language append on input line 24.
+(babel)             in language append on input line 23.
 [7
 
 ]
@@ -2128,7 +2096,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--77
 
  []
 
-<Ej2/VariacionAlturas.jpg, id=192, 452.4403pt x 316.93407pt>
+<Ej2/VariacionAlturas.jpg, id=197, 452.4403pt x 316.93407pt>
 File: Ej2/VariacionAlturas.jpg Graphic file (type jpg)
 
 <use Ej2/VariacionAlturas.jpg>
@@ -2139,14 +2107,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
  []
 
-<Ej2/VariacionDistancias.jpg, id=193, 452.4403pt x 316.93407pt>
+<Ej2/VariacionDistancias.jpg, id=198, 452.4403pt x 316.93407pt>
 File: Ej2/VariacionDistancias.jpg Graphic file (type jpg)
 
 <use Ej2/VariacionDistancias.jpg>
 Package pdftex.def Info: Ej2/VariacionDistancias.jpg used on input line 82.
 (pdftex.def)             Requested size: 316.70605pt x 221.85233pt.
 
-<Ej2/iguales.jpg, id=194, 452.4403pt x 316.93407pt>
+<Ej2/iguales.jpg, id=199, 452.4403pt x 316.93407pt>
 File: Ej2/iguales.jpg Graphic file (type jpg)
  <use Ej2/iguales.jpg>
 Package pdftex.def Info: Ej2/iguales.jpg used on input line 87.
@@ -2179,7 +2147,7 @@ Package babel Info: Redefining spanish shorthand "?
 (babel)             in language append on input line 89.
 
 [10 <./Ej2/VariacionAlturas.jpg> <./Ej2/VariacionDistancias.jpg>]
-<Ej2/Random.jpg, id=200, 452.4403pt x 316.93407pt>
+<Ej2/Random.jpg, id=205, 452.4403pt x 316.93407pt>
 File: Ej2/Random.jpg Graphic file (type jpg)
  <use Ej2/Random.jpg>
 Package pdftex.def Info: Ej2/Random.jpg used on input line 90.
@@ -2306,179 +2274,40 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language append on input line 22.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language append on input line 22.
-./Ej3/informe3.tex:23: Missing $ inserted.
-<inserted text> 
-                $
-l.23 Hagamos un peque√±
-                       o ejemplo para que pueda ilustrarse bien el problema.
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
 
+Underfull \hbox (badness 10000) in paragraph at lines 23--48
 
-LaTeX Warning: Command \' invalid in math mode on input line 25.
-
-Missing character: There is no Ì in font cmr10!
-
-LaTeX Warning: Command \' invalid in math mode on input line 25.
-
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \' invalid in math mode on input line 27.
-
-Missing character: There is no Û in font cmr10!
-
-LaTeX Warning: Command \' invalid in math mode on input line 29.
-
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \' invalid in math mode on input line 39.
-
-Missing character: There is no Û in font cmr10!
-
-LaTeX Warning: Command \' invalid in math mode on input line 41.
-
-Missing character: There is no Û in font cmr10!
-
-LaTeX Warning: Command \' invalid in math mode on input line 41.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 43.
-
-Missing character: There is no Û in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \' invalid in math mode on input line 43.
-
-Missing character: There is no Û in font cmr10!
-
-LaTeX Warning: Command \' invalid in math mode on input line 45.
-
-
-LaTeX Warning: Command \' invalid in math mode on input line 47.
-
-./Ej3/informe3.tex:48: Missing $ inserted.
-<inserted text> 
-                $
-l.48 \begin{itemize}
-                    
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./Ej3/informe3.tex:48: Missing \endgroup inserted.
-<inserted text> 
-                \endgroup 
-l.48 \begin{itemize}
-                    
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-Missing character: There is no Ì in font cmr10!
-Missing character: There is no · in font cmr10!
-
-Overfull \hbox (1270.35063pt too wide) in paragraph at lines 23--48
-\OML/cmm/m/it/10.95 Supongamosquetenemos$\T1/cmr/m/n/10.95 3$\OML/cmm/m/it/10.9
-5 productosqumicos; elproducto$\T1/cmr/m/n/10.95 1$\OML/cmm/m/it/10.95 esmuyine
-stable; porloquesiestransportadoconelproducto$\T1/cmr/m/n/10.95 2$\OML/cmm/m/it
-/10.95 lapeligrosidadasociadaalcamionenelqueviajanestosdosproductosasciendea$\T
-1/cmr/m/n/10.95 40$\OML/cmm/m/it/10.95 ; ysisetransportaconelproducto$\T1/cmr/m
-/n/10.95 3$\OML/cmm/m/it/10.95 lapeligrosidadserde$\T1/cmr/m/n/10.95 35$\OML/cm
-m/m/it/10.95 :Elproducto$\T1/cmr/m/n/10.95 2$\OML/cmm/m/it/10.95 encambioesdena
-turalezamasestable; porloquesiestransportadoconelproducto$\T1/cmr/m/n/10.95 3$\
-OML/cmm/m/it/10.95 soloproduceunapeligrosidadde$\T1/cmr/m/n/10.95 3$\OML/cmm/m/
-it/10.95 :[] 
  []
 
 
-Overfull \hbox (881.50807pt too wide) in paragraph at lines 23--48
-\OML/cmm/m/it/10.95 Lasposiblescombinacionessonquelostresproductosviajenjuntos;
- quelostresviajenseparadosencamionesdistintos; que$\T1/cmr/m/n/10.95 1$\OML/cmm
-/m/it/10.95 y$\T1/cmr/m/n/10.95 2$\OML/cmm/m/it/10.95 viajenjuntosenelmismocami
-onyelproducto$\T1/cmr/m/n/10.95 3$\OML/cmm/m/it/10.95 viajeenotrocamindiferente
-; que$\T1/cmr/m/n/10.95 1$\OML/cmm/m/it/10.95 y$\T1/cmr/m/n/10.95 3$\OML/cmm/m/
-it/10.95 viajenjuntosyel$\T1/cmr/m/n/10.95 2$\OML/cmm/m/it/10.95 separadoyque$\
-T1/cmr/m/n/10.95 2$\OML/cmm/m/it/10.95 y$\T1/cmr/m/n/10.95 3$\OML/cmm/m/it/10.9
-5 viajenjuntosyelproductosobranteviajeenotrocamin:[] 
+Underfull \hbox (badness 10000) in paragraph at lines 23--48
+
  []
-
-
-Overfull \hbox (1384.31943pt too wide) in paragraph at lines 23--48
-\OML/cmm/m/it/10.95 Laprimeradunapeligrosidadde$\T1/cmr/m/n/10.95 40+35+3$\OML/
-cmm/m/it/10.95 porlolacotadepeligrosidadsevesuperada; loquelovuelveunasolucinin
-viable; lasegundaesvalida; yaquelapeligrosidaddecadacamiones$\T1/cmr/m/n/10.95 
-0$\OML/cmm/m/it/10.95 ; perosenecesitan$\T1/cmr/m/n/10.95 3$\OML/cmm/m/it/10.95
- camiones:Que$\T1/cmr/m/n/10.95 1$\OML/cmm/m/it/10.95 y$\T1/cmr/m/n/10.95 2$\OM
-L/cmm/m/it/10.95 viajenjuntos; tampocoesvalida; lapeligrosidaddeesecamionesdema
-ciadoalta; yfinalmentelasultimasdossonvalidas\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/
-10.95 peligrosidad$\T1/cmr/m/n/10.95 35$\OML/cmm/m/it/10.95 y$\T1/cmr/m/n/10.95
- 3$\OML/cmm/m/it/10.95 ; respectivamente\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95
- ysolosonnecesariosdoscamiones:[] 
- []
-
-
-./Ej3/informe3.tex:49: LaTeX Error: Lonely \item--perhaps a missing list enviro
-nment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.49 \item $
-            2$ $1$ $2$ $1$
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 49
-[][]
- []
-
-
-./Ej3/informe3.tex:50: LaTeX Error: \begin{document} ended by \end{itemize}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.50 \end{itemize}
-                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-./Ej3/informe3.tex:50: Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.50 \end{itemize}
-                  
-Things are pretty mixed up, but I think the worst is over.
 
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand <<
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand >>
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand "=
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand "~
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand "!
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 Package babel Info: Redefining spanish shorthand "?
-(babel)             in language append on input line 54.
+(babel)             in language append on input line 48.
 [12
 
 ]
@@ -2568,7 +2397,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 142--146
 
  []
 
-
+LaTeX Info: Redefining \. on input line 146.
+LaTeX Info: Redefining \% on input line 146.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand <<
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand >>
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand "=
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand "~
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand "!
+(babel)             in language append on input line 146.
+Package babel Info: Redefining spanish shorthand "?
+(babel)             in language append on input line 146.
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 146--148
 
  []
@@ -2614,24 +2469,24 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language append on input line 155.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language append on input line 155.
-<./Ej3/graph1.png, id=218, 454.69875pt x 255.95625pt>
+<./Ej3/graph1.png, id=230, 454.69875pt x 255.95625pt>
 File: ./Ej3/graph1.png Graphic file (type png)
  <use ./Ej3/graph1.png>
 Package pdftex.def Info: ./Ej3/graph1.png used on input line 160.
 (pdftex.def)             Requested size: 512.1496pt x 288.30156pt.
 
-<./Ej3/graph2.png, id=219, 708.6475pt x 391.4625pt>
+<./Ej3/graph2.png, id=231, 708.6475pt x 391.4625pt>
 File: ./Ej3/graph2.png Graphic file (type png)
  <use ./Ej3/graph2.png>
 Package pdftex.def Info: ./Ej3/graph2.png used on input line 168.
 (pdftex.def)             Requested size: 512.1496pt x 282.92198pt.
 
-Overfull \hbox (31.57042pt too wide) in paragraph at lines 156--172
+Overfull \hbox (4.19536pt too wide) in paragraph at lines 156--172
 [] 
  []
 
 
-Overfull \hbox (31.57042pt too wide) in paragraph at lines 156--172
+Overfull \hbox (4.19536pt too wide) in paragraph at lines 156--172
 [] 
  []
 
@@ -2666,34 +2521,7 @@ Package babel Info: Redefining spanish shorthand "!
 (babel)             in language append on input line 172.
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language append on input line 172.
-[14]
-LaTeX Info: Redefining \. on input line 172.
-LaTeX Info: Redefining \% on input line 172.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand <<
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand >>
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand "=
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand "~
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand "!
-(babel)             in language append on input line 172.
-Package babel Info: Redefining spanish shorthand "?
-(babel)             in language append on input line 172.
- [15 <./Ej3/graph1.png (PNG copy)>]
+[15 <./Ej3/graph1.png (PNG copy)>]
 Package babel Info: Redefining spanish shorthand <<
 (babel)             in language append on input line 172.
 Package babel Info: Redefining spanish shorthand >>
@@ -2707,14 +2535,14 @@ Package babel Info: Redefining spanish shorthand "!
 Package babel Info: Redefining spanish shorthand "?
 (babel)             in language append on input line 172.
 
-<./Ej3/peorGraph.jpg, id=233, 585.18625pt x 342.27875pt>
+<./Ej3/peorGraph.jpg, id=237, 585.18625pt x 342.27875pt>
 File: ./Ej3/peorGraph.jpg Graphic file (type jpg)
 
 <use ./Ej3/peorGraph.jpg>
 Package pdftex.def Info: ./Ej3/peorGraph.jpg used on input line 179.
 (pdftex.def)             Requested size: 512.1496pt x 299.58716pt.
 )
-Overfull \hbox (31.57042pt too wide) in paragraph at lines 173--194
+Overfull \hbox (4.19536pt too wide) in paragraph at lines 173--194
 [] 
  []
 
@@ -2832,55 +2660,39 @@ LaTeX Info: Redefining \% on input line 23.
 )
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 215.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 215.
-
-
-Package rerunfilecheck Warning: File `informe.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `informe.out':
-(rerunfilecheck)             Before: 0CABD187D5FDBE809A40E0CEC1F424A8;1486
-(rerunfilecheck)             After:  8C859541AA89611F40B17398E21120BE;1650.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `informe.out' has not changed.
+(rerunfilecheck)             Checksum: 8C859541AA89611F40B17398E21120BE;1650.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 215.
  ) 
 Here is how much of TeX's memory you used:
- 20247 strings out of 493117
- 359483 string characters out of 6135433
- 432495 words of memory out of 5000000
- 23266 multiletter control sequences out of 15000+600000
- 18643 words of font info for 46 fonts, out of 8000000 for 9000
+ 20251 strings out of 493117
+ 359505 string characters out of 6135433
+ 433667 words of memory out of 5000000
+ 23268 multiletter control sequences out of 15000+600000
+ 21730 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,54p,1093b,553s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.3.4.2} has been referenced but does no
-t exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.3.4.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</
-usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
-ocal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
-l/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
-/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/t
-exlive/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/tex
-live/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texli
-ve/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2
-014/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/201
-4/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2014/
-texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2014/te
-xmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2014/texm
-f-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2014/texmf-
-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on informe.pdf (18 pages, 959558 bytes).
+ 55i,12n,54p,1093b,553s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lo
+cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/201
+4/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2014/te
+xmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2014/texm
+f-dist/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on informe.pdf (18 pages, 958036 bytes).
 PDF statistics:
- 316 PDF objects out of 1000 (max. 8388607)
- 268 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 250 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 318 PDF objects out of 1000 (max. 8388607)
+ 270 compressed objects within 3 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 258 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -10,7 +10,7 @@
 \contentsline {subsection}{\numberline {2.0.7}Introduccion}{7}{subsection.2.0.7}
 \contentsline {subsection}{\numberline {2.0.8}Ejemplos y Soluciones}{7}{subsection.2.0.8}
 \contentsline {subsection}{\numberline {2.0.9}Desarrollo}{7}{subsection.2.0.9}
-\contentsline {subsection}{\numberline {2.0.10}Demostraci\'on}{7}{subsection.2.0.10}
+\contentsline {subsection}{\numberline {2.0.10}Demostraci\'on}{8}{subsection.2.0.10}
 \contentsline {subsection}{\numberline {2.0.11}Complejidad}{8}{subsection.2.0.11}
 \contentsline {subsection}{\numberline {2.0.12}Experimentaci\'on}{10}{subsection.2.0.12}
 \contentsline {chapter}{\numberline {3}Biohazard}{12}{chapter.3}
