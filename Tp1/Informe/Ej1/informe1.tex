@@ -1,20 +1,25 @@
 \subsection{Introducci\'on} 
-Cada participante de una competencia debe cruzar un puente dando saltos de tabl\'on en tabl\'on, teniendo en cuenta que pueden saltar una cantidad m\'axima de tablones de una sola vez. Sin embargo algunos de estos tablones est\'an rotos y se sabe de antemano cuales son los mismos. 
-Se desea calcular la cantidad m\'inima de saltos requerida para cruzar el puente.
+
+Cada participante de una competencia debe cruzar un puente dando saltos de tabl\'on en tabl\'on, con la limitación de que pueden saltar como m\'aximo una cantidad fija de tablones por vez. Sin embargo algunos de estos tablones est\'an rotos. El objetivo del ejercicio es dar un algoritmo que nos devuelva un recorrido por los tablones del puente el cual sea mínimo en la cantidad de saltos requeridos para poder cruzarlo con una complejidad temporal de \Ode{n} donde n es la cantidad de tablones del puente.
 
 \subsection{Ejemplos y Soluciones}
-Sea el puente de 14 tablones representado por el siguiente arreglo de 1's y 0's , [0,0,0,1,1,0,0,1,0,1,0,0,1,0] (1 representa que el tabl\'on esta roto y 0 sano) ademas sabemos que la cantidad de saltos m\'aximo para dicho participante es 3.\\
-Para calcular lo que ser\'ia la soluci\'on a este ejercicio con nuestro algoritmo creamos el arreglo de distancias de 14 posiciones inicializado en 0, [0,0,0,0,0,0,0,0,0,0,0,0,0,0].\\
-Para las posiciones que est\'en entre 0 y 2 la cantidad de saltos m\'inimo es 1, con lo cual completamos el arreglo Distancias con 1 en esas posiciones, qued\'andonos de la siguiente manera [1,1,1,0,0,0,0,0,0,0,0,0,0,0]\\
-Luego posici\'on por posici\'on vamos a buscar la cantidad m\'inima de saltos, para los tablones como el 3 y 4 como est\'an rotos, dato conocido por el arreglo puente, colocamos infinito de la siguiente manera [1,1,1,$+ \infinity$,$+ \infinity$,0,0,0,0,0,0,0,0,0].\\
-Siguiendo as\'i con el quinto tablón ,agarramos los \'ultimos 3 desde ah\'i, por ser 3 el salto m\'aximo del participante, y buscamos el m\'inimo entre [1,$+ \infinity$,$+ \infinity$], siendo este 1, le sumamos uno y lo colocamos en la 5 posici\'on como la cantidad de saltos m\'nima hasta ese tabl\'on, qued\'andonos  [1,1,1,$+ \infinity$,$+ \infinity$,2,0,0,0,0,0,0,0,0].
-Continuamos con las siguientes posiciones de la misma forma,  al recorrer todo el arreglo, el Distancias ser\'a el siguiente [1,1,1,$+ \infinity$,$+ \infinity$,2,3,$+ \infinity$,3,$+\infinity$,4,4,$+\infinity$,5].\\
- Luego para armar la soluci\'on se recorre para atr\'as desde los \'ultimos 3 elementos( [4,$+\infinity$,5] ) elegimos el m\'inimo que en este caso es el 4 y agregamos a la soluci\'on la posici\'on de dicho numero (en este caso el 12) , luego desde ah\'i repetimos la operaci\'on de seleccionar el m\'inimo entre los tres tablones anteriores a ese (  [3,$+\infinity$,4] ) quedanonos el 3 y siendo su posici\'on la novena, agregamos esta a la soluci\'on parcial, repetimos esta operaci\'on hasta recorrer todo el arreglo, nos queda el siguiente resultado [3,6,9,12] siendo estos los tablones a los cuales debe saltar para realizar la m\'inima cantidad de saltos y la cantidad m\'inima de saltos la longitud, en este caso 4.
- 
 
+Sea un puente de 14 tablones representado por el siguiente vector de 0 y 1, \verb+[0,0,0,1,1,0,0,1,0,1,0,0,1,0]+ llamado \verb+vector_puente+, donde 1 representa que el tabl\'on esta roto y 0 sano, y la primer posición del mismo el inicio del puente y la última el fin del mismo. Adicionalmente sabemos que la cantidad máxima de tablones que el participante puede saltar son 3 tablones.
 
+Nuestro algoritmo va a encontrar la solución de la siguiente forma:
+
+Primero creamos un vector  \verb+[0,0,0,0,0,0,0,0,0,0,0,0,0,0]+ llamado \verb+vector_de_distancias+ que indica la cantidad mínima de saltos necesarios para llegar a cada tablón, manteniendo la correspondencia entre posiciones del arreglo y tablones del puente. La forma de ir actualizando el \verb+vector_de_distancias+ es la siguiente:
+\begin{itemize}
+	\item Las posiciones que est\'en entre 0 y 2, la cantidad de saltos m\'inima es 1, con lo cual completamos el arreglo distancias con 1 en esas posiciones, qued\'andonos de la siguiente manera \verb+[1,1,1,0,0,0,0,0,0,0,0,0,0,0]+
+	\item Luego posici\'on por posici\'on vamos a buscar la cantidad m\'inima de saltos, para los tablones como el 3 y 4 como est\'an rotos, dato conocido por el \verb+vector_puente+, colocamos la distancia como infinito de la siguiente manera \verb+[1,1,1,inf,inf,0,0,0,0,0,0,0,0,0]+.
+	\item Siguiendo as\'i con el quinto tablón ,agarramos los \'ultimos 3 desde ah\'i, por ser 3 el salto m\'aximo del participante, y buscamos el m\'inimo entre \verb+[1[1,inf,inf]+, siendo este 1, le sumamos uno y lo colocamos en la 5 posici\'on como la cantidad de saltos m\'nima hasta ese tabl\'on, qued\'andonos \verb+[1,1,1,inf,inf,2,0,0,0,0,0,0,0,0]+.
+	\item Continuamos con las siguientes posiciones de la misma forma, al recorrer todo el vector, el Distancias ser\'a el siguiente \verb+[1,1,1,inf,inf,2,3,inf,3,inf,4,4,inf,5]+.
+\end{itemize}
+
+Luego para armar la soluci\'on se recorre para atr\'as desde los \'ultimos 3 elementos( [4,$+\infinity$,5] ) elegimos el m\'inimo que en este caso es el 4 y agregamos a la soluci\'on la posici\'on de dicho numero (en este caso el 12) , luego desde ah\'i repetimos la operaci\'on de seleccionar el m\'inimo entre los tres tablones anteriores a ese (  [3,$+\infinity$,4] ) quedanonos el 3 y siendo su posici\'on la novena, agregamos esta a la soluci\'on parcial, repetimos esta operaci\'on hasta recorrer todo el arreglo, nos queda el siguiente resultado [3,6,9,12] siendo estos los tablones a los cuales debe saltar para realizar la m\'inima cantidad de saltos y la cantidad m\'inima de saltos la longitud, en este caso 4.
 
 \subsection{Desarrollo}
+
 Para la soluci\'on de este problema recurrimos a la tecnica denominada programaci\'on dinamica. 
 Por el enunciado sabemos que tenemos n tablones, el participante puede saltar C tablones de una sola vez y cuales son las posiciones de los tablones rotos.Nos armamos dos arreglos donde cada posici\'on representa un tabl\'on, en el primero guardamos 0 y 1 para indicar su estado (sano o roto respectivamente) llenando el mismo seg\'un la entrada, llamemoslo puente, en el otro iremos guardando la cantidad m\'inima de saltos para llegar a cada tabl\'on,llamemoslo Distancias.
 Nuestro algoritmo ira recorriendo un tabl\'on por vez, viendo si el mismo esta roto o no. En el caso de que el tabl\'on est\'a roto (seg\'un indica nuestro arreglo puente) continuo al siguiente tabl\'on.
@@ -43,37 +48,57 @@ Para armar el recorrido, realizamos lo ya descripto en la secci\'on de desarroll
 
 \subsection{Complejidad}
 El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
+
 \begin{algorithm}
 \begin{algorithmic}[1]\parskip=1mm
- \caption{ \\Saltos( saltoMax : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
-		\STATE{Si saltoMax > cantidadTablones} \;\;\tOde{1}
-		\STATE{\quad devolver 1} \;\;\tOde{1}
-		\STATE{\quad posActual \leftarrow 0}  \;\;\tOde{1} \\
-		\STATE{SI NO}\\
-		\STATE{\quad mientras posActual < cantidadTablones} \;\; \tOde{1}
-			\STATE{\quad\quad SI puente.indice(posActual) es 0} \;\; \tOde{1}
-				\STATE{\quad\quad\quad posActual \leftarrow posActual + 1} \;\; \tOde{1}\\
-			\STATE{\quad\quad SI NO}\\
-				\STATE{\quad\quad\quad SI posActual - saltoMax < 0} \;\;\tOde{1}
-					\STATE{\quad\quad\quad\quad distancias.indice(posActual) \leftarrow 1}\;\; \tOde{1}\\
-					\STATE{\quad\quad\quad\quad posActual \leftarrow posActual + 1} \;\;\tOde{1}\\
-				\STATE{\quad\quad\quad SI NO}
-					\STATE{\quad\quad\quad\quad minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)} \;\; \tOde{saltoMax} \\
-					\STATE{\quad\quad\quad\quad distancias.indice(posActual) \leftarrow minimoSalto + 1}\;\; \tOde{1}\\
-					\STATE{\quad\quad\quad\quad posActual \leftarrow posActual + 1} \;\;\tOde{1}\\
-\\
-		
-\end{algorithmic}
-Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones, en el caso del infinito este es representado por el máximo entero representable y este esta acotado.\\
-Para el caso de la funci\'on BuscoMinimo, esta recorre en el arreglo puente buscando el m\'nimo entre las posiciones posActual-saltoMax y posActual-1, esto tiene una complejidad del orden \Ode{saltoMax}. \\
-El ciclo de las lineas 5 - 15 se realiza n veces con lo cual la complejidad total del algoritmo es \Ode{n*saltoMax}, como saltoMax es una constante menor a n la complejidad total del algoritmo es \Ode{n}.
+\caption{int check(tablaDePeligrosidad, solucionParcial, solucionFinal)}
 
-\end{algorithm}	
+
+	\STATE{Checkeo si la solucion final usa menos camiones ~~~~~~~~~~~~ $O(n)$}
+	\STATE{\quad Si es verdad}
+	\STATE{\quad \quad Devuelvo $3$}
+
+
+	\STATE{Checkeo si la cota de peligrosidad fue sobrepasada ~~~~~~~~~~~~ $O(n^2)$}
+	\STATE{\quad Si es verdad}
+	\STATE{\quad \quad Devuelvo $0$}
+
+
+	\STATE{Checkeo si la cada producto tiene un camion asignado ~~~~~~~~~~~~ $O(1)$}
+	\STATE{\quad Si es verdad}
+	\STATE{\quad \quad Devuelvo $2$}
+
+\STATE{Devuelvo $1$}
+
+\end{algorithmic}
+\end{algorithm}
+
+% \begin{algorithm}
+% % \begin{algorithmic}[1]\parskip=1mm
+% % \caption{ \\Saltos( saltoMax : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
+% % 		\STATE{Si saltoMax > cantidadTablones} \;\;
+% % 		\STATE{ devolver 1} \;\;
+% % 		% \STATE{ posActual \leftarrow 0}  \;\; \\
+% % 		\STATE{SI NO}\\
+% % 		\STATE{ mientras posActual < cantidadTablones} \;\; 
+% % 			\STATE{ SI puente.indice(posActual) es 0} \;\; 
+% % 				\STATE{ posActual \leftarrow posActual + 1} \;\; \\
+% % 			\STATE{ SI NO}\\
+% % 				\STATE{ SI posActual - saltoMax < 0} \;\;
+% % 					\STATE{ distancias.indice(posActual) \leftarrow 1}\;\; \\
+% % 					\STATE{ posActual \leftarrow posActual + 1} \;\;\\
+% % 				\STATE{ SI NO}
+% % 					\STATE{ minimoSalto \leftarrow BUSCOMINIMO(posActual  - saltoMax, posActual, puente)} \;\; \tOde{saltoMax} \\
+% % 					\STATE{ distancias.indice(posActual) \leftarrow minimoSalto + 1}\;\; \\
+% % 					\STATE{ posActual \leftarrow posActual + 1} \;\;\\
+% % \\
+		
+% % \end{algorithmic}
+% Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones, en el caso del infinito este es representado por el máximo entero representable y este esta acotado.\\
+% Para el caso de la funci\'on BuscoMinimo, esta recorre en el arreglo puente buscando el m\'nimo entre las posiciones posActual-saltoMax y posActual-1, esto tiene una complejidad del orden \Ode{saltoMax}. \\
+% El ciclo de las lineas 5 - 15 se realiza n veces con lo cual la complejidad total del algoritmo es \Ode{n*saltoMax}, como saltoMax es una constante menor a n la complejidad total del algoritmo es \Ode{n}.
+
+% \end{algorithm}	
 		
 \newpage			
 \subsection{Experimentacion}
-
-
-  
-
- 

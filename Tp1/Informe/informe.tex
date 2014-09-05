@@ -7,17 +7,18 @@
 \addtolength{\headheight}{14.0pt}
 
 
-\usepackage[utf8]{inputenc}
+% \usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm} % para los teoremas
-\usepackage[spanish,activeacute]{babel}
 \usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
 \usepackage{caratula}
 \usepackage{framed}
 \usepackage{caption}
-\usepackage{newalgo3}
+% \usepackage{newalgo3}
 %\usepackage{otrosComandos}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
@@ -35,6 +36,7 @@
 \usepackage{colortbl}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\sloppy
 \def\infinity{\rotatebox{90}{8}}
 %\usepackage[table]{xcolor}
 % Defino el estilo para el paquete amsthm --------------------
@@ -53,8 +55,8 @@
 \usepackage{eqparbox}
 \newcommand{\asd}[1]{\hfill\eqparbox{COMMENT}{#1}\\}
 
-\newcommand{\tOde}[1]{\tab \small{O($#1$)}}
-\newcommand{\Ode}[1]{O($#1$)}
+\newcommand{\tOde}[1]{O(#1)}
+\newcommand{\Ode}[1]{O(#1)}
 
 %\usetikzlibrary{chains} % para ubicar nodos en una cadena (lineal, circular o cualquier otra)
 %\usetikzlibrary{arrows,%
@@ -181,11 +183,14 @@
 
 
 
-\chapter{Puentes sobre lava caliente}  \input{./Ej1/informe1.tex}
+\chapter{Puentes sobre lava caliente}  
+\input{./Ej1/informe1.tex}
 
-\chapter{Horizontes lejanos}  \input{./Ej2/informe2.tex}
+\chapter{Horizontes lejanos}  
+\input{./Ej2/informe2.tex}
 
-\chapter{Biohazard}  \input{./Ej3/informe3.tex}
+\chapter{Biohazard} 
+\input{./Ej3/informe3.tex}
 
 
 \chapter{Ap\'endice}
