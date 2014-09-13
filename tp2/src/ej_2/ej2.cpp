@@ -60,7 +60,7 @@ list<arista> solucion(vector<arista> enlaces,int cantEquipos,int cantEnlaces ){
 			distancias[i].nodoOrigen = -1;
 		}
 	}
-	lista <arista> restoEnlaces;
+	list <arista> restoEnlaces;
 	vector < arista > agm;
 	int iteraciones =0;
 	while(iteraciones < cantEquipos -1){
@@ -94,15 +94,15 @@ list<arista> solucion(vector<arista> enlaces,int cantEquipos,int cantEnlaces ){
 
 
 	}
-	arista aristaMin = restoEnlaces.first();
-	for (iterator::list<arista> it = restoEnlaces.begin(); it!=restoEnlaces.end(); it++){
+	arista aristaMin = restoEnlaces.front();
+	for (list<arista>::iterator it = restoEnlaces.begin(); it!=restoEnlaces.end(); it++){
 		if(aristaMin.costo<it->costo){
 			aristaMin = (*it);
 		}
 	}
 
 	for(int i = 0; i<cantEquipos; i++){
-		for(j = 0; j<cantEquipos; j++){
+		for(int j = 0; j<cantEquipos; j++){
 			adyacencias[i][j] = -1;
 		}
 	}
@@ -126,7 +126,7 @@ list<arista> solucion(vector<arista> enlaces,int cantEquipos,int cantEnlaces ){
 			}
 		}
 		if(topAnt == caminoActual.top()){
-			caminoActual.pop(topAnt);
+			caminoActual.pop();
 		}
 	}
 
