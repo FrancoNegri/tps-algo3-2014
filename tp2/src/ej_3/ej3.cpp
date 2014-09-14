@@ -252,7 +252,7 @@ int main(int argc, char *argv[])
 {
 	// para detectar cuando estoy leyendo la primer linea
 	bool primerLinea = true; 
-	string line,s_equipos, s_enlaces;
+	string line;
 	//e1 y e2 representan el numero de los equipos
     int cantEquipos,e1,e2,costo;
     int cantEnlaces = 0;
