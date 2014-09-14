@@ -1,4 +1,6 @@
-eze mdq 3
-eze mdq 10 20
-eze mdq 10 30
-mdq eze 20 30
+a d 5
+a c 5 10 
+a c 4 9 
+a d 7 14
+c b 9 16
+b d 15 20
