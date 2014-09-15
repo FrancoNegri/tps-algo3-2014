@@ -58,12 +58,21 @@ vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int desti
 				vuelo_de_costo_min = vector_vuelos[j];
 			}
 		}
-	// si el costo minimo continua siendo infinito, no existe manera de llegar desde el nodo origen al resto de los vertices, detengo dijstra
+	// si el costo minimo continua siendo infinito, no existe manera de llegar desde las ciudades ya marcadas al resto de los vertices, detengo dijstra
 	if(min_costo == INT_MAX)
-		return vuelo_tomado_para_llegar_a_esta_ciudad;
-	
+	{
+		//chequeo si el nodo destino fue marcado o es imposible llegar a el, en caso de ser asi, devuelvo una lista vacia
+		if(costo_de_llegar_a_esta_ciudad[destino] ==  INT_MAX)
+		{
+			cout << "no" << endl;
+			vuelo_tomado_para_llegar_a_esta_ciudad.erase(vuelo_tomado_para_llegar_a_esta_ciudad.begin(), vuelo_tomado_para_llegar_a_esta_ciudad.end());
+		}
+		return vuelo_tomado_para_llegar_a_esta_ciudad;		
+	}
+		
+
 	costo_de_llegar_a_esta_ciudad[vuelo_de_costo_min.destino] = min_costo;
-	vuelo_tomado_para_llegar_a_esta_ciudad[vuelo_de_costo_min.origen] = vuelo_de_costo_min;
+	vuelo_tomado_para_llegar_a_esta_ciudad[vuelo_de_costo_min.destino] = vuelo_de_costo_min;
 	}
 	return vuelo_tomado_para_llegar_a_esta_ciudad;
 }
@@ -73,23 +82,23 @@ void encontrar_camino(vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad,int d
 	vector<vuelo> resultado;
 	resultado.push_back(vuelo_tomado_para_llegar_a_esta_ciudad[destino]);
 	bool fin = false;
+	// partiendo del destino, regenero el camino para llegar a la solucion
 	int ciudadAnterior = (vuelo_tomado_para_llegar_a_esta_ciudad[destino].origen);
 	while(!fin)
 	{
 		 vuelo vueloQueTomo = vuelo_tomado_para_llegar_a_esta_ciudad[ciudadAnterior];
 		 resultado.push_back(vueloQueTomo);
+		 ciudadAnterior = vueloQueTomo.origen;
 		 if(ciudadAnterior == origen)
 		 	fin = true;
-		 ciudadAnterior = vueloQueTomo.origen;
 	}
 	reverse(resultado.begin(),resultado.end());
-	resultado.pop_back();
 
 	cout << "respuesta que tengo que dar: " << endl;
 
 	cout << resultado[resultado.size() - 1].fin << " " << resultado.size() << " ";
 	for(int i; i < resultado.size(); i++)
-		cout << resultado[i].numeroDeVuelo;
+		cout << resultado[i].numeroDeVuelo << " ";
 	cout << endl;
 	cout << "estos son los vuelos que toma:" << endl;
 	imprimir_vector(resultado);
@@ -98,15 +107,16 @@ void encontrar_camino(vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad,int d
 
 
 int main(int argc, char *argv[]){
+  map< string, int> dict_ciudad_vector_distancias;
   int cant_vuelos;
   string origen, destino;
   cin >> origen;
+  dict_ciudad_vector_distancias[origen] = 0;
   cin >> destino;
+  dict_ciudad_vector_distancias[destino] = 1;
   cin >> cant_vuelos;
-  map< string, int> dict_ciudad_vector_distancias;
   vector< vuelo > vector_vuelos;
-
-  int cantidad_de_ciudades = 0;
+  int cantidad_de_ciudades = 2;
 
   for (int i = 0; i < cant_vuelos; i++) {
     vuelo v;
@@ -138,8 +148,8 @@ int main(int argc, char *argv[]){
   }
 
   vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad = dijstra_sin_grafo(vector_vuelos, dict_ciudad_vector_distancias[origen], dict_ciudad_vector_distancias[destino],cantidad_de_ciudades);
-  
-  encontrar_camino(vuelo_tomado_para_llegar_a_esta_ciudad, dict_ciudad_vector_distancias[destino], dict_ciudad_vector_distancias[origen]);
+  if(vuelo_tomado_para_llegar_a_esta_ciudad.size() != 0)
+  	encontrar_camino(vuelo_tomado_para_llegar_a_esta_ciudad, dict_ciudad_vector_distancias[destino], dict_ciudad_vector_distancias[origen]);
 
   return 0;
 }
