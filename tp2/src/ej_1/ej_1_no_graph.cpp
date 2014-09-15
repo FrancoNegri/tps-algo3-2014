@@ -35,7 +35,6 @@ void imprimir_vector(vector<vuelo> vec)
 
 vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int destino, int cantidad_de_ciudades)
 {
-	set<int> ciudades_visitadas;
 	vector<int> costo_de_llegar_a_esta_ciudad;
 	vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad;
 	vuelo_tomado_para_llegar_a_esta_ciudad.resize(cantidad_de_ciudades);
@@ -59,6 +58,10 @@ vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int desti
 				vuelo_de_costo_min = vector_vuelos[j];
 			}
 		}
+	// si el costo minimo continua siendo infinito, no existe manera de llegar desde el nodo origen al resto de los vertices, detengo dijstra
+	if(min_costo == INT_MAX)
+		return vuelo_tomado_para_llegar_a_esta_ciudad;
+	
 	costo_de_llegar_a_esta_ciudad[vuelo_de_costo_min.destino] = min_costo;
 	vuelo_tomado_para_llegar_a_esta_ciudad[vuelo_de_costo_min.origen] = vuelo_de_costo_min;
 	}
@@ -83,6 +86,7 @@ void encontrar_camino(vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad,int d
 	resultado.pop_back();
 
 	cout << "respuesta que tengo que dar: " << endl;
+
 	cout << resultado[resultado.size() - 1].fin << " " << resultado.size() << " ";
 	for(int i; i < resultado.size(); i++)
 		cout << resultado[i].numeroDeVuelo;
