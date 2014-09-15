@@ -51,28 +51,27 @@ vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int desti
 		vuelo vuelo_de_costo_min;
 		for(int j = 0; j < vector_vuelos.size(); j++)
 		{
-			//si el origen esta en las ciudades visitadas y el costo es menor al que tengo guardado
-			if(costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] != INT_MAX && vector_vuelos[j].ini < vector_vuelos[j].fin + 2)
+			//si el origen esta en las ciudades visitadas y
+			//se cumple que el tiempo de arribo a la ciudad es menor que el tiempo de despegue + 2
+			if(costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] != INT_MAX && vuelo_tomado_para_llegar_a_esta_ciudad[vector_vuelos[j].origen].fin + 2 <= vector_vuelos[j].ini)
 			{
 				min_costo = min(min_costo, costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] + vector_vuelos[j].fin + 2 - vector_vuelos[j].ini);
 				vuelo_de_costo_min = vector_vuelos[j];
 			}
 		}
-	// si el costo minimo continua siendo infinito, no existe manera de llegar desde las ciudades ya marcadas al resto de los vertices, detengo dijstra
-	if(min_costo == INT_MAX)
-	{
-		//chequeo si el nodo destino fue marcado o es imposible llegar a el, en caso de ser asi, devuelvo una lista vacia
-		if(costo_de_llegar_a_esta_ciudad[destino] ==  INT_MAX)
+		// si el costo minimo continua siendo infinito, no existe manera de llegar desde las ciudades ya marcadas al resto de los vertices, detengo dijstra
+		if(min_costo == INT_MAX)
 		{
-			cout << "no" << endl;
-			vuelo_tomado_para_llegar_a_esta_ciudad.erase(vuelo_tomado_para_llegar_a_esta_ciudad.begin(), vuelo_tomado_para_llegar_a_esta_ciudad.end());
+			break;	
 		}
-		return vuelo_tomado_para_llegar_a_esta_ciudad;		
+		costo_de_llegar_a_esta_ciudad[vuelo_de_costo_min.destino] = min_costo;
+		vuelo_tomado_para_llegar_a_esta_ciudad[vuelo_de_costo_min.destino] = vuelo_de_costo_min;
 	}
-		
 
-	costo_de_llegar_a_esta_ciudad[vuelo_de_costo_min.destino] = min_costo;
-	vuelo_tomado_para_llegar_a_esta_ciudad[vuelo_de_costo_min.destino] = vuelo_de_costo_min;
+	if(costo_de_llegar_a_esta_ciudad[destino] == INT_MAX)
+	{
+		cout << "no" << endl;
+		vuelo_tomado_para_llegar_a_esta_ciudad.erase(vuelo_tomado_para_llegar_a_esta_ciudad.begin(),vuelo_tomado_para_llegar_a_esta_ciudad.end());
 	}
 	return vuelo_tomado_para_llegar_a_esta_ciudad;
 }
