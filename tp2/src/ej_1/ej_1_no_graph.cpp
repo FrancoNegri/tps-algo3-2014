@@ -18,6 +18,7 @@ struct vuelo
 {
   int ini;
   int fin;
+  int numeroDeVuelo;
   int origen;
   int destino;
 };
@@ -32,14 +33,13 @@ void imprimir_vector(vector<vuelo> vec)
   }
 }
 
-void dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int destino, int cantidad_de_ciudades)
+vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int destino, int cantidad_de_ciudades)
 {
 	set<int> ciudades_visitadas;
 	vector<int> costo_de_llegar_a_esta_ciudad;
 	vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad;
-	ciudades_visitadas.insert(origen);
-	vuelo_tomado_para_llegar_a_esta_ciudad.resize(cantidad_de_ciudades);//en realidad esto es cantidad de ciudades, cambiar
-	for(int i = 0; i < cantidad_de_ciudades; i++)//en realidad esto es cantidad de ciudades, cambiar
+	vuelo_tomado_para_llegar_a_esta_ciudad.resize(cantidad_de_ciudades);
+	for(int i = 0; i < cantidad_de_ciudades; i++)
 	{
 		costo_de_llegar_a_esta_ciudad.push_back(INT_MAX);
 	}
@@ -52,18 +52,17 @@ void dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int destino, int c
 		vuelo vuelo_de_costo_min;
 		for(int j = 0; j < vector_vuelos.size(); j++)
 		{
-			//si el origen esta en las ciudades visitadas
-			if(ciudades_visitadas.find(vector_vuelos[j].origen) != ciudades_visitadas.end() && vector_vuelos[j].ini < vector_vuelos[j].fin + 2)
+			//si el origen esta en las ciudades visitadas y el costo es menor al que tengo guardado
+			if(costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] != INT_MAX && vector_vuelos[j].ini < vector_vuelos[j].fin + 2)
 			{
 				min_costo = min(min_costo, costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] + vector_vuelos[j].fin + 2 - vector_vuelos[j].ini);
 				vuelo_de_costo_min = vector_vuelos[j];
 			}
 		}
 	costo_de_llegar_a_esta_ciudad[vuelo_de_costo_min.destino] = min_costo;
-	ciudades_visitadas.insert(vuelo_de_costo_min.destino);
 	vuelo_tomado_para_llegar_a_esta_ciudad[vuelo_de_costo_min.origen] = vuelo_de_costo_min;
 	}
-	encontrar_camino(vuelo_tomado_para_llegar_a_esta_ciudad, destino, origen);
+	return vuelo_tomado_para_llegar_a_esta_ciudad;
 }
 
 void encontrar_camino(vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad,int destino,int origen)
@@ -81,7 +80,14 @@ void encontrar_camino(vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad,int d
 		 ciudadAnterior = vueloQueTomo.origen;
 	}
 	reverse(resultado.begin(),resultado.end());
+	resultado.pop_back();
 
+	cout << "respuesta que tengo que dar: " << endl;
+	cout << resultado[resultado.size() - 1].fin << " " << resultado.size() << " ";
+	for(int i; i < resultado.size(); i++)
+		cout << resultado[i].numeroDeVuelo;
+	cout << endl;
+	cout << "estos son los vuelos que toma:" << endl;
 	imprimir_vector(resultado);
 }
 
@@ -123,9 +129,13 @@ int main(int argc, char *argv[]){
 
     cin >> v.ini;
     cin >> v.fin;
+    v.numeroDeVuelo = i+1;
     vector_vuelos.push_back(v);
   }
 
-  dijstra_sin_grafo(vector_vuelos, dict_ciudad_vector_distancias[origen], dict_ciudad_vector_distancias[destino], cantidad_de_ciudades);
+  vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad = dijstra_sin_grafo(vector_vuelos, dict_ciudad_vector_distancias[origen], dict_ciudad_vector_distancias[destino],cantidad_de_ciudades);
+  
+  encontrar_camino(vuelo_tomado_para_llegar_a_esta_ciudad, dict_ciudad_vector_distancias[destino], dict_ciudad_vector_distancias[origen]);
+
   return 0;
 }
