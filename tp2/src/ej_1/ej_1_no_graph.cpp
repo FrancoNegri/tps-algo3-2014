@@ -32,14 +32,14 @@ void imprimir_vector(vector<vuelo> vec)
   }
 }
 
-void dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int destino)
+void dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int destino, int cantidad_de_ciudades)
 {
 	set<int> ciudades_visitadas;
 	vector<int> costo_de_llegar_a_esta_ciudad;
 	vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad;
 	ciudades_visitadas.insert(origen);
-	vuelo_tomado_para_llegar_a_esta_ciudad.resize(vector_vuelos.size());//en realidad esto es cantidad de ciudades, cambiar
-	for(int i = 0; i < vector_vuelos.size(); i++)//en realidad esto es cantidad de ciudades, cambiar
+	vuelo_tomado_para_llegar_a_esta_ciudad.resize(cantidad_de_ciudades);//en realidad esto es cantidad de ciudades, cambiar
+	for(int i = 0; i < cantidad_de_ciudades; i++)//en realidad esto es cantidad de ciudades, cambiar
 	{
 		costo_de_llegar_a_esta_ciudad.push_back(INT_MAX);
 	}
@@ -126,6 +126,6 @@ int main(int argc, char *argv[]){
     vector_vuelos.push_back(v);
   }
 
-  dijstra_sin_grafo(vector_vuelos, dict_ciudad_vector_distancias[origen], dict_ciudad_vector_distancias[destino]);
+  dijstra_sin_grafo(vector_vuelos, dict_ciudad_vector_distancias[origen], dict_ciudad_vector_distancias[destino], cantidad_de_ciudades);
   return 0;
 }
