@@ -21,6 +21,12 @@ struct coordenada
   int y;
 };
 
+struct tablero
+{
+  vector< vector< int> > casillas;
+  int n;
+};
+
 coordenada crear_coordenada(int x, int y)
 {
 	coordenada coord;
@@ -29,52 +35,89 @@ coordenada crear_coordenada(int x, int y)
 	return coord;
 }
 
+tablero crear_tablero(int n)
+{
+	tablero nuevoTablero;
+	nuevoTablero.casillas  = vector< vector< int> >(n, vector<int> (n, INT_MAX));
+	nuevoTablero.n = n;
+	return nuevoTablero;
+}
 
-
-typedef vector< vector< int > > tablero;
-
-void agregar_nodos_de_profunidad_k_mas_uno(int x, int y,int n,int k, queue<coordenada> &nodos_de_altura_k_mas_uno, vector< vector< vector< int> > >	cantidad_de_saltos_que_tiene_que_dar_el_caballo)
+void agregar_nodos_de_profunidad_k_mas_uno(coordenada nodo, queue<coordenada> &nodos_de_altura_k_mas_uno, tablero unTablero)
 {
 	//chequeo el rango, si el caballo salta a una posicion valida y no salte previamente a esta posicion, lo agrego a la cola
-	if(x - 2 >= 0)
+	
+
+	//muy cabeza
+	
+
+	if(nodo.x - 2 >= 0)
 	{
-		if(y - 1 >= 0)
+		if(nodo.y - 1 >= 0)
 		{
-		if(cantidad_de_saltos_que_tiene_que_dar_el_caballo[k][x - 2][y - 1] == INT_MAX)
-			nodos_de_altura_k_mas_uno.push(crear_coordenada(x - 2, y - 1));
+		if(unTablero.casillas[nodo.x - 2][nodo.y - 1] == INT_MAX)
+			nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 2, nodo.y - 1));
 		}
-		if(y + 1 < n)
+		if(nodo.y + 1 < unTablero.n)
 		{
-		if(cantidad_de_saltos_que_tiene_que_dar_el_caballo[k][x - 2][y + 1] == INT_MAX)
-			nodos_de_altura_k_mas_uno.push(crear_coordenada(x - 2, y + 1));
+		if(unTablero.casillas[nodo.x - 2][nodo.y + 1] == INT_MAX)
+			nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 2, nodo.y + 1));
 		}
 	}
 
-	if(x + 2 < n)
+	if(nodo.x + 2 < unTablero.n)
 	{
-		if(y - 1 >= 0)
+		if(nodo.y - 1 >= 0)
 		{
-			if(cantidad_de_saltos_que_tiene_que_dar_el_caballo[k][x + 2][y - 1] == INT_MAX)
-				nodos_de_altura_k_mas_uno.push(crear_coordenada(x + 2, y - 1));
+			if(unTablero.casillas[nodo.x + 2][nodo.y - 1] == INT_MAX)
+				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x + 2, nodo.y - 1));
 		}
-		if(y + 1 < n)
+		if(nodo.y + 1 < unTablero.n)
 		{
-			if(cantidad_de_saltos_que_tiene_que_dar_el_caballo[k][x + 2][y + 1] == INT_MAX)
-				nodos_de_altura_k_mas_uno.push(crear_coordenada(x + 2, y + 1));
+			if(unTablero.casillas[nodo.x + 2][nodo.y + 1] == INT_MAX)
+				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x + 2, nodo.y + 1));
+		}
+	}
+	if(nodo.x - 1 >= 0)
+	{
+		if(nodo.y - 2 >= 0)
+		{
+		if(unTablero.casillas[nodo.x - 1][nodo.y - 2] == INT_MAX)
+			nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 1, nodo.y - 2));
+		}
+		if(nodo.y + 2 < unTablero.n)
+		{
+		if(unTablero.casillas[nodo.x - 1][nodo.y + 2] == INT_MAX)
+			nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 1, nodo.y + 2));
+		}
+	}
+
+	if(nodo.x + 1 < unTablero.n)
+	{
+		if(nodo.y - 2 >= 0)
+		{
+			if(unTablero.casillas[nodo.x + 1][nodo.y - 2] == INT_MAX)
+				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x + 1, nodo.y - 2));
+		}
+		if(nodo.y + 2 < unTablero.n)
+		{
+			if(unTablero.casillas[nodo.x + 1][nodo.y + 2] == INT_MAX)
+				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x + 1, nodo.y + 2));
 		}
 	}
 }
 
 
+
 int main()
 {
 	int n;
-	int k;
+	int cantidad_de_caballos;
 	vector<coordenada> lista_caballos;
 	cin >> n;
-	cin >> k;
+	cin >> cantidad_de_caballos;
 
-	for(int i = 0; i < k; i++)
+	for(int i = 0; i < cantidad_de_caballos; i++)
 	{
 		coordenada nuevoCaballo;
 		cin >> nuevoCaballo.x;
@@ -84,50 +127,104 @@ int main()
 		nuevoCaballo.y--;
 		lista_caballos.push_back(nuevoCaballo);
 	}
-	//esta linea magica crea un tablero de n por n
-	tablero unTablero(n, vector<int>(n, 0));
-	vector<vector< vector< int> > >	cantidad_de_saltos_que_tiene_que_dar_el_caballo(k, vector<vector<int> >(n, vector<int>(n, INT_MAX)));
 
-	for(int i = 0; i < k; i++)
+	// en este tablero voy guardando cuanto le cuesta al caballo i, llegar a la pocision (x,y) del tablero
+	vector<tablero> tablero_para_caballo_i(cantidad_de_caballos,crear_tablero(n));
+
+
+	for(int caballo_i = 0; caballo_i < cantidad_de_caballos; caballo_i++)
 	{
 		 queue<coordenada> nodos_de_altura_k;
 		 queue<coordenada> nodos_de_altura_k_mas_uno;
 		 int k = 0;
-		 nodos_de_altura_k.push(lista_caballos[i]);
+		 
+		 //meto el primer nodo de todos (donde esta el caballo inicialmente)
+		 nodos_de_altura_k.push(lista_caballos[caballo_i]);
+		 
 		 while(!nodos_de_altura_k.empty())
 		 {
+		 	//mientras haya casillas de altura k, las recorro y agrego los nodos validos de altura k+1
 		 	while(!nodos_de_altura_k.empty())
 		 	{
-		 	coordenada nodo = nodos_de_altura_k.front();
-		 	nodos_de_altura_k.pop();
-		 	if(cantidad_de_saltos_que_tiene_que_dar_el_caballo[i][nodo.x][nodo.y] == INT_MAX)
-		 		cantidad_de_saltos_que_tiene_que_dar_el_caballo[i][nodo.x][nodo.y] = k;
-		 	agregar_nodos_de_profunidad_k_mas_uno(nodo.x, nodo.y,n,i, nodos_de_altura_k_mas_uno, cantidad_de_saltos_que_tiene_que_dar_el_caballo);
-		 	agregar_nodos_de_profunidad_k_mas_uno(nodo.y, nodo.x,n,i, nodos_de_altura_k_mas_uno, cantidad_de_saltos_que_tiene_que_dar_el_caballo);
+			 	
+			 	coordenada nodo = nodos_de_altura_k.front();
+			 	
+			 	nodos_de_altura_k.pop();
+			 	
+			 	if(tablero_para_caballo_i[caballo_i].casillas[nodo.x][nodo.y] == INT_MAX)
+			 		tablero_para_caballo_i[caballo_i].casillas[nodo.x][nodo.y] = k;
+
+			 	agregar_nodos_de_profunidad_k_mas_uno(nodo, nodos_de_altura_k_mas_uno, tablero_para_caballo_i[caballo_i]);
 		 	}
+		 	//ok, ya no hay nodos de altura k, ahora paso a k+1, (que va a ser el nuevo k), y borro lo que había en k+1
 		 	nodos_de_altura_k = nodos_de_altura_k_mas_uno;
-		 	nodos_de_altura_k_mas_uno = queue<coordenada>();
+		 	
+		 	nodos_de_altura_k_mas_uno = queue<coordenada>(); 
+		 	
 		 	k++;
 		 }
 		 
 	}
 
-	for(int i = 0; i < k; i++)
+
+	//esto es para ver las matrices que quedan despues de hacer todos los bfeses.
+	for(int i = 0; i <  cantidad_de_caballos;i++)
 	{
-	cout << "Saltos necesarios para el caballo: " << i << " llege a la pos de la matriz" << endl << endl;
+	cout << "Saltos necesarios para el caballo: " << i << " salte al casillero" << endl << endl;
 		for(int j = 0; j < n; j++)
 		{
 			for(int k = 0; k < n; k++)
 			{
-				if(cantidad_de_saltos_que_tiene_que_dar_el_caballo[i][j][k] != INT_MAX)
-					cout << cantidad_de_saltos_que_tiene_que_dar_el_caballo[i][j][k] << " ";
+				if(tablero_para_caballo_i[i].casillas[j][k] != INT_MAX)
+				{
+					cout << tablero_para_caballo_i[i].casillas[j][k] << " ";
+				}
 				else
-					cout << "no ";		
+				{
+					cout << "no ";	
+				}
 			}
 			cout << endl;
 		}
 		cout << endl;
 	}
+	
+	int suma_min = INT_MAX;
+	coordenada nodo_minimo;
+
+	for(int j = 0; j < n; j++)
+	{
+		for(int k = 0; k < n; k++)
+		{
+			//para cada casilla voy sumando cuantos saltos le cuesta llegar a todos los caballos ahí
+			int acum = 0;
+			for(int i = 0; i <  cantidad_de_caballos;i++)
+			{
+				if(tablero_para_caballo_i[i].casillas[j][k] != INT_MAX)
+				{
+					acum += tablero_para_caballo_i[i].casillas[j][k];
+				}
+				else
+				{
+					acum = INT_MAX;
+					break;
+				}
+			}
+			// si es menor, actualizo, ahora tengo una manera de llegar que cuesta menos saltos
+			if(suma_min > acum)
+			{
+				suma_min = acum;
+				nodo_minimo.x = j;
+				nodo_minimo.y = k;
+			}
+		}
+	}
+	// si el minimo es infinito, no hay manera de que todos los caballos lleguen a la misma pocicion
+	if(suma_min == INT_MAX)
+		cout << "no" << endl;
+	else
+		cout << nodo_minimo.x + 1 << " " << nodo_minimo.y + 1 << " " << suma_min << endl;
+	return 0;
 }
 
 
