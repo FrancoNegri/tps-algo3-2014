@@ -1,0 +1,25 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Plan de vuelo}{3}{chapter.1}
+\contentsline {subsection}{\numberline {1.0.1}Introducci\'on}{3}{subsection.1.0.1}
+\contentsline {subsection}{\numberline {1.0.2}Ejemplos y Soluciones}{3}{subsection.1.0.2}
+\contentsline {subsection}{\numberline {1.0.3}Desarrollo}{3}{subsection.1.0.3}
+\contentsline {subsection}{\numberline {1.0.4}Complejidad}{3}{subsection.1.0.4}
+\contentsline {subsection}{\numberline {1.0.5}Experimentacion}{3}{subsection.1.0.5}
+\contentsline {chapter}{\numberline {2}Caballos salvajes}{4}{chapter.2}
+\contentsline {subsection}{\numberline {2.0.6}Introducci\'on}{4}{subsection.2.0.6}
+\contentsline {subsection}{\numberline {2.0.7}Ejemplos y Soluciones}{4}{subsection.2.0.7}
+\contentsline {subsection}{\numberline {2.0.8}Desarrollo}{5}{subsection.2.0.8}
+\contentsline {subsection}{\numberline {2.0.9}Complejidad}{6}{subsection.2.0.9}
+\contentsline {subsection}{\numberline {2.0.10}Experimentacion}{6}{subsection.2.0.10}
+\contentsline {chapter}{\numberline {3}La comunidad del anillo}{7}{chapter.3}
+\contentsline {subsection}{\numberline {3.0.11}Introducci\'on}{7}{subsection.3.0.11}
+\contentsline {subsection}{\numberline {3.0.12}Ejemplos y Soluciones}{7}{subsection.3.0.12}
+\contentsline {subsection}{\numberline {3.0.13}Desarrollo}{7}{subsection.3.0.13}
+\contentsline {subsection}{\numberline {3.0.14}Complejidad}{7}{subsection.3.0.14}
+\contentsline {subsection}{\numberline {3.0.15}Experimentacion}{7}{subsection.3.0.15}
+\contentsline {chapter}{\numberline {4}Ap\'endice}{8}{chapter.4}
+\contentsline {section}{\numberline {4.1}Medicion de los tiempos}{8}{section.4.1}
+\contentsline {section}{\numberline {4.2}C\'odigo Fuente}{9}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Ej1.cpp}{9}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Ej2.cpp}{10}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Ej3.cpp}{11}{subsection.4.2.3}
