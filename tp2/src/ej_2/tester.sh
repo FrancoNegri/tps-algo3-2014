@@ -8,19 +8,22 @@ rm -rf $DIR
 mkdir $DIR
 
 echo "Compilando Codigo..."
-g++ -std=c++0x generadorDeEntrada.cpp -o $DIR/tester
-g++ -std=c++0x ej2_b.cpp -o $DIR/ejecutable
+g++ -std=c++11 generadorDeEntrada.cpp -o $DIR/tester
+g++ -std=c++11 ej2_b.cpp -o $DIR/ejecutable
 
 echo "OK!"
 
-for VARIABLE in {1..10}
+for VARIABLE1 in {1..50}
 do
-        echo "generada entrada para n:" $VARIABLE
-        ./$DIR/tester $VARIABLE 10
-        echo "OK!"
-        echo "Corriendo ejecutable..."
-        ./$DIR/ejecutable < $DIR/test.txt > $DIR/$VARIABLE.txt
-        echo "OK!"
+	echo "generada entrada para n:" $VARIABLE1
+	for VARIABLE2 in {1..50}
+	do
+        ./$DIR/tester $VARIABLE1 10
+        ./$DIR/ejecutable < $DIR/test.txt >> $DIR/resultados.txt
+        
+    done
+    echo "OK!"
+    echo "" >> $DIR/resultados.txt #agrego un end of line, asi voy creando una matriz con los resultados
 done
 
 echo "Limpio los binarios"

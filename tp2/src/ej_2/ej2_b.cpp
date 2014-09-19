@@ -12,6 +12,8 @@
 #include <climits>
 #include <algorithm>
 #include <queue>
+#include <chrono>
+
 
 using namespace std;
 
@@ -117,6 +119,13 @@ int main()
 	cin >> n;
 	cin >> cantidad_de_caballos;
 
+
+	//mido tiempos
+
+	auto begin = std::chrono::high_resolution_clock::now();
+
+
+
 	for(int i = 0; i < cantidad_de_caballos; i++)
 	{
 		coordenada nuevoCaballo;
@@ -168,7 +177,7 @@ int main()
 
 
 	//esto es para ver las matrices que quedan despues de hacer todos los bfeses.
-	for(int i = 0; i <  cantidad_de_caballos;i++)
+	/*for(int i = 0; i <  cantidad_de_caballos;i++)
 	{
 	cout << "Saltos necesarios para el caballo: " << i << " salte al casillero" << endl << endl;
 		for(int j = 0; j < n; j++)
@@ -187,7 +196,7 @@ int main()
 			cout << endl;
 		}
 		cout << endl;
-	}
+	}*/
 	
 	int suma_min = INT_MAX;
 	coordenada nodo_minimo;
@@ -219,12 +228,20 @@ int main()
 			}
 		}
 	}
+
+
+	// mido tiempos
+	auto end = std::chrono::high_resolution_clock::now();
+  	std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
+
+
+  	//Descomentar a la hora de entregaaaaar!!!!
 	// si el minimo es infinito, no hay manera de que todos los caballos lleguen a la misma pocicion
-	if(suma_min == INT_MAX)
+	/*if(suma_min == INT_MAX)
 		cout << "no" << endl;
 	else
 		cout << nodo_minimo.x + 1 << " " << nodo_minimo.y + 1 << " " << suma_min << endl;
-	return 0;
+	return 0;*/
 }
 
 
