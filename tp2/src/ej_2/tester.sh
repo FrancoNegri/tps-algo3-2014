@@ -8,8 +8,8 @@ rm -rf $DIR
 mkdir $DIR
 
 echo "Compilando Codigo..."
-g++ -std=c++11 generadorDeEntrada.cpp -o $DIR/tester
-g++ -std=c++11 ej2_b.cpp -o $DIR/ejecutable
+g++ -std=c++0x generadorDeEntrada.cpp -o $DIR/tester
+g++ -std=c++0x ej2_b.cpp -o $DIR/ejecutable
 
 echo "OK!"
 
