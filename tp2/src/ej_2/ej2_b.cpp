@@ -15,6 +15,12 @@
 #include <chrono>
 
 
+//capaz habría que cambiar los nombes
+#define NODO_NO_MARCADO INT_MAX
+#define NODO_MARCADO INT_MAX-1
+
+
+
 using namespace std;
 
 struct coordenada
@@ -40,10 +46,11 @@ coordenada crear_coordenada(int x, int y)
 tablero crear_tablero(int n)
 {
 	tablero nuevoTablero;
-	nuevoTablero.casillas  = vector< vector< int> >(n, vector<int> (n, INT_MAX));
+	nuevoTablero.casillas  = vector< vector< int> >(n, vector<int> (n, NODO_NO_MARCADO));
 	nuevoTablero.n = n;
 	return nuevoTablero;
 }
+
 
 void agregar_nodos_de_profunidad_k_mas_uno(coordenada nodo, queue<coordenada> &nodos_de_altura_k_mas_uno, tablero unTablero)
 {
@@ -57,13 +64,19 @@ void agregar_nodos_de_profunidad_k_mas_uno(coordenada nodo, queue<coordenada> &n
 	{
 		if(nodo.y - 1 >= 0)
 		{
-		if(unTablero.casillas[nodo.x - 2][nodo.y - 1] == INT_MAX)
-			nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 2, nodo.y - 1));
+		if(unTablero.casillas[nodo.x - 2][nodo.y - 1] == NODO_NO_MARCADO)
+			{
+				unTablero.casillas[nodo.x - 2][nodo.y - 1] = NODO_MARCADO;
+				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 2, nodo.y - 1));
+			}
 		}
 		if(nodo.y + 1 < unTablero.n)
 		{
-		if(unTablero.casillas[nodo.x - 2][nodo.y + 1] == INT_MAX)
-			nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 2, nodo.y + 1));
+			if(unTablero.casillas[nodo.x - 2][nodo.y + 1] == NODO_NO_MARCADO)
+			{
+				unTablero.casillas[nodo.x - 2][nodo.y + 1] = NODO_MARCADO;
+				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 2, nodo.y + 1));				
+			}
 		}
 	}
 
@@ -71,26 +84,38 @@ void agregar_nodos_de_profunidad_k_mas_uno(coordenada nodo, queue<coordenada> &n
 	{
 		if(nodo.y - 1 >= 0)
 		{
-			if(unTablero.casillas[nodo.x + 2][nodo.y - 1] == INT_MAX)
-				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x + 2, nodo.y - 1));
+			if(unTablero.casillas[nodo.x + 2][nodo.y - 1] == NODO_NO_MARCADO)
+			{
+				unTablero.casillas[nodo.x + 2][nodo.y - 1] = NODO_MARCADO;
+				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x + 2, nodo.y - 1));				
+			}
 		}
 		if(nodo.y + 1 < unTablero.n)
 		{
-			if(unTablero.casillas[nodo.x + 2][nodo.y + 1] == INT_MAX)
+			if(unTablero.casillas[nodo.x + 2][nodo.y + 1] == NODO_NO_MARCADO)
+			{
+				unTablero.casillas[nodo.x + 2][nodo.y + 1] = NODO_MARCADO;
 				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x + 2, nodo.y + 1));
+			}
 		}
 	}
 	if(nodo.x - 1 >= 0)
 	{
 		if(nodo.y - 2 >= 0)
 		{
-		if(unTablero.casillas[nodo.x - 1][nodo.y - 2] == INT_MAX)
-			nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 1, nodo.y - 2));
+			if(unTablero.casillas[nodo.x - 1][nodo.y - 2] == NODO_NO_MARCADO)
+			{
+				unTablero.casillas[nodo.x - 1][nodo.y - 2] = NODO_MARCADO;
+				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 1, nodo.y - 2));
+			}	
 		}
 		if(nodo.y + 2 < unTablero.n)
 		{
-		if(unTablero.casillas[nodo.x - 1][nodo.y + 2] == INT_MAX)
-			nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 1, nodo.y + 2));
+			if(unTablero.casillas[nodo.x - 1][nodo.y + 2] == NODO_NO_MARCADO)
+			{
+				unTablero.casillas[nodo.x - 1][nodo.y + 2] = NODO_MARCADO;
+				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x - 1, nodo.y + 2));			
+			}
 		}
 	}
 
@@ -98,13 +123,19 @@ void agregar_nodos_de_profunidad_k_mas_uno(coordenada nodo, queue<coordenada> &n
 	{
 		if(nodo.y - 2 >= 0)
 		{
-			if(unTablero.casillas[nodo.x + 1][nodo.y - 2] == INT_MAX)
+			if(unTablero.casillas[nodo.x + 1][nodo.y - 2] == NODO_NO_MARCADO)
+			{
+				unTablero.casillas[nodo.x + 1][nodo.y - 2] = NODO_MARCADO;
 				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x + 1, nodo.y - 2));
+			}
 		}
 		if(nodo.y + 2 < unTablero.n)
 		{
-			if(unTablero.casillas[nodo.x + 1][nodo.y + 2] == INT_MAX)
-				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x + 1, nodo.y + 2));
+			if(unTablero.casillas[nodo.x + 1][nodo.y + 2] == NODO_NO_MARCADO)
+			{
+				unTablero.casillas[nodo.x + 1][nodo.y + 2] = NODO_MARCADO;
+				nodos_de_altura_k_mas_uno.push(crear_coordenada(nodo.x + 1, nodo.y + 2));				
+			}
 		}
 	}
 }
@@ -160,8 +191,8 @@ int main()
 			 	
 			 	nodos_de_altura_k.pop();
 			 	
-			 	if(tablero_para_caballo_i[caballo_i].casillas[nodo.x][nodo.y] == INT_MAX)
-			 		tablero_para_caballo_i[caballo_i].casillas[nodo.x][nodo.y] = k;
+			 	//tengo asegurado que esto esto solo se va a asignar una vez, no necesito ifs
+			 	tablero_para_caballo_i[caballo_i].casillas[nodo.x][nodo.y] = k;
 
 			 	agregar_nodos_de_profunidad_k_mas_uno(nodo, nodos_de_altura_k_mas_uno, tablero_para_caballo_i[caballo_i]);
 		 	}
@@ -177,14 +208,15 @@ int main()
 
 
 	//esto es para ver las matrices que quedan despues de hacer todos los bfeses.
-	/*for(int i = 0; i <  cantidad_de_caballos;i++)
+	/*
+	for(int i = 0; i <  cantidad_de_caballos;i++)
 	{
 	cout << "Saltos necesarios para el caballo: " << i << " salte al casillero" << endl << endl;
 		for(int j = 0; j < n; j++)
 		{
 			for(int k = 0; k < n; k++)
 			{
-				if(tablero_para_caballo_i[i].casillas[j][k] != INT_MAX)
+				if(tablero_para_caballo_i[i].casillas[j][k] > NODO_MARCADO)
 				{
 					cout << tablero_para_caballo_i[i].casillas[j][k] << " ";
 				}
@@ -209,7 +241,7 @@ int main()
 			int acum = 0;
 			for(int i = 0; i <  cantidad_de_caballos;i++)
 			{
-				if(tablero_para_caballo_i[i].casillas[j][k] != INT_MAX)
+				if(tablero_para_caballo_i[i].casillas[j][k] < INT_MAX-1)
 				{
 					acum += tablero_para_caballo_i[i].casillas[j][k];
 				}
@@ -236,7 +268,7 @@ int main()
 
 
   	//Descomentar a la hora de entregaaaaar!!!!
-	// si el minimo es infinito, no hay manera de que todos los caballos lleguen a la misma pocicion
+	// si el minimo es NODO_NO_MARCADO, no hay manera de que todos los caballos lleguen a la misma pocicion
 	/*if(suma_min == INT_MAX)
 		cout << "no" << endl;
 	else
