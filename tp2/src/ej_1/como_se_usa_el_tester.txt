@@ -1,0 +1,10 @@
+Corriendo ./tester.sh genera un archivo en testing que genera tests para entradas de n de 1 a 50 (se puede cambiar, modificando el valor de VARIABLE1 en el ./tester.sh) y por cada uno de esos genera 50 tests (se puede cambiar, modificando el valor de VARIABLE2 en el ./tester.sh)
+
+en el txt final va a aparecer algo como:
+
+    tiempo      
+n:1 101		100		100		120		121
+n:2 202		200		300		200		150
+n:3 304		500		300		501		520
+
+Si lo abris con libreOffice te tiene que generar la matriz correspondiente y no tenes que andar copiando y pegando un millon de archivos

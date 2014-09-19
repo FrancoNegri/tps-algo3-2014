@@ -11,6 +11,7 @@
 #include <sys/timeb.h>
 #include <climits>
 #include <algorithm>
+#include <chrono>
 
 using namespace std;
 
@@ -70,7 +71,6 @@ vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int desti
 
 	if(costo_de_llegar_a_esta_ciudad[destino] == INT_MAX)
 	{
-		cout << "no" << endl;
 		vuelo_tomado_para_llegar_a_esta_ciudad.erase(vuelo_tomado_para_llegar_a_esta_ciudad.begin(),vuelo_tomado_para_llegar_a_esta_ciudad.end());
 	}
 	return vuelo_tomado_para_llegar_a_esta_ciudad;
@@ -106,6 +106,11 @@ void encontrar_camino(vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad,int d
 
 
 int main(int argc, char *argv[]){
+
+
+  auto begin = std::chrono::high_resolution_clock::now();
+
+  
   map< string, int> dict_ciudad_vector_distancias;
   int cant_vuelos;
   string origen, destino;
@@ -147,8 +152,18 @@ int main(int argc, char *argv[]){
   }
 
   vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad = dijstra_sin_grafo(vector_vuelos, dict_ciudad_vector_distancias[origen], dict_ciudad_vector_distancias[destino],cantidad_de_ciudades);
-  if(vuelo_tomado_para_llegar_a_esta_ciudad.size() != 0)
-  	encontrar_camino(vuelo_tomado_para_llegar_a_esta_ciudad, dict_ciudad_vector_distancias[destino], dict_ciudad_vector_distancias[origen]);
 
+
+  //para tests:
+  auto end = std::chrono::high_resolution_clock::now();
+  std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
+  //cout << std::endl;
+
+
+  //linea para imprimir el resultado, descomentar para entregar
+  //if(vuelo_tomado_para_llegar_a_esta_ciudad.size() != 0)
+  //	encontrar_camino(vuelo_tomado_para_llegar_a_esta_ciudad, dict_ciudad_vector_distancias[destino], dict_ciudad_vector_distancias[origen]);
+  //else
+  //cout << "no" << endl;
   return 0;
 }
