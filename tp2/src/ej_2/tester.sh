@@ -15,10 +15,10 @@ echo "OK!"
 
 for VARIABLE1 in {1..50}
 do
-	echo "generada entrada para n:" $VARIABLE1
+	echo "generada entrada para n:" $(($VARIABLE1 * 10))
 	for VARIABLE2 in {1..50}
 	do
-        ./$DIR/tester $VARIABLE1 10
+        ./$DIR/tester $(($VARIABLE1 * 10)) 10
         ./$DIR/ejecutable < $DIR/test.txt >> $DIR/resultados.txt
         
     done
