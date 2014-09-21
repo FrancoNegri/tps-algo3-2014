@@ -8,8 +8,8 @@ int main(int argc, char *argv[])
         ofstream fout("testing/test.txt");
         int n;
         int k;
-        n = 10;
-        k = atoi(argv[1]);
+        n = = atoi(argv[1]);
+        k = 50;
         if(fout.is_open())
         {
                 fout << n << " " << k << endl;
