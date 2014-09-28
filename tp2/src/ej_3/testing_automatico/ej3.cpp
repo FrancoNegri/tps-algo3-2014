@@ -14,6 +14,10 @@
 #include <fstream>
 #include <vector>
 
+
+
+#include <chrono>
+
 using namespace std;
 
 struct arista
@@ -250,6 +254,12 @@ void imprimirArreglo(vector< distancia > vec,int tam){
 }
 int main(int argc, char *argv[])
 {
+	
+
+	//mido tiempos
+
+	auto begin = std::chrono::high_resolution_clock::now();
+
 	// para detectar cuando estoy leyendo la primer linea
 	bool primerLinea = true; 
 	string line;
@@ -328,7 +338,7 @@ int main(int argc, char *argv[])
 
 
     //IMPRIMO LA SALIDA
-    if(res.conexo){
+   /* if(res.conexo){
     	cout << res.costoTotal << ' ' << res.anillo.size();
 	    cout << ' ' << res.resto.size() << endl;
 
@@ -345,7 +355,10 @@ int main(int argc, char *argv[])
     }else{
     	cout << "no" << endl;
 
-    }
+    }*/
+
+    auto end = std::chrono::high_resolution_clock::now();
+  	std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
     
    	return 0;
 }
