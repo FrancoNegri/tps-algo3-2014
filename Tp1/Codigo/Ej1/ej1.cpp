@@ -60,7 +60,7 @@ int main()
                         cout << "1 " << n+1 << endl;
                         continue;
                 }
-                //auto begin = std::chrono::high_resolution_clock::now();
+                auto begin = std::chrono::high_resolution_clock::now();
                 
                 int posActual = -1; 
                 list<int> recorrido;
@@ -86,12 +86,12 @@ int main()
                                 posActual = nuevoActual;        
                         }       
                }
-            //auto end = std::chrono::high_resolution_clock::now();
-           // std::cout << n << ' ' << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
-           // cout << std::endl;
+            auto end = std::chrono::high_resolution_clock::now();
+            std::cout << n << ' ' << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
+            cout << std::endl;
 
             //std::reverse(recorrido.begin(),recorrido.end());
-            imprimir_vector(recorrido);
+           // imprimir_vector(recorrido);
   }
   return 0;
 }
