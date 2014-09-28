@@ -52,12 +52,12 @@ int main()
                 }
                     //miro si tiene solucion
                 if(!check_solution(puente,largo_del_salto)){
-                        cout << "no" << endl;;
+                        //cout << "no" << endl;;
                         continue;
                 }
 
                 if(largo_del_salto > n){
-                        cout << "1 " << n+1 << endl;
+                        //cout << "1 " << n+1 << endl;
                         continue;
                 }
                 auto begin = std::chrono::high_resolution_clock::now();
