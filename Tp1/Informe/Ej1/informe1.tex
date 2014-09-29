@@ -16,12 +16,6 @@ Por el enunciado sabemos que tenemos n tablones, el participante puede saltar C 
 Nuestro algoritmo ira recorriendo el puente tratando de hacer el mayor salto cuando este es posible, dependiendo si el tablon al que iria a parar el participante esta sano, en caso contrario comenzamos a iterar los tablones desde este salto maximo hacia donde se encuentra parado el participante uno por uno hasta encontrar un tablon sano.\\
 Para cada al cual se salta se guarda su posicion en una lista siempre insertando atras de la misma, una vez que cruzo participante cruzo todo el puente se devuelve esta lista como la sucesion de saltos realizada por el participante, en caso de no ser factible ya que en una seccion del puente la cantidad de tablones rotos consecutivos es mayor a el salto maximo se devuelve no, ya que no tiene solucion.
 
-\subsection{Demostraci\'on}
-
-Demostraremos por inducci\'on que en cada paso de este algoritmo obtenemos la m\'inima cantidad de saltos posible para llegar a ese tabl\'on:
-
-
-\newpage
 
 \subsection{Complejidad}
 El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
@@ -30,28 +24,41 @@ El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
  \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
  \caption{ \\Saltos( salto\_Maximo : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
- 		\STATE{Si saltoMax > cantidadTablones} \;\;
+ 		\STATE{Si saltoMax $>$ cantidadTablones} \;\;
  		\STATE{\quad devolver 1} \;\;
- 		% \STATE{ posActual \leftarrow 0}  \;\; \\
  		\STATE{SI NO}\\
  		\STATE{nueva listaDeSaltos}\\
- 		\STATE{\quad mientras posActual < cantidadTablones} \;\; O(n)
- 			\STATE{\quad\quad posibleSalto = posActual + salto\_Maximo \\
- 			\STATE{\quad\quad mientras puente( posibleSalto ) != 1 & posibleSalto > 0\\
- 			\STATE{\quad\quad\quad  posibleSalto - 1 \\
- 			\STATE{\quad\quad SI posibleSalto = posActual\\
- 			\STATE{\quad\quad\quad no hay solucion \\
-			\STATE{\quad\quad SI NO hay solucion \\
- 			\STATE{\quad\quad\quad AgregarAtras(posibleSalto,listaDeSaltos)\\
- 			\STATE{\quad\quad\quad posActual \leftarrow posibleSalto\\
- 			\STATE{\quad\quad Devolver listaDeSaltos\\
+ 		\STATE{\quad mientras posActual $<$ cantidadTablones } \;\; O(n)
+ 			\STATE{\quad\quad posibleSalto $=$ posActual + salto\_Maximo }\\
+ 			\STATE{\quad\quad mientras puente$($ posibleSalto $ ) $ $!=$ 1 $&$ posibleSalto $>$ 0}\\
+ 			\STATE{\quad\quad\quad  posibleSalto - 1 }\\
+ 			\STATE{\quad\quad SI posibleSalto $=$ posActual}\\
+ 			\STATE{\quad\quad\quad no hay solucion }\\
+			\STATE{\quad\quad SI NO hay solucion }\\
+ 			\STATE{\quad\quad\quad AgregarAtras(posibleSalto,listaDeSaltos)}\\
+ 			\STATE{\quad\quad\quad posActual \leftarrow posibleSalto}\\
+ 			\STATE{\quad\quad Devolver listaDeSaltos}\\
   \end{algorithmic}
  Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones, en el caso del infinito este es representado por el máximo entero representable y este esta acotado.\\
  El ciclo de las lineas 5 - 15 se realiza n veces con lo cual la complejidad total del algoritmo es \Ode{n}, como saltoMax es una constante menor a n la complejidad total del algoritmo es \Ode{n}.
 
  \end{algorithm}	
+\subsection{Demostraci\'on}
+El algoritmo consta fundamentalmente en la eleccion del tablon mas lejano al que pueda saltar en cada paso y eso reside en ciclo interno de nuestro algoritmo:\\
+
+\begin{algorithm}
+	\begin{algorithmic}[1]\parskip=1mm
+		\STATE{\quad\quad posibleSalto $=$ posActual + salto\_Maximo }\\
+		\STATE{\quad\quad mientras puente$($ posibleSalto $ ) $ $!=$ 1 $&$ posibleSalto $>$ 0}\\
+ 		\STATE{\quad\quad\quad  posibleSalto - 1 }\\
+ 		\end{algorithmic}
+ \end{algorithm}	
+En este paso elegimos el proximo tablon al cual queremos saltar comenzando desde la posicion actual donde se encuentra el participante mas la longitud maxima del salto que puede realizar dicho participante, en caso que la guarda no se cumpla, que el tablon este sano, comenzamos a retroceder, una vez finalizado el ciclo revisamos si la posicion actual y la posicion del tablon al que queremos saltar es diferente, en este caso quiere decir que existe un tablon al cual queremos saltar.
+
+
 		
 \newpage			
+
 \subsection{Experimentacion}
 Para la experimentación del problema en cuestión se realizaron dos test, el primero teniendo en cuenta el peor caso, siendo este que todos los tablones del puente estén sanos y el salto máximo del participante sea uno, para esto se fijo el salto máximo y se crearon 1000 instancias de puentes sanos en tamaños que varian de 1 a 1000 luego se midieron los tiempos de ejecución dando como resultado el siguiente gráfico \\
 \includegraphics[scale=0.7]{Ej1/sanos.jpg}\\
