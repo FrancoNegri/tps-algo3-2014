@@ -55,43 +55,48 @@ int main()
                         //cout << "no" << endl;;
                         continue;
                 }
-
+		/*cout << n << " " << largo_del_salto << " ";*/
+		//for(int i = 0 ; i< n ; i++){
+			//cout << puente[i] << " ";
+		/*}*/
+       /*         cout << endl; */
                 if(largo_del_salto > n){
                         //cout << "1 " << n+1 << endl;
                         continue;
                 }
-                auto begin = std::chrono::high_resolution_clock::now();
+		auto begin = std::chrono::high_resolution_clock::now();
                 
                 int posActual = -1; 
                 list<int> recorrido;
                 bool llegue = false;
-                while(!llegue){
-                        if(posActual + largo_del_salto > n-1){
-                                llegue = true; 
-                                recorrido.push_back(n+1);
-                        }else{
-                                bool encontreEscalon = false;
-                                int nuevoActual;
-                                for(int i = posActual + largo_del_salto ; (i > posActual) && !encontreEscalon ;i--){
-                                        if(puente[i]==0){
-                                                encontreEscalon = true;
-                                                recorrido.push_back(i+1);
-                                                nuevoActual = i;
-                                                break;
-                                        }       
-                                }
-                                if(nuevoActual > n-1){
-                                        llegue =true;
-                                }       
-                                posActual = nuevoActual;        
-                        }       
-               }
-            auto end = std::chrono::high_resolution_clock::now();
-            std::cout << n << ' ' << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
-            cout << std::endl;
+		while(!llegue){
+			if(posActual + largo_del_salto > n-1){
+				llegue = true; 
+				recorrido.push_back(n+1);
+			}else{
+				int nuevoActual = posActual + largo_del_salto;
+				if(nuevoActual > n-1){
+					llegue =true;
+				}else{
+					while(puente[nuevoActual]!=0 && nuevoActual>posActual && nuevoActual<n-1 && nuevoActual>=0){
+						nuevoActual--;
+					}
+					if(nuevoActual < n-1){
+						if( puente[nuevoActual]== 1 && nuevoActual == posActual +1){
+							cout << "no" << endl; // no tiene solucion seria raro que se de este caso
+							break;
+						}
+					}
+				}   
+				recorrido.push_back(nuevoActual); 
+				posActual = nuevoActual;        
+			}       
+		}
+	    auto end = std::chrono::high_resolution_clock::now();
+	    std::cout << n << ' ' << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
+	    cout << std::endl;
 
-            //std::reverse(recorrido.begin(),recorrido.end());
-           // imprimir_vector(recorrido);
+	    //imprimir_vector(recorrido);
   }
   return 0;
 }

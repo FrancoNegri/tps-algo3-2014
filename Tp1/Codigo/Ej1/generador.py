@@ -4,7 +4,7 @@ from random import randint
 fo = open("random.in", "wb")
 n = 100
 c = 10
-cantidad_de_tablones = 1000
+cantidad_de_tablones = 100
 for x in range(1, cantidad_de_tablones):
     fo.write(str(x) + " " + str(randint(1, x)) + " ")
     for i in range(0, x):
@@ -20,7 +20,7 @@ fo.close()
 fo = open("sanos.in", "wb")
 n = 100
 c = 1
-cantidad_de_tablones = 1000
+cantidad_de_tablones = 100
 for x in range(1, cantidad_de_tablones):
     fo.write(str(x) + " " + str(randint(1, x)) + " ")
     for i in range(0, x):
