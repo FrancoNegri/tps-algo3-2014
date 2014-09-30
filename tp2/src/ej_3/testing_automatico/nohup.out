@@ -1,0 +1,14 @@
+Compilando Codigo...
+OK!
+Seteo de parametros
+Cantidad De tests:
+./tester_n_variable.sh: línea 17: read: error de lectura: 0: Descriptor de archivo erróneo
+Valor mas chico de n:
+./tester_n_variable.sh: línea 19: read: error de lectura: 0: Descriptor de archivo erróneo
+Valor mas alto: 
+./tester_n_variable.sh: línea 21: read: error de lectura: 0: Descriptor de archivo erróneo
+Valor fijo de m:
+./tester_n_variable.sh: línea 23: read: error de lectura: 0: Descriptor de archivo erróneo
+./tester_n_variable.sh: línea 29: ((: c= : error sintáctico: se esperaba un operando (el elemento de error es "= ")
+Limpio los binarios
+OK!
