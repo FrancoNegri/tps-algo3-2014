@@ -24,47 +24,39 @@ El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
  \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
  \caption{ \\Saltos( salto\_Maximo : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
- 		\STATE{Si saltoMax $>$ cantidadTablones} \;\;
- 		\STATE{\quad devolver 1} \;\;
- 		\STATE{SI NO}\\
- 		\STATE{nueva listaDeSaltos}\\
- 		\STATE{\quad mientras posActual $<$ cantidadTablones } \;\; O(n)
- 			\STATE{\quad\quad posibleSalto $=$ posActual + salto\_Maximo }\\
- 			\STATE{\quad\quad mientras puente$($ posibleSalto $ ) $ $!=$ 1 $&$ posibleSalto $>$ 0}\\
- 			\STATE{\quad\quad\quad  posibleSalto - 1 }\\
- 			\STATE{\quad\quad SI posibleSalto $=$ posActual}\\
- 			\STATE{\quad\quad\quad no hay solucion }\\
-			\STATE{\quad\quad SI NO hay solucion }\\
- 			\STATE{\quad\quad\quad AgregarAtras(posibleSalto,listaDeSaltos)}\\
- 			\STATE{\quad\quad\quad posActual \leftarrow posibleSalto}\\
- 			\STATE{\quad\quad Devolver listaDeSaltos}\\
+ 		1-\STATE{Si saltoMax $>$ cantidadTablones} \;\; O(1) 
+ 		2-\STATE{\quad devolver 1} \;\;
+ 		3-\STATE{SI NO}\\
+ 		4-\STATE{SI existe una cantidad de tablones rotos mayor o igual a salto\_maximo en algun lugar del puente}
+ 		5-\STATE {\quad no existe solucion}
+ 		6-\STATE{nueva listaDeSaltos}\\
+ 		7-\STATE{\quad mientras posActual $<$ n && posActual >= 0 } \;\; O(n)
+ 			8-\STATE{\quad\quad SI puente(posActual) == 0 }\\
+ 			9-\STATE{\quad\quad\quad Agrego posActual a Lista de Saltos}\\
+ 			10-\STATE{\quad\quad\quad le sumo a posActual el largo del salto }\\
+ 			11-\STATE{\quad\quad SI NO  }\\
+ 			12-\STATE{\quad\quad Le resto uno a PosActual}\\
+ 			13-\STATE{\quad\quad Devolver listaDeSaltos}\\
   \end{algorithmic}
- Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones, en el caso del infinito este es representado por el máximo entero representable y este esta acotado.\\
- El ciclo de las lineas 5 - 15 se realiza n veces con lo cual la complejidad total del algoritmo es \Ode{n}, como saltoMax es una constante menor a n la complejidad total del algoritmo es \Ode{n}.
+ Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones\\
+ En la linea 4 para revisar si la cantidad de tablones rotos es mayor o igual a el salto maximo en alguna parte del puente se realiza un ciclo que cuenta la cantidad de tablones rotos consecutivos, en caso de que se encuentre con uno sano resetea el contador y comienza de nuevo a contar, en el caso que el contador llegue a superar el salto maximo se devuelve que no tiene solucion. Esto se realiza con un solo ciclo y la complejidad es \Ode{n}. 
+ El ciclo de las lineas 7 - 13 se realiza n veces en el peor caso con lo cual la complejidad total del algoritmo es \Ode{n}, ya que los dos posibles peores casos son, cuando el puente esta sano y salta de a un tablon por vez, o cuando los unicos tablones sanos son en las posiciones 1, Salto Maximo +1 , 2*(salto Maximo +1)..., de esta manera siempre salta el maximo y recorre los tablones hasta el primero para encontrar el sano dando como resultado que recorre todo el puente para encontrar los saltos.
+ 
 
  \end{algorithm}	
 \subsection{Demostraci\'on}
-El algoritmo consta fundamentalmente en la eleccion del tablon mas lejano al que pueda saltar en cada paso y eso reside en ciclo interno de nuestro algoritmo:\\
-
-\begin{algorithm}
-	\begin{algorithmic}[1]\parskip=1mm
-		\STATE{\quad\quad posibleSalto $=$ posActual + salto\_Maximo }\\
-		\STATE{\quad\quad mientras puente$($ posibleSalto $ ) $ $!=$ 1 $&$ posibleSalto $>$ 0}\\
- 		\STATE{\quad\quad\quad  posibleSalto - 1 }\\
- 		\end{algorithmic}
- \end{algorithm}	
-En este paso elegimos el proximo tablon al cual queremos saltar comenzando desde la posicion actual donde se encuentra el participante mas la longitud maxima del salto que puede realizar dicho participante, en caso que la guarda no se cumpla, que el tablon este sano, comenzamos a retroceder, una vez finalizado el ciclo revisamos si la posicion actual y la posicion del tablon al que queremos saltar es diferente, en este caso quiere decir que existe un tablon al cual queremos saltar.
-
 
 		
 \newpage			
 
 \subsection{Experimentacion}
-Para la experimentación del problema en cuestión se realizaron dos test, el primero teniendo en cuenta el peor caso, siendo este que todos los tablones del puente estén sanos y el salto máximo del participante sea uno, para esto se fijo el salto máximo y se crearon 1000 instancias de puentes sanos en tamaños que varian de 1 a 1000 luego se midieron los tiempos de ejecución dando como resultado el siguiente gráfico \\
+Para la experimentación del problema en cuestión se realizaron los dos test de peores casos como se menciono en la seccion de complejidad, el primero teniendo en cuenta el  caso que todos los tablones del puente estén sanos y el salto máximo del participante sea uno, para esto se fijo el salto máximo y se crearon 100 instancias de puentes sanos en tamaños que van del 1 al 100 luego se midieron los tiempos de ejecución dando como resultado el siguiente gráfico \\
 \includegraphics[scale=0.7]{Ej1/sanos.jpg}\\
 Como puede verse en el gráfico su complejidad esta en el orden lineal como puede compararse con la función, en el gráfico puede observar que algunos casos excede el orden, este ruido se debe a que puede haber ovaciones donde el sistema operativo este realizando otras tareas y afecte el orden de ejecución.
+En el segundo test, se realizo el segundo caso mencionado en la seccion complejidad y dando como resultado un grafico con complejidad del orden lineal como se puede observar en el siguiente grafico.
+\includegraphics[scale=0.7]{Ej1/sanos.jpg}\\
 
-Para el segundo test se realizo un test aleatorio, para poder observar el comportamiento de todos los casos posibles, para esto se crearon 1000 instancias, en las cuales el tamaño del puente fue creciendo de 1 a 1000  y el salto máximo es un numero random entre 1 y la cantidad de tablones del puente para poder obtener también casos que no sean solución, dando comer resultado el siguiente gráfico.
+Para el tercer test se realizo un test aleatorio, para poder observar el comportamiento de todos los casos posibles, para esto se crearon 1000 instancias, en las cuales el tamaño del puente fue creciendo de 1 a 1000  y el salto máximo es un numero random entre 1 y la cantidad de tablones del puente para poder obtener también casos que no sean solución, dando comer resultado el siguiente gráfico.
 \includegraphics[scale=0.7]{Ej1/Random.jpg}\\
 
 Puede observarse que al igual en el test anterior el orden de complejidad esta en el orden lineal, de esta manera podemos concluir que nuestro algoritmo cumple con los ordenes de complejidad impuestos por el enunciado.
