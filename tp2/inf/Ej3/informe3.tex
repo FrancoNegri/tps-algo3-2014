@@ -29,10 +29,10 @@ El algoritmo es el siguiente:
 \begin{algorithmic}[1]\parskip=1mm
 \caption{EncontrarBackBone( G(E,V) ) }
 	\STATE{si no Es_conexo_o_no_tiene_ejes_suficientes_para_construir_un_circuito(G)}	
-	\STATE\STATE{ devolver no}
-	\STATE{agm, ejes_no_seleccionados \leftarrow Prim(G)}
-	\STATE{eje_minimo \leftarrow Encontrar_Eje_Minimo(ejes_no_seleccionados)}
-	\STATE{circuito \leftarrow Construir_Circuito(agm, eje_minimo)}
+	\STATE ~~~{ devolver no}
+	\STATE{agm, ejes_no_seleccionados $\leftarrow$ Prim(G)}
+	\STATE{eje_minimo $\leftarrow$ Encontrar_Eje_Minimo(ejes_no_seleccionados)}
+	\STATE{circuito $\leftarrow$ Construir_Circuito(agm, eje_minimo)}
 	\STATE{Mostrar circuito}
  \end{algorithmic}
 \end{algorithm}

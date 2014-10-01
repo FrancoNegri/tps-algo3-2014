@@ -23,41 +23,9 @@
 \usepackage{url}
 
 
-%---------------------------------------------------------------
-
-\usepackage{amsfonts}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm} % para los teoremas
-\usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
-% \usepackage{newalgo3}
-%\usepackage{otrosComandos}
-%\usepackage{hyperref}
-\usepackage[noend]{algorithmic} % es para pseudocodigos
-% \usepackage[ruled,lined,algonl]{algorithm2e}
-\usepackage{algorithm} % es para pseudocodigos
-\usepackage{enumerate} % para que los items salgan lindos
-\usepackage{titlesec}
-\usepackage{colortbl}
-\usepackage{xcolor}
-\usepackage{graphicx}
-\sloppy
-\def\infinity{\rotatebox{90}{8}}
-%\usepackage[table]{xcolor}
-% Defino el estilo para el paquete amsthm
-\theoremstyle{plain}% default
-\newtheorem{thm}{Teorema}[section]
-\newtheorem{lem}[thm]{Lema}
-\newtheorem{prop}[thm]{Proposici\'on}
-\newtheorem*{cor}{Corolario}
-\newtheorem*{KL}{Klein's Lemma}
-
-\theoremstyle{definition}
-\newtheorem{defn}{Definici\'on}[section]
-\newtheorem{conj}{Conjectura}[section]
-\newtheorem{exmp}{Ejemlo}[section]
-\usepackage{eqparbox}
+%-------------------para algoritmos
+\usepackage[]{algorithm2e}
+\usepackage[]{algorithmic}
 %-------------------------------------------------
 
 
@@ -83,21 +51,19 @@
 
 
 \thispagestyle{empty}
-\materia{Algo 3}
+\materia{Algoritmos 3}
 \submateria{Segundo Cuatrimestre de 2014}
 \titulo{Trabajo Práctico II}
 \subtitulo{subtitulo del trabajo}
-\integrante{Nombre}{XXX/XX}{mail}
-\integrante{Nombre}{XXX/XX}{mail}
-
+\integrante{Ricardo Colombo}{156/08}{ricardogcolombo@gmail.com.com}
+\integrante{Federico Suarez}{610/11}{elgeniofederico@gmail.com}
+\integrante{Juan Carlos  Giudici}{827/06}{elchudi@gmail.com}
+\integrante{Franco Negri}{893/13}{franconegri2004@gmail.com}
 \maketitle
 \newpage
 
 \thispagestyle{empty}
 \vfill
-\begin{abstract}
-En el presente trabajo se describe la problemática de ...
-\end{abstract}
 
 \thispagestyle{empty}
 \vspace{3cm}
@@ -107,19 +73,15 @@ En el presente trabajo se describe la problemática de ...
 
 %\normalsize
 \newpage
-
-\section{Objetivos generales}
-
-El objetivo de este Trabajo Práctico es ...
-
-
-\section{Ej1}
+\section{Plan de vuelo}
 \input{Ej1/informe1.tex}
 
-\section{Ej2} 
+\newpage
+\section{Caballos salvajes} 
 \input{Ej2/informe2.tex}
 
-\section{Ej3}
+\newpage
+\section{La comunidad del anillo}
 \input{Ej3/informe3.tex}
 
 \end{document}
