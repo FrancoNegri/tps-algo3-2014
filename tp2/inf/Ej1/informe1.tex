@@ -40,21 +40,55 @@ Lamentablemente no existen vuelos directos, por lo que tendrémos que hacer esca
 \item Buenos Aires - San Fransisco: 13 - 20
 \end{itemize}
 
-Luego, podemos observar que existen muchas maneras factibles de llegar desde Buenos Aires al objetivo. Una manera es tomar la ruta de Buenos aires - Seul, de allí ir a San Fransisco y finalmente a la isla de Saba, pero rapidamente vemos que si bien este viaje es factible, es al menos tan bueno como tomar el vuelo de Buenos aires a san fransisco y de allí continuar a Saba. De esta observación se desprende un dato interesante que utilizaremos en nuestro algoritmo, si se llegar de la manera mas barata a un grupo de ciudades $v_1$, $v_2$, ... $v_s$ y tengo $w_1$, $w_2$,...$w_i$ ciudades a las que puedo llegar desde el primer grupo. Si ahora tomo la ciudad $w_g$ tal que la hora de arribo a esa ciudad desde una en $v$ es la menor posible, sé que no es posible llegar de una manera mas barata a esa ciudad tambien.
+De esta simple instancia, ya vemos que es posible combinar los vuelos de varias maneras posibles.
+\\
+Podría irse desde Buenos Aires a Seul, y de Seul a San Fransisco, y de allí a Saba.
+\\
+O de Buenos aires a San Fransisco directo, sin pasar por Seul y de allí a Saba.
+\\
+Y ya aquí puede la intuición nos indicaría que lo que a uno le gustaría hacer es minimizar es algun problema de caminos minimos. Tal vez donde los pesos de las aristas estan indicados por el tiempo que se tarda, agregando de alguna manera esta condición extra de que para poder tomar un vuelo, es necesario estar en esa ciudad dos horas antes en la ciudad de la que se parte. En el apartado siguiente profundisaremos sobre esa idea.
 
-Rapidamente esta idea nos remite al algoritmo de dijstra, el cual comparte una gran similitud en la idea de ir explorando todos los caminos más cortos que parten del vértice origen y que llevan a todos los demás vértices hasta llegar al destino, por lo que mas adelante intentaremos valernos de esta idea.
+Sin embargo, para esta pequeña instancia, es facil resolver a mano el problema y descubrir que la combinación de vuelos optima es:
 
-Luego de esta gran revelación algoritmica, continuamos con el problema que nos atañe. Es facil resolver a mano esta instancia del problema y descubrir que la combinación de vuelos optima es:
 \begin{itemize}
 \item Buenos Aires - La isla de los pitufos: 17 - 24
 \item La isla de los pitufos - isla de Saba: 28 - 30
 \end{itemize}
+
 Llegando a destino a la hora $30$.
 
 \subsection{Desarrollo}
-Como ya hemos adelantado en el apartado anterior, la idea subyacente en este problema es, utilizando un algoritmo de dijstra levemente modificado, en cada paso, calcular la manera mas barata de llegar desde un conjuto de ciudades ya visitadas, a uno quue todavía no hemos visitado.
 
-==COMPLETAR==
+Podemos observar del ejemplo anterior, que existen muchas maneras factibles de llegar desde Buenos Aires al objetivo. Una manera es tomar la ruta de Buenos aires - Seul, de allí ir a San Fransisco y finalmente a la isla de Saba, pero rapidamente vemos que si bien este viaje es factible, es al menos tan bueno como tomar el vuelo de Buenos aires a san fransisco y de allí continuar a Saba. De esta observación se desprende un dato interesante que utilizaremos en nuestro algoritmo, si se llegar de la manera mas barata a un grupo de ciudades $v_1$, $v_2$, ... $v_s$ y tengo $w_1$, $w_2$,...$w_i$ ciudades a las que puedo llegar desde el primer grupo. Si ahora tomo la ciudad $w_g$ tal que la hora de arribo a esa ciudad desde una en $v$ es la menor posible, sé que no es posible llegar de una manera mas barata a esa ciudad tambien.
+
+Rapidamente esta idea nos remite al algoritmo de dijstra, el cual comparte una gran similitud en la idea de ir explorando todos los caminos más cortos que parten del vértice origen y que llevan a todos los demás vértices hasta llegar al destino.
+
+Luego la idea subyacente en este problema es, utilizando un algoritmo de dijstra levemente modificado, en cada paso, calcular la manera mas barata de llegar desde un conjuto de ciudades ya visitadas, a uno quue todavía no hemos visitado.
+
+Luego el pseudocodigo para este algoritmo será algo asi:
+
+\begin{algorithm}
+  \begin{algorithmic}[1]\parskip=1mm
+ \caption{ BuscarCaminoMinimo}
+ 		\STATE{Para toda ciudad, pongo su peso en infinito ~~~O(n)}   
+ 		\STATE{Para toda ciudad, pongo el vuelo que tuve que tomar para llegar a ella en 0 ~~~O(n)}
+ 		\STATE{Para la ciudad de inicio, pongo su peso en 0}
+ 		\STATE{Para $i$ entre $1$ y $n$}
+ 			\STATE{\quad $CostoMinimo = \infty$}
+ 			\STATE{\quad Para $j$ entre $1$ y $n$}
+ 			\STATE{\quad \quad Si el peso de la ciudad de origen del vuelo $j$ es distinto de $\infty$}
+ 			\STATE{\quad \quad \quad Si la hora a la que llegue a la ciudad del vuelo $j$ mas dos es menor a la hora a la que parte el vuelo $j$} 
+ 			\STATE{\quad \quad \quad \quad SI $CostoMinimo$  es mayor a horario al que finaliza el vuelo $j + 2$}
+ 			\STATE{\quad \quad \quad \quad \quad Asigno horario al que finaliza el vuelo $j + 2$ como $CostoMinimo$}
+ 			\STATE{\quad \quad \quad \quad \quad Me guardo el vuelo $j$ en una variable $VueloMinimo$}
+
+ 			\STATE{\quad Si $CostoMinimo == \infty$}
+ 			\STATE{\quad \quad No puedo alcanzar ninguna otra ciudad, salgo del ciclo}
+ 			\STATE{\quad sino asigno al peso de la ciudad de destino guardada en $VueloMinimo$, $CostoMinimo$}
+ 			\STATE{\quad guardo que la manera de llegar a esta ciudad de destino es por $VueloMinimo$}
+  \end{algorithmic}
+  \end{algorithm}	
+Al finalizar este algoritmo tengo todas las maneras mas rapidas de llegar de la ciudad de origen a todas las otras ciudades, siempre que exista una secuencia de vuelos que lo permitan.
 
 \subsection{Complejidad}
 
