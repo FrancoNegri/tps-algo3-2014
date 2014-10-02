@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  2 OCT 2014 19:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  2 OCT 2014 20:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -629,17 +629,22 @@ LaTeX Font Info:    Font shape `OMS/bch/m/n' in size <10> not available
 LaTeX Info: Redefining \. on input line 63.
 LaTeX Info: Redefining \% on input line 63.
  [3]
-Overfull \hbox (15.0pt too wide) detected at line 90
+Underfull \hbox (badness 10000) in paragraph at lines 66--70
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) detected at line 91
 [][] 
  []
 
-LaTeX Info: Redefining \. on input line 99.
-LaTeX Info: Redefining \% on input line 99.
+LaTeX Info: Redefining \. on input line 101.
+LaTeX Info: Redefining \% on input line 101.
 [4] <Ej1/testingnvst.png, id=26, 837.1275pt x 374.39874pt>
 File: Ej1/testingnvst.png Graphic file (type png)
 
 <use Ej1/testingnvst.png>
-Package pdftex.def Info: Ej1/testingnvst.png used on input line 107.
+Package pdftex.def Info: Ej1/testingnvst.png used on input line 109.
 (pdftex.def)             Requested size: 418.56273pt x 187.19891pt.
 )
 LaTeX Info: Redefining \. on input line 87.
@@ -656,45 +661,60 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--28
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--53
+Underfull \hbox (badness 10000) in paragraph at lines 33--44
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--53
+Underfull \hbox (badness 10000) in paragraph at lines 33--44
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--82
+Underfull \hbox (badness 10000) in paragraph at lines 49--53
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--82
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--82
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--82
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--82
-
- []
-
-LaTeX Info: Redefining \. on input line 82.
-LaTeX Info: Redefining \% on input line 82.
+LaTeX Info: Redefining \. on input line 54.
+LaTeX Info: Redefining \% on input line 54.
 [6
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 54--57
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--57
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--82
+
+ []
+
+
 Overfull \hbox (15.0pt too wide) detected at line 133
 [][] 
  []
@@ -702,17 +722,22 @@ Overfull \hbox (15.0pt too wide) detected at line 133
 LaTeX Info: Redefining \. on input line 135.
 LaTeX Info: Redefining \% on input line 135.
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 137--178
+Underfull \hbox (badness 10000) in paragraph at lines 137--146
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--178
+Underfull \hbox (badness 10000) in paragraph at lines 137--146
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--178
+Underfull \hbox (badness 10000) in paragraph at lines 151--178
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--178
 
  []
 
@@ -847,7 +872,7 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on informe.pdf (23 pages, 583306 bytes).
+Output written on informe.pdf (23 pages, 583375 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  92 compressed objects within 1 object stream

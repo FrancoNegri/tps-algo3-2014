@@ -41,12 +41,12 @@ Ahora, desde todas las pociciones de costo $1$ saltamos a todas las pociciones v
 Aqui puede verse la matriz obtenida:
 \\
 \\
-$A = \begin{bmatrix}
+$$A = \begin{bmatrix}
       0 & 3 & 2 & 5   \\[0.3em]
       3 & 4 & 1 & 2   \\[0.3em]
       2 & 1 & 4 & 3   \\[0.3em]
       5 & 2 & 3 & 2 
-\end{bmatrix}$
+\end{bmatrix}$$
 \\
 \\
 Realizamos lo mismo con el segundo caballo, marcamos la casilla donde se encuentra parado con costo $0$ y empezamos a saltar a las casillas validas.
@@ -54,24 +54,24 @@ Realizamos lo mismo con el segundo caballo, marcamos la casilla donde se encuent
 La matriz será:
 \\
 \\
-$B = \begin{bmatrix}
+$$B = \begin{bmatrix}
       2 & 3 & 2 & 5  \\[0.3em]
       3 & 4 & 1 & 2  \\[0.3em]
       2 & 1 & 4 & 3  \\[0.3em]
       5 & 2 & 3 & 0
-\end{bmatrix}$
+\end{bmatrix}$$
 \\
 \\
 Ahora sumamos ambas matrices, y lo que obtenemos es una matriz con los costos minimos de que todos los caballos salten a cada una de las posiciones del tablero.
 \\
 \\
-$A + B =  \begin{bmatrix}
+$$A + B =  \begin{bmatrix}
           2 & 6 & 4 & 10 \\[0.3em]
           6 & 8 & 2 & 4 \\[0.3em]
           4 & 2 & 8 & 6 \\[0.3em]
           10 & 4 & 6 & 2 
           \end{bmatrix}
-          $
+          $$
 \\
 \\
 Buscando los minimos en esta matriz, obtenemos lo que quer\'iamos! (me siento re paenza escribiendo estas cosas)
@@ -143,12 +143,12 @@ Caso base:
 Ya vimos en el ejemplo que desde en un tablero de $4$x$4$ es posible llegar a cualquier casillero:
 \\
 \\
-$A = \begin{bmatrix}
+$$A = \begin{bmatrix}
       0 & 3 & 2 & 5   \\[0.3em]
       3 & 4 & 1 & 2   \\[0.3em]
       2 & 1 & 4 & 3   \\[0.3em]
       5 & 2 & 3 & 2 
-\end{bmatrix}$
+\end{bmatrix}$$
 \\
 \\
 Caso inductivo:
