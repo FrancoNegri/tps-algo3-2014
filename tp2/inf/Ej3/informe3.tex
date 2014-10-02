@@ -17,7 +17,7 @@ Dada una red, la misma se puede modelar con un grafo de la siguiente manera:
 
 Transformamos el problema de ser uno de redes, a uno de grafos, donde encontrar un backbone con topologia de red tipo anillo que tenga costo mínimo y conecte a todas las computadoras, se transforma en encontrar subgrafo conexo cuyo costo sea mínimo y que contenga un único circuito simple, el cual se corresponde al backbone.
 
-\subsubsection{Solucio'n, Correctitud y Complejidad}
+\subsubsection{Solución, Correctitud y Complejidad}
 
 Suponiendo que el grafo resultante es conexo, ya que si no lo fuese no habria soluci'on, vamos a utilizar el algoritmo de Prim, el cual dado un grafo conexo con pesos asociados a sus ejes construye un Árbol Generador Mínimo, es decir un subgrafo conexo cuya la suma de los pesos de sus ejes es mínima. Para completar el circuito, seleccionamos el eje con costo mínimo de los no elegidos por el algoritmo de Prim, el cual nos va a generar un único circuito simple.
 
