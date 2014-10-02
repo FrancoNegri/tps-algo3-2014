@@ -42,34 +42,35 @@ definimos edificioenCero al que tiene todos sus elementos en cero.
 \begin{algorithmic}[1]\parskip=1mm
  \caption{LaSilueta( ciudad: arreglo(edificios) , cantidadEdificios : natural)}
 	
-	\STATE{arregloXIzq \leftarrow ordenarXIzquierda(ciudad)}\\
-	\STATE{arregloXDer \leftarrow ordenarXDerecha(ciudad)}\\
-	\STATE{EdificiosActivos \leftarrow Multiconjunto(edificio)}\\
+	\STATE{arregloXIzq $\leftarrow$ ordenarXIzquierda(ciudad)}
+	\STATE{arregloXDer $\leftarrow$ ordenarXDerecha(ciudad)}
+	\STATE{EdificiosActivos $\leftarrow$ Multiconjunto(edificio)}
 	\\
-	\STATE{posIzquierdo , posDerecho \leftarrow 0}\\
-	\STATE{max \leftarrow edificioenCero \\
-	\STATE{mientras posIzquierdo < cantidadEdificios \&\& posDerecho < cantidadEdificios }\\
-	\STATE{ \quad SI arregloXIzq.indice(posIquierdo).izq \leq arregloXDer.indice(posDerecho).der}\\
-			\STATE{\quad\quad auxiliar \leftarrow arregloXIzq.indice(posIzquierdo)}\\
-			\STATE{\quad\quad mientras auxiliar.izq = arregloXIzq.indice(posIquierdo).izq \&\& posIzquierdo != cantidadEdificios}\\
-			\STATE{\quad\quad\quad agregar(arregloXIzq.indice(posIquierdo), EdificiosActivos )}\\
-			\STATE{\quad\quad\quad SI arregloXIzq.indice(posIquierdo).alto > max.alto}\\
-			\STATE{\quad\quad\quad\quad max \leftarrow arregloXIzq.indice(posIquierdo) }\\
-		\STATE{\quad SI NO }\\
-			\STATE{\quad\quad auxiliar \leftarrow arregloXDer.indice(posDerecha)}\\
-			\STATE{\quad\quad mientras auxiliar.der = arregloXDer.indice(posDerecha).der && posDerecha != cantidadEdificios}\\
-			\STATE{\quad\quad\quad SI  arregloXDer.indice(posDerecha).id = max.id}\\
-			\STATE{\quad\quad\quad\quad dameMaximoSiguiente( arregloXDer.indice(posDerecha), EdificiosActivos)}\\
-			\STATE{{\quad\quad\quad\quad sacar( arregloXDer.indice(posDerecha), EdificiosActivos)}
+	\STATE{posIzquierdo , posDerecho $\leftarrow$ 0}
+	\STATE{max $\leftarrow$ edificioenCero}
+	\STATE{mientras posIzquierdo < cantidadEdificios \&\& posDerecho < cantidadEdificios }
+	\STATE{ \quad SI arregloXIzq.indice(posIquierdo).izq $\leq$ arregloXDer.indice(posDerecho).der}
+			\STATE{\quad\quad auxiliar $\leftarrow$ arregloXIzq.indice(posIzquierdo)}
+			\STATE{\quad\quad mientras auxiliar.izq = arregloXIzq.indice(posIquierdo).izq $\&\&$ posIzquierdo != cantidadEdificios}
+			\STATE{\quad\quad\quad agregar(arregloXIzq.indice(posIquierdo), EdificiosActivos )}
+			\STATE{\quad\quad\quad SI arregloXIzq.indice(posIquierdo).alto > max.alto}
+			\STATE{\quad\quad\quad\quad max $\leftarrow$ arregloXIzq.indice(posIquierdo) }
+		\STATE{\quad SI NO }
+			\STATE{\quad\quad auxiliar $\leftarrow$ arregloXDer.indice(posDerecha)}
+			\STATE{\quad\quad mientras auxiliar.der = arregloXDer.indice(posDerecha).der $\&\&$ posDerecha != cantidadEdificios}
+			\STATE{\quad\quad\quad SI  arregloXDer.indice(posDerecha).id = max.id}
+			\STATE{\quad\quad\quad\quad dameMaximoSiguiente( arregloXDer.indice(posDerecha), EdificiosActivos)}
+			\STATE{{\quad\quad\quad\quad sacar( arregloXDer.indice(posDerecha), EdificiosActivos)}}
 \\
 \end{algorithmic}
+\end{algorithm}	
 Los algoritmos ordenarXizquierda y ordenarXDerecha es el conocido algoritmo mergeSort sacado del libro de brassard, la complejidad del mismo es \Ode{N*Log(N)} siendo N la cantidad de elementos en el arreglo, ósea todos los edificios, estos algoritmos ordenan los arreglos de tuplas, uno por la coordenada izq y el otro por la coordenada derecha respectivamente.\\
 El multiconjunto EdificiosActivos esta representado con la estructura Multiset de la librería STL de c++, la relaci\'on de orden sobre los elementos que se defini\'o es por la coordenada alt y en el caso que la altura sea igual por la componente der.\\
 Para las operaciones para agregar, sacar elementos la complejidad es \Ode{log(n)} siendo n la cantidad de elementos en el multiconjunto y para obtener el proximo maximo lo que se realiza es obtener la referencia al elemento que 
 representa el m\'aximo, esto lleva \Ode{Log(n)} y luego se obtiene el posterior, en caso de no ser posible obtenemos el anterior, en el peor caso se tienen todos los edificios y la complejidad seria \Ode{log(N)}.\\
-El ciclo de las lineas 9-12 se realiza para cada punto x donde haya paredes izquierdas, con lo cual la complejidad total sera la suma de todas las paredes izquierda, siendo esta N la cantidad de edificios. De la misma manera el ciclo de las lineas 15 a 18 se ejecuta para todas las paredes derechas de los edificios con lo cual el total de las iteraciones sera la suma de las paredes derechas ósea N. Como el ciclo principal se ejecuta mientras la cantidad de paredes recorridas izquierdas sea menor a la cantidad de edificios y la cantidad de paredes derechas sea menor a la cantidad de edificios y las iteraciones internas modifican las paredes izquierdas y derechas recorridas, el total de las iteraciones es 2*N, siendo N la cantidad total de edificios, con lo cual como la complejidad de agregar , sacar y obtener el m\'aximo es \Ode{log(N)} en el peor caso, el total es \Ode{2*N*Log(N)} $\subset$ \Ode{N*Log(N)} siendo esta la complejidad total del algoritmo y esta estrictamente menor a \Ode{N^2} como se solicitaba en el enunciado.
+El ciclo de las lineas 9-12 se realiza para cada punto x donde haya paredes izquierdas, con lo cual la complejidad total sera la suma de todas las paredes izquierda, siendo esta N la cantidad de edificios. De la misma manera el ciclo de las lineas 15 a 18 se ejecuta para todas las paredes derechas de los edificios con lo cual el total de las iteraciones sera la suma de las paredes derechas ósea N. Como el ciclo principal se ejecuta mientras la cantidad de paredes recorridas izquierdas sea menor a la cantidad de edificios y la cantidad de paredes derechas sea menor a la cantidad de edificios y las iteraciones internas modifican las paredes izquierdas y derechas recorridas, el total de las iteraciones es 2*N, siendo N la cantidad total de edificios, con lo cual como la complejidad de agregar , sacar y obtener el m\'aximo es \Ode{log(N)} en el peor caso, el total es $\Ode{2*N*Log(N)}$ $\subset$ $\Ode{N*Log(N)}$ siendo esta la complejidad total del algoritmo y esta estrictamente menor a $\Ode{N^2}$ como se solicitaba en el enunciado.
 
-\end{algorithm}	
+
 \newpage
 \subsection{Experimentaci\'on}
 Se realizaron experimentaciones sobre varios tipos de caso para observar el comportamiento del algoritmo, en todos los casos se generaron 1000 entradas, a las gráficas resultantes se las comparo con la función n*log(n)*1000, siendo n la cantidad de edificios de entrada.\\

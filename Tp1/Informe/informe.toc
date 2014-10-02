@@ -1,0 +1,9 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Puentes sobre lava caliente}{3}{chapter.1}
+\contentsline {subsection}{\numberline {1.0.1}Introducci\'on}{3}{subsection.1.0.1}
+\contentsline {subsection}{\numberline {1.0.2}Ejemplos y Soluciones}{3}{subsection.1.0.2}
+\contentsline {subsection}{\numberline {1.0.3}Desarrollo}{3}{subsection.1.0.3}
+\contentsline {subsection}{\numberline {1.0.4}Complejidad}{3}{subsection.1.0.4}
+\contentsline {subsection}{\numberline {1.0.5}Demostraci\'on}{4}{subsection.1.0.5}
+\contentsline {subsection}{\numberline {1.0.6}Experimentacion}{6}{subsection.1.0.6}
+\contentsline {chapter}{\numberline {2}Ap\'endice}{8}{chapter.2}

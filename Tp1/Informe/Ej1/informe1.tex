@@ -24,29 +24,59 @@ El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
  \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
  \caption{ \\Saltos( salto\_Maximo : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
- 		1-\STATE{Si saltoMax $>$ cantidadTablones} \;\; O(1) 
- 		2-\STATE{\quad devolver 1} \;\;
- 		3-\STATE{SI NO}\\
- 		4-\STATE{SI existe una cantidad de tablones rotos mayor o igual a salto\_maximo en algun lugar del puente}
- 		5-\STATE {\quad no existe solucion}
- 		6-\STATE{nueva listaDeSaltos}\\
- 		7-\STATE{\quad mientras posActual $<$ n && posActual >= 0 } \;\; O(n)
- 			8-\STATE{\quad\quad SI puente(posActual) == 0 }\\
- 			9-\STATE{\quad\quad\quad Agrego posActual a Lista de Saltos}\\
- 			10-\STATE{\quad\quad\quad le sumo a posActual el largo del salto }\\
- 			11-\STATE{\quad\quad SI NO  }\\
- 			12-\STATE{\quad\quad Le resto uno a PosActual}\\
- 			13-\STATE{\quad\quad Devolver listaDeSaltos}\\
+ 		\STATE{Si saltoMax $>$ cantidadTablones ~~~O(1)}   
+ 		\STATE{\quad devolver 1}
+ 		\STATE{SI NO}
+ 		\STATE{SI existe una cantidad de tablones rotos mayor o igual a salto\_maximo en algun lugar del puente}
+ 		\STATE {\quad no existe solucion}
+ 		\STATE{nueva listaDeSaltos}
+ 		\STATE{\quad mientras posActual $<$ n $\&\&$ posActual >= 0 ~~~O(n)} 
+ 			\STATE{\quad\quad SI puente(posActual) == 0 }
+ 			\STATE{\quad\quad\quad Agrego posActual a Lista de Saltos}
+ 			\STATE{\quad\quad\quad le sumo a posActual el largo del salto }
+ 			\STATE{\quad\quad SI NO  }
+ 			\STATE{\quad\quad Le resto uno a PosActual}
+ 			\STATE{\quad\quad Devolver listaDeSaltos}
   \end{algorithmic}
+  \end{algorithm}	
  Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones\\
  En la linea 4 para revisar si la cantidad de tablones rotos es mayor o igual a el salto maximo en alguna parte del puente se realiza un ciclo que cuenta la cantidad de tablones rotos consecutivos, en caso de que se encuentre con uno sano resetea el contador y comienza de nuevo a contar, en el caso que el contador llegue a superar el salto maximo se devuelve que no tiene solucion. Esto se realiza con un solo ciclo y la complejidad es \Ode{n}. 
  El ciclo de las lineas 7 - 13 se realiza n veces en el peor caso con lo cual la complejidad total del algoritmo es \Ode{n}, ya que los dos posibles peores casos son, cuando el puente esta sano y salta de a un tablon por vez, o cuando los unicos tablones sanos son en las posiciones 1, Salto Maximo +1 , 2*(salto Maximo +1)..., de esta manera siempre salta el maximo y recorre los tablones hasta el primero para encontrar el sano dando como resultado que recorre todo el puente para encontrar los saltos.
  
 
- \end{algorithm}	
+ 
 \subsection{Demostraci\'on}
+Para la prueba de correctitud, queremos demostrar que nuestro algoritmo siempre encuentra una suceción de saltos que es la menor posible.
 
-		
+Luego para demostrar por absurdo, supongamos que no es así. Dicho mas formalmente, existe una suceción $V=\{v_1,v_2,...,v_i\}$ de saltos tal que es menor a la suceción $W= \{w_1,w_2,...,w_i, w_{i+1},...,w_j\}$ que encuentra nuestro algoritmo.
+
+Por condiciones del problema sabemos el tablon al que queremos saltar no puede estar a distancia mayor a $k$ (el salto maximo posible), esto significa que:
+
+$$v_1 \leq k$$
+$$v_2 - v_1 \leq k$$
+$$...$$
+$$v_i - v_{i-1} \leq k$$
+
+Sumando:
+
+$$v_1 \leq k$$
+$$v_2 \leq 2.k$$
+$$...$$
+$$v_i \leq i.k$$
+
+Pero nuestro algoritmo, en cada paso, salta la mayor cantidad de tablones posibles y de allí comienza a retroceder hasta encontrar uno sano, dado que $v_1,v_2,...,v_i$ deben ser tablones sanos, los tablones elegidos por nuestro algoritmo estarán acotados de esta manera:
+
+$$ v_1 \leq w_1 \leq k $$ 
+$$ v_2 \leq w_2 \leq 2.k$$
+$$...$$
+$$ v_i \leq w_{i} \leq i.k$$
+
+Pero entonces, esto quiere decir que nuestro algoritmo encuenta una suceción de saltos, para los cuales siempre se salta por lo menos, la misma cantidad de tablones que en la suceción $V$. Luego nuestro algoritmo encuentra una solución $W$ que tiene, como mucho, $k$ saltos.
+
+Dado que supusimos que nuestro algoritmo encuntraba una suceción que era peor a $V$, abusrdo.
+
+Luego nuestro algoritmo encuentra siempre una suceción de saltos que es minima.
+
 \newpage			
 
 \subsection{Experimentacion}
