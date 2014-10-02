@@ -15,16 +15,6 @@
 
 using namespace std;
 
-
-
-/*
-a ---- > b
-1 -----> 2 + 2
-
-
-
-*/
-
 struct vuelo
 {
   int ini;

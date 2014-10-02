@@ -11,6 +11,7 @@
 #include <sys/timeb.h>
 #include <climits>
 #include <algorithm>
+#include <chrono>
 
 using namespace std;
 
@@ -38,12 +39,13 @@ vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int desti
 	vector<int> costo_de_llegar_a_esta_ciudad;
 	vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad;
 	vuelo_tomado_para_llegar_a_esta_ciudad.resize(cantidad_de_ciudades);
+
 	for(int i = 0; i < cantidad_de_ciudades; i++)
 	{
 		costo_de_llegar_a_esta_ciudad.push_back(INT_MAX);
 	}
 
-	costo_de_llegar_a_esta_ciudad[origen] = 0;
+	costo_de_llegar_a_esta_ciudad[origen] = -100;
 
 	for(int i = 0; i < vector_vuelos.size(); i++)
 	{
@@ -51,15 +53,17 @@ vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int desti
 		vuelo vuelo_de_costo_min;
 		for(int j = 0; j < vector_vuelos.size(); j++)
 		{
-			//si el origen esta en las ciudades visitadas y
-			//se cumple que el tiempo de arribo a la ciudad es menor que el tiempo de despegue + 2
-			if(costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] != INT_MAX)
+			//si la ciudad de origen esta en el grupo de los marcados, y la de destino no
+			if(costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] != INT_MAX && costo_de_llegar_a_esta_ciudad[vector_vuelos[j].destino] == INT_MAX)
 			{
-				if(vuelo_tomado_para_llegar_a_esta_ciudad[vector_vuelos[j].origen].fin + 2 <= vector_vuelos[j].ini)
+				//si cumple la condicion de los vuelos
+				if(costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] + 2 <= vector_vuelos[j].ini)
 				{
-					if(min_costo > costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] + vector_vuelos[j].fin + 2 - vector_vuelos[j].ini);
+					//si el peso para esta ciudad de menor que el que ya tenía guardado.
+					if(min_costo > vector_vuelos[j].fin);
 					{
-						min_costo = costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] + vector_vuelos[j].fin + 2 - vector_vuelos[j].ini;
+						//me guardo este vuelo
+						min_costo = vector_vuelos[j].fin;
 						vuelo_de_costo_min = vector_vuelos[j];					
 					}
 				}
@@ -70,6 +74,8 @@ vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int desti
 		{
 			break;	
 		}
+		cout << "ok" << endl;
+		//agrego la ciudad a las ciudades ya marcadas e itero.
 		costo_de_llegar_a_esta_ciudad[vuelo_de_costo_min.destino] = min_costo;
 		vuelo_tomado_para_llegar_a_esta_ciudad[vuelo_de_costo_min.destino] = vuelo_de_costo_min;
 	}
@@ -101,7 +107,7 @@ void encontrar_camino(vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad,int d
 	cout << "respuesta que tengo que dar: " << endl;
 
 	cout << resultado[resultado.size() - 1].fin << " " << resultado.size() << " ";
-	for(int i; i < resultado.size(); i++)
+	for(int i = 0; i < resultado.size(); i++)
 		cout << resultado[i].numeroDeVuelo << " ";
 	cout << endl;
 	cout << "estos son los vuelos que toma:" << endl;
@@ -112,6 +118,10 @@ void encontrar_camino(vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad,int d
 
 int main(int argc, char *argv[]){
 
+
+  //auto begin = std::chrono::high_resolution_clock::now();
+
+  
   map< string, int> dict_ciudad_vector_distancias;
   int cant_vuelos;
   string origen, destino;
@@ -154,6 +164,14 @@ int main(int argc, char *argv[]){
 
   vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad = dijstra_sin_grafo(vector_vuelos, dict_ciudad_vector_distancias[origen], dict_ciudad_vector_distancias[destino],cantidad_de_ciudades);
 
+
+  //para tests:
+  //auto end = std::chrono::high_resolution_clock::now();
+  //std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
+  //cout << std::endl;
+
+
+  //linea para imprimir el resultado, descomentar para entregar
   if(vuelo_tomado_para_llegar_a_esta_ciudad.size() != 0)
   	encontrar_camino(vuelo_tomado_para_llegar_a_esta_ciudad, dict_ciudad_vector_distancias[destino], dict_ciudad_vector_distancias[origen]);
   else
