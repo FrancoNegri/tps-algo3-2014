@@ -1,5 +1,22 @@
+#include <iostream>
+#include <sstream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <vector>
+#include <sys/time.h>
+#include <set>
+#include <map>
+#include <cstdlib>
+#include <ctime>
+#include <sys/timeb.h>
+#include <climits>
+#include <algorithm>
+#include <queue>
+
 #define NODO_NO_MARCADO INT_MAX
 #define NODO_MARCADO INT_MAX-1
+
+using namespace std;
 
 struct coordenada
 {
@@ -12,6 +29,23 @@ struct tablero
   vector< vector< int> > casillas;
   int n;
 };
+
+coordenada crear_coordenada(int x, int y)
+{
+	coordenada coord;
+	coord.x = x;
+	coord.y = y;
+	return coord;
+}
+
+tablero crear_tablero(int n)
+{
+	tablero nuevoTablero;
+	nuevoTablero.casillas  = vector< vector< int> >(n, vector<int> (n, NODO_NO_MARCADO));
+	nuevoTablero.n = n;
+	return nuevoTablero;
+}
+
 
 void agregar_nodos_de_profunidad_k_mas_uno(coordenada nodo, queue<coordenada> *nodos_de_altura_k_mas_uno, tablero &unTablero)
 {
@@ -152,7 +186,7 @@ int main()
 
 				 agregar_nodos_de_profunidad_k_mas_uno(nodo, nodos_de_altura_k_mas_uno, tablero_para_caballo_i[caballo_i]);
 		 	}
-		 	//ok, ya no hay nodos de altura k, ahora paso a k+1, (que va a ser el nuevo k), y borro lo que habia en k+1
+		 	//ok, ya no hay nodos de altura k, ahora paso a k+1, (que va a ser el nuevo k), y borro lo que había en k+1
 
 		 	delete nodos_de_altura_k;
 
@@ -171,7 +205,7 @@ int main()
 	{
 		for(int k = 0; k < n; k++)
 		{
-			//para cada casilla voy sumando cuantos saltos le cuesta llegar a todos los caballos ahi
+			//para cada casilla voy sumando cuantos saltos le cuesta llegar a todos los caballos ahí
 			int acum = 0;
 			for(int i = 0; i <  cantidad_de_caballos;i++)
 			{

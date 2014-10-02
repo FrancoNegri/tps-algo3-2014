@@ -16,7 +16,13 @@
 \contentsline {subsection}{\numberline {3.1}Introducci\'on}{10}
 \contentsline {subsection}{\numberline {3.2}Desarrollo}{10}
 \contentsline {subsubsection}{\numberline {3.2.1}Modelado}{10}
-\contentsline {subsubsection}{\numberline {3.2.2}Solucio'n, Correctitud y Complejidad}{10}
+\contentsline {subsubsection}{\numberline {3.2.2}Soluci\IeC {\'o}n, Correctitud y Complejidad}{10}
 \contentsline {subsubsection}{\numberline {3.2.3}Complejidad}{11}
 \contentsline {subsection}{\numberline {3.3}Ejemplos y Soluciones}{11}
 \contentsline {subsection}{\numberline {3.4}Experimentacion}{11}
+\contentsline {section}{\numberline {4}Aclaraciones}{12}
+\contentsline {section}{\numberline {5}Medicion de los tiempos}{12}
+\contentsline {section}{\numberline {6}C\'odigo Fuente}{12}
+\contentsline {subsection}{\numberline {6.1}Ej1.cpp}{12}
+\contentsline {subsection}{\numberline {6.2}Ej2.cpp}{15}
+\contentsline {subsection}{\numberline {6.3}Ej3.cpp}{19}

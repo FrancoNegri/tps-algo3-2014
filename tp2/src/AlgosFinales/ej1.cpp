@@ -98,14 +98,10 @@ void encontrar_camino(vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad,int d
 	}
 	reverse(resultado.begin(),resultado.end());
 
-	cout << "respuesta que tengo que dar: " << endl;
-
 	cout << resultado[resultado.size() - 1].fin << " " << resultado.size() << " ";
 	for(int i; i < resultado.size(); i++)
 		cout << resultado[i].numeroDeVuelo << " ";
 	cout << endl;
-	cout << "estos son los vuelos que toma:" << endl;
-	imprimir_vector(resultado);
 }
 
 
