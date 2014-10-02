@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  2 OCT 2014 19:43
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  2 OCT 2014 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -702,18 +702,32 @@ Overfull \hbox (15.0pt too wide) detected at line 133
 LaTeX Info: Redefining \. on input line 135.
 LaTeX Info: Redefining \% on input line 135.
 [7]
-LaTeX Info: Redefining \. on input line 174.
-LaTeX Info: Redefining \% on input line 174.
- [8] <Ej2/testingk.png, id=41, 684.5575pt x 495.8525pt>
-File: Ej2/testingk.png Graphic file (type png)
+Underfull \hbox (badness 10000) in paragraph at lines 137--178
 
-<use Ej2/testingk.png>
-Package pdftex.def Info: Ej2/testingk.png used on input line 186.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--178
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--178
+
+ []
+
+LaTeX Info: Redefining \. on input line 178.
+LaTeX Info: Redefining \% on input line 178.
+[8] <Ej2/testingk.png, id=41, 684.5575pt x 495.8525pt>
+File: Ej2/testingk.png Graphic file (type png)
+ <use Ej2/testingk.png>
+Package pdftex.def Info: Ej2/testingk.png used on input line 193.
 (pdftex.def)             Requested size: 342.27791pt x 247.92564pt.
 )
 LaTeX Info: Redefining \. on input line 92.
 LaTeX Info: Redefining \% on input line 92.
- [9 <./Ej2/testingk.png (PNG copy)>] (./Ej3/informe3.tex
+
+[9 <./Ej2/testingk.png (PNG copy)>] (./Ej3/informe3.tex
 Overfull \hbox (15.0pt too wide) detected at line 38
 [][] 
  []
@@ -813,11 +827,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 7315 strings out of 493304
- 96605 string characters out of 6139871
+ 7312 strings out of 493304
+ 96566 string characters out of 6139871
  484713 words of memory out of 5000000
- 10609 multiletter control sequences out of 15000+600000
- 29494 words of font info for 52 fonts, out of 8000000 for 9000
+ 10606 multiletter control sequences out of 15000+600000
+ 27582 words of font info for 49 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  40i,13n,61p,885b,2016s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -833,7 +847,7 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on informe.pdf (23 pages, 583417 bytes).
+Output written on informe.pdf (23 pages, 583306 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  92 compressed objects within 1 object stream
