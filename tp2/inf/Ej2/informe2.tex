@@ -11,7 +11,7 @@ Nuestra entrada ser\'a:
 \item $f$ $c$ $\rightarrow$ Representar\'an la fila y la columna de cada caballo.
 \end{itemize}
 \end{itemize}
-A esto nuestro algoritmo deve devolver:
+A esto nuestro algoritmo debe devolver:
 \begin{itemize}
 \item Un entero \textbf{f c} $\rightarrow$ Representar\'a la fila y columna a donde deven converger los caballos.
 \item Un entero \textbf{m} $\rightarrow$ Representar\'a el numero total de saltos que le costar\'a a todos los caballos llegar hasta ah\'i.
@@ -34,9 +34,9 @@ Para este caso es posible encontrar una soluci\'on a mano, por ejemplo, es facil
 \\
 En caso de querer asegurarnos de ello, podr\'iamos hacer lo siguiente. Dibujamos en un papel dos matrices de $n$ por $n$. En la primera matriz, vamos a poner cual es la cantidad minima de saltos que el primer caballo realiza para saltar a cada una de las casillas del tablero. 
 \\
-Para ello primero anotamos en la matriz con costo $0$ la posicion donde se encuentra el primer caballo. Ahora, saltamos desde esta pocicion a todas las posibles pociciones validas del tablero. Todas estas tendran costo $1$.
+Para ello primero anotamos en la matriz con costo $0$ la posición donde se encuentra el primer caballo. Ahora, saltamos desde esta posición a todas las posibles posiciones válidas del tablero. Todas estas tendr{an costo $1$.
 \\
-Ahora, desde todas las pociciones de costo $1$ saltamos a todas las pociciones validas del tablero que podamos. Estas van a tener costo $2$. Si seguimos realizando este procedimiento, demostraremos que obtendremos la cantidad minima de saltos que el primer caballo realiza para saltar a cada una de las casillas del tablero, que era lo que buscabamos.
+Ahora, desde todas las posiciones de costo $1$ saltamos a todas las posiciones válidas del tablero que podamos. Estas van a tener costo $2$. Si seguimos realizando este procedimiento, demostraremos que obtenemos la cantidad mínima de saltos que el primer caballo realiza para saltar a cada una de las casillas del tablero, que era lo que buscabamos.
 \\
 Aqui puede verse la matriz obtenida:
 \\
@@ -49,7 +49,7 @@ $$A = \begin{bmatrix}
 \end{bmatrix}$$
 \\
 \\
-Realizamos lo mismo con el segundo caballo, marcamos la casilla donde se encuentra parado con costo $0$ y empezamos a saltar a las casillas validas.
+Realizamos lo mismo con el segundo caballo, marcamos la casilla donde se encuentra parado con costo $0$ y empezamos a saltar a las casillas válidas.
 
 La matriz será:
 \\
@@ -62,7 +62,7 @@ $$B = \begin{bmatrix}
 \end{bmatrix}$$
 \\
 \\
-Ahora sumamos ambas matrices, y lo que obtenemos es una matriz con los costos minimos de que todos los caballos salten a cada una de las posiciones del tablero.
+Ahora sumamos ambas matrices, y lo que obtenemos es una matriz con los costos mínimos de que todos los caballos salten a cada una de las posiciones del tablero.
 \\
 \\
 $$A + B =  \begin{bmatrix}
@@ -74,7 +74,7 @@ $$A + B =  \begin{bmatrix}
           $$
 \\
 \\
-Buscando los minimos en esta matriz, obtenemos lo que quer\'iamos! (me siento re paenza escribiendo estas cosas)
+Buscando los mínimos en esta matriz, obtenemos lo que quer\'iamos.
 \\
 Luego, algunas soluciones que el algoritmo podr\'ia devolver en este caso son:
 \\
@@ -93,9 +93,9 @@ Luego solo basta realizar un BFS para obtener el costo minimo de que un caballo 
 \\
 Cabe destacar, que por una cuesti\'on de claridad, en la implementacion final, la idea de recorrer un grafo est\'a implicita, la misma solo nos ayuda a ver que tanto la complejidad como la correctitud son las adecuadas en el problema dado.
 \\
-En la implementacion real, simplemente creamos $k$ matrices de enteros de $n$ por $n$. Luego para cada caballo, tomamos todos los nodos de distancia $j$, buscamos todos los nodos validos de distancia $j+1$ y los seteamos. Realizamos esto hasta que no quedan nodos no seteados y all\'i pasamos de caballo.
+En la implementación, simplemente creamos $k$ matrices de enteros de $n$ por $n$. Luego para cada caballo, tomamos todos los nodos de distancia $j$, buscamos todos los nodos válidos de distancia $j+1$ y los seteamos. Realizamos esto hasta que no quedan nodos no seteados y all\'i pasamos de caballo.
 \\
-Mas formalmente:
+M{as formalmente:
 
 \begin{algorithm}
 \begin{algorithmic}[1]\parskip=1mm
@@ -134,9 +134,9 @@ Mas formalmente:
 
 \newpage
 \subsection{Demostraci\'on De Correctitud}
-Para demostrar la correctitud de este algoritmo, primero, demostramos que dada una matriz de $n$x$n$, $n \geq 4$ desde cualquier casillero existe una sucesion de saltos para llegar a cualquier otro. 
+Para demostrar la correctitud de este algoritmo, primero, demostramos que dada una matriz de $n$x$n$, $n \geq 4$ desde cualquier casillero existe una sucesión de saltos para llegar a cualquier otro. 
 \\
-Por induccion en $n$, siendo $n$ la cantidad de filas y de columnas.
+Por inducción en $n$, siendo $n$ la cantidad de filas y de columnas.
 \\
 Caso base:
 \\
@@ -154,27 +154,27 @@ $$A = \begin{bmatrix}
 Caso inductivo:
 \\
 \\
-Luego, si existe el tablero de $n$x$n$ tal que de cualquier casillero podemos ir a cualquier casillero, quiero demostrar el tablero de $n+1$x$n+1$ tambien cumple.
+Luego, si existe el tablero de $n$x$n$ tal que de cualquier casillero podemos ir a cualquier casillero, quiero demostrar el tablero de $n+1$x$n+1$ también cumple.
 \\
-Tomamos el casillero hubicado en la fila $n+1$ columna $1$ (que notamos $(n+1,1)$), y vemos que existe un salto al casillero ($n-1$,$2$), luego, existe una sucecion de saltos desde el casillero $(n+1,1)$ a cualquiera del tablero de $n$x$n$.
+Tomamos el casillero hubicado en la fila $n+1$ columna $1$ (que notamos $(n+1,1)$), y vemos que existe un salto al casillero ($n-1$,$2$), luego, existe una sucesión de saltos desde el casillero $(n+1,1)$ a cualquiera del tablero de $n$x$n$.
 \\
-Para todos los casilleros en ($n+1$,$i$) con $i>1$, podemos saltar al casillero ($n-1$,$i-1$), y luego desde todos estos casilleros, tabmien podemos saltar dentro del tablero de $n$x$n$.
+Para todos los casilleros en ($n+1$,$i$) con $i>1$, podemos saltar al casillero ($n-1$,$i-1$), y luego desde todos estos casilleros, también podemos saltar dentro del tablero de $n$x$n$.
 \\
-Ahora podemos ver que para la casilla ($1$,$n+1$), tambien existe el salto a ($2$,$n-1$), que hace que tambien cumpla.
+Ahora podemos ver que para la casilla ($1$,$n+1$), también existe el salto a ($2$,$n-1$), que hace que también cumpla.
 \\
 De la misma manera, para los casilleros para ($i$,$n+1$) con $1< i \geq n+1$ existe el salto a la casilla ($i-1$,$n-1$).
 \\
-Con lo cual concluimos que existe un salto desde cualquier casillero de la fila $n+1$ o columna $n+1$ podemos saltar a cualquier casillero del tablero de $n$x$n$, por lo tanto, por hipotesis inductiva, existe una sucecion de saltos para llegar a cualquier casillero del tablero, en particular, puedo ir desde cualquier casillero de la fila/columna $n+1$x$n+1$ a cualquier otro que pertenezca a la misma fila/columna.
+Con lo cual concluimos que existe un salto desde cualquier casillero de la fila $n+1$ o columna $n+1$ podemos saltar a cualquier casillero del tablero de $n$x$n$, por lo tanto, por hipótesis inductiva, existe una sucesión de saltos para llegar a cualquier casillero del tablero, en particular, puedo ir desde cualquier casillero de la fila/columna $n+1$x$n+1$ a cualquier otro que pertenezca a la misma fila/columna.
 \\
-A partir de un tablero de $nxn$ el modelado cada casillero representa un nodo, y dos nodos son adyacentes si y solo si existe un salto de caballo en el tablero.
+A partir de un tablero de $nxn$ el modelado cada casillero representa un nodo, y dos nodos son adyacentes sii existe un salto de caballo en el tablero.
 \\
-Por la demostracion anterior, sabemoos que desde cualquier casillero existe una sucecion de saltos para llegar a cualquier otro, traducido a nuestro modelo de grafo, quiere decir que este es conexo.
+Por la demostración anterior, sabemos que desde cualquier casillero existe una sucesión de saltos para llegar a cualquier otro, traducido a nuestro modelo de grafo, quiere decir que éste es conexo.
 \\
-Como el grafo es conexo y finito, realizando un bfs para cada caballo, podemos obtener la cantidad minima de saltos desde la pocicion en la que se encuentra el caballo hasta todas las otras del tablero.
+Como el grafo es conexo y finito, realizando un bfs para cada caballo, podemos obtener la cantidad mínima de saltos desde la posición en la que se encuentra el caballo hasta todas las otras del tablero.
 \\
-Por lo tanto, sumando cuantos saltos debe realizar cada caballo a cada casillero, obtengo el minimo de saltos que tienen que dar todos los caballos para llegar a cualquier casillero.
+Por lo tanto, sumando cuantos saltos debe realizar cada caballo a cada casillero, obtengo el mínimo de saltos que tienen que dar todos los caballos para llegar a cualquier casillero.
 \\
-Para cada casillero, sumanos los saltos de cada caballo y nos quedamos con el que tenga suma minima.
+Para cada casillero, sumanos los saltos de cada caballo y nos quedamos con el que tenga suma mínima.
 
 \subsection{Complejidad}
 Para cada caballo, encolamos una sola vez cada nodo y posteriormente lo procesamos.
@@ -184,7 +184,7 @@ Entonces la complejidad es la cantidad de caballos ($k$) por la cantidad de nodo
 En otras palabras la complejidad es $O(kn^2)$.
 
 \subsection{Experimentacion}
-Para testear la performance de nuestro algoritmo se cre\'o un generador de entradas que fabricar\'a instancias random del problema.
+Para probar el rendimiento de nuestro algoritmo se cre\'o un generador de entradas que fabricar\'a instancias al azar del problema.
 \\
 Para la primera experimentaci\'on se deja el tablero fijo, y se var\'ia el numero de caballos. Para este testeo, se tom\'o $n = 100$ y se hizo variar el numero de caballos entre 50 y 1500, cada uno posicionado de manera aleatoria en una casilla, y se tomaron $50$ muestras de cada uno.
 \\

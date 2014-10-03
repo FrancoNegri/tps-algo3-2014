@@ -2,7 +2,24 @@
 
 En este ejercicio se propone solucionar el problema de dado una red de existente de computadoras, con a lo sumo un enlace entre cada par de ellas y con un costo asociado al mismo, seleccionar algunas de estas para formar un backbone con topología de red tipo anillo, la cual tiene que tener como característica que conecte a todas las computadoras originales y que minimice el costo de ancho de banda de la red.
 
-Se pide un algoritmo que genere este backbone, con un costo temporal estrictamente menor que O($n^3$), este algoritmo debe detectar casos en los que no hay solucion.
+Se pide un algoritmo que genere este backbone, con un costo temporal estrictamente menor que O($n^3$), este algoritmo debe detectar casos en los que no hay solución.
+
+Nuestra entrada ser\'a:
+\\
+\begin{itemize}
+	\item Un entero \textbf{n} $\rightarrow$ representa la cantidad de equipos de la red.
+	\item Un entero \textbf{m} $\rightarrow$ la cantidad de enlaces disponibles
+	\item \textbf{n} tuplas\textbf{e1 e2 c} $\rightarrow$ las cuales representan que equipos estan conectados y el costo del cable
+\end{itemize}
+
+A esto nuestro algoritmo debe devolver:
+
+\begin{itemize}
+	\item Una linea \textbf{C Ea Er} $\rightarrow$ donde C es el costo de la solución dada y Ea y Er son los enlaces utilizados para el anillo y para el resto de la red, respectivamente.
+	\item Ea lineas con el siguiente formato \textbf{e1 e2}, que representan los enlaces del anillo.
+	\item Er lineas con el siguiente formato \textbf{e1 e2}, que representan los enlaces fuera del anillo.
+	
+\end{itemize}
 
 \subsection{Desarrollo}
 
@@ -15,7 +32,7 @@ Dada una red, la misma se puede modelar con un grafo de la siguiente manera:
 	\item Los enlaces entre cada par de computadoras se son los ejes en mi grafo, con el costo de ancho de banda como peso del mismo.
 \end{enumerate}
 
-Transformamos el problema de ser uno de redes, a uno de grafos, donde encontrar un backbone con topologia de red tipo anillo que tenga costo mínimo y conecte a todas las computadoras, se transforma en encontrar subgrafo conexo cuyo costo sea mínimo y que contenga un único circuito simple, el cual se corresponde al backbone.
+Transformamos el problema de ser uno de redes, a uno de grafos, donde encontrar un backbone con topología de red tipo anillo que tenga costo mínimo y conecte a todas las computadoras, se transforma en encontrar subgrafo conexo cuyo costo sea mínimo y que contenga un único circuito simple, el cual se corresponde al backbone.
 
 \subsubsection{Solución, Correctitud y Complejidad}
 
@@ -57,7 +74,7 @@ La complejidad del algoritmo \verb+EncontrarBackBone+  es la siguiente:
 
 Por lo tanto, el algoritmo tiene un orden temporal de O($n^2$), cumpliendo con lo pedido en el enunciado.
 
-\subsection{Experimentacion}
+\subsection{Experimentación}
 
 Para probar que efectivamente nuestro algoritmo es cuadratico con respecto a $n$ en el peor caso, creamos grafos completos con un generador de entrada, y corremos $50$ tests, para reducir el posible factor de ruido que puede generar correr nuestro algoritmo de manera concurrente con otros procesos del sismtema.
 Los grafos completos que tomamos van desde el grafo $K_1$ hasta el $K_60$.
