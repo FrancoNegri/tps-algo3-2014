@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  3 OCT 2014 13:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.28)  3 OCT 2014 13:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -783,15 +783,15 @@ ircuito(G) \OT1/bch/m/n/10 tie-ne un cos-to de
 File: Ej3/resultados1.jpg Graphic file (type jpg)
 
 <use Ej3/resultados1.jpg>
-Package pdftex.def Info: Ej3/resultados1.jpg used on input line 72.
+Package pdftex.def Info: Ej3/resultados1.jpg used on input line 73.
 (pdftex.def)             Requested size: 340.27042pt x 227.34882pt.
-LaTeX Info: Redefining \. on input line 78.
-LaTeX Info: Redefining \% on input line 78.
+LaTeX Info: Redefining \. on input line 79.
+LaTeX Info: Redefining \% on input line 79.
  [11 <./Ej3/resultados1.jpg>]
 <Ej3/resultados2.jpg, id=52, 753.81625pt x 449.68pt>
 File: Ej3/resultados2.jpg Graphic file (type jpg)
  <use Ej3/resultados2.jpg>
-Package pdftex.def Info: Ej3/resultados2.jpg used on input line 83.
+Package pdftex.def Info: Ej3/resultados2.jpg used on input line 84.
 (pdftex.def)             Requested size: 376.90721pt x 224.83945pt.
 )
 LaTeX Info: Redefining \. on input line 97.
@@ -824,29 +824,18 @@ File: omlbch.fd
 )
 LaTeX Font Info:    Font shape `OML/bch/m/n' in size <8> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 10.
-
-
-! Package inputenc Error: Unicode char \u8:Ã\lst@EC­ not set up for use with La
-TeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.35 ...esta ciudad de menor que el que ya tenÃ­a 
-                                                  guardado.
-? 
-LaTeX Info: Redefining \. on input line 49.
-LaTeX Info: Redefining \% on input line 49.
-[13
+LaTeX Info: Redefining \. on input line 50.
+LaTeX Info: Redefining \% on input line 50.
+ [13
 
 ]
-LaTeX Info: Redefining \. on input line 116.
-LaTeX Info: Redefining \% on input line 116.
+LaTeX Info: Redefining \. on input line 117.
+LaTeX Info: Redefining \% on input line 117.
  [14])
 LaTeX Info: Redefining \. on input line 10.
 LaTeX Info: Redefining \% on input line 10.
- [15] (./Ej2/ej2.cpp
+ [15]
+(./Ej2/ej2.cpp
 LaTeX Info: Redefining \. on input line 65.
 LaTeX Info: Redefining \% on input line 65.
  [16]
@@ -864,8 +853,7 @@ LaTeX Info: Redefining \% on input line 68.
  [20]
 LaTeX Info: Redefining \. on input line 137.
 LaTeX Info: Redefining \% on input line 137.
-
-[21]
+ [21]
 LaTeX Info: Redefining \. on input line 204.
 LaTeX Info: Redefining \% on input line 204.
  [22]
@@ -874,7 +862,8 @@ LaTeX Info: Redefining \% on input line 272.
  [23]))
 LaTeX Info: Redefining \. on input line 103.
 LaTeX Info: Redefining \% on input line 103.
- [24] (./informe.aux
+
+[24] (./informe.aux
 LaTeX Info: Redefining \. on input line 7.
 LaTeX Info: Redefining \% on input line 7.
 )
@@ -886,10 +875,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7323 strings out of 493304
- 96798 string characters out of 6139871
- 484861 words of memory out of 5000000
- 10615 multiletter control sequences out of 15000+600000
+ 7322 strings out of 493304
+ 96786 string characters out of 6139871
+ 484872 words of memory out of 5000000
+ 10614 multiletter control sequences out of 15000+600000
  27582 words of font info for 49 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  39i,13n,61p,885b,2016s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -906,7 +895,7 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on informe.pdf (24 pages, 634036 bytes).
+Output written on informe.pdf (24 pages, 635153 bytes).
 PDF statistics:
  140 PDF objects out of 1000 (max. 8388607)
  94 compressed objects within 1 object stream

@@ -32,7 +32,7 @@ vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int desti
 				//si cumple la condicion de los vuelos
 				if(costo_de_llegar_a_esta_ciudad[vector_vuelos[j].origen] + 2 <= vector_vuelos[j].ini)
 				{
-					//si el peso para esta ciudad de menor que el que ya tenía guardado.
+					//si el peso para esta ciudad de menor que el que ya tenia guardado.
 					if(min_costo > vector_vuelos[j].fin);
 					{
 						//me guardo este vuelo
