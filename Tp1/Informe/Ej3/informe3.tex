@@ -1,14 +1,15 @@
 \section{Introducci\'on}
-El problema para este ejercicio es el siguiente, se nos presentan $n$ productos qu\'imicos, los cuales deben transportarse en camiones de un lugar a otro, el llevar al elemento $i$ en el mismo cami\'on que otro elemento $j$, conlleva una peligrosidad asociada $h_ij$. El objetivo del algoritmo ser\'a encontrar la soluci\'on que utilize la menor cantidad de cami\'ones posibles, pero que cada cami\'on tenga una peligrosidad menor a una cota $m$.
-\\
+
+El problema para este ejercicio es el siguiente, se nos presentan $n$ productos qu\'imicos, los cuales deben transportarse en camiones de un lugar a otro, el llevar al elemento $i$ en el mismo cami\'on que otro elemento $j$, conlleva una ''peligrosidad'' asociada $h_ij$. El objetivo del algoritmo ser\'a encontrar la soluci\'on que utilize la menor cantidad de cami\'ones posibles, pero que cada cami\'on tenga una peligrosidad menor a una cota $m$.
+
 La entrada del problema consiste en:
-\\
+
 \begin{itemize}
 \item Un entero \textbf{n} $\rightarrow$ Representar\'an el n\'umero de productos qu\'imicos a transportar.
 \item Un entero \textbf{m} $\rightarrow$ Representar\'a la cota de peligrosidad que ningun cami\'on puede superar.
 \item \textbf{n-1} filas donde, para cada fila $i$ consta de $n-i$ enteros:
 \begin{itemize}
-\item $h_i{,i+1}, h_i{,i+2}$ ... $h_i{,n}$ $\rightarrow$ Representar\'an la peligrosidad asociada del elemento $i$ con los elementos $i+1$, $i+2$ ... $n$.
+\item $h_i,i+1, h_i,i+2$ ... $h_i,n$ $\rightarrow$ Representar\'an la peligrosidad asociada del elemento $i$ con los elementos $i+1$, $i+2$ ... $n$.
 \end{itemize}
 \end{itemize}
 
@@ -19,27 +20,26 @@ La salida, por su parte, constar\'a de una fila con:
 \item $n$ enteros $\rightarrow$ Representar\'an en que cami\'on viaja cada producto.
 \end{itemize}
 
+Dado que el problema no presenta ningun tipo de complejidad, pero debemos minimizar al cantidad de camiones cumpliendo cierta cota de peligrosidad, debemos siempre devolver una solucion por eso recurrimos a la tecnica de backtracking para generar dicha solución.
+Para lo cual lo que se va a realizar es probar todas las combinaciones entre quimicos, de igual manera se implementaran podas en el backtracking como se describen en la siguientes secciones  para mejorar la complejidad obteniedo asi una solucion optima de una manera un poco mas eficiente que la solucion sin podas.
+
+
 \subsection{Ejemplo de entrada valida}
+
 Hagamos un pequeño ejemplo para que pueda ilustrarse bien el problema.
-\\
 Supongamos que tenemos $3$ productos qu\'imicos, el producto $1$ es muy inestable, por lo que si es transportado con el producto $2$ la peligrosidad asociada al camion en el que viajan estos dos productos asciende a $40$, y si se transporta con el producto $3$ la peligrosidad ser\'a de $35$. El producto $2$ en cambio es de naturaleza mas estable, por lo que si es transportado con el producto $3$ solo produce una peligrosidad de $3$.
-\\
+
 Por otro lado queremos que la peligrosidad por cami\'on no supere el valor de $39$.
-\\
 Entonces la entrada para este problema ser\'a:
-\\
-\\
+
 $\textbf{3 39}$
-\\
 $\textbf{40 35}$
-\\
 $\textbf{3}$
-\\
-\\
+
 Para una entrada de estas dimenciones es posible buscar la mejor solucio\'on a mano.
-\\
+
 Las posibles combinaciones son que los tres productos viajen juntos, que los tres viajen separados en camiones distintos, que $1$ y $2$ viajen juntos en el mismo camion y el producto $3$ viaje en otro cami\'on diferente, que $1$ y $3$ viajen juntos y el $2$ separado y que $2$ y $3$ viajen juntos y el producto sobrante viaje en otro cami\'on.
-\\
+
 La primera d\'a una peligrosidad de $40+35+3$ por lo la cota de peligrosidad se ve superada, lo que lo vuelve una soluci\'on inviable, la segunda es valida, ya que la peligrosidad de cada camion es $0$, pero se necesitan $3$ camiones. Que $1$ y $2$ viajen juntos, tampoco es valida, la peligrosidad de ese camion es demaciado alta, y finalmente las ultimas dos son validas (peligrosidad $35$ y $3$, respectivamente) y solo son necesarios dos camiones.
 \\
 Es claro, luego, que las dos ultimas soluciones son las que el algoritmo podr\'ia devolever.
@@ -55,11 +55,12 @@ o
 
 \section{Idea General de Resoluci\'on}
 
+
 Luego la idea del algoritmo es simple, probar todas las combinaciones posibles de camiones y de entre todas determinar cual es la que cumple con la cota de peligrosidad pedida y usa la menor cantidad de camiones posible. Ademas, para aumentar la performance del algoritmo, se ir\'an podando ramas de la familia de soluciones de manera tal de que no sea necesario chequear absolutamente todos los casos.
-
-Antes de presentar el pseudocodigo vale aclarar un punto importante y es que el algoritmo debe encontar siempre una soluci\'on. Esto se debe a que siempre es posible poner todos los productos qu\'imicos en camiones separados, lo que nos d\'a  una peligrosidad $0$. Es posible usar esta como una cota contra la cual parar de chequear, si tenemos $n$ productos qu\'imicos, es simple ver que a lo sumo usar\'emos $n$ camiones. Denominaremos a esta como la peor soluci\'on ya que es claro que es una soluci\'on valida, pero que usa la maxima cantidad de camiones.
-
-En cuanto a las podas, utilizamos dos, una que en cada paso del backtrack chequea si la soluci\'on final que encontramos hasta el momento usa una cantidad menor de camiones que la solucion parcial que se esta construyendo. Es claro que de ser as\'i, estamos la solucion parcial nunca podr\'a ser mejor, por lo tanto se podar\'a toda esa familia de soluciones.
+\\
+Antes de presentar el pseudocodigo vale aclarar un punto importante y es que el algoritmo debe encontar siempre una soluci\'on. Esto se debe a que siempre es posible poner todos los productos qu\'imicos en camiones separados, lo que nos d\'a  una peligrosidad $0$. Es posible usar esta como una cota contra la cual parar de chequear, si tenemos $n$ productos qu\'imicos, es simple ver que a lo sumo usar\'emos $n$ camiones. Denominaremos a esta como la "peor soluci\'on" ya que es claro que es una soluci\'on valida, pero que usa la maxima cantidad de camiones.
+\\
+En cuanto a las podas, utilizamos dos, una que en cada paso del backtrack chequea si la soluci\'on final que encontramos hasta el momento usa una cantidad menor de camiones que la solucion parcial que se esta construyendo, ya que supongamos que si tenemos una solucion que utiliza k cantidad de camiones, k natural , y en cierto punto de nuestro backtracking estamos obteniendo como solucion parcial llevamos m camiones y m>k ya estariamos obteniendo una solucion que no seria la optima ya que buscamos minimizar la cantidad de camiones. Es claro que de ser as\'i, estamos la solucion parcial nunca podr\'a ser mejor, por lo tanto se podar\'a toda esa familia de soluciones mejorando asi la complejidad temporal del algoritmo.
 \\
 La segunda chequea que la soluci\'on parcial que estamos construyendo no exceda el limite de peligrosidad pedido por el ejercicio, en caso de ser as\'i la soluci\'on no ser\'a valida. En caso de que esto suceda, tambien se poda.
 \\
@@ -180,7 +181,7 @@ Los resultados pueden verse en el siguiente cuadro:
 \includegraphics[width=18cm]{./Ej3/peorGraph.jpg}
 \\
 Puede verse aqu\'i que nuestra soluci\'on contin\'ua siendo mejor que uno de fuerza bruta. En este caso, el otro backtracking con las podas invertidas muestra una notable perdida de performance, siendo casi tan malo como el algoritmo de fuerza bruta.
-
+Podemos Concluir entonces que nuestro algoritmo siempre que exista solucion la obtiene y ademas puede constatarse con los graficos que las complejidades temporales mejoran obteniendose el mismo resultado cuando el algoritmo utiliza las podas y cuando realiza sin podas el backtracking, el inconveniente de esta tecnica es que en casos muy grandes demora mucho por lo que no es la mejor opcion para casos de muchos productos ya que podria no terminar.
 
 \section{Adiconales}
 1) y 2)Ahora que los camiones no son homogeneos, se ampl\'ia el espacio de soluci\'ones a explorar, ya que, por ejemplo, antes con tres camiones homogeneos, bastaba chequear las soluciones:
