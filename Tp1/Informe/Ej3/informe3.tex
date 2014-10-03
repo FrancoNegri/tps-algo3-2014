@@ -84,22 +84,26 @@ Finalmente el pseudocodigo para resolver este problema queda as\'i:
 \begin{algorithmic}[1]\parskip=1mm
 \caption{Bool Backtrack(tablaDePeligrosidad, solucionParcial, solucioninal)}
 	
-	\STATE{Llamo a la funcion check(tablaDePeligrosidad, solucionParcial, solucionFinal)}
+	\STATE{Llamo a check(tablaDePeligrosidad, solucionParcial, solucionFinal) y me guardo su resultado en una variable $w$.}
 	
-	\STATE{\quad Si check devuelve $2$, la solucion parcial es mejor que la final}
+	\STATE{\quad Si $w$ es $2$, la solucion parcial es mejor que la final}
+	\STATE{\quad \quad $\textbf{entonces}$}
 	\STATE{\quad \quad Pongo la solucion parcial como final} 
 	\STATE{\quad \quad Corto la recursi\'on y busco por otra rama}
 
-	\STATE{\quad Si check devuelve $0$, la cota de peligrosidad fu\'e sobrepasada}
+	\STATE{\quad Si $w$ es $0$, la cota de peligrosidad fu\'e sobrepasada}
+	\STATE{\quad \quad $\textbf{entonces}$}
 	\STATE{\quad \quad esta rama no me sirve, podo}	
 
-	\STATE{\quad Si check devuelve $3$, la solucion anterior usa menos camiones}
+	\STATE{\quad Si $w$ es $3$, la solucion anterior usa menos camiones}
+	\STATE{\quad \quad $\textbf{entonces}$}
 	\STATE{\quad \quad esta rama no me sirve, podo}
 
-	\STATE{\quad Si check devuelve $1$, la solucion es valida, pero no est\'a completa}
+	\STATE{\quad Si $w$ es $1$, la solucion es valida, pero no est\'a completa}
+	\STATE{\quad \quad $\textbf{entonces}$}
 	\STATE{\quad \quad contin\'uo agregando camiones}
 
-	\STATE{Para cada valor $i$ de $1$ hasta $n$ prueba meter el siguiente producto de la lista en el camion $i$ y se llama a la funcion Backtrack()}
+	\STATE{Luego, para cada valor $i$ de $1$ hasta $n$ pruebo meter el siguiente producto en el camion $i$ y llamo de manera recursiva Backtrack()}
 \end{algorithmic}
 \end{algorithm}
 
