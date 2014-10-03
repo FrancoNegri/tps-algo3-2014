@@ -14,9 +14,10 @@ En cada paso el algoritmo goloso busca quedarse con la solución optima, esta es 
 \subsection{Desarrollo}
 
 Para la solución de este problema recurrimos a la técnica de algoritmos voraces, donde en cada paso en la construcción a la solución obtenemos el mejor salto. 
-Por el enunciado sabemos que tenemos n tablones, el participante puede saltar C tablones de una sola vez y cuáles son las posiciones de los tablones rotos. Nos armamos un arreglo donde cada posición representa un tablón, en el cual guardamos 0 y 1 para indicar su estado (sano o roto respectivamente) llenando el mismo según la entrada, llamémoslo puente.
+Por el enunciado sabemos que tenemos n tablones, el participante puede saltar C tablones de una sola vez y cuáles son las posiciones de los tablones rotos. Nos armamos un arreglo donde cada posición representa un tablón, en el cual guardamos 0 y 1 para indicar su estado (sano o roto respectivamente) llenando el mismo según la entrada, llamémoslo puente.\\
+El caso trivial donde la cantidad maxima de tablones consecutivos que el participante puede saltar el algoritmo devuelve 1 salto y solo la posición final.\\
 Nuestro algoritmo ira recorriendo el puente tratando de hacer el mayor salto cuando este es posible, dependiendo si el tablón al que iría a parar el participante está sano, en caso contrario comenzamos a iterar los tablones desde este salto máximo hacia donde se encuentra parado el participante uno por uno hasta encontrar un tablón sano.\\
-Para cada al cual se salta se guarda su posición en una lista siempre insertando atrás de la misma, una vez que cruzo participante cruzo todo el puente se devuelve esta lista como la sucesión de saltos realizada por el participante, en caso de no ser factible ya que en una sección del puente la cantidad de tablones rotos consecutivos es mayor a el salto máximo se devuelve no, ya que no tiene solución.
+Para cada tablón al cual se salta se guarda su posición en una lista siempre insertando atrás de la misma, una vez que cruzo participante cruzo todo el puente se devuelve esta lista como la sucesión de saltos realizada por el participante, en caso de no ser factible ya que en una sección del puente la cantidad de tablones rotos consecutivos es mayor a el salto máximo se devuelve no, ya que no tiene solución.
 
 \subsection{Complejidad}
 El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
@@ -26,7 +27,7 @@ El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
   \begin{algorithmic}[1]\parskip=1mm
  \caption{ Saltos( salto\_Maximo : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}\\
  		\STATE{Si saltoMax $>$ cantidadTablones} \;\; \tOde{1} \\
- 		\STATE{\quad devolver 1} \;\; \tOde{1}  \\
+ 		\STATE{\quad devolver cantidadTablones+1} \;\; \tOde{1}  \\
  		\STATE{SI NO}\\
  		\STATE{\quad SI existe una cantidad de tablones rotos mayor o igual a salto\_maximo en algún lugar del puente} \;\; \tOde{n} 
  		\STATE {\quad\quad  no existe solución}
