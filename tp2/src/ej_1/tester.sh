@@ -13,10 +13,10 @@ g++ -std=c++11 ej_1_no_graph.cpp -o $DIR/ejecutable
 
 echo "OK!"
 
-for VARIABLE1 in {1..50}
+for VARIABLE1 in {6..6}
 do
 	echo "generada entrada para n:" $(($VARIABLE1 * 10))
-	for VARIABLE2 in {1..50}
+	for VARIABLE2 in {1..1}
 	do
         ./$DIR/tester $(($VARIABLE1 * 10)) 10
         ./$DIR/ejecutable < $DIR/test.txt >> $DIR/resultados.txt

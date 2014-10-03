@@ -1,3 +1,19 @@
+#include <iostream>
+#include <sstream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <vector>
+#include <sys/time.h>
+#include <set>
+#include <map>
+#include <cstdlib>
+#include <ctime>
+#include <sys/timeb.h>
+#include <climits>
+#include <algorithm>
+
+using namespace std;
+
 struct vuelo
 {
   int ini;
@@ -6,6 +22,8 @@ struct vuelo
   int origen;
   int destino;
 };
+
+void encontrar_camino(vector<vuelo> vuelo_tomado_para_llegar_a_esta_ciudad, int destino, int origen);
 
 vector<vuelo> dijstra_sin_grafo(vector<vuelo> vector_vuelos,int origen,int destino, int cantidad_de_ciudades)
 {

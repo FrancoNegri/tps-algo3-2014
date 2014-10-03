@@ -1,5 +1,27 @@
+#include <iostream>
+#include <sstream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <vector>
+#include <sys/time.h>
+#include <set>
+#include <map>
+#include <cstdlib>
+#include <ctime>
+#include <sys/timeb.h>
+#include <climits>
+#include <algorithm>
+#include <queue>
+#include <chrono>
+
+
+//capaz habría que cambiar los nombes
 #define NODO_NO_MARCADO INT_MAX
 #define NODO_MARCADO INT_MAX-1
+
+
+
+using namespace std;
 
 struct coordenada
 {
@@ -12,6 +34,23 @@ struct tablero
   vector< vector< int> > casillas;
   int n;
 };
+
+coordenada crear_coordenada(int x, int y)
+{
+	coordenada coord;
+	coord.x = x;
+	coord.y = y;
+	return coord;
+}
+
+tablero crear_tablero(int n)
+{
+	tablero nuevoTablero;
+	nuevoTablero.casillas  = vector< vector< int> >(n, vector<int> (n, NODO_NO_MARCADO));
+	nuevoTablero.n = n;
+	return nuevoTablero;
+}
+
 
 void agregar_nodos_de_profunidad_k_mas_uno(coordenada nodo, queue<coordenada> *nodos_de_altura_k_mas_uno, tablero &unTablero)
 {
@@ -114,6 +153,12 @@ int main()
 	cin >> cantidad_de_caballos;
 
 
+	//mido tiempos
+
+	auto begin = std::chrono::high_resolution_clock::now();
+
+
+
 	for(int i = 0; i < cantidad_de_caballos; i++)
 	{
 		coordenada nuevoCaballo;
@@ -125,7 +170,7 @@ int main()
 		lista_caballos.push_back(nuevoCaballo);
 	}
 
-	// en este tablero voy guardando cuanto le cuesta al caballo i, llegar a la posision (x,y) del tablero
+	// en este tablero voy guardando cuanto le cuesta al caballo i, llegar a la pocision (x,y) del tablero
 	vector<tablero> tablero_para_caballo_i(cantidad_de_caballos,crear_tablero(n));
 
 	for(int caballo_i = 0; caballo_i < cantidad_de_caballos; caballo_i++)
@@ -152,7 +197,7 @@ int main()
 
 				 agregar_nodos_de_profunidad_k_mas_uno(nodo, nodos_de_altura_k_mas_uno, tablero_para_caballo_i[caballo_i]);
 		 	}
-		 	//ok, ya no hay nodos de altura k, ahora paso a k+1, (que va a ser el nuevo k), y borro lo que habia en k+1
+		 	//ok, ya no hay nodos de altura k, ahora paso a k+1, (que va a ser el nuevo k), y borro lo que había en k+1
 
 		 	delete nodos_de_altura_k;
 
@@ -163,15 +208,41 @@ int main()
 		 	k++;
 		 }
 	}
+
+
+	//esto es para ver las matrices que quedan despues de hacer todos los bfeses.
+	
+	for(int i = 0; i <  cantidad_de_caballos;i++)
+	{
+	cout << "Saltos necesarios para el caballo: " << i << " salte al casillero" << endl << endl;
+		for(int j = 0; j < n; j++)
+		{
+			for(int k = 0; k < n; k++)
+			{
+				if(tablero_para_caballo_i[i].casillas[j][k] > NODO_MARCADO)
+				{
+					cout << "no ";	
+				}
+				else
+				{
+					cout << tablero_para_caballo_i[i].casillas[j][k] << " ";
+				}
+			}
+			cout << endl;
+		}
+		cout << endl;
+	}
 	
 	int suma_min = INT_MAX;
 	coordenada nodo_minimo;
 
+
+	cout << "suma final: " << endl;
 	for(int j = 0; j < n; j++)
 	{
 		for(int k = 0; k < n; k++)
 		{
-			//para cada casilla voy sumando cuantos saltos le cuesta llegar a todos los caballos ahi
+			//para cada casilla voy sumando cuantos saltos le cuesta llegar a todos los caballos ahí
 			int acum = 0;
 			for(int i = 0; i <  cantidad_de_caballos;i++)
 			{
@@ -185,6 +256,7 @@ int main()
 					break;
 				}
 			}
+			cout << acum << " ";
 			// si es menor, actualizo, ahora tengo una manera de llegar que cuesta menos saltos
 			if(suma_min > acum)
 			{
@@ -193,13 +265,21 @@ int main()
 				nodo_minimo.y = k;
 			}
 		}
+		cout << endl;
 	}
+	cout << endl;
 
+	// mido tiempos
+	auto end = std::chrono::high_resolution_clock::now();
+  	std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
+
+
+  	//Descomentar a la hora de entregaaaaar!!!!
 	// si el minimo es NODO_NO_MARCADO, no hay manera de que todos los caballos lleguen a la misma pocicion
-	if(suma_min >= NODO_MARCADO)
+	/*if(suma_min == INT_MAX)
 		cout << "no" << endl;
 	else
-		cout << nodo_minimo.x + 1 << " " << nodo_minimo.y + 1 << " " << suma_min << endl;
+		cout << nodo_minimo.x + 1 << " " << nodo_minimo.y + 1 << " " << suma_min << endl;*/
 	return 0;
 }
 

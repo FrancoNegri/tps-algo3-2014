@@ -1,3 +1,21 @@
+#include <iostream>
+#include <sstream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <vector>
+#include <sys/time.h>
+#include <math.h>
+#include <cstdlib>
+#include <ctime>
+#include <sys/timeb.h>
+#include <list>
+#include <utility>
+#include <stack>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
 struct arista
 {
 	int e1;
@@ -18,6 +36,8 @@ struct resultado
 	bool conexo;
 
 };
+void imprimirMatriz(vector< vector < int > > matriz,int tam);
+void imprimirArreglo(vector< distancia > vec,int tam);
 
 resultado solucion(vector<arista> enlaces,int cantEnlaces,int cantEquipos ){
 	//matriz de adyacencias
@@ -210,6 +230,24 @@ resultado solucion(vector<arista> enlaces,int cantEnlaces,int cantEquipos ){
 	return res;
 }
 
+void imprimirMatriz(vector< vector < int > > matriz,int tam){
+	cout << "matriz" << endl;
+	for(int i =0; i < tam; i++){
+		for(int j =0; j < tam; j++){
+			cout << matriz[i][j] << ' ';
+		}	
+		cout << endl;
+	}
+	cout << endl;
+
+}
+void imprimirArreglo(vector< distancia > vec,int tam){
+	for(int i = 0 ; i <tam;i++){
+		cout << '[' <<	vec[i].nodoOrigen << ',';
+		cout  <<  vec[i].costo << ']';
+ 	}
+ 	cout << endl;
+}
 int main(int argc, char *argv[])
 {
 	// para detectar cuando estoy leyendo la primer linea
