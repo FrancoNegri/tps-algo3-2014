@@ -1,5 +1,5 @@
 \section{Introducci\'on}
-El problema para este ejercicio es el siguiente, se nos presentan $n$ productos qu\'imicos, los cuales deben transportarse en camiones de un lugar a otro, el llevar al elemento $i$ en el mismo cami\'on que otro elemento $j$, conlleva una ''peligrosidad'' asociada $h_i_j$. El objetivo del algoritmo ser\'a encontrar la soluci\'on que utilize la menor cantidad de cami\'ones posibles, pero que cada cami\'on tenga una peligrosidad menor a una cota $m$.
+El problema para este ejercicio es el siguiente, se nos presentan $n$ productos qu\'imicos, los cuales deben transportarse en camiones de un lugar a otro, el llevar al elemento $i$ en el mismo cami\'on que otro elemento $j$, conlleva una peligrosidad asociada $h_ij$. El objetivo del algoritmo ser\'a encontrar la soluci\'on que utilize la menor cantidad de cami\'ones posibles, pero que cada cami\'on tenga una peligrosidad menor a una cota $m$.
 \\
 La entrada del problema consiste en:
 \\
@@ -8,12 +8,12 @@ La entrada del problema consiste en:
 \item Un entero \textbf{m} $\rightarrow$ Representar\'a la cota de peligrosidad que ningun cami\'on puede superar.
 \item \textbf{n-1} filas donde, para cada fila $i$ consta de $n-i$ enteros:
 \begin{itemize}
-\item $h_i_{,i+1}, h_i_{,i+2}$ ... $h_i_{,n}$ $\rightarrow$ Representar\'an la peligrosidad asociada del elemento $i$ con los elementos $i+1$, $i+2$ ... $n$.
+\item $h_i{,i+1}, h_i{,i+2}$ ... $h_i{,n}$ $\rightarrow$ Representar\'an la peligrosidad asociada del elemento $i$ con los elementos $i+1$, $i+2$ ... $n$.
 \end{itemize}
 \end{itemize}
-\\
+
 La salida, por su parte, constar\'a de una fila con:
-\\
+
 \begin{itemize}
 \item Un entero \textbf{C} $\rightarrow$ Representar\'a la cantidad indispensable de cami\'ones que es necesaria para transportar los productos bajo las condiciones del problema.
 \item $n$ enteros $\rightarrow$ Representar\'an en que cami\'on viaja cada producto.
@@ -52,12 +52,13 @@ o
 \begin{itemize}
 \item $2$ $1$ $2$ $2$
 \end{itemize}
-\\
+
 \section{Idea General de Resoluci\'on}
+
 Luego la idea del algoritmo es simple, probar todas las combinaciones posibles de camiones y de entre todas determinar cual es la que cumple con la cota de peligrosidad pedida y usa la menor cantidad de camiones posible. Ademas, para aumentar la performance del algoritmo, se ir\'an podando ramas de la familia de soluciones de manera tal de que no sea necesario chequear absolutamente todos los casos.
-\\
-Antes de presentar el pseudocodigo vale aclarar un punto importante y es que el algoritmo debe encontar siempre una soluci\'on. Esto se debe a que siempre es posible poner todos los productos qu\'imicos en camiones separados, lo que nos d\'a  una peligrosidad $0$. Es posible usar esta como una cota contra la cual parar de chequear, si tenemos $n$ productos qu\'imicos, es simple ver que a lo sumo usar\'emos $n$ camiones. Denominaremos a esta como la "peor soluci\'on" ya que es claro que es una soluci\'on valida, pero que usa la maxima cantidad de camiones.
-\\
+
+Antes de presentar el pseudocodigo vale aclarar un punto importante y es que el algoritmo debe encontar siempre una soluci\'on. Esto se debe a que siempre es posible poner todos los productos qu\'imicos en camiones separados, lo que nos d\'a  una peligrosidad $0$. Es posible usar esta como una cota contra la cual parar de chequear, si tenemos $n$ productos qu\'imicos, es simple ver que a lo sumo usar\'emos $n$ camiones. Denominaremos a esta como la peor soluci\'on ya que es claro que es una soluci\'on valida, pero que usa la maxima cantidad de camiones.
+
 En cuanto a las podas, utilizamos dos, una que en cada paso del backtrack chequea si la soluci\'on final que encontramos hasta el momento usa una cantidad menor de camiones que la solucion parcial que se esta construyendo. Es claro que de ser as\'i, estamos la solucion parcial nunca podr\'a ser mejor, por lo tanto se podar\'a toda esa familia de soluciones.
 \\
 La segunda chequea que la soluci\'on parcial que estamos construyendo no exceda el limite de peligrosidad pedido por el ejercicio, en caso de ser as\'i la soluci\'on no ser\'a valida. En caso de que esto suceda, tambien se poda.

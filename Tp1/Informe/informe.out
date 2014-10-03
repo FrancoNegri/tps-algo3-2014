@@ -5,4 +5,28 @@
 \BOOKMARK [2][-]{subsection.1.0.4}{Complejidad}{subsection.1.0.1}% 5
 \BOOKMARK [2][-]{subsection.1.0.5}{Demostraci\363n}{subsection.1.0.1}% 6
 \BOOKMARK [2][-]{subsection.1.0.6}{Experimentacion}{subsection.1.0.1}% 7
-\BOOKMARK [0][-]{chapter.2}{Ap\351ndice}{}% 8
+\BOOKMARK [2][-]{subsection.1.0.7}{Ejercicio Auxiliar}{subsection.1.0.1}% 8
+\BOOKMARK [0][-]{chapter.2}{Horizontes lejanos}{}% 9
+\BOOKMARK [1][-]{subsection.2.0.8}{Introduccion}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.0.9}{Ejemplos y Soluciones}{subsection.2.0.8}% 11
+\BOOKMARK [2][-]{subsection.2.0.10}{Desarrollo}{subsection.2.0.8}% 12
+\BOOKMARK [2][-]{subsection.2.0.11}{Demostraci\363n}{subsection.2.0.8}% 13
+\BOOKMARK [2][-]{subsection.2.0.12}{Complejidad}{subsection.2.0.8}% 14
+\BOOKMARK [2][-]{subsection.2.0.13}{Experimentaci\363n}{subsection.2.0.8}% 15
+\BOOKMARK [0][-]{chapter.3}{Biohazard}{}% 16
+\BOOKMARK [1][-]{section.3.1}{Introducci\363n}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.1.1}{Ejemplo de entrada valida}{section.3.1}% 18
+\BOOKMARK [1][-]{section.3.2}{Idea General de Resoluci\363n}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.3}{Correctitud}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.4}{Complejidad}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.5}{Resultados}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.5.1}{Testing}{section.3.5}% 23
+\BOOKMARK [2][-]{subsection.3.5.2}{Caso Random}{section.3.5}% 24
+\BOOKMARK [2][-]{subsection.3.5.3}{Peor caso}{section.3.5}% 25
+\BOOKMARK [1][-]{section.3.6}{Adiconales}{chapter.3}% 26
+\BOOKMARK [0][-]{chapter.4}{Ap\351ndice}{}% 27
+\BOOKMARK [1][-]{section.4.1}{Medicion de los tiempos}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.2}{C\363digo Fuente}{chapter.4}% 29
+\BOOKMARK [2][-]{subsection.4.2.1}{Ej1.cpp}{section.4.2}% 30
+\BOOKMARK [2][-]{subsection.4.2.2}{Ej2.cpp}{section.4.2}% 31
+\BOOKMARK [2][-]{subsection.4.2.3}{Ej3.cpp}{section.4.2}% 32

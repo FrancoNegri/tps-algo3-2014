@@ -3,7 +3,33 @@
 \contentsline {subsection}{\numberline {1.0.1}Introducci\'on}{3}{subsection.1.0.1}
 \contentsline {subsection}{\numberline {1.0.2}Ejemplos y Soluciones}{3}{subsection.1.0.2}
 \contentsline {subsection}{\numberline {1.0.3}Desarrollo}{3}{subsection.1.0.3}
-\contentsline {subsection}{\numberline {1.0.4}Complejidad}{3}{subsection.1.0.4}
+\contentsline {subsection}{\numberline {1.0.4}Complejidad}{4}{subsection.1.0.4}
 \contentsline {subsection}{\numberline {1.0.5}Demostraci\'on}{4}{subsection.1.0.5}
-\contentsline {subsection}{\numberline {1.0.6}Experimentacion}{6}{subsection.1.0.6}
-\contentsline {chapter}{\numberline {2}Ap\'endice}{8}{chapter.2}
+\contentsline {subsection}{\numberline {1.0.6}Experimentacion}{5}{subsection.1.0.6}
+\contentsline {subsection}{\numberline {1.0.7}Ejercicio Auxiliar}{7}{subsection.1.0.7}
+\contentsline {subsubsection}{\IeC {\textquestiondown }C\'omo afecta eso a su algoritmo?}{7}{subsection.1.0.7}
+\contentsline {subsubsection}{\IeC {\textquestiondown }Qu\'e caracter\IeC {\'\i }stica del problema cambia en esta nueva versi\'on?}{7}{subsection.1.0.7}
+\contentsline {chapter}{\numberline {2}Horizontes lejanos}{8}{chapter.2}
+\contentsline {subsection}{\numberline {2.0.8}Introduccion}{8}{subsection.2.0.8}
+\contentsline {subsection}{\numberline {2.0.9}Ejemplos y Soluciones}{8}{subsection.2.0.9}
+\contentsline {subsection}{\numberline {2.0.10}Desarrollo}{8}{subsection.2.0.10}
+\contentsline {subsection}{\numberline {2.0.11}Demostraci\'on}{9}{subsection.2.0.11}
+\contentsline {subsection}{\numberline {2.0.12}Complejidad}{9}{subsection.2.0.12}
+\contentsline {subsection}{\numberline {2.0.13}Experimentaci\'on}{11}{subsection.2.0.13}
+\contentsline {chapter}{\numberline {3}Biohazard}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introducci\'on}{13}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Ejemplo de entrada valida}{13}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Idea General de Resoluci\'on}{14}{section.3.2}
+\contentsline {section}{\numberline {3.3}Correctitud}{15}{section.3.3}
+\contentsline {section}{\numberline {3.4}Complejidad}{15}{section.3.4}
+\contentsline {section}{\numberline {3.5}Resultados}{16}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Testing}{16}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Caso Random}{16}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Peor caso}{17}{subsection.3.5.3}
+\contentsline {section}{\numberline {3.6}Adiconales}{18}{section.3.6}
+\contentsline {chapter}{\numberline {4}Ap\'endice}{20}{chapter.4}
+\contentsline {section}{\numberline {4.1}Medicion de los tiempos}{20}{section.4.1}
+\contentsline {section}{\numberline {4.2}C\'odigo Fuente}{21}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Ej1.cpp}{21}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Ej2.cpp}{23}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Ej3.cpp}{28}{subsection.4.2.3}
