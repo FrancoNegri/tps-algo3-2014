@@ -63,4 +63,30 @@ Aca dibujito de grafo
 
 \subsection{Experimentacion}
 
-Experimentar y tirar graficos
+Para probar que efectivamente nuestro algoritmo es cuadratico con respecto a $n$ en el peor caso, creamos grafos completos con un generador de entrada, y corremos $50$ tests, para reducir el posible factor de ruido que puede generar correr nuestro algoritmo de manera concurrente con otros procesos del sismtema.
+Los grafos completos que tomamos van desde el grafo $K_1$ hasta el $K_60$.
+
+Los resultados pueden observarse en la siguiente grafica:
+
+\begin{figure}[h!]
+  \begin{center}
+	\includegraphics[scale=0.5]{Ej3/resultados1.jpg}
+	%\caption{Descripcion de la figura}
+	\label{nombreparareferenciar}
+  \end{center}
+\end{figure}
+
+\newpage
+Dividimos por una función cuadratica para ver que se obtiene:
+
+\begin{figure}[h!]
+  \begin{center}
+	\includegraphics[scale=0.5]{Ej3/resultados2.jpg}
+	%\caption{Descripcion de la figura}
+	\label{nombreparareferenciar}
+  \end{center}
+\end{figure}
+
+Si bien en los primeros casos, el algoritmo pareciera no ser lineal, esto puede deverse a que la instancia del problema es muy pequeña y los outliers en ese caso son mayores.
+\\
+Para las instancias mas grandes se vé que el algoritmo el casi perfectamente constante. Luego, de manera empirica, podemos concluír que nuestro algoritmo es cuadratico con respecto a $n$ en el peor caso.
