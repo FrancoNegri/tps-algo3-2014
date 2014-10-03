@@ -24,7 +24,6 @@ El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
 
  \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
-<<<<<<< HEAD
  \caption{ Saltos( salto\_Maximo : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}\\
  		\STATE{Si saltoMax $>$ cantidadTablones} \;\; \tOde{1} \\
  		\STATE{\quad devolver 1} \;\; \tOde{1}  \\
@@ -40,48 +39,19 @@ El siguiente es un pseudo-c\'odigo de nuestro algoritmo.\\
  		\STATE{\quad\quad\quad \quad Le resto uno a PosActual} \;\; \tOde{1} \\
  		\STATE{Devolver listaDeSaltos}\\
   \end{algorithmic}
+  
 Todas las asignaciones y comparaciones son en \Ode{1} como está marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones, las asignaciones a las lista son en \Ode{1}\\
  En la línea 4 para revisar si la cantidad de tablones rotos es mayor o igual a el salto máximo en alguna parte del puente se realiza un ciclo que cuenta la cantidad de tablones rotos consecutivos, en caso de que se encuentre con uno sano resetea el contador y comienza de nuevo a contar, en el caso que el contador llegue a superar el salto máximo se devuelve que no tiene solución. Esto se realiza con un solo ciclo y la complejidad es \Ode{n}. \\
  El ciclo de las líneas 7 - 13 se realiza n veces en el peor caso con lo cual la complejidad total del algoritmo es \Ode{n}, ya que los dos posibles peores casos son, cuando el puente está sano y salta de a un tablón por vez, o cuando los únicos tablones sanos son en las posiciones 1, Salto Máximo +1 , 2*(salto Máximo +1)..., de esta manera siempre salta el máximo y recorre los tablones hasta el primero para encontrar el sano o sucede que en un salto encuentra el tablón roto pero al próximo salto vuelva a repetir esta operación, dando como resultado que recorre todo el puente para encontrar los saltos.
-
-=======
- \caption{ \\Saltos( salto\_Maximo : natural, puente : arreglo(1's y 0's), distancias: arreglo(naturales) , cantidadTablones : natural)}
- 		\STATE{Si saltoMax $>$ cantidadTablones ~~~O(1)}   
- 		\STATE{\quad devolver 1}
- 		\STATE{SI NO}
- 		\STATE{SI existe una cantidad de tablones rotos mayor o igual a salto\_maximo en algun lugar del puente}
- 		\STATE {\quad no existe solucion}
- 		\STATE{nueva listaDeSaltos}
- 		\STATE{\quad mientras posActual $<$ n $\&\&$ posActual >= 0 ~~~O(n)} 
- 			\STATE{\quad\quad SI puente(posActual) == 0 }
- 			\STATE{\quad\quad\quad Agrego posActual a Lista de Saltos}
- 			\STATE{\quad\quad\quad le sumo a posActual el largo del salto }
- 			\STATE{\quad\quad SI NO  }
- 			\STATE{\quad\quad Le resto uno a PosActual}
- 			\STATE{\quad\quad Devolver listaDeSaltos}
-  \end{algorithmic}
   \end{algorithm}	
- Todas las asignaciones y comparaciones son en \Ode{1} como esta marcado en el pseudocodigo, ya que son números naturales y están acotados por la cantidad de tablones\\
- En la linea 4 para revisar si la cantidad de tablones rotos es mayor o igual a el salto maximo en alguna parte del puente se realiza un ciclo que cuenta la cantidad de tablones rotos consecutivos, en caso de que se encuentre con uno sano resetea el contador y comienza de nuevo a contar, en el caso que el contador llegue a superar el salto maximo se devuelve que no tiene solucion. Esto se realiza con un solo ciclo y la complejidad es \Ode{n}. 
- El ciclo de las lineas 7 - 13 se realiza n veces en el peor caso con lo cual la complejidad total del algoritmo es \Ode{n}, ya que los dos posibles peores casos son, cuando el puente esta sano y salta de a un tablon por vez, o cuando los unicos tablones sanos son en las posiciones 1, Salto Maximo +1 , 2*(salto Maximo +1)..., de esta manera siempre salta el maximo y recorre los tablones hasta el primero para encontrar el sano dando como resultado que recorre todo el puente para encontrar los saltos.
  
->>>>>>> e04b514a32f790be71f01e5c1eb8236c4cdc0a05
-
  
 \subsection{Demostraci\'on}
-<<<<<<< HEAD
-Para la prueba de correctitud, queremos demostrar que nuestro algoritmo siempre encuentra una sucesión de saltos que es la menor posible.
-
-Luego para demostrar por absurdo, supongamos que no es así. Dicho mas formalmente, existe una sucesión $V=\{v_1,v_2,...,v_i\}$ de saltos tal que es menor a la sucesión $W= \{w_1,w_2,...,w_i, w_{i+1},...,w_j\}$ que encuentra nuestro algoritmo.
-
-Por condiciones del problema sabemos el tablón al que queremos saltar no puede estar a distancia mayor a $k$ (el salto máximo posible), esto significa que:
-=======
 Para la prueba de correctitud, queremos demostrar que nuestro algoritmo siempre encuentra una suceción de saltos que es la menor posible.
 
 Luego para demostrar por absurdo, supongamos que no es así. Dicho mas formalmente, existe una suceción $V=\{v_1,v_2,...,v_i\}$ de saltos tal que es menor a la suceción $W= \{w_1,w_2,...,w_i, w_{i+1},...,w_j\}$ que encuentra nuestro algoritmo.
 
 Por condiciones del problema sabemos el tablon al que queremos saltar no puede estar a distancia mayor a $k$ (el salto maximo posible), esto significa que:
->>>>>>> e04b514a32f790be71f01e5c1eb8236c4cdc0a05
 
 $$v_1 \leq k$$
 $$v_2 - v_1 \leq k$$
@@ -94,7 +64,7 @@ $$v_1 \leq k$$
 $$v_2 \leq 2.k$$
 $$...$$
 $$v_i \leq i.k$$
-<<<<<<< HEAD
+
 
 Pero nuestro algoritmo, en cada paso, salta la mayor cantidad de tablones posibles y de allí comienza a retroceder hasta encontrar uno sano, dado que $v_1,v_2,...,v_i$ deben ser tablones sanos, los tablones elegidos por nuestro algoritmo estarán acotados de esta manera:
 
@@ -109,7 +79,6 @@ Dado que supusimos que nuestro algoritmo encontraba una sucesión que era peor a 
 
 Luego nuestro algoritmo encuentra siempre una sucesión de saltos que es minima.
 		
-=======
 
 Pero nuestro algoritmo, en cada paso, salta la mayor cantidad de tablones posibles y de allí comienza a retroceder hasta encontrar uno sano, dado que $v_1,v_2,...,v_i$ deben ser tablones sanos, los tablones elegidos por nuestro algoritmo estarán acotados de esta manera:
 
@@ -124,7 +93,7 @@ Dado que supusimos que nuestro algoritmo encuntraba una suceción que era peor a 
 
 Luego nuestro algoritmo encuentra siempre una suceción de saltos que es minima.
 
->>>>>>> e04b514a32f790be71f01e5c1eb8236c4cdc0a05
+
 \newpage			
 
 \subsection{Experimentacion}
@@ -143,6 +112,20 @@ Nuestro algoritmo nos devuelve en O(1) si el k es mayor a la cantidad de tablone
 
 Por lo tanto concluimos que nuestro algoritmo sigue un orden lineal con respecto a la cantidad de tablones.
 \subsection{Ejercicio Auxiliar}
+
+En la nueva versión del juego, algunos tablones sanos contienen ?premios?. Si el participante cae en uno de estos tablones, a partir de ese momento su capacidad máxima de salto se vería incrementada en una
+Unidad. Se pide desarrollar los siguientes puntos:\\
+1. ¿Cómo afecta eso a su algoritmo?\\
+Dado que cuando cae un tablón que tiene premio aumenta en uno la capacidad del máximo salto lo que debemos modificar de nuestro algoritmo es que cuando encuentra un tablón sano verificar si este contiene premio y sumarle una unidad antes de sumarlo a la posición actual para determinar el posible nuevo salto.
+\\
+2. ¿Qué característica del problema cambia en esta nueva versión?
+Con esta nueva característica lo que podría suceder es que no encuentre una solución optima al problema, el caso trivial seria aquel el que todos los tablones están sanos y colocando premio en todas las posiciones excepto aquellas donde sea un múltiplo del salto máximo, de esta manera si nos movemos un tablón para atrás obtendríamos premio, teniendo más probabilidades de tener premio en el próximo salto y al aumentar el salto máximo podría obtener una solución difiera en la cantidad de saltos total. obteniendo una mejor solución.
+Si llevamos al ejemplo a una forma gráfica supongamos que este es nuestro puente:\\
+[(1,p),(1,p),(0,p),(1,p),(1,p),(0,p),(1,p)(1,p)(0,p)(1,p)(1,p)(0,p)]\\
+Ahora supongamos que el salto máximo es 3\\
+La solución obtenida serían los tablones (3,6,9,12,13), donde el 13 representa que salió del puente.\\
+Ahora veamos que si el primero saltamos al 2 obtendríamos la siguiente solución (2,5,9,13) siendo esta una solución mejor a la obtenida utilizando el salto máximo.
+
 
 
 
