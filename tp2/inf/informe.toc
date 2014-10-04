@@ -18,7 +18,7 @@
 \contentsline {subsubsection}{\numberline {3.2.1}Modelado}{10}
 \contentsline {subsubsection}{\numberline {3.2.2}Soluci\IeC {\'o}n, Correctitud y Complejidad}{10}
 \contentsline {subsubsection}{\numberline {3.2.3}Complejidad}{11}
-\contentsline {subsection}{\numberline {3.3}Experimentacion}{11}
+\contentsline {subsection}{\numberline {3.3}Experimentaci\IeC {\'o}n}{11}
 \contentsline {section}{\numberline {4}Aclaraciones}{13}
 \contentsline {subsection}{\numberline {4.1}Medicion de los tiempos}{13}
 \contentsline {section}{\numberline {5}C\'odigo Fuente}{13}

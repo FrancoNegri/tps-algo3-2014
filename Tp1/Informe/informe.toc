@@ -27,9 +27,12 @@
 \contentsline {subsection}{\numberline {3.5.2}Caso Random}{16}{subsection.3.5.2}
 \contentsline {subsection}{\numberline {3.5.3}Peor caso}{17}{subsection.3.5.3}
 \contentsline {section}{\numberline {3.6}Adiconales}{18}{section.3.6}
-\contentsline {chapter}{\numberline {4}Ap\'endice}{20}{chapter.4}
-\contentsline {section}{\numberline {4.1}Medicion de los tiempos}{20}{section.4.1}
-\contentsline {section}{\numberline {4.2}C\'odigo Fuente}{21}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Ej1.cpp}{21}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Ej2.cpp}{23}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Ej3.cpp}{28}{subsection.4.2.3}
+\contentsline {chapter}{\numberline {4}Modificaciones en la reentrega}{20}{chapter.4}
+\contentsline {section}{\numberline {4.1}Ejercicio 1}{20}{section.4.1}
+\contentsline {section}{\numberline {4.2}Ejercicio 3}{20}{section.4.2}
+\contentsline {chapter}{\numberline {5}Ap\'endice}{21}{chapter.5}
+\contentsline {section}{\numberline {5.1}Medicion de los tiempos}{21}{section.5.1}
+\contentsline {section}{\numberline {5.2}C\'odigo Fuente}{22}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Ej1.cpp}{22}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Ej2.cpp}{24}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Ej3.cpp}{29}{subsection.5.2.3}
