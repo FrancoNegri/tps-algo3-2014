@@ -19,8 +19,6 @@
 #define NODO_NO_MARCADO INT_MAX
 #define NODO_MARCADO INT_MAX-1
 
-
-
 using namespace std;
 
 struct coordenada
