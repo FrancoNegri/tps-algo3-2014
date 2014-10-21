@@ -1,0 +1,308 @@
+%%
+%% newalgo3.sty
+%%El paquete que  modifique para usar en los tp de algo3
+%% Generado a partir de newalgo.sty de Algo2
+%% Cambiï¿½un poco el formato, agreguï¿½el comando VAR y permitï¿½poner el valor que devuelve la funciï¿½ en la signatura del algoritmo.
+%%
+%%agregue salto de linea al proximo sin numero: \sn
+%%	end para while for if
+%%	\complej{n} alinea la (n) del lado derecho
+%%	\tipo{texto}	pone texto con mathtt
+%%	\bool, \nat, \Char, \String que los pone con fuente tt
+%%	\false, \true que los pone como const
+%%	\func{nombre} y funcb{nombre} ponen el nombre de una funcion en versalles
+%%      \comentario{texto}
+%
+%%	cambios en los IF y WHILE :
+%%           begin{nombre}{condicion}{otro texto}
+%%              algunas sentencias
+%%           end{nombre}
+%% y resulta: nombre (condicion) otro texto
+%%            endNombre
+
+%%	cambos en los FOR se usan:
+%%		begin{FOR}{condicion}{otro texto}
+%%			sentencias
+%%		end{FOR}
+%%	y resulta: for condicion otro texto
+%%                     sentencias
+%%                 endFor
+%% Agregue vskip para separarlo del texto
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{newalgo3}[2009/09/15 Format code algorithms nicely (ALgo3)]
+
+\RequirePackage[utf8]{inputenc}
+
+%Para poner comentarios. Pendiente: hacer algo para comentarios de mas de una linea.
+\newcommand\comentario[1]{$\ $\begin{small}\textit{//#1}\end{small}}
+
+%Para las restricciones.
+\newcommand\restriccion[1]{(Restricci\'on: $#1$)}
+
+%Para los parï¿½etros de los algoritmos
+\newcommand\param[3]{\ensuremath{\mathbf{#1}\,#2\!: \mathtt{#3}}}
+% Tupla
+\newcommand\tupla[2]{\ensuremath{\langle #1, #2\rangle}}
+%========================================================================
+% Tomados de Internet:
+%  \ifblank --- checks if parameter is blank (Spaces count as blank)
+%  \ifgiven --- checks if parameter is not blank: like \ifblank...\else
+%  \ifnull  --- checks if parameter is null (spaces are NOT null)
+%     use \ifgiven{#1}\then   ...  \else  ...  \fi   etc
+\let\then\iftrue
+{\catcode`\!=8 % funny catcode so ! will be a delimiter
+ \catcode`\Q=3 % funny catcode so Q will be a delimiter
+\long\gdef\ifgiven#1\then{\Ifbl@nk#1QQQ\empty!}% negative of \ifblank
+\long\gdef\ifblank#1\then{\Ifbl@nk#1QQ..!}% if null or spaces
+\long\gdef\Ifbl@nk#1#2Q#3!{\ifx#3}
+\long\gdef\ifnull#1\then{\IfN@LL#1* {#1}!}% if null
+\long\gdef\IfN@LL#1 #2!{\ifblank{#2}\then}
+}
+%========================================================================
+
+\newbox\algstack
+\newbox\algtab
+\newcount\algline
+\newtoks\alga
+\newtoks\algb
+
+\newif\ifalgisenv
+
+\def\alglpsh#1\to#2{\alga={#1\\}\algb=\expandafter{#2}
+  \global\edef#2{\the\alga\the\algb}}
+\def\alglpop#1\to#2{\ifx\empty#1\def#2{}
+  \else\global\expandafter\algllop#1\algllop#1#2\fi}
+\def\algllop#1\\#2\algllop#3#4{\def#3{#2}\def#4{#1}}
+\def\algltop#1\to#2{\ifx\empty#1\def\#2{}\else
+  \expandafter\alglttop#1\alglttop#2\fi}
+\def\alglttop#1\\#2\alglttop#3{\def#3{#1}}
+\def\algckenv#1{\algltop\alglenv\to\algenv
+  \def\algarg{#1}
+  \ifx \algarg\algenv \algisenvtrue \else \algisenvfalse \fi}
+
+\def\algsol{\global\advance\algline by 1
+  \the\algline&\hbox\bgroup\copy\algtab\ignorespaces$}
+%algsolSN hace que la linea no tenga numero
+\def\algsolSN{&\hbox\bgroup\copy\algtab$\ignorespaces}
+\def\algeol{$\egroup \cr\algsol}
+\def\algpush{\global\setbox\algstack\hbox{\unhbox\algstack\box\algtab}}
+\def\algpop{\global\setbox\algstack\hbox{\unhbox\algstack
+    \global\setbox\algtab\lastbox}}
+\def\algset{$\egroup\setbox0=\lastbox\algpush
+  \global\setbox\algtab\hbox to \wd0{}\hbox\bgroup\unhbox0$}
+\def\algorithm#1#2#3{\bgroup
+  \let\complej=\algOde %defino complejidad: \complej{n} y queda alineado
+  \let\complejTheta=\algThetade %defino complejidad: \complej{n} y queda alineado
+  \let\derecha=\algDer %defino algo que queda alineado a la derecha
+  \let\func=\algFunc %las funciones funcion(parametros): \func{nombre}(parametros)
+  \let\funcb=\algFuncb %las funciones par1 funcion par2: par1 \func2{nombrefunc} par2
+  \let\sn=\algSinNum %el salto de linea no se numera
+  \let\bool=\algBool %escribe bool como algtipo
+  \let\boolean=\algBoolean
+  \let\nat=\algNat   % escribe nat como algtipo
+  \let\String=\algString   % escribe string como algtipo
+  \let\Char=\algChar   % escribe char como algtipo
+  \let\true=\algTrue %escribe true como algconst
+  \let\false=\algFalse % escribe true como algconst
+  \let\comentario=\algComment %escribe los comentarios en texto mas chico
+  \let\NULL=\algNULL
+  \let\tipo=\algtipo % defino el tipo de dato
+  \let\or=\algOR
+  \let\and=\algAND
+  \let\not=\algNOT
+
+  \let\\=\algeol  % fin de linea
+  \let\==\leftarrow % asignacion
+  \let\VAR=\algVAR %variable
+  \let\IF=\algIF
+  \let\RETURN=\algRETURN
+  \let\ELSE=\algELSE
+  \let\endIF=\endalgIF
+  \let\ERROR=\algERROR
+  \let\NIL=\algNIL
+  \let\WHILE=\algWHILE
+  \let\endWHILE=\endalgWHILE
+  \let\FOR=\algFOR
+  \let\endFOR=\endalgFOR
+  \let\CALL=\algCALL
+  \let\text=\algtext
+  \let\TO=\algTO
+  \let\DOWNTO=\algDOWNTO %como el to pero para abajo
+  \let\EACH=\algEACH
+  \let\SWITCH=\algSWITCH
+  \let\item=\algitem
+  \let\endSWITCH=\endalgSWITCH
+  \let\DEFAULT=\algDEFAULT
+  \let\REPEAT=\algREPEAT
+  \let\UNTIL=\endalgREPEAT
+  \let\endREPEAT=\UNTIL
+  \let\IN=\algIN
+  \let\begin=\algbegin
+  \let\end=\algend
+  \let\endalgorithm=\algalmostend
+  \global\setbox\algtab\null
+  \global\setbox\algstack\null
+  \global\algline=0
+  \def\alglenv{algorithm\\}
+  \vskip 9pt\halign\bgroup\space\hfill##&\quad## \cr
+  \omit\textsc{#1}(#2)\ifblank{#3}\then{}\else{\ensuremath{\rightarrow\,#3}}\fi\span\omit\hfill \cr
+  \algsol}
+\def\algalmostend{$\egroup\cr\egroup\egroup\strut\end{algorithm}\vskip 1pt}
+\def\algkey#1{\mbox{\bf #1\ }}
+\def\algVAR#1{\algkey{var} \algset#1}
+\def\endVAR{\algpop}
+\def\algIF#1#2{\algkey{if}\algset(#1) #2\\
+  \algkey{then}\algset}
+\def\algELSE{\algckenv{IF}
+  \ifalgisenv
+    \algpop \\
+    {\setbox0\hbox{\algkey{then}}
+      \hbox to \wd0{\algkey{else}\hfill}}
+    \algset
+  \else
+    \PackageError{newalg}
+    {\string\ELSE\space is only allowed in the IF environment}
+    {You have an \protect\ELSE\space command without a \string\begin{IF}}
+  \fi}
+\def\endalgIF{\algpop\algpop \\
+	{\setbox0\hbox{\algkey{if}}
+      \hbox to \wd0{\algkey{endIf}\hfill}} }
+\def\algERROR#1{\algkey{error}\mbox{``#1''}}
+\def\algRETURN{\algkey{return}}
+\def\algconst#1{\mbox{\small\sc #1}}
+\def\algNIL{\algconst{nil}}
+\def\algWHILE#1#2{\algkey{while}(#1) #2\\
+  \indent\algkey{        }\algset}
+\def\endalgWHILE{\algpop \\
+	{\setbox0\hbox{\algkey{while}}
+      \hbox to \wd0{\algkey{endWhile}\hfill}}}
+\def\algCALL#1{\mbox{\sc #1}}
+\def\algFOR#1#2{\algkey{for}#1 \algkey{ do} #2\\
+  \indent\algkey{       }\algset}
+\def\endalgFOR{\algpop \\
+	{\setbox0\hbox{\algkey{while}}
+      \hbox to \wd0{\algkey{endFor}\hfill}}}
+\def\algtext#1{\mbox{ #1 }}
+\def\algTO{\algkey{ to}}
+\def\algDOWNTO{\algkey{ downto}}
+\def\algEACH{\algkey{ each}}
+\def\algSWITCH{\algkey{switch}\algpush}
+\def\algitem#1{\algckenv{SWITCH}
+  \ifalgisenv
+    \algpop \\
+    \quad\algkey{case}\algset #1:
+  \else
+    \PackageError{newalg}
+    {\string\item\space can only be used in a SWITCH environment}
+    {You have an item that is not inside of the correct environment}
+  \fi}
+\def\endalgSWITCH{\algpop}
+\def\algDEFAULT{\algkey{default}}
+\def\algREPEAT#1{
+  \algkey{repeat}\algset\\}
+\def\endalgREPEAT{\algpop \\
+  \quad\algkey{until}}
+\def\algIN{\algkey{ in}}
+\def\algbegin#1{\alglpsh#1\to\alglenv
+  \csname #1\endcsname}
+\def\algend#1{\alglpop\alglenv\to\algenv
+  \def\algarg{#1}
+  \ifx \algarg\algenv
+    \relax
+  \else
+    \PackageError{newalg}
+    {\string\begin{\algenv}\space ended by \string\end{\algarg}}
+    {We are confused.  Try to return now}
+  \fi
+  \csname end#1\endcsname
+}
+%estos los agregue
+\def\algComment#1{\algtext{\begin{small}\textit{//#1}\end{small}}} %defino los comentarios
+\def\algBool{\algtipo{bool}} %defino bool con formato algtipo
+\def\algBoolean{\algtipo{boolean}} %defino boolean con formato algtipo
+\def\algNat{\algtipo{nat}} %defino nat con formato algtipo
+\def\algChar{\algtipo{char}} %defino char con formato algtipo
+\def\algString{\algtipo{string}} %defino bool con formato algtipo
+\def\algSinNum{$\egroup \cr\algsolSN}
+\def\algOde#1{$\egroup \hfill$\quad O(#1)$\bgroup$}
+\def\algThetade#1{$\egroup \hfill$\quad \Theta(#1)$\bgroup$}
+\def\algDer#1{$\egroup \hfill$\quad #1$\bgroup$}
+\def\algFunc#1{\textsc{#1}} %definicion de la letra para funciones
+\def\algFuncb#1{\textsc{ #1 } } %definicion de la letra para funciones2
+\def\algtipo#1{\mbox{\tt #1}} %defino el tipo tt
+\def\algTrue{\algconst{True}} %defino algTrue
+\def\algFalse{\algconst{False}} % defino algFalse
+\def\algNULL{\algconst{Null}} % defino algFalse
+\def\algAND{~\wedge ~}
+\def\algOR{~\vee ~}
+\def\algNOT{~\neg ~}
+
+
+\endinput
+%%
+%% End of file `newalg.sty'.
+
+%---------------------------------------------------------------
+%		Modo de uso
+%---------------------------------------------------------------
+% \begin{algorithm}{NombreAlgoritmo}{parametros}{salida}
+%	sentencia1 \\
+%	sentencia2
+% \end{algorithm}
+%%
+%%
+%% salto de linea (con numero): \\
+%% salto de linea (sin numero): \sn
+%%
+%%Complejidades: \complej{n} alinea la O(n) del lado derecho
+%% Tipos: \tipo{texto}	pone texto con mathtt
+%%Constantes:  \false, \true que los pone como const
+%%Funciones: \CALL{nombre}, \func{nombre} y funcb{nombre} ponen el nombre de una funcion en versalles
+%%Palabras clave no definidas: \algkey{palabra} formatea palabra como keyword
+%%Error: |ERROR{Mensaje de error} escribe error ``Mensaje de error''
+%%
+%%ENTORNOS:
+%% \begin{VAR}
+%%   	variable : tipo \\
+%%   	ultimaVariable : tipo
+%%   \end{VAR}
+%% donde tipo puede ser: \nat, \String, \bool, \Char, o \algtipo{nombreTipo} (para que formatee todos los tipos de la misma forma
+%%
+%%  \begin{IF}{condicion}{otro texto}
+%%              sentencias1\\
+%%              sentencias2
+%%              \ELSE sentencias3\\
+%%                    sentencias4
+%%  \end{IF}\\
+%% y resulta: if (condicion) otro texto
+%%			then sentencia1
+%%			     sentencia2
+%%			else sentencia3
+%%			     sentencia4
+%%            endIf
+%%
+%%
+%%\begin{WHILE}{condicion}{otro texto}
+%%              sentencia1\\
+%%              sentencian
+%%\end{WHILE}\\
+%%
+%% y resulta: while (condicion) otro texto
+%%		   sentencia1\\
+%%		   sentencian
+%%            endWhile
+%%
+%%
+%%	los FOR se usan:
+%%		begin{FOR}{condicion}{otro texto}
+%%			sentencias
+%%		end{FOR}
+%%
+%%	y resulta: for condicion otro texto
+%%                     sentencias
+%%                 endFor
+%% Donde dice ``otro texto'' lo uso para poner la complejidad
+%%
+%% BUGS:
+%% un monton. Uno importante: no puede haber lineas en blanco.

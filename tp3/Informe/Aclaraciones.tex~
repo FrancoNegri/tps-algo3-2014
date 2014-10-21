@@ -1,0 +1,33 @@
+\section{Medicion de los tiempos}
+
+Para este tp como trabajamos bajo el lenguaje de programacion C++, decidimos calcular los tiempos utilizando 'chrono' de la libreria standard de c++ (chrono.h) que nos permite calcular el tiempo al principio del algoritmo y al final, y devolver la resta en la unidad de tiempo que deseamos.\\ \\
+Para microsegundos el proceso ser\'ia el siguiente:
+
+
+
+\section{Generaci\'on de N\'umeros al Azar}
+
+Para los casos en donde necesitabamos hacer pruebas con valores aleatorios, decidimos usar la biblioteca de C $``cstdlib``$.
+
+Para esto utilizamos el constructor $srand$ de la siguiente manera $Random$ $srand(time(NULL))$, esto nos crea un generador de números aleatorios cuya semilla es inicializada en base al instante de tiempo actual, la cual vamos a $"$controlar$"$ generalmente utilizando la siguientes sintaxis: 
+
+$\\variable = limite$$\_$$inferior + rand()$ $\%$ $(limite$\_$superior +1 - limite$\_$inferior) ;\\$ 
+
+Donde $rand()$  nos devuelve un n\'umero pseudo-aleatorio a partir de la semilla que se creo con $srand()$. Luego los valores  limite$\_$inferior y limite$\_$superior van a ser de cotas para el n\'umero que queremos y con ayuda de la operacion $\%$ (m\'odulo) seguido de un n\'umero. Lo utilizamos para limitar el random que vamos a conseguir, de esta forma estamos $"$acotando$"$ el n\'umero random en un rango de [limite$\_$inferior, limite$\_$superior].\\
+
+Para mas informaci\'on v\'ease: http://www.cplusplus.com/reference/cstdlib/srand/ \\
+
+
+\newpage
+\section{Código Fuente}
+\subsection{Ej1.cpp}
+\lstinputlisting[language=C++]{camionesSospechosos/codigo_ej1.tex}
+
+\newpage
+\subsection{Ej2.cpp}
+\lstinputlisting[language=C++]{laJoya/ej2.cpp}
+
+\newpage
+\subsection{Ej3.cpp}
+\lstinputlisting[language=C++]{rompecolores/ej3.cpp}
+
