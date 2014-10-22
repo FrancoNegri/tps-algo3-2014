@@ -17,14 +17,13 @@
 
 using namespace std;
 
-//idea: genero una solución al azar (es decir, para cada nodo, lo asigno a un subconjunto cualquiera)
-//Vecindad 1: Para cada nodo, pruebo con quitarlo del conjunto y agregarlo a uno que mejore el peso.
-//Vecindad 2: para cada nodo, lo mismo que 1, pero ademas intento swapear nodos...? ver
+#define INFINITO INT_MAX
+
+
+//idea: en cada paso, tomo un vertice, me fijo en que subconjunto minimiza la suma, y lo agrego ahí.
 
 int main()
 {
-
-
 	int n,m,k;
 	cin >> n;
 	cin >> m;
@@ -52,82 +51,53 @@ int main()
 	}
 
 	//hasta aca cree todos las estructuras de datos que voy a necesitar.
+
+	subconjuntos[0].push_back(0);
+
+	//meto el nodo 1 en cualquiera de los conjuntos, por ahora son todos iguales.
 	
-	//genero una sol cualquiera
+	en_que_subconjunto_esta_cada_nodo.push_back(0);
 
-	//(esto es para obtener semillas random)
-	srand (time(NULL));
+	//del punto de arriba, el nodo 1 va a ir en el subconjunto 1, asi que tambien digo eso.
 
-	cout << "Parto de esta solucion: " << endl;
-	for(int i = 0; i < n; i++)
+	for(int i = 1; i < n; i++ )
 	{
-		int conjuntoRandom = rand() % k;
-		cout << conjuntoRandom + 1 << " ";
-		en_que_subconjunto_esta_cada_nodo.push_back(conjuntoRandom);
-	}
-	cout << endl;
+		//tomo el vertice i
+		int menorSuma = INFINITO;
+		int menorConjunto = 0;
 
-	//esta estructura es mas comoda para revisar las sumas
-	for(int i = 0; i < n; i++)
-	{
-		subconjuntos[en_que_subconjunto_esta_cada_nodo[i]].push_back(i);
-	}
-
-
-	//aca tengo que empezar a buscar localmente
-	bool SeEncontroMejorSol = true;
-	while(SeEncontroMejorSol)
-	{
-		SeEncontroMejorSol = false;
-		for(int i = 0; i < n; i++)
+		for(int j = 0; j < k; j++)
 		{
-			int conjuntoActualDe_i = en_que_subconjunto_esta_cada_nodo[i];
-			int sumaDelConjuntoDe_i = 0;
-			for(int j = 0; j < subconjuntos[conjuntoActualDe_i].size(); j++)
-				sumaDelConjuntoDe_i += matriz_de_adyacencias[i][subconjuntos[conjuntoActualDe_i][j]];
-			//Ok, ahora se cuanto peso agrega tener a i en este conjunto en particular
-			//hay un conjunto donde i agregue menos peso?
-			for(int j = 0; j < k; j++)
+			//para cada conjunto
+			int aux = 0;
+			for(int w = 0; w < subconjuntos[j].size(); w++)
 			{
-				//para cada conjunto hago la suma...
-				int sumaPoniendoA_i_enOtroConjunto = 0;
-				if(j != conjuntoActualDe_i)
-				{
-					for(int w = 0; w < subconjuntos[j].size(); w++)
-							sumaPoniendoA_i_enOtroConjunto += matriz_de_adyacencias[i][subconjuntos[j][w]];
-					//me fijo...
-					if(sumaPoniendoA_i_enOtroConjunto < sumaDelConjuntoDe_i)
-					{
-						//cambio a i de conjunto
-						en_que_subconjunto_esta_cada_nodo[i] = j;
-
-						//lo pongo en el conjunto nuevo...
-						subconjuntos[j].push_back(i);
-
-						//lo saco del conjunto viejo...
-						for(int aux = 0; aux < subconjuntos[conjuntoActualDe_i].size(); aux++)
-							if(subconjuntos[conjuntoActualDe_i][aux] == i)
-							{
-								subconjuntos[conjuntoActualDe_i].erase(subconjuntos[conjuntoActualDe_i].begin() + aux);
-								break;
-							}
-
-						SeEncontroMejorSol = true;
-						break;
-					}
-				}
+				//veo cuanto "peso" suma agregar este vertice a este conjunto determinado
+				aux += matriz_de_adyacencias[j][subconjuntos[j][w]];
+			}
+			//me guardo el conjunto que minimiza la suma
+			if(aux < menorSuma)
+			{
+				menorSuma = aux;
+				menorConjunto = j;
 			}
 		}
+		//agrego el verice i al conjunto que minimiza la suma
+		subconjuntos[menorConjunto].push_back(i);
+
+		//esto es para dar la respuesta de una y no tener que andar buscando los valores despues
+		en_que_subconjunto_esta_cada_nodo.push_back(menorConjunto);
 	}
-
-	//Una iteracion: O(n^2 + n*k*(n + n)) = O(k*n^2) good
-
+	//complejidad O(kn^2) creo.
 
 	cout << "Respuesta que hay que dar:" << endl;
 
 	for(int i = 0; i < n; i++)
 		cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
 	cout << endl;
+
+	//save it for the mornig after
+
 
 	cout << endl << "Datos Utiles:" << endl;
 
