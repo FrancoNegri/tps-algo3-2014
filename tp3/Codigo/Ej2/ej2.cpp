@@ -12,80 +12,106 @@
 #include <climits>
 #include <algorithm>
 #include <queue>
+#include <set>
 //#include <chrono>
 
 using namespace std;
 
 #define INFINITO INT_MAX
 
-struct coordenada
-{
-  int x;
-  int y;
-};
 
-void agregar_nodos_de_profunidad_k_mas_uno(int nodo, queue<int> *nodos_de_altura_k_mas_uno, vector< vector< int> >  &matriz)
-{
-
-	for(int i = 0; i < n; i++)
-	{
-		if(matriz[nodo.x][i] != 0)
-		{
-			nodos_de_altura_k_mas_uno.push_back(i);
-			//que jodido que es esto, no se me ocurre como seguir
-			for()			
-		}
-
-	}
-
-}
-
+//idea: en cada paso, tomo un vertice, me fijo en que subconjunto minimiza la suma, y lo agrego ahí.
 
 int main()
 {
+	int n,m,k;
+	cin >> n;
+	cin >> m;
+	cin >> k;
 
-	int k,n,m;
-	cin >> n; //vertices
-	cin >> m; //aristas
-	cin >> k; //cantidad de particiones
+	vector< vector< int> > matriz_de_adyacencias  = vector< vector< int> >(n, vector<int> (n, 0));
+	vector< vector< int> > subconjuntos;
+	vector <int> en_que_subconjunto_esta_cada_nodo;
 
-	vector< vector< int> > matriz  = vector< vector< int> >(n, vector<int> (n, 0));
+	for(int i = 0; i < k; i++)
+	{
+		vector< int> aux;
+		subconjuntos.push_back(aux);
+	}
+
 
 	for(int i = 0; i < m; i++)
 	{
-		int u,v,w;
-		cin >> u;
-		cin >> v;
-		cin >> w;
-		matriz[u-1][v-1] = w;
-		matriz[v-1][u-1] = w;
+		int j,k,p;
+		cin >> j;
+		cin >> k;
+		cin >> p;
+		matriz_de_adyacencias[j-1][k-1] = p;
+		matriz_de_adyacencias[k-1][j-1] = p;
 	}
 
-	queue<coordenada> *nodos_de_altura_k = new queue<coordenada>;
-	queue<coordenada> *nodos_de_altura_k_mas_uno = new queue<coordenada>;
-	int k = 0;
-	 
-	//meto el primer nodo de todos
-	(*nodos_de_altura_k).push(1);
+	//hasta aca cree todos las estructuras de datos que voy a necesitar.
 
-	while(! (*nodos_de_altura_k).empty())
+	subconjuntos[0].push_back(0);
+
+	//meto el nodo 1 en cualquiera de los conjuntos, por ahora son todos iguales.
+	
+	en_que_subconjunto_esta_cada_nodo.push_back(0);
+
+	//del punto de arriba, el nodo 1 va a ir en el subconjunto 1, asi que tambien digo eso.
+
+	for(int i = 1; i < n; i++ )
 	{
-	 	//mientras haya casillas de altura k, las recorro y agrego los nodos validos de altura k+1
-	 	while(! (*nodos_de_altura_k).empty())
-		 	{
-			 	int nodo = (*nodos_de_altura_k).front();
-			 	
-			 	(*nodos_de_altura_k).pop();
+		//tomo el vertice i
+		int menorSuma = INFINITO;
+		int menorConjunto = 0;
 
-				 agregar_nodos_de_profunidad_k_mas_uno(nodo, nodos_de_altura_k_mas_uno, matriz);
-				 //acá tengo que asignarles un conjunto y poner los nodos siguientes
-		 	}
-		 	delete nodos_de_altura_k;
+		for(int j = 0; j < k; j++)
+		{
+			//para cada conjunto
+			int aux = 0;
+			for(int w = 0; w < subconjuntos[j].size(); w++)
+			{
+				//veo cuanto "peso" suma agregar este vertice a este conjunto determinado
+				aux += matriz_de_adyacencias[j][subconjuntos[j][w]];
+			}
+			//me guardo el conjunto que minimiza la suma
+			if(aux < menorSuma)
+			{
+				menorSuma = aux;
+				menorConjunto = j;
+			}
+		}
+		//agrego el verice i al conjunto que minimiza la suma
+		subconjuntos[menorConjunto].push_back(i);
 
-		 	nodos_de_altura_k = nodos_de_altura_k_mas_uno;
+		//esto es para dar la respuesta de una y no tener que andar buscando los valores despues
+		en_que_subconjunto_esta_cada_nodo.push_back(menorConjunto);
+	}
+	//complejidad O(kn^2) creo.
 
-		 	nodos_de_altura_k_mas_uno = new queue<coordenada>(); 
+	cout << "Respuesta que hay que dar:" << endl;
 
-	 }
+	for(int i = 0; i < n; i++)
+		cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
+	cout << endl;
+
+	//save it for the mornig after
+
+
+	cout << endl << "Datos Utiles:" << endl;
+
+	int total = 0;
+	for(int j = 0; j < k; j++)
+	{
+		int aux = 0;
+		for(int i = 0; i < subconjuntos[j].size(); i++)
+			for(int w = i; w < subconjuntos[j].size(); w++)
+				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
+		cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
+		total += aux;
+	}
+	cout << "Peso total: " << total << endl;
+
 	return 0;
 }
