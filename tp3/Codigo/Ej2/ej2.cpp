@@ -12,7 +12,7 @@ struct Solucion{
 };
 
 
-int check(vector < vector<int> > adyacencias, Solucion &solParcial,Solucion &solFinal);
+int check(vector < vector<int> > * adyacencias, Solucion &solParcial,Solucion &solFinal);
 bool solucionTieneMenosPeso(vector < vector<int> > *adyacencias, Solucion solParcial,Solucion solFinal);
 bool tieneCajasVacias(Solucion& sol);
 bool tieneMasBolitasElPredecesor(Solucion& sol);
@@ -24,7 +24,7 @@ bool backtracking(Solucion& solParcial,Solucion& solFinal,int cajaActual,int k,v
   int resultCheck;
 
 
-    resultCheck = check(adyacencias,solParcial,solFinal);
+    resultCheck = check(&adyacencias,solParcial,solFinal);
     if(resultCheck == 2)
     {
 	    solFinal= solParcial;
