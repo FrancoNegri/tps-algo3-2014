@@ -13,14 +13,10 @@
 #include <algorithm>
 #include <queue>
 #include <set>
+#include "goloso.cpp"
 //#include <chrono>
 
 using namespace std;
-
-#define INFINITO INT_MAX
-
-
-//idea: en cada paso, tomo un vertice, me fijo en que subconjunto minimiza la suma, y lo agrego ahí.
 
 int main()
 {
@@ -31,7 +27,7 @@ int main()
 
 	vector< vector< int> > matriz_de_adyacencias  = vector< vector< int> >(n, vector<int> (n, 0));
 	vector< vector< int> > subconjuntos;
-	vector <int> en_que_subconjunto_esta_cada_nodo;
+	vector<int> en_que_subconjunto_esta_cada_nodo;
 
 	for(int i = 0; i < k; i++)
 	{
@@ -42,53 +38,15 @@ int main()
 
 	for(int i = 0; i < m; i++)
 	{
-		int j,k,p;
+		int j,h,p;
 		cin >> j;
-		cin >> k;
+		cin >> h;
 		cin >> p;
-		matriz_de_adyacencias[j-1][k-1] = p;
-		matriz_de_adyacencias[k-1][j-1] = p;
+		matriz_de_adyacencias[j-1][h-1] = p;
+		matriz_de_adyacencias[h-1][j-1] = p;
 	}
 
-	//hasta aca cree todos las estructuras de datos que voy a necesitar.
-
-	subconjuntos[0].push_back(0);
-
-	//meto el nodo 1 en cualquiera de los conjuntos, por ahora son todos iguales.
-	
-	en_que_subconjunto_esta_cada_nodo.push_back(0);
-
-	//del punto de arriba, el nodo 1 va a ir en el subconjunto 1, asi que tambien digo eso.
-
-	for(int i = 1; i < n; i++ )
-	{
-		//tomo el vertice i
-		int menorSuma = INFINITO;
-		int menorConjunto = 0;
-
-		for(int j = 0; j < k; j++)
-		{
-			//para cada conjunto
-			int aux = 0;
-			for(int w = 0; w < subconjuntos[j].size(); w++)
-			{
-				//veo cuanto "peso" suma agregar este vertice a este conjunto determinado
-				aux += matriz_de_adyacencias[j][subconjuntos[j][w]];
-			}
-			//me guardo el conjunto que minimiza la suma
-			if(aux < menorSuma)
-			{
-				menorSuma = aux;
-				menorConjunto = j;
-			}
-		}
-		//agrego el verice i al conjunto que minimiza la suma
-		subconjuntos[menorConjunto].push_back(i);
-
-		//esto es para dar la respuesta de una y no tener que andar buscando los valores despues
-		en_que_subconjunto_esta_cada_nodo.push_back(menorConjunto);
-	}
-	//complejidad O(kn^2) creo.
+	en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
 
 	cout << "Respuesta que hay que dar:" << endl;
 

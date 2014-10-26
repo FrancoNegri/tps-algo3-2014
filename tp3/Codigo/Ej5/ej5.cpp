@@ -13,11 +13,50 @@
 #include <algorithm>
 #include <queue>
 #include <set>
+#include "../Ej3/goloso.cpp"
+#include "../Ej4/busqueda_local.cpp"
 //#include <chrono>
 
 using namespace std;
 
+#ifndef INFINITO
 #define INFINITO INT_MAX
+#endif
+
+vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n)
+{
+
+	int min_total = INFINITO;
+	vector <int> mejor_solucion;
+	vector <int> en_que_subconjunto_esta_cada_nodo;
+	
+	for (int h = 0; h < 10000; ++h)
+	{
+		srand(unsigned(time(NULL)));
+		en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
+
+		en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
+
+
+
+		int total = 0;
+		for(int j = 0; j < k; j++)
+		{
+			int aux = 0;
+			for(int i = 0; i < subconjuntos[j].size(); i++)
+				for(int w = i; w < subconjuntos[j].size(); w++)
+					aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
+			total += aux;
+		}
+
+		if(total < min_total)
+		{
+			min_total = total;
+			mejor_solucion = en_que_subconjunto_esta_cada_nodo;
+		}
+	}
+	return mejor_solucion;
+}
 
 int main()
 {
@@ -51,8 +90,9 @@ int main()
 	//por busqueda local, buscar una mejora
 
 
+	en_que_subconjunto_esta_cada_nodo = grasp(matriz_de_adyacencias, subconjuntos, k, n);
 
-	//busqueda local
+/*	//busqueda local
 	subconjuntos[0].push_back(0);
 	en_que_subconjunto_esta_cada_nodo.push_back(0);
 	for(int i = 1; i < n; i++ )
@@ -87,6 +127,9 @@ int main()
 	for(int i = 0; i < n; i++)
 		cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
 	cout << endl;
+
+
+
 
 
 	//BusquedaLocal
@@ -125,7 +168,7 @@ int main()
 			}
 		}
 	}
-
+*/
 	//Grasp: O(kn^2), Una iteracion de busquedaLocal: O(kn^2)
 
 	cout << "Respuesta Final:" << endl;
