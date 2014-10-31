@@ -24,7 +24,7 @@ bool backtracking(Solucion& solParcial,Solucion& solFinal,int cajaActual,int k,v
 	int resultCheck;
 
 	resultCheck = check(adyacencias,solParcial,solFinal);
-	cout << "resultado " << resultCheck << endl;
+	//cout << "resultado " << resultCheck << endl;
 	if(resultCheck == 2)
 	{
 		solFinal= solParcial;
@@ -35,7 +35,7 @@ bool backtracking(Solucion& solParcial,Solucion& solFinal,int cajaActual,int k,v
 		}else{
 			int length = solParcial.conjuntos[cajaActual].size()-1;	
 			Solucion nueva = solParcial;
-			cout << "length " << length << endl;
+			//cout << "length " << length << endl;
 			//para cada uno de los vertices
 			for(int i = 0 ; i < length;i++ ){
 				//guardo el vertice a mover
@@ -47,14 +47,14 @@ bool backtracking(Solucion& solParcial,Solucion& solFinal,int cajaActual,int k,v
 				nueva.conjuntos[cajaActual+1].push(vertice);
 				
 				int nuevaCaja = cajaActual + 1;
-				cout << "llego a llamar a la recursiva " << cajaActual << endl;
+				//cout << "llego a llamar a la recursiva " << cajaActual << endl;
 				//llamado recursivo con el vertice movido hacia adelante
 				//solFinal  es la solucion que teni antes 
-				cout << "nueva sol ";	
+				//cout << "nueva sol ";	
 				imprimirResultado(nueva);
 				backtracking(nueva,solFinal,nuevaCaja,k,adyacencias);
-				cout << "solFinal ";
-				imprimirResultado(solFinal);
+				//cout << "solFinal ";
+				//imprimirResultado(solFinal);
 				//restablezco las pilas
 				nueva.conjuntos[cajaActual+1] = proximo;	
 				nueva.conjuntos[cajaActual].push(vertice);
@@ -74,6 +74,7 @@ int check(vector < vector<int> > &adyacencias, Solucion &solParcial,Solucion &so
 {
 	//mi resultado final sigue siendo mejor
 	int peso = calcularPeso(solParcial ,adyacencias);
+	solParcial.peso = peso;
 	//Podas, si tiene cajas vacias no voy a generar una solucion mejor si no una ya generada al igual que mover bolitas entre cajas sucesoras, abort!
 	if(tieneMasBolitasElPredecesor(solParcial))
 		return 0;
@@ -131,12 +132,16 @@ int calcularPeso(Solucion &sol , vector< vector <int> > &adyacencias ){
 	int peso = 0;
 	for(int k = 0; k < sol.conjuntos.size() ; k++){
 		//agarro una caja
-		for(int i = 0; i<sol.conjuntos[k].size()  ; i++ ){
-			//para cada elemento de la caja
-			for(int j = i+1; j<sol.conjuntos[k].size() ; j++ ){
-				//como la matriz esta inicializada en ceros sumara un mayor a cero cuando tenga un valor mayor a cero 
-				peso += adyacencias[i][j];	
+		queue <int> cajaActual = sol.conjuntos[k];
+		while(!cajaActual.empty()){
+			queue <int> resto = cajaActual;
+			while(!resto.empty()){
+				 //cout << cajaActual.front() << "," << resto.front() << endl;
+				  peso += adyacencias[cajaActual.front()][resto.front()]; 
+				  //cout << "peso " << peso<< endl;
+				  resto.pop();	
 			}
+			cajaActual.pop();
 		}
 	}
 	return peso;
@@ -197,12 +202,12 @@ int main()
 		solParcial.conjuntos = subconjuntos;	
 		inicializarPeorSol(solParcial,n,adyacencias);
 		Solucion solFinal = solParcial;
-	
+		Solucion x;
 		imprimirAdyacencias(adyacencias);
 		//imprimirResultado(solFinal);	
 		bool sol = backtracking(solParcial,solFinal,0,k,adyacencias);
 		//return sol;
-		imprimirResultado(solFinal);
+		//imprimirResultado(solFinal);
 		//[>solParcial.clear();<]
 		//[>solFinal.clear();<]
 	//break;
