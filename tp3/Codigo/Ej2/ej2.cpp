@@ -17,37 +17,49 @@ bool tieneCajasVacias(Solucion& sol);
 bool tieneMasBolitasElPredecesor(Solucion& sol);
 void inicializarPeorSol(Solucion& sol,int n, vector < vector<int> > & adyacencias);
 int calcularPeso(Solucion &sol , vector< vector <int> > &adyacencias );
-
+void imprimirResultado(Solucion& solParcial);
 
 bool backtracking(Solucion& solParcial,Solucion& solFinal,int cajaActual,int k,vector < vector< int> > &adyacencias)
 {
 	int resultCheck;
 
-	cout << cajaActual << endl;
-
-//	resultCheck = check(adyacencias,solParcial,solFinal);
+	resultCheck = check(adyacencias,solParcial,solFinal);
+	cout << "resultado " << resultCheck << endl;
 	if(resultCheck == 2)
 	{
 		solFinal= solParcial;
-		return true;
+	        return true;	
 	}else{
 		if(resultCheck == 0 ){
 			return false;
 		}else{
-			int length = solParcial.conjuntos[cajaActual].size();	
+			int length = solParcial.conjuntos[cajaActual].size()-1;	
 			Solucion nueva = solParcial;
+			cout << "length " << length << endl;
+			//para cada uno de los vertices
 			for(int i = 0 ; i < length;i++ ){
-				//muevo un vertice para adelante 
-				int vertice = nueva.conjuntos[cajaActual].front();		
-				nueva.conjuntos[cajaActual+1].pop();
+				//guardo el vertice a mover
+				int vertice = nueva.conjuntos[cajaActual].front();	
+				//popeo el vertice	
+				nueva.conjuntos[cajaActual].pop();
 				//me guardo la pila de vertices para no pisar la original 
 				queue<int> proximo = nueva.conjuntos[cajaActual+1];
-				proximo.push(vertice);
-				nueva.conjuntos[cajaActual+1] = proximo;
+				nueva.conjuntos[cajaActual+1].push(vertice);
+				
 				int nuevaCaja = cajaActual + 1;
+				cout << "llego a llamar a la recursiva " << cajaActual << endl;
+				//llamado recursivo con el vertice movido hacia adelante
+				//solFinal  es la solucion que teni antes 
+				cout << "nueva sol ";	
+				imprimirResultado(nueva);
 				backtracking(nueva,solFinal,nuevaCaja,k,adyacencias);
+				cout << "solFinal ";
+				imprimirResultado(solFinal);
+				//restablezco las pilas
+				nueva.conjuntos[cajaActual+1] = proximo;	
 				nueva.conjuntos[cajaActual].push(vertice);
 			}
+			return true;
 		}
 	}
 	return false; // solo para completar casos, es imposible que se llegue a este punto.
@@ -56,23 +68,21 @@ bool backtracking(Solucion& solParcial,Solucion& solFinal,int cajaActual,int k,v
 // check:
 // si retorna 0 es una solucion ya calculada
 // si retorna 1, es valida pero falta completar cajas
-// si retorna 3 la solucion tiene cajas vacias o entonces es porque el de la posicicon i+1 tiene mas bolitas que el actual y ya fue generada esa solucion
+// si retorna 3 la solucion no es mejor tengo q seguir calculando
 // si retorna 2 es solucion valida
 int check(vector < vector<int> > &adyacencias, Solucion &solParcial,Solucion &solFinal)
 {
 	//mi resultado final sigue siendo mejor
 	int peso = calcularPeso(solParcial ,adyacencias);
-	if(peso<solFinal.peso)
-		return 3;
 	//Podas, si tiene cajas vacias no voy a generar una solucion mejor si no una ya generada al igual que mover bolitas entre cajas sucesoras, abort!
 	if(tieneMasBolitasElPredecesor(solParcial))
 		return 0;
 	if(tieneCajasVacias(solParcial))
 		return 1;
 	if(peso<solFinal.peso){
-		return 3;
-	}else{
 		return 2;
+	}else{
+		return 3;
 	}
 
 }
@@ -104,17 +114,19 @@ bool tieneMasBolitasElPredecesor(Solucion& sol){
 	}
 	return res;
 }
-/*void imprimirResultado(vector<int> solParcial)*/
-//{
- //int max = solParcial[0];
- //for(int i = 1; i < solParcial.size(); i++)
-   //if(solParcial[i] > max)
-     //max = solParcial[i];
- //cout << max + 1<< " ";
- //for(int i = 0; i < solParcial.size(); i++)
-   //cout << solParcial[i] + 1 << " ";
- //cout << endl;
-//}
+void imprimirResultado(Solucion& solParcial){
+cout << "peso " << solParcial.peso << endl;
+ for(int i = 0; i < solParcial.conjuntos.size(); i++){
+		cout << "[";
+		queue<int> copia = solParcial.conjuntos[i];
+	 while(!copia.empty()){
+	 	cout << copia.front()<< ",";
+                copia.pop();
+   	 }
+ 	cout << "]";
+ }
+	cout << endl;
+}
 int calcularPeso(Solucion &sol , vector< vector <int> > &adyacencias ){
 	int peso = 0;
 	for(int k = 0; k < sol.conjuntos.size() ; k++){
@@ -145,7 +157,6 @@ void imprimirAdyacencias(vector < vector <int> > adyacencias){
 			cout << adyacencias[i][j] << " ";
 		}
 		cout << endl;
-
 	}
 }
 
@@ -184,13 +195,14 @@ int main()
 		Solucion solParcial;
 		solParcial.peso = 0;
 		solParcial.conjuntos = subconjuntos;	
+		inicializarPeorSol(solParcial,n,adyacencias);
 		Solucion solFinal = solParcial;
 	
-		inicializarPeorSol(solFinal,n,adyacencias);
 		imprimirAdyacencias(adyacencias);
+		//imprimirResultado(solFinal);	
 		bool sol = backtracking(solParcial,solFinal,0,k,adyacencias);
-		return sol;
-		//imprimirResultado(solFinal);
+		//return sol;
+		imprimirResultado(solFinal);
 		//[>solParcial.clear();<]
 		//[>solFinal.clear();<]
 	//break;
