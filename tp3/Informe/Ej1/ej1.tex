@@ -1,0 +1,44 @@
+\subsection{Introducción}
+
+Para este trabajo practico se nos pide, a partir de un grafo simple $G=(V,E)$ con pesos en las aristas, encontrar la k-particion tal que minimice el peso de las aristas intrapartición.
+
+Como veremos luego, este problema es 'dificil' de resolver, por lo que para instancias grandes, el algoritmo dejará de ser viable, por lo que tambien desarrollaremos distintas heruristicas que resuelvan el problema de manera aproximada. Probaremos con una heuristica golosa, dos heruristicas de busquedas locales y a partir de esotos, un GRASP.
+
+\subsection{Entrada y salida}
+
+Todos los algoritmos tomarán como entrada, lo siguiente:
+
+\begin{itemize}
+	\item Un entero \textbf{n} $\rightarrow$ Representará el numero de nodos del grafo $G$.
+
+	\item Un entero \textbf{m} $\rightarrow$ Representará la cantidad de aristas del grafo.
+
+	\item Un entero \textbf{m} $\rightarrow$ Representará la cantidad de conjuntos distintos que disponemos para poner los ejes.
+
+	\item \textbf{m} filas donde, para cada fila $i$ consta de $3$ enteros:
+	\begin{itemize}
+		\item \textbf{u v w} $ \rightarrow $ donde \textbf{u} y \textbf{v} son los nodos adyacentes y \textbf{w} el peso de las aristas entre ellos.
+	\end{itemize}
+\end{itemize}
+
+La salida, por su parte, constar\'a de una fila con:
+
+\begin{itemize}
+
+\item $n$ enteros $i_1$ $i_2$ $...$ $i_n$
+
+\end{itemize}
+
+Donde cada $i_k$ representa en que conjunto se encuentra el nodo $k$
+
+\subsection{Ejemplo}
+
+Para ejemplificar el problema a resolver, pensemos en un grafo $G$ con $4$ nodos, $5$ vertices y $2$ particiones.
+
+Supongamos ademas que los nodos estan conectados de la siguiente manera.
+
+$1-2$ con peso $2$
+$1-3$ con peso $3$
+$1-4$ con peso $3$
+$2-4$ con peso $1$
+$3-4$ con peso $2$
