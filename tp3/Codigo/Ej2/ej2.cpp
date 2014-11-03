@@ -18,6 +18,8 @@ int check(vector < vector<int> > & adyacencias, Solucion &solParcial,Solucion &s
 void inicializarPeorSol(Solucion& sol,int n, vector < vector<int> > & adyacencias);
 int calcularPeso(Solucion &sol , vector< vector <int> > &adyacencias );
 void imprimirResultado(Solucion& solParcial);
+void calcularNuevoPeso(Solucion &sol ,int index, int vertice,int signo, vector< vector <int> > &adyacencias );
+
 
 bool backtracking(Solucion& solParcial,Solucion& solFinal,int numeroVertice,int k,vector < vector< int> > &adyacencias)
 {
@@ -36,11 +38,15 @@ bool backtracking(Solucion& solParcial,Solucion& solFinal,int numeroVertice,int 
 		}
 		return false;
 	}
+	if (resultCheck == 2)
+		return false;
 
 	for(int i = 0; i < k ;i++){
+		calcularNuevoPeso(solParcial,i,numeroVertice,1,adyacencias);
 		solParcial.conjuntos[i].push(numeroVertice);
 		//imprimirResultado(solParcial);
 		backtracking(solParcial,solFinal,numeroVertice+1,k,adyacencias);
+		calcularNuevoPeso(solParcial,i,numeroVertice,-1,adyacencias);
 		solParcial.conjuntos[i].pop();
 	}// solo para completar casos, es imposible que se llegue a este punto.
 	return false; 
@@ -48,12 +54,16 @@ bool backtracking(Solucion& solParcial,Solucion& solFinal,int numeroVertice,int 
 
 // check:
 // si retorna 0 llegue al final 
-// si retorna 1, 
+// si retorna 1, la solucion parcial tiene mas peso no vale la pena seguir calculando
 // si retorna 3 la solucion no es mejor tengo q seguir calculando
 // si retorna 2 es solucion valida
 int check(vector < vector<int> > &adyacencias, Solucion &solParcial,Solucion &solFinal,int numeroVertice)
 {
 	//no termine de agregar vetices sigo
+	if(solParcial.peso > solFinal.peso){
+		return 2;
+	}
+
 	if(adyacencias.size()==numeroVertice){
 		return 0;	
 	}	
@@ -104,6 +114,19 @@ cout << "peso " << solParcial.peso << endl;
  	cout << "]";
  }
 	cout << endl;
+}
+void calcularNuevoPeso(Solucion &sol ,int index, int vertice,int signo, vector< vector <int> > &adyacencias ){
+	int peso = 0;
+	int pesoVertice = 0;
+	//agarro el conjunto donde voy a agregar el vertice.
+	stack <int> cajaActual = sol.conjuntos[index];
+	//calculo el peso del conjunto que deberia restarle al total	
+	while(!cajaActual.empty()){
+		stack <int> resto = cajaActual;
+		pesoVertice += adyacencias[vertice][cajaActual.top()];		
+		cajaActual.pop();
+	}
+	sol.peso += signo * pesoVertice;
 }
 
 int calcularPeso(Solucion &sol , vector< vector <int> > &adyacencias ){
