@@ -13,8 +13,6 @@ struct Solucion{
 
 //definiciones de las funciones q usa el backtracking
 int check(vector < vector<int> > & adyacencias, Solucion &solParcial,Solucion &solFinal,int numeroVertice);
-//bool tieneCajasVacias(Solucion& sol);
-//bool tieneMasBolitasElPredecesor(Solucion& sol);
 void inicializarPeorSol(Solucion& sol,int n, vector < vector<int> > & adyacencias);
 int calcularPeso(Solucion &sol , vector< vector <int> > &adyacencias );
 void imprimirResultado(Solucion& solParcial);
@@ -55,8 +53,8 @@ bool backtracking(Solucion& solParcial,Solucion& solFinal,int numeroVertice,int 
 // check:
 // si retorna 0 llegue al final 
 // si retorna 1, la solucion parcial tiene mas peso no vale la pena seguir calculando
+// si retorna 2 la solucion parcial tiene mas peso q la final con lo que descarto esta rama
 // si retorna 3 la solucion no es mejor tengo q seguir calculando
-// si retorna 2 es solucion valida
 int check(vector < vector<int> > &adyacencias, Solucion &solParcial,Solucion &solFinal,int numeroVertice)
 {
 	//no termine de agregar vetices sigo
@@ -75,18 +73,6 @@ int check(vector < vector<int> > &adyacencias, Solucion &solParcial,Solucion &so
 		//return 1;
 	return 1;
 }
-
-//Reviso si mi solucion tiene cajas vacias
-/*bool tieneCajasVacias(Solucion& sol){*/
-	//bool res = false;
-	//for(int i = 0; i < sol.conjuntos.size();i++ ){
-		//if(sol.conjuntos[i].size() == 0){
-			//res = true;
-			//break;
-		//} 	
-	//}
-	//return res;
-/*}*/
 
 //Reviso si en algun caso estoy teniendo dos cajas seguidas donde la segunda tiene mas bolitas
 /*bool tieneMasBolitasElPredecesor(Solucion& sol){*/
