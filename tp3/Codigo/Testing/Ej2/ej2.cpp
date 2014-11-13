@@ -126,20 +126,20 @@ void imprimirResultado(Solucion& solParcial, int n)
 	vector<int> aux;
 	aux.resize(n);
 
-	cout << "peso " << solParcial.peso << endl;
- 	for(int i = 0; i < solParcial.conjuntos.size(); i++)
- 	{
-		stack<int> copia = solParcial.conjuntos[i];
-	 	while(!copia.empty())
-		{
-			aux[copia.top()] = i;
-			copia.pop();
-	   	}
- 	}
+	cout << solParcial.peso << endl;
+ 	// for(int i = 0; i < solParcial.conjuntos.size(); i++)
+ 	// {
+		// stack<int> copia = solParcial.conjuntos[i];
+	 // 	while(!copia.empty())
+		// {
+		// 	aux[copia.top()] = i;
+		// 	copia.pop();
+	 //   	}
+ 	// }
 
- 	for(int i = 0; i < aux.size(); i++)
- 		cout << aux[i] + 1 << " ";
- 	cout << endl;
+ 	// for(int i = 0; i < aux.size(); i++)
+ 	// 	cout << aux[i] + 1 << " ";
+ 	// cout << endl;
 
 }
 
@@ -233,8 +233,8 @@ int main()
 		solFinal.conjuntos = subconjuntos;
 		inicializarPeorSol(solFinal,n,adyacencias);
 		Solucion x;
-		cout << "entre!!" << endl;
-		imprimirAdyacencias(adyacencias);
+		//cout << "entre!!" << endl;
+		//imprimirAdyacencias(adyacencias);
 		//imprimirResultado(solFinal);	
 		bool sol = backtracking(solParcial,solFinal,0,k,adyacencias);
 		//return sol;
