@@ -18,9 +18,9 @@ echo "OK!"
 for numeroDeNodos in {100..150}
 do
 	echo "generada entrada para n:" $numeroDeNodos "con aristas de 1 a 100"
-	for numeroDeAristas in {1..100}
+	for numeroDeAristas in {100..100}
 	do
-        ./$DIR/tester $numeroDeNodos $numeroDeAristas 10
+        ./$DIR/tester $numeroDeNodos $(( (numeroDeNodos*(numeroDeNodos-1))/2 )) 10
         #tarda mucho
         #./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
         ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
