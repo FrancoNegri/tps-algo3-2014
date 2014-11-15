@@ -1,26 +1,26 @@
 #!/bin/bash
 # declare STRING variable
 
-DIR="testing"
+DIR="testing2"
 
 rm -rf $DIR
 mkdir $DIR
 
 echo "Compilando Codigo..."
-g++ generador_de_entrada.cpp -o $DIR/tester
-g++ Ej2/ej2.cpp -o $DIR/ej2
-g++ Ej3/ej3.cpp -o $DIR/ej3
-g++ Ej4/ej4.cpp -o $DIR/ej4
-g++ Ej5/ej5.cpp -o $DIR/ej5
+g++  generador_de_entrada.cpp -o $DIR/tester
+g++  Ej2/ej2.cpp -o $DIR/ej2
+g++  Ej3/ej3.cpp -o $DIR/ej3
+g++  Ej4/ej4.cpp -o $DIR/ej4
+g++  Ej5/ej5.cpp -o $DIR/ej5
 
 echo "OK!"
 
-for numeroDeNodos in {100..150}
+for numeroDeNodos in {50..150}
 do
 	echo "generada entrada para n:" $numeroDeNodos "con aristas de 1 a 100"
-	for numeroDeAristas in {100..100}
+	for numeroDeAristas in {4500..4500}
 	do
-        ./$DIR/tester $numeroDeNodos $(( (numeroDeNodos*(numeroDeNodos-1))/2 )) 10
+        ./$DIR/tester $(($numeroDeNodos *10)) $((($numeroDeNodos * ($numeroDeNodos-3))/2)) 10
         #tarda mucho
         #./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
         ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
