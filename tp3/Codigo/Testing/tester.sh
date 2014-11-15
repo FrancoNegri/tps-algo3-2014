@@ -21,8 +21,7 @@ do
 	for numeroDeAristas in {100..100}
 	do
         ./$DIR/tester $numeroDeNodos $(( (numeroDeNodos*(numeroDeNodos-1))/2 )) 10
-        #tarda mucho
-        #./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
+        ./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
         ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
         ./$DIR/ej4 < $DIR/test.txt >> $DIR/resultados4.txt
         ./$DIR/ej5 < $DIR/test.txt >> $DIR/resultados5.txt
