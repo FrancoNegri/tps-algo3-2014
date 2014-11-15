@@ -15,10 +15,10 @@ g++ -O2 Ej5/ej5.cpp -o $DIR/ej5
 
 echo "OK!"
 
-for numeroDeNodos in {3..40}
+for numeroDeNodos in {1..100}
 do
 	echo "generada entrada para n:" $numeroDeNodos
-    ./$DIR/tester $numeroDeNodos $(( (numeroDeNodos*(numeroDeNodos-1))/2 )) 2
+    ./$DIR/tester 23 253 2
     ./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
     ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
     ./$DIR/ej4 < $DIR/test.txt >> $DIR/resultados4.txt
