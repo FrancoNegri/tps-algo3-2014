@@ -15,7 +15,7 @@ g++ Ej5/ej5.cpp -o $DIR/ej5
 
 echo "OK!"
 
-for numeroDeNodos in {100..150}
+for numeroDeNodos in {5..50}
 do
 	echo "generada entrada para n:" $numeroDeNodos "con aristas de 1 a 100"
 	for numeroDeAristas in {100..100}
