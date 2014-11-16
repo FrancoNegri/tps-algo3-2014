@@ -66,7 +66,7 @@ int main()
 	}
 
 
-	en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
+	en_que_subconjunto_esta_cada_nodo = busqueda_local2(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
 	//Una iteracion: O(n^2 + n*k*(n + n)) = O(k*n^2) good
 
 	// cout << "Respuesta que hay que dar:" << endl;

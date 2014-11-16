@@ -14,6 +14,7 @@
 #include <queue>
 #include <set>
 #include "../Ej3/goloso.cpp"
+#include "../Ej4/busqueda_local.cpp"
 #include "../Ej4/busqueda_local2.cpp"
 //#include <chrono>
 
@@ -36,6 +37,8 @@ vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 	while(cantidadDeVecesQueSeLlegoAmejorSol < 1000 )
 	{
 		en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
+
+		en_que_subconjunto_esta_cada_nodo = busqueda_local2(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
 
 		en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
 

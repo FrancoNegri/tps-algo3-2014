@@ -24,7 +24,7 @@ using namespace std;
 //Vecindad 1: Para cada nodo, pruebo con quitarlo del conjunto y agregarlo a uno que mejore el peso.
 //Vecindad 2: para cada nodo, lo mismo que 1, pero ademas intento swapear nodos...? ver
 
-vector<int> busqueda_local(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n, vector <int> en_que_subconjunto_esta_cada_nodo)
+vector<int> busqueda_local2(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n, vector <int> en_que_subconjunto_esta_cada_nodo)
 {
 	//aca tengo que empezar a buscar localmente
 	bool SeEncontroMejorSol = true;
