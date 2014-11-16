@@ -26,6 +26,7 @@ using namespace std;
 vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n)
 {
 
+	srand(unsigned(time(NULL)));
 	int cantidadDeVecesQueSeLlegoAmejorSol = 0;
 	int min_total = INFINITO;
 	vector <int> mejor_solucion;
@@ -34,7 +35,6 @@ vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 	//for (int h = 0; h < 10000; ++h)
 	while(cantidadDeVecesQueSeLlegoAmejorSol < 1000 )
 	{
-		srand(unsigned(time(NULL)));
 		en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
 
 		en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
