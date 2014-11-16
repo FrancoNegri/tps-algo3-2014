@@ -40,6 +40,6 @@ rm -rf $DIR/ej2
 rm -rf $DIR/ej3
 rm -rf $DIR/ej4
 rm -rf $DIR/ej5
-rm -rf *.txt
+rm -rf $DIR/*.txt
 
 echo "OK!"

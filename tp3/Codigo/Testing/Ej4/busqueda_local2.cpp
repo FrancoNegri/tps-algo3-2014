@@ -28,6 +28,12 @@ vector<int> busqueda_local2(vector< vector< int> > &matriz_de_adyacencias, vecto
 {
 	//aca tengo que empezar a buscar localmente
 	bool SeEncontroMejorSol = true;
+
+	vector<int> nodosDelGrafo;
+	for(int i = 0; i < n; i++)
+		nodosDelGrafo.push_back(i);
+
+
 	while(SeEncontroMejorSol)
 	{
 		SeEncontroMejorSol = false;
@@ -37,19 +43,19 @@ vector<int> busqueda_local2(vector< vector< int> > &matriz_de_adyacencias, vecto
 		int conjuntoDelNodoQueMasPesoGenera = -1;
 
 
-		for(int i = 0; i < n; i++)
+		for(int i = 0; i < nodosDelGrafo.size(); i++)
 		{
-			int conjuntoActualDe_i = en_que_subconjunto_esta_cada_nodo[i];
+			int conjuntoActualDe_i = en_que_subconjunto_esta_cada_nodo[nodosDelGrafo[i]];
 			int sumaAUX = 0;
 			for(int j = 0; j < subconjuntos[conjuntoActualDe_i].size(); j++)
 			{
-				sumaAUX += matriz_de_adyacencias[i][subconjuntos[conjuntoActualDe_i][j]];
+				sumaAUX += matriz_de_adyacencias[nodosDelGrafo[i]][subconjuntos[conjuntoActualDe_i][j]];
 			}
 			if(sumaAUX > pesoNodoQueMasPesoGenera)
 			{
 				pesoNodoQueMasPesoGenera = sumaAUX;
-				nodo = i;
-				conjuntoDelNodoQueMasPesoGenera = en_que_subconjunto_esta_cada_nodo[i];
+				nodo = nodosDelGrafo[i];
+				conjuntoDelNodoQueMasPesoGenera = conjuntoActualDe_i;
 			}
 		}
 
@@ -102,6 +108,13 @@ vector<int> busqueda_local2(vector< vector< int> > &matriz_de_adyacencias, vecto
 			SeEncontroMejorSol = true;
 			break;
 		}
+		else
+		{
+			nodosDelGrafo.erase(nodosDelGrafo.begin()+nodo);
+			if(nodosDelGrafo.size() == 0)
+				return en_que_subconjunto_esta_cada_nodo;
+		}
+
 	}
 	return en_que_subconjunto_esta_cada_nodo;
 }
