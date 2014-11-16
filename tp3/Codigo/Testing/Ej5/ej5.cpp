@@ -32,7 +32,7 @@ vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 	vector <int> mejor_solucion;
 	vector <int> en_que_subconjunto_esta_cada_nodo;
 	
-	//for (int h = 0; h < 10000; ++h)
+	//for (int h = 0; h < 10000000; ++h)
 	while(cantidadDeVecesQueSeLlegoAmejorSol < 1000 )
 	{
 		en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
