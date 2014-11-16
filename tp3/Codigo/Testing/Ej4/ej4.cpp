@@ -13,7 +13,7 @@
 #include <algorithm>
 #include <queue>
 #include <set>
-#include "busqueda_local.cpp"
+#include "busqueda_local2.cpp"
 //#include <chrono>
 
 using namespace std;

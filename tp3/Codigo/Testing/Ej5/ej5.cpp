@@ -14,7 +14,7 @@
 #include <queue>
 #include <set>
 #include "../Ej3/goloso.cpp"
-#include "../Ej4/busqueda_local.cpp"
+#include "../Ej4/busqueda_local2.cpp"
 //#include <chrono>
 
 using namespace std;
