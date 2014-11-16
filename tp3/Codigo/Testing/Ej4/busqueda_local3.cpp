@@ -43,15 +43,10 @@ vector<int> busqueda_local3(vector< vector< int> > &matriz_de_adyacencias, vecto
 				for(int j = 0; j < subconjuntos[conjuntoActualDe_i].size(); j++) 
 				{
 					sumaDelConjuntoDe_i += matriz_de_adyacencias[i][subconjuntos[conjuntoActualDe_i][j]];
-				}
-
-				for(int j = 0; j < subconjuntos[conjuntoActualDe_i].size(); j++) 
-				{
 					sumaDelConjuntoDe_i += matriz_de_adyacencias[subconjuntos[conjuntoActualDe_i][otroNodo]][subconjuntos[conjuntoActualDe_i][j]];
 				}
 
 				sumaDelConjuntoDe_i -= matriz_de_adyacencias[subconjuntos[conjuntoActualDe_i][otroNodo]][i];
-
 
 				//Ok, ahora se cuanto peso agrega tener a i en este conjunto en particular
 				//hay un conjunto donde i agregue menos peso?
@@ -71,10 +66,6 @@ vector<int> busqueda_local3(vector< vector< int> > &matriz_de_adyacencias, vecto
 					for(int w = 0; w < subconjuntos[j].size(); w++)
 					{
 						sumaPoniendoA_i_enOtroConjunto += matriz_de_adyacencias[i][subconjuntos[j][w]];
-					}
-
-					for(int w = 0; w < subconjuntos[j].size(); w++)
-					{
 						sumaPoniendoA_i_enOtroConjunto += matriz_de_adyacencias[subconjuntos[conjuntoActualDe_i][otroNodo]][subconjuntos[j][w]];
 					}
 
@@ -105,19 +96,13 @@ vector<int> busqueda_local3(vector< vector< int> > &matriz_de_adyacencias, vecto
 						if(subconjuntos[conjuntoActualDe_i][aux] == i)
 						{
 							subconjuntos[conjuntoActualDe_i].erase(subconjuntos[conjuntoActualDe_i].begin() + aux);
-							break;
 						}							
-					}
-
-					for(int aux = 0; aux < subconjuntos[conjuntoActualDe_i].size(); aux++)
-					{
 						if(subconjuntos[conjuntoActualDe_i][aux] == subconjuntos[conjuntoActualDe_i][otroNodo])
 						{
 							subconjuntos[conjuntoActualDe_i].erase(subconjuntos[conjuntoActualDe_i].begin() + aux);
-							break;
 						}							
 					}
-
+					
 					//Como mejore, reinicio la busqueda local con el nodo i mudado
 					SeEncontroMejorSol = true;
 					break;
