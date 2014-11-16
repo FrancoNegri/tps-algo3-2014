@@ -110,7 +110,14 @@ vector<int> busqueda_local2(vector< vector< int> > &matriz_de_adyacencias, vecto
 		}
 		else
 		{
-			nodosDelGrafo.erase(nodosDelGrafo.begin()+nodo);
+			for(int i = 0; i < nodosDelGrafo.size(); i++)
+			{
+				if(nodo == nodosDelGrafo[i])
+				{
+					nodosDelGrafo.erase(nodosDelGrafo.begin()+i);	
+					break;
+				}
+			}
 			if(nodosDelGrafo.size() == 0)
 				return en_que_subconjunto_esta_cada_nodo;
 		}
