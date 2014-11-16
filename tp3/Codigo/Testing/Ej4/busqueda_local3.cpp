@@ -96,12 +96,15 @@ vector<int> busqueda_local3(vector< vector< int> > &matriz_de_adyacencias, vecto
 						if(subconjuntos[conjuntoActualDe_i][aux] == i)
 						{
 							subconjuntos[conjuntoActualDe_i].erase(subconjuntos[conjuntoActualDe_i].begin() + aux);
+							break;
 						}							
+					}
+					for(int aux = 0; aux < subconjuntos[conjuntoActualDe_i].size(); aux++)
 						if(subconjuntos[conjuntoActualDe_i][aux] == subconjuntos[conjuntoActualDe_i][otroNodo])
 						{
 							subconjuntos[conjuntoActualDe_i].erase(subconjuntos[conjuntoActualDe_i].begin() + aux);
+							break;
 						}							
-					}
 
 					//Como mejore, reinicio la busqueda local con el nodo i mudado
 					SeEncontroMejorSol = true;
