@@ -2,6 +2,8 @@
 
 Para este trabajo practico se nos pide, a partir de un grafo simple $G=(V,E)$ con pesos en las aristas, encontrar la k-particion tal que minimice el peso de las aristas intrapartición.
 
+Para ello primero intentaremos relacionar este problema con otros problemas conocidos, pensaremos varias maneras de abordarlo y emprenderemos la busqueda de algoritmos eficientes para resolverlo.
+
 Como veremos luego, este problema es 'dificil' de resolver, por lo que para instancias grandes, el algoritmo dejará de ser viable, por lo que tambien desarrollaremos distintas heruristicas que resuelvan el problema de manera aproximada. Probaremos con una heuristica golosa, dos heruristicas de busquedas locales y a partir de esotos, un GRASP.
 
 \subsection{Entrada y salida}
@@ -43,3 +45,10 @@ $1-4$ con peso $3$
 $2-4$ con peso $1$
 $3-4$ con peso $2$
 
+A primera vista podríamos poner el nodo $1$ separados de los nodos $3$ y $4$ ya que de estar juntos sumarían demaciado a la intrapartición. Por otro lado tenderíamos a poner al nodo $2$ y $3$ dentro de la misma partición ya que estos suman $0$. Como contracara de eso ahora podemos ver que al agregar otro nodo $v$, sumará tanto el peso de $2$ con $v$ y $3$ con $v$. Vemos luego que un algoritmo goloso para intentar resolver este problema puede tomar soluciónes tan malas como se quiera.
+
+Siendo esta una instancia pequeña del problema, tras intentar algunas convinaciones, puede verse que poniendo el nodo $1$ en el primer conjunto y los nodos $2,3,4$ en el otro, se consigue un peso total de $3$.
+
+\subsection{Relación con otros problemas conocidos}
+
+En primer instancia podemos relacionar el problema de $k-PMP$ con el problema de coloreo 

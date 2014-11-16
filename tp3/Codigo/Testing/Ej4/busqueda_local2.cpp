@@ -20,9 +20,7 @@ using namespace std;
 #define INFINITO INT_MAX
 #endif
 
-//idea: genero una solución al azar (es decir, para cada nodo, lo asigno a un subconjunto cualquiera)
-//Vecindad 1: Para cada nodo, pruebo con quitarlo del conjunto y agregarlo a uno que mejore el peso.
-//Vecindad 2: para cada nodo, lo mismo que 1, pero ademas intento swapear nodos...? ver
+//con una solución random anda mal, pero en el grasp obtiene soluciones pareciadas a las del busqueda_local()
 
 vector<int> busqueda_local2(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n, vector <int> en_que_subconjunto_esta_cada_nodo)
 {
