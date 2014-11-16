@@ -102,12 +102,13 @@ vector<int> busqueda_local3(vector< vector< int> > &matriz_de_adyacencias, vecto
 							subconjuntos[conjuntoActualDe_i].erase(subconjuntos[conjuntoActualDe_i].begin() + aux);
 						}							
 					}
-					
+
 					//Como mejore, reinicio la busqueda local con el nodo i mudado
 					SeEncontroMejorSol = true;
 					break;
 				}
-				
+				if(SeEncontroMejorSol)
+					break;
 			}
 		}
 	}
