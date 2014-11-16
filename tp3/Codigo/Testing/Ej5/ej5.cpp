@@ -15,6 +15,7 @@
 #include <set>
 #include "../Ej3/goloso.cpp"
 #include "../Ej4/busqueda_local.cpp"
+#include "../Ej4/busqueda_local2.cpp"
 //#include <chrono>
 
 using namespace std;
@@ -26,15 +27,20 @@ using namespace std;
 vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n)
 {
 
+	srand(unsigned(time(NULL)));
+	int cantidadDeVecesQueSeLlegoAmejorSol = 0;
 	int min_total = INFINITO;
 	vector <int> mejor_solucion;
 	vector <int> en_que_subconjunto_esta_cada_nodo;
 	
+	//for (int h = 0; h < 10000000; ++h)
 	while(cantidadDeVecesQueSeLlegoAmejorSol < 1000 )
 	{
 		en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
 
-		en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
+		en_que_subconjunto_esta_cada_nodo = busqueda_local2(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
+
+		//en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
 
 
 
@@ -57,6 +63,7 @@ vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 		else
 			cantidadDeVecesQueSeLlegoAmejorSol++;
 	}
+	return mejor_solucion;
 }
 
 int main()
@@ -172,13 +179,13 @@ int main()
 */
 	//Grasp: O(kn^2), Una iteracion de busquedaLocal: O(kn^2)
 
-	cout << "Respuesta Final:" << endl;
+	// cout << "Respuesta Final:" << endl;
 
-	for(int i = 0; i < n; i++)
-		cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
-	cout << endl;
+	// for(int i = 0; i < n; i++)
+	// 	cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
+	// cout << endl;
 
-	cout << endl << "Datos Utiles:" << endl;
+	// cout << endl << "Datos Utiles:" << endl;
 
 	int total = 0;
 	for(int j = 0; j < k; j++)
@@ -187,10 +194,10 @@ int main()
 		for(int i = 0; i < subconjuntos[j].size(); i++)
 			for(int w = i; w < subconjuntos[j].size(); w++)
 				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
-		cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
+		//cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
 		total += aux;
 	}
-	cout << "Peso total: " << total << endl;
+	cout << total << endl;
 
 
 

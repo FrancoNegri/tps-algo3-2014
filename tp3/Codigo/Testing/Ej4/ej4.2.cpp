@@ -50,14 +50,14 @@ int main()
 
 	srand (time(NULL));
 
-	cout << "Parto de esta solucion: " << endl;
+	//cout << "Parto de esta solucion: " << endl;
 	for(int i = 0; i < n; i++)
 	{
 		int conjuntoRandom = rand() % k;
-		cout << conjuntoRandom + 1 << " ";
+	//	cout << conjuntoRandom + 1 << " ";
 		en_que_subconjunto_esta_cada_nodo.push_back(conjuntoRandom);
 	}
-	cout << endl;
+	//cout << endl;
 
 	//esta estructura es mas comoda para revisar las sumas
 	for(int i = 0; i < n; i++)
@@ -66,16 +66,16 @@ int main()
 	}
 
 
-	en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
+	en_que_subconjunto_esta_cada_nodo = busqueda_local2(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
 	//Una iteracion: O(n^2 + n*k*(n + n)) = O(k*n^2) good
 
-	cout << "Respuesta que hay que dar:" << endl;
+	// cout << "Respuesta que hay que dar:" << endl;
 
-	for(int i = 0; i < n; i++)
-		cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
-	cout << endl;
+	// for(int i = 0; i < n; i++)
+	// 	cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
+	// cout << endl;
 
-	cout << endl << "Datos Utiles:" << endl;
+	// cout << endl << "Datos Utiles:" << endl;
 
 	int total = 0;
 	for(int j = 0; j < k; j++)
@@ -84,10 +84,10 @@ int main()
 		for(int i = 0; i < subconjuntos[j].size(); i++)
 			for(int w = i; w < subconjuntos[j].size(); w++)
 				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
-		cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
+		//cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
 		total += aux;
 	}
-	cout << "Peso total: " << total << endl;
+	cout << total << endl;
 
 	return 0;
 }

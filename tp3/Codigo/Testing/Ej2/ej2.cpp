@@ -13,7 +13,9 @@ struct Solucion{
 
 //definiciones de las funciones q usa el backtracking
 int check(vector < vector<int> > & adyacencias, Solucion &solParcial,Solucion &solFinal,int numeroVertice);
-void inicializarPeorSol(Solucion& sol,int n, vector < vector<int> > & adyacencias,int k);
+//bool tieneCajasVacias(Solucion& sol);
+//bool tieneMasBolitasElPredecesor(Solucion& sol);
+void inicializarPeorSol(Solucion& sol,int n, vector < vector<int> > & adyacencias);
 int calcularPeso(Solucion &sol , vector< vector <int> > &adyacencias );
 void imprimirResultado(Solucion& solParcial, int n);
 void calcularNuevoPeso(Solucion &sol ,int index, int vertice,int signo, vector< vector <int> > &adyacencias );
@@ -46,24 +48,15 @@ bool backtracking(Solucion& solParcial,Solucion& solFinal,int numeroVertice,int 
 		backtracking(solParcial,solFinal,numeroVertice+1,k,adyacencias);
 		calcularNuevoPeso(solParcial,i,numeroVertice,-1,adyacencias);
 		solParcial.conjuntos[i].pop();
-	} 
+	}// solo para completar casos, es imposible que se llegue a este punto.
 	return false; 
-}
-
-int cantidadCajasVacias(Solucion& sol){
-	int cantidad = 0;
-	for(int i = 0;i<sol.conjuntos.size();i++){
-		if(sol.conjuntos[i].size()==0)
-			cantidad++;
-	}
-	return cantidad;
 }
 
 // check:
 // si retorna 0 llegue al final 
 // si retorna 1, la solucion parcial tiene mas peso no vale la pena seguir calculando
-// si retorna 2 la solucion parcial tiene mas peso q la final con lo que descarto esta rama o 
-//la cantidad de vertices que me quedan para ubicar es menor a la cantidad de cajas vacias
+// si retorna 3 la solucion no es mejor tengo q seguir calculando
+// si retorna 2 es solucion valida
 int check(vector < vector<int> > &adyacencias, Solucion &solParcial,Solucion &solFinal,int numeroVertice)
 {
 	//no termine de agregar vetices sigo
@@ -75,17 +68,42 @@ int check(vector < vector<int> > &adyacencias, Solucion &solParcial,Solucion &so
 		return 0;	
 	}	
 	
-	//si tiene cajas vacias no voy a generar una solucion mejor si no una ya generada al igual que mover bolitas entre cajas sucesoras, abort!
-	if(cantidadCajasVacias(solParcial)>=numeroVertice){
-		return 2;
-	}
-
-	
+	//Podas, si tiene cajas vacias no voy a generar una solucion mejor si no una ya generada al igual que mover bolitas entre cajas sucesoras, abort!
+	//if(tieneMasBolitasElPredecesor(solParcial))
+		//return 0;
+	//if(tieneCajasVacias(solParcial))
+		//return 1;
 	return 1;
 }
 
+//Reviso si mi solucion tiene cajas vacias
+/*bool tieneCajasVacias(Solucion& sol){*/
+	//bool res = false;
+	//for(int i = 0; i < sol.conjuntos.size();i++ ){
+		//if(sol.conjuntos[i].size() == 0){
+			//res = true;
+			//break;
+		//} 	
+	//}
+	//return res;
+/*}*/
 
-void imprimirResultado(Solucion& solParcial, int n){
+//Reviso si en algun caso estoy teniendo dos cajas seguidas donde la segunda tiene mas bolitas
+/*bool tieneMasBolitasElPredecesor(Solucion& sol){*/
+	//bool res = false;
+	//int cantidadAnterior = sol.conjuntos[0].size();
+	//for(int i = 1; i < sol.conjuntos.size();i++ ){
+		//if(sol.conjuntos[i].size()>cantidadAnterior  ){
+			//res = true;
+			//break;
+		//}else{
+			//cantidadAnterior = sol.conjuntos[i].size();
+		//}	
+	//}
+	//return res;
+/*}*/
+void imprimirResultado(Solucion& solParcial, int n)
+{
 	// cout << "peso " << solParcial.peso << endl;
  // 	for(int i = 0; i < solParcial.conjuntos.size(); i++)
  // 	{
@@ -108,20 +126,20 @@ void imprimirResultado(Solucion& solParcial, int n){
 	vector<int> aux;
 	aux.resize(n);
 
-	cout << "peso " << solParcial.peso << endl;
- 	for(int i = 0; i < solParcial.conjuntos.size(); i++)
- 	{
-		stack<int> copia = solParcial.conjuntos[i];
-	 	while(!copia.empty())
-		{
-			aux[copia.top()] = i;
-			copia.pop();
-	   	}
- 	}
+	cout << solParcial.peso << endl;
+ 	// for(int i = 0; i < solParcial.conjuntos.size(); i++)
+ 	// {
+		// stack<int> copia = solParcial.conjuntos[i];
+	 // 	while(!copia.empty())
+		// {
+		// 	aux[copia.top()] = i;
+		// 	copia.pop();
+	 //   	}
+ 	// }
 
- 	for(int i = 0; i < aux.size(); i++)
- 		cout << aux[i] + 1 << " ";
- 	cout << endl;
+ 	// for(int i = 0; i < aux.size(); i++)
+ 	// 	cout << aux[i] + 1 << " ";
+ 	// cout << endl;
 
 }
 
@@ -158,38 +176,13 @@ int calcularPeso(Solucion &sol , vector< vector <int> > &adyacencias ){
 	}
 	return peso;
 }
-void inicializarPeorSol(Solucion &sol,int n, vector < vector<int> > & adyacencias,int k){
-	// inicio una solucion con todos los nodos en un solo conjunto 
+
+void inicializarPeorSol(Solucion &sol,int n, vector < vector<int> > & adyacencias){
 	stack<int> inicial;
 	for(int i = 0; i < n; i++)
 		inicial.push(i);
 	sol.conjuntos[0] = inicial;
-	sol.peso =  calcularPeso(sol,adyacencias);
-	// Busco una segunda alternativa para ver si tengo menor peso total y podar mas soluciones 
-	Solucion alternativa1; 
-	vector< stack< int> > subconjuntos;
-
-	for(int i = 0; i < k; i++)
-	{
-		stack< int> aux;
-		subconjuntos.push_back(aux);
-	}
-
-	int numeroVertice = 0;
-	while(numeroVertice < n){
-		
-		for(int i = 0; i< k ; i++){
-			subconjuntos[i].push(numeroVertice);	
-			numeroVertice++;	
-		}	
-	}
-	alternativa1.conjuntos = subconjuntos;
-	alternativa1.peso = calcularPeso(alternativa1,adyacencias);
-		
-	if(alternativa1.peso<= sol.peso){
-		sol  = alternativa1;	
-	}
- 
+	sol.peso =  calcularPeso(sol,adyacencias); 
 }
 
 void imprimirAdyacencias(vector < vector <int> > adyacencias){
@@ -238,9 +231,10 @@ int main()
 		solParcial.conjuntos = subconjuntos;	
 		Solucion solFinal;
 		solFinal.conjuntos = subconjuntos;
-		inicializarPeorSol(solFinal,n,adyacencias,k);
+		inicializarPeorSol(solFinal,n,adyacencias);
 		Solucion x;
-		imprimirAdyacencias(adyacencias);
+		//cout << "entre!!" << endl;
+		//imprimirAdyacencias(adyacencias);
 		//imprimirResultado(solFinal);	
 		bool sol = backtracking(solParcial,solFinal,0,k,adyacencias);
 		//return sol;

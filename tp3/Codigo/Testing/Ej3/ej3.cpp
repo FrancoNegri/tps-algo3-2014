@@ -13,14 +13,13 @@
 #include <algorithm>
 #include <queue>
 #include <set>
-#include "busqueda_local2.cpp"
+#include "goloso.cpp"
 //#include <chrono>
 
 using namespace std;
 
 int main()
 {
-
 	int n,m,k;
 	cin >> n;
 	cin >> m;
@@ -28,7 +27,7 @@ int main()
 
 	vector< vector< int> > matriz_de_adyacencias  = vector< vector< int> >(n, vector<int> (n, 0));
 	vector< vector< int> > subconjuntos;
-	vector <int> en_que_subconjunto_esta_cada_nodo;
+	vector<int> en_que_subconjunto_esta_cada_nodo;
 
 	for(int i = 0; i < k; i++)
 	{
@@ -47,35 +46,18 @@ int main()
 		matriz_de_adyacencias[h-1][j-1] = p;
 	}
 
+	en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
 
-	srand (time(NULL));
+	// cout << "Respuesta que hay que dar:" << endl;
 
-	cout << "Parto de esta solucion: " << endl;
-	for(int i = 0; i < n; i++)
-	{
-		int conjuntoRandom = rand() % k;
-		cout << conjuntoRandom + 1 << " ";
-		en_que_subconjunto_esta_cada_nodo.push_back(conjuntoRandom);
-	}
-	cout << endl;
+	// for(int i = 0; i < n; i++)
+	// 	cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
+	// cout << endl;
 
-	//esta estructura es mas comoda para revisar las sumas
-	for(int i = 0; i < n; i++)
-	{
-		subconjuntos[en_que_subconjunto_esta_cada_nodo[i]].push_back(i);
-	}
+	//save it for the mornig after
 
 
-	en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
-	//Una iteracion: O(n^2 + n*k*(n + n)) = O(k*n^2) good
-
-	cout << "Respuesta que hay que dar:" << endl;
-
-	for(int i = 0; i < n; i++)
-		cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
-	cout << endl;
-
-	cout << endl << "Datos Utiles:" << endl;
+	//cout << endl << "Datos Utiles:" << endl;
 
 	int total = 0;
 	for(int j = 0; j < k; j++)
@@ -84,10 +66,10 @@ int main()
 		for(int i = 0; i < subconjuntos[j].size(); i++)
 			for(int w = i; w < subconjuntos[j].size(); w++)
 				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
-		cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
+		//cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
 		total += aux;
 	}
-	cout << "Peso total: " << total << endl;
+	cout << total << endl;
 
 	return 0;
 }
