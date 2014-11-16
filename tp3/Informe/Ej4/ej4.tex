@@ -1,0 +1,13 @@
+\section{Introducci\'on}
+
+En esta sección se implementarán heuristicas de busqueda local para tratar de resolver el problema de $k-PMP$, intentando con diferentes metodos para alcanzar una solución y diferentes vecindades.
+
+Para ello, partiendo de una solución generada al azar, se intentará a travez de sucesivas iteraciones analizar sierta vecindad para intentar mejorar la solución existente y aproximarse mas a una 'buena' solución en un tiempo aceptalble. 
+
+Por lo tanto debemos tener en cuenta de no hacer las vecindades ni muy grandes, ya que esto puede llevar a una perdida de performance, ni muy pequeñas, ya que esto puede llevar a que el algoritmo explore solo una pequeña cantidad de soluciones y devuelva una solución muy alejada del optimo.
+
+Como primera idea para una vecindad tomaremos cada nodo del grafo, vemos cuanto peso agrega en la suma intraconjunto en que se encuentra, lo quitaremos de este conjunto e intentamos meterlo en todos los demas, viendo si en alguno logra minimizar esta suma. En caso afirmativo, lo sacamos de su antiguo conjunto y lo ponemos en el nuevo. Realizamos esto hasta que deja de ser posible mejorar la solución y en este punto la devolvemos.
+
+Esta heuristica, como se verá en el apartado de testing, devuelve resultados vastante aproximados, al compararlo con la solución exacta y con las otras heuristicas.
+
+Otra vecindad que plantearemos será buscar el nodo que mas peso esta generando en la suma intrapartición, quitarlo de la partición donde se encuentra y agregarlo a alguna otra. 

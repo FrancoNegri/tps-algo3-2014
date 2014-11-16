@@ -12,6 +12,7 @@ g++ -O2 Ej2/ej2.cpp -o $DIR/ej2
 g++ -O2 Ej3/ej3.cpp -o $DIR/ej3
 g++ -O2 Ej4/ej4.1.cpp -o $DIR/ej4.1
 g++ -O2 Ej4/ej4.2.cpp -o $DIR/ej4.2
+g++ -O2 Ej4/ej4.3.cpp -o $DIR/ej4.3
 g++ -O2 Ej5/ej5.cpp -o $DIR/ej5
 
 echo "OK!"
@@ -24,7 +25,8 @@ do
     ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
     ./$DIR/ej4.1 < $DIR/test.txt >> $DIR/resultados4.txt
     ./$DIR/ej4.2 < $DIR/test.txt >> $DIR/resultados5.txt
-    ./$DIR/ej5 < $DIR/test.txt >> $DIR/resultados6.txt
+    ./$DIR/ej4.3 < $DIR/test.txt >> $DIR/resultados6.txt
+    ./$DIR/ej5 < $DIR/test.txt >> $DIR/resultados7.txt
     echo "OK!"
 done
 
@@ -32,8 +34,9 @@ echo "Limpio los binarios"
 
 paste $DIR/resultados2.txt $DIR/resultados3.txt > $DIR/aux1.txt
 paste $DIR/resultados4.txt $DIR/resultados5.txt > $DIR/aux2.txt
-paste $DIR/aux1.txt $DIR/aux2.txt > $DIR/aux3.txt
-paste $DIR/aux3.txt $DIR/resultados6.txt > $DIR/RESULTADOS
+paste $DIR/resultados6.txt $DIR/resultados7.txt > $DIR/aux3.txt
+paste $DIR/aux1.txt $DIR/aux2.txt > $DIR/aux4.txt
+paste $DIR/aux4.txt $DIR/aux3.txt > $DIR/RESULTADOS
 
 rm -rf $DIR/tester
 rm -rf $DIR/ej2
