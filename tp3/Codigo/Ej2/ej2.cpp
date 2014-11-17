@@ -61,7 +61,7 @@ int cantidadCajasVacias(Solucion& sol){
 
 // check:
 // si retorna 0 llegue al final 
-// si retorna 1, la solucion parcial tiene mas peso no vale la pena seguir calculando
+// si retorna 1, tengo que seguir insertando vertices 
 // si retorna 2 la solucion parcial tiene mas peso q la final con lo que descarto esta rama o 
 //la cantidad de vertices que me quedan para ubicar es menor a la cantidad de cajas vacias
 int check(vector < vector<int> > &adyacencias, Solucion &solParcial,Solucion &solFinal,int numeroVertice)
