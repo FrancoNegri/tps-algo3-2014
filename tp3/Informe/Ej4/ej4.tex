@@ -10,4 +10,24 @@ Como primera idea para una vecindad tomaremos cada nodo del grafo, vemos cuanto 
 
 Esta heuristica, como se verá en el apartado de testing, devuelve resultados vastante aproximados, al compararlo con la solución exacta y con las otras heuristicas.
 
-Otra vecindad que plantearemos será buscar el nodo que mas peso esta generando en la suma intrapartición, quitarlo de la partición donde se encuentra y agregarlo a alguna otra. 
+Otra vecindad que plantearemos será buscar el nodo que mas peso esta generando en la suma intrapartición, quitarlo de la partición donde se encuentra y agregarlo a alguna otra.
+
+Finalmente se implementará una tercera busqueda local que quite dos nodos que estan en una misma partición e intente buscar alguna otra donde los mismos sumen un menor peso intrapartición.
+
+Los algoritmos escritos de manera mas formal serán así:
+
+
+============= ALGORITMOS ===================
+
+
+Ahora aquí analizaremos las complegidades de los diferentes algoritmos.
+
+Para el primero, cada paso de busqueda local tendrá una complegidad de peor caso de $O(n(n + n k + n^2))$. Ahora si $k$ es mayor a $n$ quiere decir que hay mas subconjuntos disponibles que nodos, lo que llevaría a una solución trivial donde cada nodo va en un subconjunto diferente y la solución para $k-PMP$ sería 0.
+Luego podemos acotar a $k$ por $n$ con lo que se obtendría una complegidad igual a $O(n^3)$
+
+Para el segundo algoritmo, por cada iteración del algoritmo la complegidad será $O(n^2)$ para calcular el nodo con mayor peso del grafo. $O(k n)$ para determinar si existe una mejor partición donde este nodo pueda estar y, en el caso de que exista, $O(n^2)$ para quitarlo de la partición anterior y agregarlo a la nueva. Luego, nuevamente acotando $k$ por $n$, se obtiene una complegidad para cada paso de la iteración de $O(n^2)$.
+
+Para el tercer algoritmo  ==========(falta hacer que ande)============
+
+
+

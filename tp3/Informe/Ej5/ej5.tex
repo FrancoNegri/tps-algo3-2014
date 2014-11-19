@@ -1,2 +1,22 @@
-\section{Introducci\'on}
+\section{Idea}
+
+Para la metaeuristica de GRASP, tomaremos el algorimto goloso previamente implementado y lo combinaremos con las diferentes busquedas locales tambien previamente implementadas.
+
+La idea es la siguiente, para cada paso del algoritmo, corremos primero una busqueda local con un orden aleaotrio en sus nodos. Este orden aleatorio, como ya hemos demostrado en el apartado del algoritmo goloso, podrá ir produciendo diferentes respuestas, cada una con una mejor o peor aproximación a la respuesta exacta.
+
+Luego a la solución obtenida por el algoritmo goloso se le aplicarán una o varias de las busquedas locales implementadas en un intento de aproximar mas aun la respuesta al optimo.
+
+Como primer criterio de corte el algoritmo se correrá un numero finito de veces, que será determinado en el momento de experimentación.
+
+Como segundo criterio de corte se realizarán estos mismos pasos hasta que luego de un numero $x$ a determinar de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
+
+A continuación se formaliza de manera mas precisa el algoritmo:
+
+
+===== ALGORITMO =====
+
+
+\section{Experimentación}
+
+Para esta seccion de experimentacion compararemos los tiempos de ejecución y los resultados del algoritmo de GRASP contra la solución exacta obtenida por backtracking.
 
