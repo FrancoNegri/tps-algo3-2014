@@ -3,6 +3,8 @@
 #include <sys/timeb.h>
 #include <vector>
 #include <stack>
+#include <chrono>
+
 using namespace std;
 
 
@@ -203,6 +205,12 @@ int main()
 	cin >> m;
 	cin >> k;
 
+
+					//PARA MEDIR TIEMPOS
+					auto begin = std::chrono::high_resolution_clock::now();
+					//PARA MEDIR TIEMPOS
+
+
 	vector< vector< int> >adyacencias  = vector< vector< int> >(n, vector<int> (n, 0));
 	vector< stack< int> > subconjuntos;
 
@@ -238,11 +246,31 @@ int main()
 		//imprimirResultado(solFinal);	
 		bool sol = backtracking(solParcial,solFinal,0,k,adyacencias);
 		//return sol;
+
+
+
+
+
+
+
+					//PARA MEDIR TIEMPOS
+					auto end = std::chrono::high_resolution_clock::now();
+				  	cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
+					//PARA MEDIR TIEMPOS
+
+
+
+
+
+
+
 		imprimirResultado(solFinal, n);
 		//[>solParcial.clear();<]
 		//[>solFinal.clear();<]
 	//break;
 	//}
+
+
 
 	return 0;
 }

@@ -14,7 +14,7 @@
 #include <queue>
 #include <set>
 #include "goloso.cpp"
-//#include <chrono>
+#include <chrono>
 
 using namespace std;
 
@@ -46,7 +46,28 @@ int main()
 		matriz_de_adyacencias[h-1][j-1] = p;
 	}
 
+					//PARA MEDIR TIEMPOS
+					auto begin = std::chrono::high_resolution_clock::now();
+					//PARA MEDIR TIEMPOS
+
 	en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
+
+
+
+
+
+
+					//PARA MEDIR TIEMPOS
+					auto end = std::chrono::high_resolution_clock::now();
+				  	cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
+					//PARA MEDIR TIEMPOS
+
+
+
+
+
+
+
 
 	// cout << "Respuesta que hay que dar:" << endl;
 

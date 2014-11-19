@@ -14,7 +14,7 @@
 #include <queue>
 #include <set>
 #include "busqueda_local3.cpp"
-//#include <chrono>
+#include <chrono>
 
 using namespace std;
 
@@ -47,6 +47,10 @@ int main()
 		matriz_de_adyacencias[h-1][j-1] = p;
 	}
 
+					//PARA MEDIR TIEMPOS
+					auto begin = std::chrono::high_resolution_clock::now();
+					//PARA MEDIR TIEMPOS
+
 
 	srand (time(NULL));
 
@@ -76,6 +80,27 @@ int main()
 	// cout << endl;
 
 	// cout << endl << "Datos Utiles:" << endl;
+
+
+
+
+					//PARA MEDIR TIEMPOS
+					auto end = std::chrono::high_resolution_clock::now();
+				  	cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
+					//PARA MEDIR TIEMPOS
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	int total = 0;
 	for(int j = 0; j < k; j++)
