@@ -1,0 +1,101 @@
+\subsection{Introducción}
+
+Dado un grafo simple G = ( V , E ) se quiere buscar la solución con un algoritmo exacto a el problema de la k- partición, para esto se realiza un algoritmo con la técnica de backtracking para obtener la solución exacta del problema.
+
+En los puntos siguientes  se detalla la solución del mismo definiendo la implementación del algoritmo, las podas y  como afectan a la solución en los tiempos.
+
+\subsection{Desarrollo}
+Para explicar el desarrollo de este algoritmo iremos mostrando las partes del algoritmo armando el algoritmo final paso a paso, para comenzar el desarrollo es necesario definir previamente cada una de las estructuras que se utilizan en el mismo. Sabemos que el grafo esta representado por un conjunto de vértices, cada uno de los mismos tiene una etiqueta en este caso es un numero desde 1 hasta n  (siendo n la cantidad de vértices del grafo),  a su vez tenemos un conjunto de tuplas que representan los ejes en el grafo cada coordenada tiene un numero del 1 al n representando que vértices conecta el eje, a nuestro grafo lo representamos en una matriz de adyacencias a la que denominamos adyacencias en el grafo, donde en cada posición se tiene 0 si las aristas no están conectadas o el valor del peso del eje en caso que estén conectados.
+
+Una solución será representada en un conjunto de k subconjuntos, donde cada uno de estos subconjuntos contendrá los números de los vértices, todos disjuntos de a pares ( ósea que no tenemos el mismo numero de vértice en dos subconjuntos), y el peso del conjunto será la suma de cada uno de los pesos de los subconjuntos, donde el peso del subconjunto se entienden a la suma de los pesos de las aristas que conecten dos vértices del mismo subconjunto , además definimos que una k partición A es mejor que otra B si el peso total es menor, es decir si A es mejor que B entonces peso(A) < peso(B). Nuestro solFinal en principio va a ser el conjunto donde todos los vértices estén en el primer subconjunto.
+La idea fundamental del algoritmo de Backtracking  es que en cada llamado recursivo intentara insertar un vértice a la solución que esta armando, en caso de no tener una mejor solución tratara de insertar ese vértice en otro subconjunto que no haya probado, así hasta haber probado todos los subconjuntos y sin ir mas lejos si se realiza este ejercicio estaremos realizando todas las combinaciones de los vértices en los k subconjuntos.	
+
+De la siguiente manera:
+\begin{algorithm}
+  \begin{algorithmic}[1]\parskip=1mm
+ \caption{ backtracking(solParcial,solFinal,numeroVertice,cantidadSubConjuntos)}
+ 		\STATE{Si Puedo insertar } 
+		\STATE{\quad para cada i desde 1 hasta cantidadSubConjuntos: }
+ 		\STATE{\quad\quad agrego el numeroVertice al subconjunto i en SolParcial}
+ 		\STATE{\quad\quad backtracking ( solParcial , solFinal, numeroVertice+1,k,adyacencias)}
+		\STATE{\quad\quad saco el elemento que agregue al ultimo conjunto}
+		\STATE{Si Puedo insertar }   
+		\STATE{devuelvo False}
+
+  \end{algorithmic}
+  \end{algorithm}
+
+Ahora de esa manera lo único que estamos haciendo es probar todas las combinaciones , pero no estamos quedándonos con la mejor k - partición para esto debemos definir una función que nos diga cuando una solución es mejor que otra y además debemos saber si ya insertamos todos los vértices.
+
+Para lo cual definimos una función que devuelve un numero indicando 0 si inserte todos los vértices llegando a otra solución, luego tengo que ver si es mejor que la que tengo hasta el momento y 1 si tengo que seguir insertando vértices.
+Quedándonos de la siguiente manera:
+
+\begin{algorithm}
+  \begin{algorithmic}[1]\parskip=1mm
+ \caption{numero check(adyacencias, solParcial,solFinal, numeroVertice,cantidadVertices)}
+ 		\STATE{SI numeroVertice==cantidadDeVertices }   
+ 		\STATE{\quad devolver 0}
+ 		\STATE{SI NO}
+		\STATE{\quad devolver 1}
+  \end{algorithmic}
+  \end{algorithm}
+    
+\begin{algorithm}
+  \begin{algorithmic}[1]\parskip=1mm
+ \caption{backtracking(solParcial,solFinal,numeroVertice,cantidadSubConjuntos,adyacencias, cantidadVertices)}
+ 		\STATE{entero resultadoCheck = check(adyacencias,solParcial,solFinal,numeroVertice,cantidadVertices) }   
+ 		\STATE{si resultadoCheck = 0 }   
+ 		\STATE{\quad Remplazo mi solFinal por solParcial}
+ 		\STATE{Si NO}
+		\STATE{\quad para cada i desde 1 hasta cantidadSubConjuntos: }
+ 		\STATE{\quad\quad agrego el numeroVertice al subconjunto i en SolParcial}
+ 		\STATE{\quad\quad backtracking ( solParcial , solFinal, numeroVertice+1,k,adyacencias)}
+		\STATE{\quad\quad saco el elemento que agregue al ultimo conjunto}
+		\STATE{devuelvo False}
+
+  \end{algorithmic}
+  \end{algorithm}
+
+Con este algoritmo estaremos probando todas las combinaciones de todos los vértices en los k subconjuntos, en cada paso insertamos un vértice a un subconjunto y llamamos a la recursión con el siguiente vértice. una vez que vuelva de la recursión quitara el vértice del conjunto donde lo ingreso y seguirá el ciclo insertándolo en otro subconjunto y llamando a la recursión de nuevo.
+
+\subsection{Podas}
+Para mejorar los tiempos del algoritmo es necesario realizar algún tipo de validación intermedia para no probar casos que no nos van a llevar a una solución optima, por ejemplo cuando estamos insertando vértices a la solución que ya tiene mas peso que nuestra mejor solución o cuando nos quedan una cantidad de vértices es menor estricta a la cantidad de subconjuntos vacíos, estas podas son las que realizamos en nuestro algoritmo agregándolas a la función check al Backtracking de la siguiente manera:
+
+\begin{algorithm}
+  \begin{algorithmic}[1]\parskip=1mm
+ \caption{numero check(adyacencias, solParcial,solFinal, numeroVertice,cantidadVertices)}
+ 		\STATE{SI peso(solParcial) > peso(solFinal) }   
+ 		\STATE{\quad devolver 2}
+		\STATE{SI numeroVertice==cantidadDeVertices }   
+ 		\STATE{\quad devolver 0}
+ 		\STATE{Si cantidadDeCajasVacias(solParcial) > cantidadVertices }   
+ 		\STATE{\quad devolver 2}
+		\STATE{devolver 1}
+  \end{algorithmic}
+  \end{algorithm}
+  
+ \begin{algorithm}
+ \begin{algorithmic}[1]\parskip=1mm
+ \caption{backtracking(solParcial,solFinal,numeroVertice,cantidadSubConjuntos,adyacencias, cantidadVertices)}
+ 		\STATE{entero resultadoCheck = check(adyacencias,solParcial,solFinal,numeroVertice,cantidadVertices) }   
+ 		\STATE{si resultadoCheck = 0 }   
+ 		\STATE{\quad Remplazo mi solFinal por solParcial}
+		\STATE{si resultadoCheck = 2 }   
+ 		\STATE{\quad devuelvo false porque mi solParcial es peor que mi solFinal o tengo mas cajas vacías que vertices para poner	l}
+ 		\STATE{Si NO}
+		\STATE{\quad para cada i desde 1 hasta cantidadSubConjuntos: }
+ 		\STATE{\quad\quad agrego el numeroVertice al subconjunto i en SolParcial}
+ 		\STATE{\quad\quad backtracking ( solParcial , solFinal, numeroVertice+1,k,adyacencias)}
+		\STATE{\quad\quad saco el elemento que agregue al ultimo conjunto}
+		\STATE{devuelvo False}
+
+  \end{algorithmic}
+  \end{algorithm}
+
+De esta manera el algoritmo va a realizar las podas en las llamadas recursivas intermedias antes de insertar todos los vértices descartando casos que no son útiles para llegar  a una solución optima en menor tiempo.
+
+Para improvisar una mejora en la poda al comparar los pesos de nuestras soluciones parcial y final, lo que realizamos es generar otra solución final asignando cada uno de los vértices de manera creciente a cada uno de las k subconjuntos diferentes y si esta otra solución es mejor a la solución que tiene todos los nodos en un solo conjunto la tomamos como solución final para nuestras comparaciones.
+De esta manera podrían tomarse otro tipo de soluciones para luego obtener la solución final de menor peso y podar mas ramas del Backtracking.	
+
+
+\subsection{Complejidad}
