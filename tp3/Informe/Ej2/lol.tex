@@ -21,7 +21,6 @@ De la siguiente manera:
 		\STATE{\quad\quad saco el elemento que agregue al ultimo conjunto}
 		\STATE{Si Puedo insertar }   
 		\STATE{devuelvo False}
-
   \end{algorithmic}
   \end{algorithm}
 
@@ -33,7 +32,7 @@ Quedándonos de la siguiente manera:
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
  \caption{numero check(adyacencias, solParcial,solFinal, numeroVertice,cantidadVertices)}
- 		\STATE{SI numeroVertice==cantidadDeVertices }   
+ 		\STATE{SI numeroVertice=cantidadDeVertices }   
  		\STATE{\quad devolver 0}
  		\STATE{SI NO}
 		\STATE{\quad devolver 1}
@@ -64,16 +63,17 @@ Para mejorar los tiempos del algoritmo es necesario realizar algún tipo de vali
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
  \caption{numero check(adyacencias, solParcial,solFinal, numeroVertice,cantidadVertices)}
- 		\STATE{SI peso(solParcial) > peso(solFinal) }   
+ 		\STATE{SI peso(solParcial)$ >$ peso(solFinal) }   
  		\STATE{\quad devolver 2}
-		\STATE{SI numeroVertice==cantidadDeVertices }   
+		\STATE{SI numeroVertice=cantidadDeVertices }   
  		\STATE{\quad devolver 0}
- 		\STATE{Si cantidadDeCajasVacias(solParcial) > cantidadVertices }   
+ 		\STATE{Si cantidadDeCajasVacias(solParcial)$ >$ cantidadVertices }   
  		\STATE{\quad devolver 2}
 		\STATE{devolver 1}
   \end{algorithmic}
   \end{algorithm}
-  
+La funcion cantidadDeCajasVacias se fija si algun conjunto no tiene  
+ 
  \begin{algorithm}
  \begin{algorithmic}[1]\parskip=1mm
  \caption{backtracking(solParcial,solFinal,numeroVertice,cantidadSubConjuntos,adyacencias, cantidadVertices)}
@@ -88,7 +88,6 @@ Para mejorar los tiempos del algoritmo es necesario realizar algún tipo de vali
  		\STATE{\quad\quad backtracking ( solParcial , solFinal, numeroVertice+1,k,adyacencias)}
 		\STATE{\quad\quad saco el elemento que agregue al ultimo conjunto}
 		\STATE{devuelvo False}
-
   \end{algorithmic}
   \end{algorithm}
 
@@ -97,5 +96,46 @@ De esta manera el algoritmo va a realizar las podas en las llamadas recursivas i
 Para improvisar una mejora en la poda al comparar los pesos de nuestras soluciones parcial y final, lo que realizamos es generar otra solución final asignando cada uno de los vértices de manera creciente a cada uno de las k subconjuntos diferentes y si esta otra solución es mejor a la solución que tiene todos los nodos en un solo conjunto la tomamos como solución final para nuestras comparaciones.
 De esta manera podrían tomarse otro tipo de soluciones para luego obtener la solución final de menor peso y podar mas ramas del Backtracking.	
 
-
 \subsection{Complejidad}
+Dado que el algoritmo exacto sin las podas prueba todas las soluciones del problema esto hace que sea poco eficiente en terminos de tiempo a comparacion de las heuristicas que iremos viendo a lo largo del informe. Pero conociendo las soluciones que se van a ir armando pueden definirse podas para evitar seguir resolviendo ramas de la solucion que no me van a llevar a una solucion optima o a una solucion que no es mejor que la que ya forme hasta cierto punto.
+Dado el algoritmo exacto mostraremos las complejidades de las diferentes partes del mismo para obtener cual seria la complejidad final.
+
+\begin{algorithm}
+  \begin{algorithmic}[1]\parskip=1mm
+ \caption{numero check(adyacencias, solParcial,solFinal, numeroVertice,cantidadVertices)}
+ 		\STATE{SI peso(solParcial) $>$ peso(solFinal)  \tOde{1}}   
+ 		\STATE{\quad devolver 2}
+		\STATE{SI numeroVertice=cantidadDeVertices \tOde{1} }   
+ 		\STATE{\quad devolver 0}
+ 		\STATE{Si cantidadDeCajasVacias(solParcial) $>$ cantidadVertices \tOde{k}}   
+ 		\STATE{\quad devolver 2}
+		\STATE{devolver 1}
+  \end{algorithmic}
+  \end{algorithm}
+
+Para la funcion check la complejidad final sera \Ode{1} + \Ode{1}+ \Ode{k} dando como complejidad total \tOde{k}.
+
+\begin{algorithm}
+ \begin{algorithmic}[1]\parskip=1mm
+ \caption{backtracking(solParcial,solFinal,numeroVertice,cantidadSubConjuntos,adyacencias, cantidadVertices)}
+ 		\STATE{entero resultadoCheck = check(adyacencias,solParcial,solFinal,numeroVertice,cantidadVertices)\tOde{k} }   
+ 		\STATE{si resultadoCheck = 0 \tOde{1}}   
+ 		\STATE{\quad Remplazo mi solFinal por solParcial \tOde{k}}
+		\STATE{si resultadoCheck = 2 \tOde{1}}   
+ 		\STATE{\quad devuelvo false porque mi solParcial es peor que mi solFinal o tengo mas cajas vacías que vertices para poner \tOde{1}}
+ 		\STATE{Si NO}
+		\STATE{\quad para cada i desde 1 hasta cantidadSubConjuntos: }
+ 		\STATE{\quad\quad agrego el numeroVertice al subconjunto i en SolParcial}
+ 		\STATE{\quad\quad backtracking ( solParcial , solFinal, numeroVertice+1,k,adyacencias)}
+		\STATE{\quad\quad saco el elemento que agregue al ultimo conjunto}
+		\STATE{devuelvo False}
+  \end{algorithmic}
+  \end{algorithm}
+
+el c
+
+
+
+
+\subsection{Experimentacion}
+
