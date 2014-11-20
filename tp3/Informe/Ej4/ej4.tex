@@ -16,9 +16,52 @@ Finalmente se implementará una tercera busqueda local que quite dos nodos que e
 
 Los algoritmos escritos de manera mas formal serán así:
 
+\begin{algorithm}
+  	\begin{algorithmic}[1]\parskip=1mm
+		 \caption{ Busqueda1(SoluciónInicial) }
+		 	\STATE{Guardo SoluciónInicial en SolucionPrevia}
+	 		\STATE{Mientras en el paso anterior se haya mejorado SolucionPrevia} 
+				\STATE{\quad Tomo un nodo $i$ de $1$ a $n$ del grafo}
+		 		\STATE{\quad Miro que peso agrega el nodo $i$ en el conjunto asignado por SolucionPrevia}
+		 		\STATE{\quad Miro que peso agrega el nodo $i$ quitandolo del conjunto asignado y poniendolo en los demas}
+				\STATE{\quad \quad Si En algun conjunto $M$ obtengo un peso menor, modifico SolucionPrevia y asigno $i$ al conjunto $M$}   
+				\STATE{\quad \quad Itero}
+	\end{algorithmic}
+\end{algorithm}
 
-============= ALGORITMOS ===================
+\begin{algorithm}
+  	\begin{algorithmic}[1]\parskip=1mm
+		 \caption{ Busqueda2(SoluciónInicial) }
+			\STATE{Guardo SoluciónInicial en SolucionPrevia}
+	 		\STATE{Mientras en el paso anterior se haya mejorado SolucionPrevia}
+			\STATE{Asigno $j = 1$}
+				\STATE{\quad Tomo el j-esimo nodo mas pesado de la SolucionPrevia, al que llamo $i$}
+		 		\STATE{\quad Miro que peso agrega el nodo $i$ en el conjunto asignado por SolucionPrevia}
+		 		\STATE{\quad Miro que peso agrega el nodo $i$ quitandolo del conjunto asignado y poniendolo en los demas}
+				\STATE{\quad \quad Si En algun conjunto $M$ obtengo un peso menor}   
+				\STATE{\quad \quad \quad modifico SolucionPrevia y asigno $i$ al conjunto $M$}
+				\STATE{\quad \quad \quad Itero}
+				\STATE{\quad \quad Si no, sumo $1$ a $j$}
+				\STATE{\quad \quad Si $j == n$}
+				\STATE{\quad \quad \quad Devuelvo SolucionPrevia}
+				\STATE{\quad \quad Si no}
+				\STATE{\quad \quad \quad Itero}
+	\end{algorithmic}
+\end{algorithm}
 
+\begin{algorithm}
+  	\begin{algorithmic}[1]\parskip=1mm
+		 \caption{ Busqueda3(SoluciónInicial) }
+		 	\STATE{Guardo SoluciónInicial en SolucionPrevia}
+	 		\STATE{Mientras en el paso anterior se haya mejorado SolucionPrevia} 
+				\STATE{\quad Tomo un nodo $i$ de $1$ a $n$ del grafo}
+				\STATE{\quad\quad Tomo otro nodo $k$ del conjunto de $i$}
+		 		\STATE{\quad\quad Miro que peso agrega el nodo $i$ y $k$ en el conjunto asignado por SolucionPrevia}
+		 		\STATE{\quad\quad Miro que peso agrega el nodo $i$ y $k$ quitandolo del conjunto asignado y poniendolo en los demas}
+				\STATE{\quad\quad \quad Si En algun conjunto $M$ obtengo un peso menor, modifico SolucionPrevia y asigno $i$ y $k$ al conjunto $M$}   
+				\STATE{\quad\quad \quad Itero}
+	\end{algorithmic}
+\end{algorithm}
 
 Ahora aquí analizaremos las complegidades de los diferentes algoritmos.
 
@@ -27,7 +70,6 @@ Luego podemos acotar a $k$ por $n$ con lo que se obtendría una complegidad igua
 
 Para el segundo algoritmo, por cada iteración del algoritmo la complegidad será $O(n^2)$ para calcular el nodo con mayor peso del grafo. $O(k n)$ para determinar si existe una mejor partición donde este nodo pueda estar y, en el caso de que exista, $O(n^2)$ para quitarlo de la partición anterior y agregarlo a la nueva. Luego, nuevamente acotando $k$ por $n$, se obtiene una complegidad para cada paso de la iteración de $O(n^2)$.
 
-Para el tercer algoritmo  ==========(falta hacer que ande)============
-
+El tercer algoritmo es simplemente el primer algoritmo pero esta vez. para cada nodo ademas tomo un vecino, y realizo el mismo procedimiento que antes, esto para cada vecino, suponiendo que en el peor caso, para un nodo todos los otros nodos esten en el mismo conjunto, se tendrá que realizar el procedimiento de antes $n^2$ veces, luego $O(n^2 (n + n k + n^2))$. Acotando nuevamente $k$, obtenemos que el algoritmo es: $O(n^3)$
 
 

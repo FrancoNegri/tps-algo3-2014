@@ -9,20 +9,21 @@ Mas formalizado el algoritmo quedará de la siguiente manera:
   \begin{algorithmic}[1]\parskip=1mm
  \caption{ Goloso()}
  		\STATE{Numero los vertices de $1$ a $n$} 
-		\STATE{Creo la cantidad $k$ }
- 		\STATE{\quad\quad }
- 		\STATE{\quad\quad }
-		\STATE{\quad\quad }
-		\STATE{}   
-		\STATE{}
+		\STATE{Creo una cantidad $k$ de conjuntos donde iré guardando vertices}
+ 		\STATE{Para cada nodo $i$ de $1$ a $n$: }
+		\STATE{\quad Para cada conjunto}
+			\STATE{\quad\quad Sumo todos los pesos de las aristas de ($i$,$j$) con $j$ los vertices que estan en el conjunto}
+ 		\STATE{\quad Agrego la el vertice $i$ para el cual la suma dio menor}
+		\STATE{Imprimo por salida estandar la respuesta}
   \end{algorithmic}
   \end{algorithm}
 
 
 Claramente este algoritmo no devuelve la solución exacta, y como se verá mas adelante, la solución que devuelve puede estar tan lejos como se quiera de la optima, lo que lo hace un algoritmo no muy bueno.
 
-Como ventajas de este algoritmo, puede verse que tiene una complegidad muy baja de $O(n^2 k)$, por lo que podría usarse como una primera cota superior, aunque grosera, que puede resultar util.
+El analisis de complegidad es sencillo, se itera por cada vertice sobre cada conjunto. Dado que cada nodo solo estará en un conjunto, entre todos los conjuntos a lo sumo tendrán $n$ nodos, lo que hace que se deba iterar $n$ veces a lo sumo sobre $n$ nodos, luego la complegidad será $O(n^2)$, por lo que, al menos en lo que respecta a tiempos, es ampliamente superior que el algoritmo exacto.
 
+Por lo tanto, dada la baja complegidad de este algoritmo, podría utilizarse como una cota superior, si bien algo grosera, para la solución.
 
 \subsection{Problemas del Algoritmo Goloso}
 
@@ -30,12 +31,7 @@ Como ya adelantamos, la solución para este algoritmo no siempre da una solució
 
 Supongamos que tenemos un grafo como el que se muestra en la figura y $K = 2$
 
-
-A --1-- B
- \\    /
- 100  100
-  \\  /
-    C
+\includegraphics[scale=0.5]{Ej3/grafo.png}
 
 Es claro que la mejor solución posible es poner en uno de los conjuntos a $A$ y $B$ y en el otro a $C$, así la suma intrapartición es $1$.
 

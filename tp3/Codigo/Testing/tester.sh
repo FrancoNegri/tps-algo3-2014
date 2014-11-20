@@ -19,7 +19,7 @@ g++ -O2 -std=c++0x Ej5/ej5B.cpp -o $DIR/ej5B
 
 echo "OK!"
 
-for numeroDeNodos in {1..1}
+for numeroDeNodos in {1..100}
 do
 	echo "generada entrada para n:" $numeroDeNodos
     ./$DIR/tester 23 253 2
