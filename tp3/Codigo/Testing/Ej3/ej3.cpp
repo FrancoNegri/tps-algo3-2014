@@ -59,7 +59,7 @@ int main()
 
 					//PARA MEDIR TIEMPOS
 					auto end = std::chrono::high_resolution_clock::now();
-				  	cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
+				  	cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << endl;
 					//PARA MEDIR TIEMPOS
 
 
