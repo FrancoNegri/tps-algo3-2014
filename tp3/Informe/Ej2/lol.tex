@@ -12,18 +12,17 @@ La idea fundamental del algoritmo de Backtracking  es que en cada llamado recurs
 
 De la siguiente manera:
 \begin{algorithm}
-  \begin{algorithmic}[1]\parskip=1mm
- \caption{ backtracking(solParcial,solFinal,numeroVertice,cantidadSubConjuntos)}
- 		\STATE{Si Puedo insertar } 
-		\STATE{\quad para cada i desde 1 hasta cantidadSubConjuntos: }
- 		\STATE{\quad\quad agrego el numeroVertice al subconjunto i en SolParcial}
- 		\STATE{\quad\quad backtracking ( solParcial , solFinal, numeroVertice+1,k,adyacencias)}
-		\STATE{\quad\quad saco el elemento que agregue al ultimo conjunto}
-		\STATE{Si Puedo insertar }   
-		\STATE{devuelvo False}
-
-  \end{algorithmic}
-  \end{algorithm}
+  	\begin{algorithmic}[1]\parskip=1mm
+		 \caption{ Backtracking( solParcial, solFinal, numeroVertice, cantidadSubConjuntos ) }
+		 		\STATE{Si Puedo insertar } 
+				\STATE{\quad para cada i desde 1 hasta cantidadSubConjuntos: }
+		 		\STATE{\quad\quad agrego el numeroVertice al subconjunto i en SolParcial}
+		 		\STATE{\quad\quad backtracking ( solParcial , solFinal, numeroVertice+1,k,adyacencias)}
+				\STATE{\quad\quad saco el elemento que agregue al ultimo conjunto}
+				\STATE{Si Puedo insertar }   
+				\STATE{devuelvo False}
+	\end{algorithmic}
+\end{algorithm}
 
 Ahora de esa manera lo único que estamos haciendo es probar todas las combinaciones , pero no estamos quedándonos con la mejor k - partición para esto debemos definir una función que nos diga cuando una solución es mejor que otra y además debemos saber si ya insertamos todos los vértices.
 
