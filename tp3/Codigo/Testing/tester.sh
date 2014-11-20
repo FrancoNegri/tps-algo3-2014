@@ -19,7 +19,7 @@ g++ -O2 -std=c++0x Ej5/ej5B.cpp -o $DIR/ej5B
 
 echo "OK!"
 
-for numeroDeNodos in {1..100}
+for numeroDeNodos in {1..1}
 do
 	echo "generada entrada para n:" $numeroDeNodos
     ./$DIR/tester 23 253 2
@@ -57,7 +57,7 @@ sed -n 1~2p $DIR/resultados8.txt > $DIR/performanece8.txt
 paste $DIR/tiempos2.txt $DIR/tiempos3.txt > $DIR/aux1.txt
 paste $DIR/tiempos4.txt $DIR/tiempos5.txt > $DIR/aux2.txt
 paste $DIR/tiempos6.txt $DIR/tiempos7.txt > $DIR/aux3.txt
-paste $DIR/aux3.txt tiempos8.txt > $DIR/aux5.txt
+paste $DIR/aux3.txt $DIR/tiempos8.txt > $DIR/aux5.txt
 paste $DIR/aux1.txt $DIR/aux2.txt > $DIR/aux4.txt
 paste $DIR/aux4.txt $DIR/aux5.txt > $DIR/TIEMPOS
 
@@ -65,7 +65,7 @@ paste $DIR/aux4.txt $DIR/aux5.txt > $DIR/TIEMPOS
 paste $DIR/performanece2.txt $DIR/performanece3.txt > $DIR/aux1.txt
 paste $DIR/performanece4.txt $DIR/performanece5.txt > $DIR/aux2.txt
 paste $DIR/performanece6.txt $DIR/performanece7.txt > $DIR/aux3.txt
-paste $DIR/aux3.txt performanece8.txt > $DIR/aux5.txt
+paste $DIR/aux3.txt $DIR/performanece8.txt > $DIR/aux5.txt
 paste $DIR/aux1.txt $DIR/aux2.txt > $DIR/aux4.txt
 paste $DIR/aux4.txt $DIR/aux5.txt > $DIR/PERFORMANCE
 
