@@ -1,6 +1,6 @@
 \subsection{Idea general}
 
-Un primer intento para conseguir una solución a este problema es utilizando un algoritmo goloso. La idea del mismo es sencilla, numeramos los nodos de $1$ a $n$, y luego tomando de a uno los agregamos a alguno de los conjuntos de $1$ a $k$ intentando que sume a la solución el menor peso posible.
+Un primer intento para conseguir una solución a este problema es utilizar un algoritmo goloso. La idea del mismo es sencilla, numeramos los nodos de $1$ a $n$, y luego tomando de a uno los agregamos a alguno de los conjuntos de $1$ a $k$ intentando que sume a la solución el menor peso posible.
 
 Más formalizado el algoritmo quedará de la siguiente manera:
 
@@ -17,7 +17,6 @@ Más formalizado el algoritmo quedará de la siguiente manera:
 		\STATE{Imprimo por salida estandar la respuesta}
   \end{algorithmic}
   \end{algorithm}
-
 
 Claramente este algoritmo no devuelve la solución exacta, y como se verá mas adelante, la solución que devuelve puede estar tan lejos como se quiera de la optima, lo que lo hace un algoritmo no muy bueno.
 
@@ -38,7 +37,7 @@ Es claro que la mejor solución posible es poner en uno de los conjuntos a $A$ y
 Sin embargo, supongamos que nuestro algoritmo goloso toma como primer nodo al nodo $A$, dado que no hay otros nodos, lo agrega en cualquiera de los dos conjuntos y se obtiene peso $0$. Ahora supongamos que el algoritmo toma el nodo $B$, si lo pone en el mismo conjunto que el nodo $A$ obtiene peso $1$, si lo pone en el otro conjunto obtiene peso $0$, así que lo pone en el otro conjunto. Pero ahora falta agregar el nodo $C$, y agregándolo en cualquiera de los dos conjuntos se obtiene peso $100$. Así que la solución para k-PMP que encontrará el algoritmo goloso será $100$.
 De ahí se desprende que cambiando ambos pesos $100$ por cualquier valor puede obtenerse una solución tan mala como uno quiera.
 
-Sin embargo, puede observarse otra cosa de este algoritmo, si se hubiese tomado el nodo $C$ como primer nodo o como segundo nodo, se hubiera llegado a la solución óptima. De aquí surge la idea de que si se eligieran diferentes órdenes para los nodos y se corriera el algoritmo para cada uno de estos órdenes, podría obtenerse diferentes cotas, y con un poco de suerte en alguna de ellas no sucederá este caso que acabamos de ver.
+Sin embargo, se puede observarse otra cosa de este algoritmo, si se hubiese tomado el nodo $C$ como primer nodo o como segundo nodo, se hubiera llegado a la solución óptima. De aquí surge la idea de que si se eligieran diferentes órdenes para los nodos y se corriera el algoritmo para cada uno de estos órdenes, podría obtenerse diferentes cotas, y con un poco de suerte en alguna de ellas no sucederá este caso que acabamos de ver.
 
 Esta idea la utilizaremos más adelante para el GRASP, correremos con distintos órdenes de nodos el algoritmo goloso de manera tal de obtener en cada una de estas iteraciones una respuesta diferente y posiblemente mejor que la anterior.
 

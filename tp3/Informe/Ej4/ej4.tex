@@ -8,13 +8,12 @@ Por lo tanto debemos tener en cuenta de no hacer las vecindades ni muy grandes, 
 
 Como primera idea para una vecindad tomaremos cada nodo del grafo, vemos cuánto peso agrega en la suma intraconjunto en que se encuentra, lo quitaremos de este conjunto e intentamos meterlo en todos los demás, viendo si en alguno logra minimizar esta suma. En caso afirmativo, lo sacamos de su antiguo conjunto y lo ponemos en el nuevo. Realizamos esto hasta que deja de ser posible mejorar la solución y en este punto la devolvemos.
 
-Esta heurística, como se verá en el apartado de testing, devuelve resultados bastante aproximados, al compararlo con la solución exacta y con las otras heurísticas.
 
 Otra vecindad que plantearemos será buscar el nodo que más peso está generando en la suma intrapartición, quitarlo de la partición donde se encuentra y agregarlo a alguna otra.
 
 Finalmente se implementará una tercera busqueda local que quite dos nodos que están en una misma partición e intente buscar alguna otra donde los mismos sumen un menor peso intrapartición.
 
-Los algoritmos escritos de manera más formal serán así:
+Los algoritmos escritos de manera formal serán así:
 
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
@@ -54,8 +53,6 @@ Dada nuestra implementación de conjunto con listas simplemente enlazadas, encon
 	\end{algorithmic}
 \end{algorithm}
 
-
-
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
 		 \caption{ Busqueda3(SoluciónInicial) }
@@ -73,7 +70,7 @@ Dada nuestra implementación de conjunto con listas simplemente enlazadas, encon
 
 \newpage
 
-\section{Anlalisis de Complejidades}
+\section{Análisis de Complejidades}
 
 Aquí analizaremos las complejidades de los diferentes algoritmos. Para cada uno de ellos elegimos una implementación con matriz de adyacencias para modelar el peso de las aristas y un vector de longitud variable para implementar los diferentes conjuntos.
 
@@ -106,11 +103,9 @@ Para poner más en evidencia esto, dividiremos por las complejidades teóricas p
 
 \includegraphics[scale=0.5]{Ej4/tiempo3div.jpg}
 
-Como puede verse, en los tres casos las heurísticas son acotadas por las complejidades calculadas en el apartado anterior.
+Como puede verse, en los tres casos las heurísticas están acotadas por las complejidades calculadas en el apartado anterior.
 
-Ahora, para 100 grafos completos con un numero fijo de nodos igual a $23$, y aristas tomadas de $1$ a $100$, compararemos los resultados obtenidos con backtracking con los obtenidos por estas heurísticas.
-
-Los resultados arrojados son los siguientes:
+Veamos como se comportan las busquedas locales contra el algoritmo exactos para $K_23$ con peso en las aristas entre $1$ a $100$ elegidos de forma uniforme, tomaremos 100 muestras y compararemos los resultados contra el algoritmo de backtracking.
 
 \includegraphics[scale=0.5]{Ej4/solucionestodos.jpg}
 
