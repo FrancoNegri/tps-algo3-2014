@@ -146,4 +146,13 @@ Luego para esas instancias se corrio el algoritmo asignando 5, 10 y 15 subconjun
 \includegraphics[scale=0.5]{Ej2/k10.jpg}\\
 \includegraphics[scale=0.5]{Ej2/k15.jpg}\\
 
-Se puede ver como la pendiente
+Se puede ver como la curva se hace mas pronunciada al cambiar la cantidad de subconjuntos, con esto se ve que al cambiar el k la complejidad va aumentando de manera exponencial.
+
+Por otro lado realizamos un analisis sobre las podas, para esto primero generamos 30 instancias de grafos para ver como se comportaba el algoritmo con grafos sin aristas, obteniendo el siguiente resultado:\\
+\includegraphics[scale=0.5]{Ej2/sinAristas.jpg}\\
+Como puede verse el grafico los tiempos de ejecucion son similares a una lineal, esto se debe a que como la solucion inicial tiene peso 0 ya que no tiene aristas, en cada llamado recursivo se devuelve false porque no se obtiene nada mejor en cuestion de peso del conjunto.
+Por otro lado como mencionamos en el desarrollo del algoritmo se agrego una genacion de una solucion inicial alternativa a poner todos los vertices en un solo subconjunto, por lo que realizamos una experimentacion para ver como afectaba la no presencia de esta solucion alternativa, corrimos las mismas instancias de grafos para 15 subconjuntos que corrimos en los priemros test donde se encontraba esta solucion alternativa y obtuvimos lo siguiente:\\
+\includegraphics[scale=0.5]{Ej2/sinAlternativa.jpg}\\
+
+Como puede observarse los tiempos empeoran ya que la primera solucion a nuestro problema es el grafo con todos las aristas y esto puede no podar muchas ramas del backtracking que con la solucion alternativa si se estan podando. Concluyedo que podrian mejorar los tiempos si estamos eligiendo una buena solucion inicial.
+
