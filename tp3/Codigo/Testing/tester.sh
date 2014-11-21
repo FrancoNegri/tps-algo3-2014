@@ -24,7 +24,7 @@ do
     echo "generada entrada para n:" $(( $numeroDeNodos ))
     for j in {1..100}
     do
-        ./$DIR/tester $(( $numeroDeNodos )) $(( $numeroDeNodos* ($numeroDeNodos-1) / 2  )) 2
+        ./$DIR/tester 15 105 5
 	./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
  #       ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
         #./$DIR/ej4.1 < $DIR/test.txt >> $DIR/resultados4.txt
