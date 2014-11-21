@@ -146,10 +146,11 @@ Para la funcion check la complejidad final sera \Ode{1} + \Ode{1}+ \Ode{k} dando
   \end{algorithmic}
   \end{algorithm}
 
-el c
+El ciclo de las lineas 7-10 se ejecuta k veces en cada llamado iterativo, cada ves que se llama a la funcion backtracking es por un vertice diferente. 
+Para el primer nodo tenemos k conjuntos para probar, luego con el segundo vertice tenemos para cada uno de esos conjuntos donde coloque el primer nodo k alterativas de conjuntos para probar quedandonos $k^2$ combinaciones para esos dos vertices,
+para cada una de esas $k^2$ combinaciones tenemos k conjuntos quedando $k^3$ combinaciones, asi seguira en las llamadas recursivas por todos los vertices. Con lo cual con el vertice n tendremos $k^n$ combinaciones para este vertice.
 
-
-
+Por lo tanto la complejidad total del algortimo es del orden de \Ode{$k^n$} siendo k la cantidad de subconjuntos y n la cantidad de vertices del grafo.
 
 \subsection{Experimentacion}
-
+Para el analisis de este algoritmo se generaron grafos completos 
