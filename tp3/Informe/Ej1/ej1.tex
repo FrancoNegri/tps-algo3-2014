@@ -1,10 +1,8 @@
-\subsection{Introducción}
-
-Para este trabajo practico se nos pide, a partir de un grafo simple $G=(V,E)$ con pesos en las aristas, encontrar la k-particion tal que minimice el peso de las aristas intrapartición.
+Para este trabajo práctico se nos pide, a partir de un grafo simple $G=(V,E)$ con pesos en las aristas, encontrar la k-particion tal que minimice el peso de las aristas intrapartición.
 
 Para ello primero intentaremos relacionar este problema con otros problemas conocidos, pensaremos varias maneras de abordarlo y emprenderemos la busqueda de algoritmos eficientes para resolverlo.
 
-Como veremos luego, este problema es 'dificil' de resolver, por lo que para instancias grandes, el algoritmo dejará de ser viable, por lo que tambien desarrollaremos distintas heruristicas que resuelvan el problema de manera aproximada. Probaremos con una heuristica golosa, dos heruristicas de busquedas locales y a partir de esotos, un GRASP.
+Como veremos luego, este problema es 'dificil' de resolver, por lo que para instancias grandes, el algoritmo dejará de ser viable, por lo que tambien desarrollaremos distintas heruristicas que resuelvan el problema de manera aproximada. Probaremos con una heuristica golosa, dos heruristicas de busquedas locales y a partir de estos, un GRASP.
 
 \subsection{Entrada y salida}
 
@@ -27,7 +25,7 @@ La salida, por su parte, constar\'a de una fila con:
 
 \begin{itemize}
 
-\item $n$ enteros $i_1$ $i_2$ $...$ $i_n$
+	\item $n$ enteros $i_1$ $i_2$ $...$ $i_n$
 
 \end{itemize}
 
@@ -37,20 +35,32 @@ Donde cada $i_k$ representa en que conjunto se encuentra el nodo $k$
 
 Para ejemplificar el problema a resolver, pensemos en un grafo $G$ con $4$ nodos, $5$ vertices y $2$ particiones.
 
-Supongamos ademas que los nodos estan conectados de la siguiente manera.
+Supongamos ademas que los nodos estan conectados de la siguiente manera:
 
-$1-2$ con peso $2$
-$1-3$ con peso $3$
-$1-4$ con peso $3$
-$2-4$ con peso $1$
-$3-4$ con peso $2$
+\begin{itemize}
 
-A primera vista podríamos poner el nodo $1$ separados de los nodos $3$ y $4$ ya que de estar juntos sumarían demaciado a la intrapartición. Por otro lado tenderíamos a poner al nodo $2$ y $3$ dentro de la misma partición ya que estos suman $0$. Como contracara de eso ahora podemos ver que al agregar otro nodo $v$, sumará tanto el peso de $2$ con $v$ y $3$ con $v$. Vemos luego que un algoritmo goloso para intentar resolver este problema puede tomar soluciónes tan malas como se quiera.
+	\item $1-2$ con peso $2$
+	\item $1-3$ con peso $3$
+	\item $1-4$ con peso $3$
+	\item $2-4$ con peso $1$
+	\item $3-4$ con peso $2$
 
-Siendo esta una instancia pequeña del problema, tras intentar algunas convinaciones, puede verse que poniendo el nodo $1$ en el primer conjunto y los nodos $2,3,4$ en el otro, se consigue un peso total de $3$.
+\end{itemize}
 
-\subsection{Relación con otros problemas conocidos}
+A primera vista podríamos elegir el nodo con mas aristas, el nodo $1$, y ponerlo en una partición obteniendo k-PMP = \{\{($1$)\},\{\}\}. Por otro lado tenderíamos a poner nodos que no esten conectados en otra partición, por ejemplo los nodo $2$ y $3$ ya que estos no los conecta ninguna arista, obteniendo k-PMP = \{\{($1$)\},\{($2$),($3$)\}\}. Ahora en nuestro ejemplo nos queda el nodo $4$ y al tener $k = 2$ lo tenemos que poner en alguna, elegiremos la partición donde minimice el peso total, en este caso es indiferente, dado que agregar el nodo $4$ a la primer partición suma $3$ y a la segunda partición también suma $3$, resultando k-PMP = \{\{($1$),($4$)\},\{($2$),($3$)\}\}. 
 
-En primer instancia podemos relacionar el problema de $k-PMP$ con el problema de coloreo. Supongamos que podemos encontrar un k-coloreo para los vértices del grafo G, entonces podríamos subdividir al conjunto de vértices V en k subgrupos según su color, es decir, en un mismo grupo sólo habrá vertices que compartan color. Por la definición de coloreo, dos vértices de un mismo color no pueden tener arista entre sí, por lo tanto los grupos que armamos son conjuntos independientes. Esto quiere decir que mi k-partición no tendría aristas intrapartición ya que cada partición sería un conjunto independiente, y entonces el peso total de la misma sería $0$. Y además sería un peso mínimo ya que no hay aristas con peso negativo y entonces tendríamos la solución a nuestro problema. Hasta aquí hemos visto que con un coloreo igual a k se obtiene la solución al problema, pero observemos que los conjuntos de la k-partición resultado no tienen que ser necesariamente no vacíos, lo que nos lleva a pensar que también nos bastaría conseguir un coloreo menor a k para resolver nuestro problema y ahora veremos cómo puede ser esto posible. Dado un k'-coloreo con $k'<k$, por lo dicho anteriormente podemos armarnos k' subgrupos de vértices agrupandolos por color, los cuales serán conjuntos independientes, es decir, no existirán aristas que incidan en dos nodos de un mismo grupo. Sin embargo, ya no me queda ningún vértice para meter en algún grupo y el problema me pide k particiones, por lo que me estarían faltando otras $k-k'$ particiones más que agregar a mi k-partición. Pero si recordamos nuestra observación que decía que las particiones no deben ser necesariamente no vacías, entonces podríamos agregar a nuestra k-partición $k-k'$ particiones de vértices vacías, con lo cual no estaríamos agregando ninguna arista intrapartición. Entonces mis k' particiones iniciales, por lo visto previamente, no tienen ninguna arista intrapartición y los conjuntos vacíos que agregué posteriormente claramente tampoco tienen aristas intrapartición, por lo que he llegado nuevamente a una k-partición de peso $0$, la cual es solución de mi problema y además es óptima.
+De esta forma, mas adelante vamos a ver que un algoritmo goloso que intentase resolver este problema con un esquema similar a lo descripto podria llegar a generar soluciónes tan malas como se quiera.
+
+\subsection{Relación con el problema 3 del Trabajo Práctico 1}
+
+... completar ...
+
+\subsection{Relación con el problema de Colorear un Grafo}
+
+Vamos a relacionar el problema de $k-PMP$ con el problema de coloreo. Supongamos que podemos encontrar un k-coloreo para los vértices del grafo G, entonces podríamos subdividir al conjunto de vértices V en k subgrupos según su color, es decir, en un mismo grupo sólo habrá vertices que compartan color, generando la siguiente partición: k-PMP = \{ $V_1$, ..., $V_k$ \}. 
+
+Por la definición de coloreo, dos vértices de un mismo color no pueden tener aristas entre sí, por lo tanto los grupos que armamos son conjuntos independientes. Esto quiere decir que cada k-partición no tiene aristas intrapartición ya que cada una es un conjunto independiente, luego el peso total de la misma es $0$. Además es un peso mínimo ya que no hay aristas con peso negativo, obteniendo la mejor solución a nuestro problema.
+
+Hasta aquí hemos visto que con un coloreo igual a k se obtiene la solución al problema, pero observemos que los conjuntos de la k-partición resultado no tienen que ser necesariamente no vacíos, lo que nos lleva a pensar que también nos bastaría conseguir un coloreo menor a k para resolver nuestro problema y ahora veremos cómo puede ser esto posible. Dado un k'-coloreo con $k'<k$, por lo dicho anteriormente podemos armarnos k' subgrupos de vértices agrupandolos por color, los cuales serán conjuntos independientes, es decir, no existirán aristas que incidan en dos nodos de un mismo grupo. Sin embargo, ya no me queda ningún vértice para meter en algún grupo y el problema me pide k particiones, por lo que me estarían faltando otras $k-k'$ particiones más que agregar a mi k-partición. Pero si recordamos nuestra observación que decía que las particiones no deben ser necesariamente no vacías, entonces podríamos agregar a nuestra k-partición $k-k'$ particiones de vértices vacías, con lo cual no estaríamos agregando ninguna arista intrapartición. Entonces mis k' particiones iniciales, por lo visto previamente, no tienen ninguna arista intrapartición y los conjuntos vacíos que agregué posteriormente claramente tampoco tienen aristas intrapartición, por lo que he llegado nuevamente a una k-partición de peso $0$, la cual es solución de mi problema y además es óptima.
 
 Por otro lado, dada una solución al problema de k-PMP de peso estrictamente mayor a $0$ para un grafo G determinado, podemos afirmar que no existe un k-coloreo para ese grafo. Si existiera un k-coloreo para dicho grafo, entonces, por lo probado en el anterior párrafo, también existiría una k-PMP de peso $0$ para tal grafo, lo cual es absurdo ya que partimos de una k-PMP de peso estrictamente mayor a $0$.
