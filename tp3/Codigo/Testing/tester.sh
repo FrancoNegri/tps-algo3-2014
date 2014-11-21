@@ -24,14 +24,14 @@ do
     echo "generada entrada para n:" $(( $numeroDeNodos ))
     for j in {1..100}
     do
-        ./$DIR/tester $(( $numeroDeNodos )) $(( $numeroDeNodos* ($numeroDeNodos-1) / 2  )) 2
-        #./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
-        ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
-        ./$DIR/ej4.1 < $DIR/test.txt >> $DIR/resultados4.txt
-        ./$DIR/ej4.2 < $DIR/test.txt >> $DIR/resultados5.txt
-        ./$DIR/ej4.3 < $DIR/test.txt >> $DIR/resultados6.txt
-        ./$DIR/ej5A < $DIR/test.txt >> $DIR/resultados7.txt
-        ./$DIR/ej5B < $DIR/test.txt >> $DIR/resultados8.txt
+        ./$DIR/tester 15 105 5
+	./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
+ #       ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
+        #./$DIR/ej4.1 < $DIR/test.txt >> $DIR/resultados4.txt
+        #./$DIR/ej4.2 < $DIR/test.txt >> $DIR/resultados5.txt
+        #./$DIR/ej4.3 < $DIR/test.txt >> $DIR/resultados6.txt
+        #./$DIR/ej5A < $DIR/test.txt >> $DIR/resultados7.txt
+        #./$DIR/ej5B < $DIR/test.txt >> $DIR/resultados8.txt
     done
         echo "OK!"
         echo "" >> $DIR/resultados3.txt
@@ -47,7 +47,7 @@ done
 echo "Prosesando Resultados..."
 
 #tiempos son las lineas pares
-# sed -n 2~2p $DIR/resultados2.txt > $DIR/tiempos2.txt
+ sed -n 2~2p $DIR/resultados2.txt > $DIR/tiempos2.txt
 # sed -n 2~2p $DIR/resultados3.txt > $DIR/tiempos3.txt
 # sed -n 2~2p $DIR/resultados4.txt > $DIR/tiempos4.txt
 # sed -n 2~2p $DIR/resultados5.txt > $DIR/tiempos5.txt
@@ -56,7 +56,7 @@ echo "Prosesando Resultados..."
 # sed -n 2~2p $DIR/resultados8.txt > $DIR/tiempos8.txt
 
 # #performanece en las lineas impares
-# sed -n 1~2p $DIR/resultados2.txt > $DIR/performanece2.txt
+ sed -n 1~2p $DIR/resultados2.txt > $DIR/performanece2.txt
 # sed -n 1~2p $DIR/resultados3.txt > $DIR/performanece3.txt
 # sed -n 1~2p $DIR/resultados4.txt > $DIR/performanece4.txt
 # sed -n 1~2p $DIR/resultados5.txt > $DIR/performanece5.txt
@@ -75,9 +75,9 @@ echo "Limpiando Archivos"
 
 rm -rf $DIR/tester
 rm -rf $DIR/ej2
-rm -rf $DIR/ej3
-rm -rf $DIR/ej4
-rm -rf $DIR/ej5
+#rm -rf $DIR/ej3
+#rm -rf $DIR/ej4
+#rm -rf $DIR/ej5
 # rm -rf $DIR/*.txt
 
 echo "OK!"

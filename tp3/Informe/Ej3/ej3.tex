@@ -41,3 +41,28 @@ De ahí se desprende que cambiando ambos pesos $100$ por cualquier valor puede o
 Sin embargo, puede observarse otra cosa de este algoritmo, si se hubiese tomado el nodo $C$ como primer nodo o como segundo nodo, se hubiera llegado a la solución optima. De aquí surge la idea de que si se eligieran diferentes ordenes para los nodos y se corriera el algoritmo para cada uno de estos ordenes, podría obtenerse diferentes cotas, y con un poco de suerte en alguna de ellas no sucederá este caso que acabamos de ver.
 
 Esta idea la utilizaremos mas adelante para el GRASP, correremos con distintos ordenes de nodos el algoritmo goloso de manera tal de obtener en cada una de estas iteraciones una respuesta diferente y posiblemente mejor que la anterior.
+
+\subsection{Testing}
+
+En esta sección, realizaremos diferentes experimentos para comprobar que el algoritmo escala de acuerdo a la complegidad teorica, asi como tambien, veremos que tan buenos resultados obtenemos en la practica para este algoritmo.
+
+Primero se corre el algoritmo con instancias de 25 a 200 nodos y se grafican los tiempos obtenidos:
+
+
+=== TIEMPOS ===
+
+Dividiendo por una función $f(i) = i^2$ obtenemos que una linea constante, por lo que podemos comprobar asi de manera empirica, que el reslutado obtenido es efectivamente cuadratico.
+
+Ahora tomaremos grafos completos de $23$ nodos (El backtrack es el factor limitante, de tomar mas nodos empieza a tardar un tiempo excesivo), y compararemos los resultados dados tanto por la heuristica golosa como por el backtrack. Cabe notar que las aristas de los grafos serán elegidas al azar entre un numero del 1 al 100 para no tomar casos demasiado particulares que favorezcan a uno u otro algoritmo.
+
+Tomando el promedio, las respuestas que se obtuvieron son las siguientes:
+
+\includegraphics[scale=0.5]{Ej3/Soluciones.jpg}
+
+Como puede verse el algoritmo goloso, en promedio, da soluciónes significativamente peores que la respuesta exacta.
+
+De las anteriores 100 muestras tambien se calculo el tiempo que se tardó en obtener las respuestas, nuevamente promediando se obtiene:
+
+\includegraphics[scale=0.5]{Ej3/tiempos.jpg}
+
+Donde se ve que el algoritmo goloso es $6$ ordenes de magnitud mas rapido que el backtrack, incluso para una instancia modesta de $23$ nodos.
