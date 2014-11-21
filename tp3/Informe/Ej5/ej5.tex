@@ -14,9 +14,30 @@ Tras realizar diversas experimentaciones nos quedamos con dos versiones de GRASP
 
 A continuación se formaliza de manera mas precisa el algoritmo:
 
+\begin{algorithm}
+  	\begin{algorithmic}[1]\parskip=1mm
+		 \caption{ GRASP1(SoluciónInicial) }
+		 \STATE{while(1)}
+		 	\STATE{\quad Genero una solucion incial a partir del Algoritmo Goloso}
+		 	\STATE{\quad Utilizo busqueda local 2 para mejorar la solución incial}
+		 	\STATE{\quad Si conseguí una mejor solucion que antes, la guardo}
+		 	\STATE{\quad Si tras 1000 iteraciones no se pudo consegir una mejor solución}
+		 	\STATE{\quad\quad Devuelvo la solución}
+	\end{algorithmic}
+\end{algorithm}
 
-===== ALGORITMO =====
-
+\begin{algorithm}
+  	\begin{algorithmic}[1]\parskip=1mm
+		 \caption{ GRASP2(SoluciónInicial) }
+		 \STATE{while(1)}
+		 	\STATE{\quad Genero una solucion incial a partir del Algoritmo Goloso}
+		 	\STATE{\quad Utilizo busqueda local 1 para mejorar la solución}
+		 	\STATE{\quad Utilizo busqueda local 3 para mejorar la solución}
+		 	\STATE{\quad Si conseguí una mejor solucion que antes, la guardo}
+		 	\STATE{\quad Si tras 1000 iteraciones no se pudo consegir una mejor solución}
+		 	\STATE{\quad\quad Devuelvo la mejor solución}
+	\end{algorithmic}
+\end{algorithm}
 
 \section{Experimentación}
 
