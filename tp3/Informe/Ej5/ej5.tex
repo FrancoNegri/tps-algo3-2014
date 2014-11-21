@@ -1,18 +1,19 @@
 \section{Idea}
 
-Para la metaheurística de GRASP, tomaremos el algoritmo goloso previamente implementado y lo combinaremos con las diferentes busquedas locales también previamente implementadas.
 
-La idea es la siguiente: Para cada paso del algoritmo, corremos primero la heurística golosa con un orden aleatorio en sus nodos. Este orden aleatorio, como ya hemos demostrado en el apartado del algoritmo goloso, podrá ir produciendo diferentes respuestas, cada una con una mejor o peor aproximación a la respuesta exacta.
+Para la metaheurística de GRASP, tomaremos el algorimto goloso previamente implementado y lo combinaremos con las diferentes búsquedas locales tambien previamente implementadas.
 
-Luego a la solución obtenida por el algoritmo goloso se le aplicarán una o varias de las busquedas locales implementadas en un intento de aproximar mas aun la respuesta al optimo.
+La idea es la siguiente, para cada paso del algoritmo, corremos primero la heurística golosa con un orden aleatorio en sus nodos. Este orden aleatorio, como ya hemos demostrado en el apartado del algoritmo goloso, podrá ir produciendo diferentes respuestas, cada una con una mejor o peor aproximación a la respuesta exacta.
+
+Luego a la solución obtenida por el algoritmo goloso se le aplicarán una o varias de las búsquedas locales implementadas en un intento de aproximar más aún la respuesta al óptimo.
 
 Como primer criterio de corte el algoritmo se correrá un número finito de veces, que será determinado en el momento de experimentación.
 
 Como segundo criterio de corte se realizarán estos mismos pasos hasta que luego de un número $x$ a determinar de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
 
-Tras realizar diversas experimentaciones nos quedamos con dos versiones de GRASP, una que en el paso de busqueda local usa la busqueda local 2, y otra que en el paso de busqueda local primero utiliza una busqueda local 1 y luego una busqueda local 3.
+Tras realizar diversas experimentaciones nos quedamos con dos versiones de GRASP, una que en el paso de búsqueda local usa la búsqueda local 2, y otra que en el paso de búsqueda local primero utiliza una búsqueda local 1 y luego una búsqueda local 3.
 
-A continuación se formaliza de manera mas precisa el algoritmo:
+A continuación se formaliza de manera más precisa el algoritmo:
 
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
@@ -41,7 +42,7 @@ A continuación se formaliza de manera mas precisa el algoritmo:
 
 \section{Experimentación}
 
-Ahora haremos una experimentacion donde compararemos los tiempos de ejecución y los resultados del algoritmo de GRASP contra la solución exacta obtenida por backtracking.
+Ahora haremos una experimentación donde compararemos los tiempos de ejecución y los resultados del algoritmo de GRASP contra la solución exacta obtenida por backtracking.
 
 Primero tomamos grafos de $25$ a $100$ nodos completos con aristas uniformemente distribuidas de $1$ a $100$ y analizamos los tiempos que dan los algoritmos:
 
@@ -49,16 +50,16 @@ Primero tomamos grafos de $25$ a $100$ nodos completos con aristas uniformemente
 
 \includegraphics[scale=0.5]{Ej5/tiempog2.png}
 
-Si bien se puede ver que no es exponencial, estas metaheuristicas dependen tanto de factores inherentes al algoritmo que se vuelve dificil de encontrar una complejidad de peor caso.
+Si bien se puede ver que no es exponencial, estas metaheurísticas dependen tanto de factores inherentes al algoritmo que se vuelve dificil de encontrar una complejidad de peor caso.
 
-Ademas, se comparan como en los casos anteriores, las soluciones dadas por las dos heuristicas contra la solución exacta. La experimentacion para este caso es igual a la realizada para el algoritmo goloso y para las busquedas locales:
+Además, se comparan como en los casos anteriores, las soluciones dadas por las dos heurísticas contra la solución exacta. La experimentación para este caso es igual a la realizada para el algoritmo goloso y para las búsquedas locales:
 
 \includegraphics[scale=0.5]{Ej5/graspSol.jpg}
 
-Puede verse aquí que la mejor de las heuristicas es la del GRASP 2, que no solo encuentra soluciones mas cercanas a la original, sinó que en 17 de los 100 casos, logra encontrar la solución exacta. Esto, seguramente debido a que usa la busqueda local 1, que como ya habíamos constatado en su experimentación, tambien lograba alcanzar soluciones exactas.
+Puede verse aquí que la mejor de las heurísticas es la del GRASP 2, que no sólo encuentra soluciones más cercanas a la original, sino que en 17 de los 100 casos, logra encontrar la solución exacta. Esto, seguramente debido a que usa la búsqueda local 1, que como ya habíamos constatado en su experimentación, tambien lograba alcanzar soluciones exactas.
 
-Finalmente, para los mismos casos de prueba antes vistos, tambien se miden los tiempos que tardan en encontrar la respuesta, obteniendose los siguientes resultados:
+Finalmente, para los mismos casos de prueba antes vistos, también se miden los tiempos que tardan en encontrar la respuesta, obteniéndose los siguientes resultados:
 
 \includegraphics[scale=0.5]{Ej5/tiempos.jpg}
 
-Puede verse que el hecho de encontrar soluciones exactas tiene su contrapartida en el hecho de que la metaheuristica tarde significativamente mas que la que no los encuentra.
+Puede verse que el hecho de encontrar soluciones exactas tiene su contrapartida en el hecho de que la metaheurística tarde significativamente más que la que no los encuentra.
