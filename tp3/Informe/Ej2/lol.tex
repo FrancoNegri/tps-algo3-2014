@@ -104,26 +104,26 @@ Dado el algoritmo exacto mostraremos las complejidades de las diferentes partes 
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
  \caption{numero check(adyacencias, solParcial,solFinal, numeroVertice,cantidadVertices)}
- 		\STATE{SI peso(solParcial) $>$ peso(solFinal)  \tOde{1}}   
+ 		\STATE{SI peso(solParcial) > peso(solFinal)  $\mathcal{O}(1)$}   
  		\STATE{\quad devolver 2}
-		\STATE{SI numeroVertice=cantidadDeVertices \tOde{1} }   
+		\STATE{SI numeroVertice=cantidadDeVertices $\mathcal{O}(1)$ }   
  		\STATE{\quad devolver 0}
- 		\STATE{Si cantidadDeCajasVacias(solParcial) $>$ cantidadVertices \tOde{k}}   
+ 		\STATE{Si cantidadDeCajasVacias(solParcial) $>$ cantidadVertices $\mathcal{O}(k)$}   
  		\STATE{\quad devolver 2}
 		\STATE{devolver 1}
   \end{algorithmic}
   \end{algorithm}
 
-Para la funcion check la complejidad final sera \Ode{1} + \Ode{1}+ \Ode{k} dando como complejidad total \tOde{k}.
+Para la funcion check la complejidad final sera $\mathcal{O}(1)$ + $\mathcal{O}(1)$ + $\mathcal{O}(k)$ dando como complejidad total $\mathcal{O}(k)$.
 
 \begin{algorithm}
  \begin{algorithmic}[1]\parskip=1mm
  \caption{backtracking(solParcial,solFinal,numeroVertice,cantidadSubConjuntos,adyacencias, cantidadVertices)}
- 		\STATE{entero resultadoCheck = check(adyacencias,solParcial,solFinal,numeroVertice,cantidadVertices)\tOde{k} }   
- 		\STATE{si resultadoCheck = 0 \tOde{1}}   
- 		\STATE{\quad Remplazo mi solFinal por solParcial \tOde{k}}
-		\STATE{si resultadoCheck = 2 \tOde{1}}   
- 		\STATE{\quad devuelvo false porque mi solParcial es peor que mi solFinal o tengo mas cajas vacías que vertices para poner \tOde{1}}
+ 		\STATE{entero resultadoCheck = check(adyacencias,solParcial,solFinal,numeroVertice,cantidadVertices)$\mathcal{O}(k)$ }   
+ 		\STATE{si resultadoCheck = 0 $\mathcal{O}(1)$}   
+ 		\STATE{\quad Remplazo mi solFinal por solParcial $\mathcal{O}(k)$}
+		\STATE{si resultadoCheck = 2 $\mathcal{O}(1)$}   
+ 		\STATE{\quad devuelvo false porque mi solParcial es peor que mi solFinal o tengo mas cajas vacías que vertices para poner $\mathcal{O}(1)$}
  		\STATE{Si NO}
 		\STATE{\quad para cada i desde 1 hasta cantidadSubConjuntos: }
  		\STATE{\quad\quad agrego el numeroVertice al subconjunto i en SolParcial}
@@ -137,7 +137,7 @@ El ciclo de las lineas 7-10 se ejecuta k veces en cada llamado iterativo, cada v
 Para el primer nodo tenemos k conjuntos para probar, luego con el segundo vertice tenemos para cada uno de esos conjuntos donde coloque el primer nodo k alterativas de conjuntos para probar quedandonos $k^2$ combinaciones para esos dos vertices,
 para cada una de esas $k^2$ combinaciones tenemos k conjuntos quedando $k^3$ combinaciones, asi seguira en las llamadas recursivas por todos los vertices. Con lo cual con el vertice n tendremos $k^n$ combinaciones para este vertice.
 
-Por lo tanto la complejidad total del algortimo es del orden de \Ode{$k^n$} siendo k la cantidad de subconjuntos y n la cantidad de vertices del grafo.
+Por lo tanto la complejidad total del algortimo es del orden de $\mathcal{O}(k^n)$ siendo $k$ la cantidad de subconjuntos y $n$ la cantidad de vertices del grafo.
 
 \subsection{Experimentacion}
 Para el analisis de este algoritmo se generaron 30 instancias de manera random de grafos completos con vertices entre 1 y 20 elegidos de manera aleatoria mediante un script en python con la funcion randint.

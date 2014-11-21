@@ -24,7 +24,8 @@ Los algoritmos escritos de manera mas formal serán así:
 				\STATE{\quad Tomo un nodo $i$ de $1$ a $n$ del grafo}
 		 		\STATE{\quad Miro que peso agrega el nodo $i$ en el conjunto asignado por SolucionPrevia}
 		 		\STATE{\quad Miro que peso agrega el nodo $i$ quitandolo del conjunto asignado y poniendolo en los demas}
-				\STATE{\quad \quad Si En algun conjunto $M$ obtengo un peso menor, modifico SolucionPrevia y asigno $i$ al conjunto $M$}   
+				\STATE{\quad \quad Si algun conjunto $M$ obtengo un peso menor, modifico SolucionPrevia}
+				\STATE{\quad \quad Asigno $i$ al conjunto $M$}   
 				\STATE{\quad \quad Itero}
 	\end{algorithmic}
 \end{algorithm}
@@ -58,12 +59,15 @@ Los algoritmos escritos de manera mas formal serán así:
 				\STATE{\quad\quad Tomo otro nodo $k$ del conjunto de $i$}
 		 		\STATE{\quad\quad Miro que peso agrega el nodo $i$ y $k$ en el conjunto asignado por SolucionPrevia}
 		 		\STATE{\quad\quad Miro que peso agrega el nodo $i$ y $k$ quitandolo del conjunto asignado y poniendolo en los demas}
-				\STATE{\quad\quad \quad Si En algun conjunto $M$ obtengo un peso menor, modifico SolucionPrevia y asigno $i$ y $k$ al conjunto $M$}   
+				\STATE{\quad\quad \quad Si algun conjunto $M$ obtengo un peso menor, modifico SolucionPrevia }
+				\STATE{\quad\quad \quad Asigno $i$ y $k$ al conjunto $M$}   
 				\STATE{\quad\quad \quad Itero}
 	\end{algorithmic}
 \end{algorithm}
 
-\section{complejidades}
+\newpage
+
+\section{Anlalisis de Complejidades}
 
 Ahora aquí analizaremos las complejidades de los diferentes algoritmos. Para cada uno de ellos elegimos una implementacion con matriz de adyacencias para modelar el peso de las aristas y un vector de longitud variable para implementar los diferentes conjuntos.
 
