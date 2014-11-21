@@ -12,7 +12,6 @@ La idea fundamental del algoritmo de Backtracking  es que en cada llamado recurs
 
 De la siguiente manera:
 \begin{algorithm}
-<<<<<<< HEAD
   \begin{algorithmic}[1]\parskip=1mm
  \caption{ backtracking(solParcial,solFinal,numeroVertice,cantidadSubConjuntos)}
  		\STATE{Si Puedo insertar } 
@@ -24,19 +23,7 @@ De la siguiente manera:
 		\STATE{devuelvo False}
   \end{algorithmic}
   \end{algorithm}
-=======
-  	\begin{algorithmic}[1]\parskip=1mm
-		 \caption{ Backtracking( solParcial, solFinal, numeroVertice, cantidadSubConjuntos ) }
-		 		\STATE{Si Puedo insertar } 
-				\STATE{\quad para cada i desde 1 hasta cantidadSubConjuntos: }
-		 		\STATE{\quad\quad agrego el numeroVertice al subconjunto i en SolParcial}
-		 		\STATE{\quad\quad backtracking ( solParcial , solFinal, numeroVertice+1,k,adyacencias)}
-				\STATE{\quad\quad saco el elemento que agregue al ultimo conjunto}
-				\STATE{Si Puedo insertar }   
-				\STATE{devuelvo False}
-	\end{algorithmic}
-\end{algorithm}
->>>>>>> 95b82771ce5fa5ca4f7c130164ff0327b2d842c5
+
 
 Ahora de esa manera lo único que estamos haciendo es probar todas las combinaciones , pero no estamos quedándonos con la mejor k - partición para esto debemos definir una función que nos diga cuando una solución es mejor que otra y además debemos saber si ya insertamos todos los vértices.
 
@@ -153,4 +140,10 @@ para cada una de esas $k^2$ combinaciones tenemos k conjuntos quedando $k^3$ com
 Por lo tanto la complejidad total del algortimo es del orden de \Ode{$k^n$} siendo k la cantidad de subconjuntos y n la cantidad de vertices del grafo.
 
 \subsection{Experimentacion}
-Para el analisis de este algoritmo se generaron grafos completos 
+Para el analisis de este algoritmo se generaron 30 instancias de manera random de grafos completos con vertices entre 1 y 20 elegidos de manera aleatoria mediante un script en python con la funcion randint.
+Luego para esas instancias se corrio el algoritmo asignando 5, 10 y 15 subconjuntos para ver como se comportaba el algoritmo, obteniendose como resultado lo siguiente:\\
+\includegraphics[scale=0.5]{Ej2/k5.jpg}
+\includegraphics[scale=0.5]{Ej2/k10.jpg}\\
+\includegraphics[scale=0.5]{Ej2/k15.jpg}\\
+
+Se puede ver como la pendiente
