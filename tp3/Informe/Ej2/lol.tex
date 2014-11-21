@@ -6,14 +6,11 @@ Para comenzar el desarrollo es necesario definir previamente cada una de las est
 
 Una solución, llamada $solFinal$, será representada con un conjunto de $k$ subconjuntos, donde cada uno contendrá las etiquetas de los vértices, disjuntos de a pares (un vertice pertenece a un único subconjunto) y el peso del conjunto será la suma de cada uno de los pesos de los subconjuntos, donde el peso del subconjunto se entienden a la suma de los pesos de las aristas que conecten dos vértices del mismo subconjunto.
 
-Además diremos que una k partición A es mejor que otra B si el peso total es menor, es decir si A es mejor que B entonces $peso(A) < peso(B)$. 
+Diremos que una k partición A es mejor que otra B si el peso total es menor, es decir si A es mejor que B entonces $peso(A) < peso(B)$. 
 
-La clave del algoritmo de Backtracking es que explorara de forma recursiva todas las posibles combinaciones de subconjuntos.
+La clave del algoritmo de Backtracking es que explorara de forma recursiva todas las posibles combinaciones de subconjuntos, de forma que en cada llamado recursivo intentara insertar un vértice a la solución que esta armando, en caso de no tener una mejor solución tratara de insertar ese vértice en otro subconjunto que no haya probado, así hasta haber probado todos los subconjuntos y sin ir mas lejos si se realiza este ejercicio estaremos realizando todas las combinaciones de los vértices en los k subconjuntos.	
 
-en cada llamado recursivo intentara insertar un vértice a la solución que esta armando, en caso de no tener una mejor solución tratara de insertar ese vértice en otro subconjunto que no haya probado, así hasta haber probado todos los subconjuntos y sin ir mas lejos si se realiza este ejercicio estaremos realizando todas las combinaciones de los vértices en los k subconjuntos.	
-
-Nuestro solFinal en principio va a ser el conjunto donde todos los vértices estén en el primer subconjunto.
-
+Nuestro $solFinal$ en principio va a ser el conjunto donde todos los vértices estén en el primer subconjunto.
 
 De la siguiente manera:
 \begin{algorithm}
@@ -30,21 +27,24 @@ De la siguiente manera:
   \end{algorithm}
 
 
-Ahora de esa manera lo único que estamos haciendo es probar todas las combinaciones , pero no estamos quedándonos con la mejor k - partición para esto debemos definir una función que nos diga cuando una solución es mejor que otra y además debemos saber si ya insertamos todos los vértices.
+Ahora de esa manera lo único que estamos haciendo es explorar todas las combinaciones, pero no estamos quedándonos con la mejor k - partición para esto debemos definir una función que nos diga cuando una solución es mejor que otra y además debemos saber si ya insertamos todos los vértices.
 
-Para lo cual definimos una función que devuelve un numero indicando 0 si inserte todos los vértices llegando a otra solución, luego tengo que ver si es mejor que la que tengo hasta el momento y 1 si tengo que seguir insertando vértices.
+Definimos una función que devuelve un numero indicando $0$ si inserte todos los vértices llegando a otra solución, luego tengo que ver si es mejor que la que tengo hasta el momento y $1$ si tengo que seguir insertando vértices.
+
 Quedándonos de la siguiente manera:
 
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
- \caption{numero check(adyacencias, solParcial,solFinal, numeroVertice,cantidadVertices)}
+ \caption{entero check(adyacencias, solParcial,solFinal, numeroVertice,cantidadVertices)}
  		\STATE{SI numeroVertice=cantidadDeVertices }   
  		\STATE{\quad devolver 0}
  		\STATE{SI NO}
 		\STATE{\quad devolver 1}
   \end{algorithmic}
   \end{algorithm}
-    
+
+El algoritmo modificado: 
+
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
  \caption{backtracking(solParcial,solFinal,numeroVertice,cantidadSubConjuntos,adyacencias, cantidadVertices)}
@@ -64,7 +64,8 @@ Quedándonos de la siguiente manera:
 Con este algoritmo estaremos probando todas las combinaciones de todos los vértices en los k subconjuntos, en cada paso insertamos un vértice a un subconjunto y llamamos a la recursión con el siguiente vértice. una vez que vuelva de la recursión quitara el vértice del conjunto donde lo ingreso y seguirá el ciclo insertándolo en otro subconjunto y llamando a la recursión de nuevo.
 
 \subsection{Podas}
-Para mejorar los tiempos del algoritmo es necesario realizar algún tipo de validación intermedia para no probar casos que no nos van a llevar a una solución optima, por ejemplo cuando estamos insertando vértices a la solución que ya tiene mas peso que nuestra mejor solución o cuando nos quedan una cantidad de vértices es menor estricta a la cantidad de subconjuntos vacíos, estas podas son las que realizamos en nuestro algoritmo agregándolas a la función check al Backtracking de la siguiente manera:
+
+Para mejorar los tiempos del algoritmo es necesario realizar algún tipo de validación intermedia para no probar casos que no nos van a llevar a una solución optima, por ejemplo cuando estamos insertando vértices a la solución que ya tiene más peso que nuestra mejor solución o cuando nos quedan una cantidad de vértices es menor estricta a la cantidad de subconjuntos vacíos, estas podas son las que realizamos en nuestro algoritmo agregándolas a la función check al Backtracking de la siguiente manera:
 
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
@@ -78,7 +79,8 @@ Para mejorar los tiempos del algoritmo es necesario realizar algún tipo de vali
 		\STATE{devolver 1}
   \end{algorithmic}
   \end{algorithm}
-La funcion cantidadDeCajasVacias se fija si algun conjunto no tiene  
+
+La función $cantidadDeCajasVacias$ se fija si algun conjunto no tiene.
  
  \begin{algorithm}
  \begin{algorithmic}[1]\parskip=1mm
