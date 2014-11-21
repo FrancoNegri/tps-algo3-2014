@@ -1,12 +1,12 @@
 Para este trabajo práctico se nos pide, a partir de un grafo simple $G=(V,E)$ con pesos en las aristas, encontrar la k-particion tal que minimice el peso de las aristas intrapartición.
 
-Para ello primero intentaremos relacionar este problema con otros problemas conocidos, pensaremos varias maneras de abordarlo y emprenderemos la busqueda de algoritmos eficientes para resolverlo.
+Para ello primero intentaremos relacionar este problema con otros problemas conocidos, pensaremos varias maneras de abordarlo y emprenderemos la búsqueda de algoritmos eficientes para resolverlo.
 
-Como veremos luego, este problema es 'dificil' de resolver, por lo que para instancias grandes, el algoritmo dejará de ser viable, por lo que tambien desarrollaremos distintas heruristicas que resuelvan el problema de manera aproximada. Probaremos con una heuristica golosa, dos heruristicas de busquedas locales y a partir de estos, un GRASP.
+Como veremos luego, este problema es 'difícil' de resolver, por lo que para instancias grandes, el algoritmo dejará de ser viable, por lo que también desarrollaremos distintas heurísticas que resuelvan el problema de manera aproximada. Probaremos con una heurística golosa, dos heurísticas de busquedas locales y a partir de estas, haremos un GRASP.
 
 \subsection{Entrada y salida}
 
-Todos los algoritmos tomarán como entrada, lo siguiente:
+Todos los algoritmos tomarán como entrada lo siguiente:
 
 \begin{itemize}
 	\item Un entero $\textbf{n}$ $\rightarrow$ Representará el numero de nodos del grafo $G$.
@@ -15,7 +15,7 @@ Todos los algoritmos tomarán como entrada, lo siguiente:
 
 	\item Un entero $\textbf{m}$ $\rightarrow$ Representará la cantidad de conjuntos distintos que disponemos para poner los ejes.
 
-	\item $\textbf{m}$ filas donde, para cada fila $i$ consta de $3$ enteros:
+	\item $\textbf{m}$ filas donde cada fila $i$ consta de $3$ enteros:
 	\begin{itemize}
 		\item $\textbf{u v w}$ $ \rightarrow $ donde $\textbf{u}$ y $\textbf{v}$ son los nodos adyacentes y $\textbf{w}$ el peso de las aristas entre ellos.
 	\end{itemize}
@@ -29,11 +29,11 @@ La salida, por su parte, constar\'a de una fila con:
 
 \end{itemize}
 
-Donde cada $i_k$ representa en que conjunto se encuentra el nodo $k$
+Donde cada $i_k$ representa en qué conjunto se encuentra el nodo $k$
 
 \subsection{Ejemplo}
 
-Para ejemplificar el problema a resolver, pensemos en un grafo $G$ con $4$ nodos, $5$ vertices y $2$ particiones.
+Para ejemplificar el problema a resolver, pensemos en un grafo $G$ con $4$ nodos, $5$ vértices y $2$ particiones.
 
 Supongamos ademas que los nodos estan conectados de la siguiente manera:
 

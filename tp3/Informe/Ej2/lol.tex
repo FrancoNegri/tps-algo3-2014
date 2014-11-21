@@ -12,7 +12,7 @@ La clave del algoritmo de Backtracking es que explorara de forma recursiva todas
 
 Nuestro $solFinal$ en principio va a ser el conjunto donde todos los vértices estén en el primer subconjunto.
 
-De la siguiente manera:
+
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
  \caption{ backtracking(solParcial,solFinal,numeroVertice,cantidadSubConjuntos)}
@@ -26,10 +26,9 @@ De la siguiente manera:
   \end{algorithmic}
   \end{algorithm}
 
+Ahora de esa manera lo único que estamos haciendo es probar todas las combinaciones, pero no estamos quedándonos con la mejor k-partición. Para esto debemos definir una función que nos diga cuándo una solución es mejor que otra y además debemos saber si ya insertamos todos los vértices.
 
-Ahora de esa manera lo único que estamos haciendo es explorar todas las combinaciones, pero no estamos quedándonos con la mejor k - partición para esto debemos definir una función que nos diga cuando una solución es mejor que otra y además debemos saber si ya insertamos todos los vértices.
-
-Definimos una función que devuelve un numero indicando $0$ si inserte todos los vértices llegando a otra solución, luego tengo que ver si es mejor que la que tengo hasta el momento y $1$ si tengo que seguir insertando vértices.
+Para lo cual definimos una función que devuelve un número indicando $0$ si inserté todos los vértices llegando a otra solución, luego tengo que ver si es mejor que la que tengo hasta el momento y $1$ si tengo que seguir insertando vértices.
 
 Quedándonos de la siguiente manera:
 
@@ -61,11 +60,11 @@ El algoritmo modificado:
   \end{algorithmic}
   \end{algorithm}
 
-Con este algoritmo estaremos probando todas las combinaciones de todos los vértices en los k subconjuntos, en cada paso insertamos un vértice a un subconjunto y llamamos a la recursión con el siguiente vértice. una vez que vuelva de la recursión quitara el vértice del conjunto donde lo ingreso y seguirá el ciclo insertándolo en otro subconjunto y llamando a la recursión de nuevo.
+Con este algoritmo estaremos probando todas las combinaciones de todos los vértices en los k subconjuntos, en cada paso insertamos un vértice a un subconjunto y llamamos a la recursión con el siguiente vértice, una vez que vuelva de la recursión quitará el vértice del conjunto donde lo ingresó y seguirá el ciclo insertándolo en otro subconjunto y llamando a la recursión de nuevo.
 
 \subsection{Podas}
 
-Para mejorar los tiempos del algoritmo es necesario realizar algún tipo de validación intermedia para no probar casos que no nos van a llevar a una solución optima, por ejemplo cuando estamos insertando vértices a la solución que ya tiene más peso que nuestra mejor solución o cuando nos quedan una cantidad de vértices es menor estricta a la cantidad de subconjuntos vacíos, estas podas son las que realizamos en nuestro algoritmo agregándolas a la función check al Backtracking de la siguiente manera:
+Para mejorar los tiempos del algoritmo es necesario realizar algún tipo de validación intermedia para no probar casos que no nos van a llevar a una solución óptima, por ejemplo cuando estamos insertando vértices a la solución que ya tiene más peso que nuestra mejor solución o cuando nos quedan una cantidad de vértices es menor estricta a la cantidad de subconjuntos vacíos, estas podas son las que realizamos en nuestro algoritmo agregándolas a la función check al Backtracking de la siguiente manera:
 
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
@@ -99,14 +98,14 @@ La función $cantidadDeCajasVacias$ se fija si algun conjunto no tiene.
   \end{algorithmic}
   \end{algorithm}
 
-De esta manera el algoritmo va a realizar las podas en las llamadas recursivas intermedias antes de insertar todos los vértices descartando casos que no son útiles para llegar  a una solución optima en menor tiempo.
+De esta manera el algoritmo va a realizar las podas en las llamadas recursivas intermedias antes de insertar todos los vértices descartando casos que no son útiles para llegar a una solución óptima en menor tiempo.
 
 Para improvisar una mejora en la poda al comparar los pesos de nuestras soluciones parcial y final, lo que realizamos es generar otra solución final asignando cada uno de los vértices de manera creciente a cada uno de las k subconjuntos diferentes y si esta otra solución es mejor a la solución que tiene todos los nodos en un solo conjunto la tomamos como solución final para nuestras comparaciones.
-De esta manera podrían tomarse otro tipo de soluciones para luego obtener la solución final de menor peso y podar mas ramas del Backtracking.	
+De esta manera podrían tomarse otro tipo de soluciones para luego obtener la solución final de menor peso y podar más ramas del Backtracking.	
 
 \subsection{Complejidad}
-Dado que el algoritmo exacto sin las podas prueba todas las soluciones del problema esto hace que sea poco eficiente en terminos de tiempo a comparacion de las heuristicas que iremos viendo a lo largo del informe. Pero conociendo las soluciones que se van a ir armando pueden definirse podas para evitar seguir resolviendo ramas de la solucion que no me van a llevar a una solucion optima o a una solucion que no es mejor que la que ya forme hasta cierto punto.
-Dado el algoritmo exacto mostraremos las complejidades de las diferentes partes del mismo para obtener cual seria la complejidad final.
+Dado que el algoritmo exacto sin las podas prueba todas las soluciones del problema esto hace que sea poco eficiente en términos de tiempo a comparación de las heurísticas que iremos viendo a lo largo del informe. Pero conociendo las soluciones que se van a ir armando pueden definirse podas para evitar seguir resolviendo ramas de la solucion que no me van a llevar a una solución óptima o a una solución que no es mejor que la que ya formé hasta cierto punto.
+Dado el algoritmo exacto mostraremos las complejidades de las diferentes partes del mismo para obtener cuál sería la complejidad final.
 
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
@@ -140,26 +139,24 @@ Para la funcion check la complejidad final sera $\mathcal{O}(1)$ + $\mathcal{O}(
   \end{algorithmic}
   \end{algorithm}
 
-El ciclo de las lineas 7-10 se ejecuta k veces en cada llamado iterativo, cada ves que se llama a la funcion backtracking es por un vertice diferente. 
-Para el primer nodo tenemos k conjuntos para probar, luego con el segundo vertice tenemos para cada uno de esos conjuntos donde coloque el primer nodo k alterativas de conjuntos para probar quedandonos $k^2$ combinaciones para esos dos vertices,
-para cada una de esas $k^2$ combinaciones tenemos k conjuntos quedando $k^3$ combinaciones, asi seguira en las llamadas recursivas por todos los vertices. Con lo cual con el vertice n tendremos $k^n$ combinaciones para este vertice.
+El ciclo de las lineas 7-10 se ejecuta k veces en cada llamado iterativo, cada vez que se llama a la función backtracking es por un vértice diferente. 
+Para el primer nodo tenemos k conjuntos para probar, luego con el segundo vértice tenemos para cada uno de esos conjuntos donde coloqué el primer nodo k alternativas de conjuntos para probar quedándonos $k^2$ combinaciones para esos dos vértices. Luego para cada una de esas $k^2$ combinaciones tenemos k conjuntos quedando $k^3$ combinaciones, y así seguirá en las llamadas recursivas por todos los vértices. Con lo cual con el vértice n tendremos $k^n$ combinaciones para este vértice.
 
-Por lo tanto la complejidad total del algortimo es del orden de $\mathcal{O}(k^n)$ siendo $k$ la cantidad de subconjuntos y $n$ la cantidad de vertices del grafo.
+Por lo tanto la complejidad total del algortimo es del orden de $\mathcal{O}(k^n)$ siendo $k$ la cantidad de subconjuntos y $n$ la cantidad de vértices del grafo.
 
 \subsection{Experimentacion}
-Para el analisis de este algoritmo se generaron 30 instancias de manera random de grafos completos con vertices entre 1 y 20 elegidos de manera aleatoria mediante un script en python con la funcion randint.
-Luego para esas instancias se corrio el algoritmo asignando 5, 10 y 15 subconjuntos para ver como se comportaba el algoritmo, obteniendose como resultado lo siguiente:\\
+Para el análisis de este algoritmo se generaron 30 instancias de manera random de grafos completos con vértices entre 1 y 20 elegidos de manera aleatoria mediante un script en python con la función randint.
+Luego para esas instancias se corrió el algoritmo asignando 5, 10 y 15 subconjuntos para ver como se comportaba el algoritmo, obteniéndose como resultado lo siguiente:\\
 \includegraphics[scale=0.5]{Ej2/k5.jpg}
 \includegraphics[scale=0.5]{Ej2/k10.jpg}\\
 \includegraphics[scale=0.5]{Ej2/k15.jpg}\\
 
-Se puede ver como la curva se hace mas pronunciada al cambiar la cantidad de subconjuntos, con esto se ve que al cambiar el k la complejidad va aumentando de manera exponencial.
+Se puede ver cómo la curva se hace más pronunciada al cambiar la cantidad de subconjuntos, con esto se ve que al cambiar el k la complejidad va aumentando de manera exponencial.
 
-Por otro lado realizamos un analisis sobre las podas, para esto primero generamos 30 instancias de grafos para ver como se comportaba el algoritmo con grafos sin aristas, obteniendo el siguiente resultado:\\
+Por otro lado realizamos un analisis sobre las podas, para esto primero generamos 30 instancias de grafos para ver cómo se comportaba el algoritmo con grafos sin aristas, obteniendo el siguiente resultado:\\
 \includegraphics[scale=0.5]{Ej2/sinAristas.jpg}\\
-Como puede verse el grafico los tiempos de ejecucion son similares a una lineal, esto se debe a que como la solucion inicial tiene peso 0 ya que no tiene aristas, en cada llamado recursivo se devuelve false porque no se obtiene nada mejor en cuestion de peso del conjunto.
-Por otro lado como mencionamos en el desarrollo del algoritmo se agrego una genacion de una solucion inicial alternativa a poner todos los vertices en un solo subconjunto, por lo que realizamos una experimentacion para ver como afectaba la no presencia de esta solucion alternativa, corrimos las mismas instancias de grafos para 15 subconjuntos que corrimos en los priemros test donde se encontraba esta solucion alternativa y obtuvimos lo siguiente:\\
+Como puede verse en el gráfico, los tiempos de ejecución son similares a una lineal, esto se debe a que como la solución inicial tiene peso 0 ya que no tiene aristas, en cada llamado recursivo se devuelve false porque no se obtiene nada mejor en cuestión de peso del conjunto.
+Por otro lado como mencionamos en el desarrollo del algoritmo, se agregó una genacion de una solucion inicial alternativa a poner todos los vértices en un solo subconjunto, por lo que realizamos una experimentación para ver cómo afectaba la no presencia de esta solución alternativa, corrimos las mismas instancias de grafos para 15 subconjuntos que corrimos en los primeros test donde se encontraba esta solución alternativa y obtuvimos lo siguiente:\\
 \includegraphics[scale=0.5]{Ej2/sinAlternativa.jpg}\\
 
-Como puede observarse los tiempos empeoran ya que la primera solucion a nuestro problema es el grafo con todos las aristas y esto puede no podar muchas ramas del backtracking que con la solucion alternativa si se estan podando. Concluyedo que podrian mejorar los tiempos si estamos eligiendo una buena solucion inicial.
-
+Como puede observarse los tiempos empeoran ya que la primera solución a nuestro problema es el grafo con todos las aristas y esto puede no podar muchas ramas del backtracking que con la solución alternativa sí se están podando. Concluyendo que podrían mejorar los tiempos si estamos eligiendo una buena solucion inicial.

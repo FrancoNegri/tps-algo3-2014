@@ -2,7 +2,7 @@
 
 Un primer intento para conseguir una solución a este problema es utilizar un algoritmo goloso. La idea del mismo es sencilla, numeramos los nodos de $1$ a $n$, y luego tomando de a uno los agregamos a alguno de los conjuntos de $1$ a $k$ intentando que sume a la solución el menor peso posible.
 
-Mas formalizado el algoritmo quedará de la siguiente manera:
+Más formalizado el algoritmo quedará de la siguiente manera:
 
 
 \begin{algorithm}
@@ -20,7 +20,7 @@ Mas formalizado el algoritmo quedará de la siguiente manera:
 
 Claramente este algoritmo no devuelve la solución exacta, y como se verá mas adelante, la solución que devuelve puede estar tan lejos como se quiera de la optima, lo que lo hace un algoritmo no muy bueno.
 
-El análisis de complejidad es sencillo, se itera por cada vertice sobre cada conjunto. Dado que cada nodo solo estará en un conjunto, entre todos los conjuntos a lo sumo tendrán $n$ nodos, lo que hace que se deba iterar $n$ veces a lo sumo sobre $n$ nodos, luego la complejidad será $O(n^2)$, por lo que, al menos en lo que respecta a tiempos, es ampliamente superior que el algoritmo exacto.
+El análisis de complejidad es sencillo, se itera por cada vértice sobre cada conjunto. Dado que cada nodo sólo estará en un conjunto, entre todos los conjuntos a lo sumo tendrán $n$ nodos, lo que hace que se deba iterar $n$ veces a lo sumo sobre $n$ nodos, luego la complejidad será $O(n^2)$, por lo que, al menos en lo que respecta a tiempos, es ampliamente superior que el algoritmo exacto.
 
 Por lo tanto, dada la baja complejidad de este algoritmo, podría utilizarse como una cota superior, si bien algo grosera, para la solución.
 
@@ -34,25 +34,24 @@ Supongamos que tenemos un grafo como el que se muestra en la figura y $K = 2$
 
 Es claro que la mejor solución posible es poner en uno de los conjuntos a $A$ y $B$ y en el otro a $C$, así la suma intrapartición es $1$.
 
-Sin embargo, supongamos que nuestro algoritmo goloso toma como primer nodo al nodo $A$, dado que no hay otros nodos, lo agrega en cualquiera de los dos conjuntos y se obtiene peso $0$. Ahora supongamos que el algoritmo toma el nodo $B$, si lo pone en el mismo conjunto que el nodo $A$ obtiene peso $1$, si lo pone en el otro conjunto obtiene peso $0$, asi que lo pone en el otro conjunto. Pero ahora falta agregar el nodo $C$, y agregandolo en cualquiera de los dos conjuntos se obtiene peso $100$. Asi que la solución para k-PMP que encontrará el algoritmo goloso será $100$.
+Sin embargo, supongamos que nuestro algoritmo goloso toma como primer nodo al nodo $A$, dado que no hay otros nodos, lo agrega en cualquiera de los dos conjuntos y se obtiene peso $0$. Ahora supongamos que el algoritmo toma el nodo $B$, si lo pone en el mismo conjunto que el nodo $A$ obtiene peso $1$, si lo pone en el otro conjunto obtiene peso $0$, así que lo pone en el otro conjunto. Pero ahora falta agregar el nodo $C$, y agregándolo en cualquiera de los dos conjuntos se obtiene peso $100$. Así que la solución para k-PMP que encontrará el algoritmo goloso será $100$.
 De ahí se desprende que cambiando ambos pesos $100$ por cualquier valor puede obtenerse una solución tan mala como uno quiera.
 
-Se puede observarse otro problema de este algoritmo, si se hubiese tomado el nodo $C$ como primer nodo o como segundo nodo, se hubiera llegado a la solución optima. De aquí surge la idea de que si se eligieran diferentes ordenes para los nodos y se corriera el algoritmo para cada uno de estos ordenes, podría obtenerse diferentes cotas, y con un poco de suerte en alguna de ellas no sucederá este caso que acabamos de ver.
+Sin embargo, se puede observarse otra cosa de este algoritmo, si se hubiese tomado el nodo $C$ como primer nodo o como segundo nodo, se hubiera llegado a la solución óptima. De aquí surge la idea de que si se eligieran diferentes órdenes para los nodos y se corriera el algoritmo para cada uno de estos órdenes, podría obtenerse diferentes cotas, y con un poco de suerte en alguna de ellas no sucederá este caso que acabamos de ver.
 
-Esta idea la utilizaremos mas adelante para el GRASP, correremos con distintos ordenes de nodos el algoritmo goloso de manera tal de obtener en cada una de estas iteraciones una respuesta diferente y posiblemente mejor que la anterior.
+Esta idea la utilizaremos más adelante para el GRASP, correremos con distintos órdenes de nodos el algoritmo goloso de manera tal de obtener en cada una de estas iteraciones una respuesta diferente y posiblemente mejor que la anterior.
 
 \subsection{Testing}
 
-En esta sección, realizaremos diferentes experimentos para comprobar que el algoritmo escala de acuerdo a la complejidad teorica, asi como tambien, veremos que tan buenos resultados obtenemos en la practica para este algoritmo.
+En esta sección, realizaremos diferentes experimentos para comprobar que el algoritmo escala de acuerdo a la complejidad teórica, así como también, veremos qué tan buenos resultados obtenemos en la práctica para este algoritmo.
 
 Primero se corre el algoritmo con instancias de 25 a 200 nodos y se grafican los tiempos obtenidos:
 
-
 === TIEMPOS ===
 
-Dividiendo por una función $f(i) = i^2$ obtenemos que una linea constante, por lo que podemos comprobar asi de manera empirica, que el reslutado obtenido es efectivamente cuadratico.
+Dividiendo por una función $f(i) = i^2$ obtenemos que una linea constante, por lo que podemos comprobar así de manera empírica, que el resultado obtenido es efectivamente cuadrático.
 
-Ahora tomaremos grafos completos de $23$ nodos (El backtrack es el factor limitante, de tomar mas nodos empieza a tardar un tiempo excesivo), y compararemos los resultados dados tanto por la heuristica golosa como por el backtrack. Cabe notar que las aristas de los grafos serán elegidas al azar entre un numero del 1 al 100 para no tomar casos demasiado particulares que favorezcan a uno u otro algoritmo.
+Ahora tomaremos grafos completos de $23$ nodos (El backtrack es el factor limitante, de tomar más nodos empieza a tardar un tiempo excesivo), y compararemos los resultados dados tanto por la heurística golosa como por el backtrack. Cabe notar que las aristas de los grafos serán elegidas al azar entre un numero del 1 al 100 para no tomar casos demasiado particulares que favorezcan a uno u otro algoritmo.
 
 Tomando el promedio, las respuestas que se obtuvieron son las siguientes:
 
@@ -60,8 +59,8 @@ Tomando el promedio, las respuestas que se obtuvieron son las siguientes:
 
 Como puede verse el algoritmo goloso, en promedio, da soluciónes significativamente peores que la respuesta exacta.
 
-De las anteriores 100 muestras tambien se calculo el tiempo que se tardó en obtener las respuestas, nuevamente promediando se obtiene:
+De las anteriores 100 muestras también se calculó el tiempo que se tardó en obtener las respuestas, nuevamente promediando se obtiene:
 
 \includegraphics[scale=0.5]{Ej3/tiempos.jpg}
 
-Donde se ve que el algoritmo goloso es $6$ ordenes de magnitud mas rapido que el backtrack, incluso para una instancia modesta de $23$ nodos.
+Donde se ve que el algoritmo goloso es $6$ órdenes de magnitud más rapido que el backtrack, incluso para una instancia modesta de $23$ nodos.
