@@ -13,7 +13,6 @@
 #include <algorithm>
 #include <queue>
 #include <set>
-#include "../Ej3/goloso.cpp"
 #include "../Ej4/busqueda_local.cpp"
 #include "../Ej4/busqueda_local2.cpp"
 #include <chrono>
@@ -23,6 +22,81 @@ using namespace std;
 #ifndef INFINITO
 #define INFINITO INT_MAX
 #endif
+
+#define PORCENTAJEDEMEJORES 40
+
+vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &noseusa, int k, int n){
+	
+	int cuantosMejores = (PORCENTAJEDEMEJORES*n)/100;
+
+	int resultados[cuantosMejores];
+	int indices[cuantosMejores];
+	
+
+	vector< vector< int> > subconjuntos;
+
+	for(int i = 0; i < k; i++)
+	{
+		vector< int> aux;
+		subconjuntos.push_back(aux);
+	}
+
+	vector<int> en_que_subconjunto_esta_cada_nodo;
+
+	//meto el nodo 1 en cualquiera de los conjuntos, por ahora son todos iguales.
+	en_que_subconjunto_esta_cada_nodo.push_back(0);
+	//del punto de arriba, el nodo 1 va a ir en el subconjunto 1, asi que tambien digo eso.
+	en_que_subconjunto_esta_cada_nodo.resize(n);
+	subconjuntos[0].push_back(0);
+	for(int i = 1; i < n; i++ )
+	{
+
+		for(int i = 0; i < cuantosMejores ; i++)
+		{
+			resultados[i] = INFINITO;
+			indices[i] = -1; 
+		}
+
+		//tomo el vertice i
+
+		for(int j = 0; j < k; j++)
+		{
+			//para cada conjunto
+			int aux = 0;
+			for(int w = 0; w < subconjuntos[j].size(); w++)
+			{
+				//veo cuanto "peso" suma agregar este vertice a este conjunto determinado
+				int candidato = subconjuntos[j][w];
+				aux += matriz_de_adyacencias[i][candidato];
+			}
+
+			//me guardo los x conjuntos que minimizan la suma
+			
+			for(int w = 0; w < cuantosMejores; w++)
+			{
+				if(aux < resultados[w])
+				{
+					resultados[w] = aux;
+					indices[w] = j;
+					break;
+				}
+			}
+		}
+
+		int valorQueTomo = rand() % cuantosMejores; // tomo un valor Al Azar entre estos valores
+
+		//agrego el verice i al conjunto que minimiza la suma
+		subconjuntos[indices[valorQueTomo]].push_back(i);
+		//esto es para dar la respuesta de una y no tener que andar buscando los valores despues
+		en_que_subconjunto_esta_cada_nodo[i] = indices[valorQueTomo];
+	}
+	noseusa = subconjuntos;
+	//complejidad O(kn^2) creo.
+	return en_que_subconjunto_esta_cada_nodo;
+}
+
+
+
 
 vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n)
 {
@@ -41,8 +115,6 @@ vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 		en_que_subconjunto_esta_cada_nodo = busqueda_local2(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
 
 		//en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
-
-
 
 		int total = 0;
 		for(int j = 0; j < k; j++)
@@ -118,31 +190,28 @@ int main()
 
 
 
+	cout << "Respuesta Final:" << endl;
 
+	for(int i = 0; i < n; i++)
+		cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
+	cout << endl;
 
+	cout << endl << "Datos Utiles:" << endl;
 
-
-
-
-
-
-
-	// int total = 0;
-	// for(int j = 0; j < k; j++)
-	// {
-	// 	int aux = 0;
-	// 	for(int i = 0; i < subconjuntos[j].size(); i++)
-	// 		for(int w = i; w < subconjuntos[j].size(); w++)
-	// 			aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
-	// 	//cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
-	// 	total += aux;
-	// }
-	// cout << total << endl;
-
-
-
-
+	int total = 0;
+	for(int j = 0; j < k; j++)
+	{
+		int aux = 0;
+		for(int i = 0; i < subconjuntos[j].size(); i++)
+			for(int w = i; w < subconjuntos[j].size(); w++)
+				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
+		cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
+		total += aux;
+	}
+	cout << "Peso total: " << total << endl;
 
 
 	return 0;
 }
+
+
