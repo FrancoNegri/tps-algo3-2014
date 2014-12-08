@@ -93,7 +93,7 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 				resultados[indiceMax] = aux;
 				indices[indiceMax] = j;
 			}	
-
+			
 
 			//for(int w = 0; w < cuantosMejores&& !encontre; w++)
 			//{
@@ -114,7 +114,7 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 		//esto es para dar la respuesta de una y no tener que andar buscando los valores despues
 		en_que_subconjunto_esta_cada_nodo[i] = indices[valorQueTomo];
 	}
-	//noseusa = subconjuntos;
+	noseusa = subconjuntos;
 	//complejidad O(kn^2) creo.
 	return en_que_subconjunto_esta_cada_nodo;
 }
@@ -220,15 +220,26 @@ int main()
 		cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
 	cout << endl;
 
+	cout << "matriz adyacencias:" << endl;
+	for(int i = 0; i < n; i++){
+		for(int j = 0; j < n; j++){
+			cout << matriz_de_adyacencias[i][j] << " " ;
+		}
+		cout << endl;
+	}
+	cout << endl;
 	cout << endl << "Datos Utiles:" << endl;
 
 	int total = 0;
 	for(int j = 0; j < k; j++)
 	{
 		int aux = 0;
-		for(int i = 0; i < subconjuntos[j].size(); i++)
-			for(int w = i; w < subconjuntos[j].size(); w++)
+		for(int i = 0; i < subconjuntos[j].size(); i++){
+			for(int w = i; w < subconjuntos[j].size(); w++){
 				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
+			}
+	
+		}
 		cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
 		total += aux;
 	}
