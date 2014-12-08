@@ -81,33 +81,26 @@ int main()
 
 	// cout << endl << "Datos Utiles:" << endl;
 
+	//PARA MEDIR TIEMPOS
+	auto end = std::chrono::high_resolution_clock::now();
+	auto tiempo_total = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
 
 
+	int total = 0;
+	for(int j = 0; j < k; j++)
+	{
+		int aux = 0;
+		for(int i = 0; i < subconjuntos[j].size(); i++)
+			for(int w = i; w < subconjuntos[j].size(); w++)
+				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
+		//cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
+		total += aux;
+	}
 
+	cout << n << " ";
+	cout << total << " ";
+	cout << tiempo_total << endl;
 
-					//PARA MEDIR TIEMPOS
-					auto end = std::chrono::high_resolution_clock::now();
-				  	cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
-					//PARA MEDIR TIEMPOS
-
-
-
-
-
-
-
-
-	// int total = 0;
-	// for(int j = 0; j < k; j++)
-	// {
-	// 	int aux = 0;
-	// 	for(int i = 0; i < subconjuntos[j].size(); i++)
-	// 		for(int w = i; w < subconjuntos[j].size(); w++)
-	// 			aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
-	// 	//cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
-	// 	total += aux;
-	// }
-	// cout << total << endl;
 
 	return 0;
 }

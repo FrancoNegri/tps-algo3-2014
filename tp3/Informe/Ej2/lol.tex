@@ -4,7 +4,7 @@ Dado un grafo simple G = ( V , E ) se quiere buscar la solución con un algoritm
 
 Para comenzar el desarrollo es necesario definir previamente cada una de las estructuras que se utilizan en el mismo. Sabemos que el grafo esta representado por un conjunto de vértices, cada uno de los mismos tiene una etiqueta en este caso es un numero desde $1$ hasta $n$, siendo $n$ la cantidad de vértices del grafo, a su vez tenemos un conjunto de tuplas que representan los ejes en el grafo. Toda esta información la volcamos a una matriz de adyacencias, donde cada posición se tiene 0 si las aristas no están conectadas o el valor del peso del eje en caso que estén conectados.
 
-Una solución, llamada $solFinal$, será representada con un conjunto de $k$ subconjuntos, donde cada uno contendrá las etiquetas de los vértices, disjuntos de a pares (un vertice pertenece a un único subconjunto) y el peso del conjunto será la suma de cada uno de los pesos de los subconjuntos, donde el peso del subconjunto se entienden a la suma de los pesos de las aristas que conecten dos vértices del mismo subconjunto.
+Una solución, llamada $solFinal$, será representada con un conjunto de $k$ subconjuntos, donde cada uno contendrá las etiquetas de los vértices, disjuntos de a pares (un vértice pertenece a un único subconjunto) y el peso del conjunto será la suma de cada uno de los pesos de los subconjuntos, donde el peso del subconjunto se entienden a la suma de los pesos de las aristas que conecten dos vértices del mismo subconjunto.
 
 Diremos que una k partición A es mejor que otra B si el peso total es menor, es decir si A es mejor que B entonces $peso(A) < peso(B)$. 
 
@@ -79,7 +79,7 @@ Para mejorar los tiempos del algoritmo es necesario realizar algún tipo de vali
   \end{algorithmic}
   \end{algorithm}
 
-La función $cantidadDeCajasVacias$ se fija si algun conjunto no tiene.
+La función $cantidadDeCajasVacias$ se fija si algún conjunto no tiene.
  
  \begin{algorithm}
  \begin{algorithmic}[1]\parskip=1mm
@@ -88,7 +88,7 @@ La función $cantidadDeCajasVacias$ se fija si algun conjunto no tiene.
  		\STATE{si resultadoCheck = 0 }   
  		\STATE{\quad Remplazo mi solFinal por solParcial}
 		\STATE{si resultadoCheck = 2 }   
- 		\STATE{\quad devuelvo false porque mi solParcial es peor que mi solFinal o tengo mas cajas vacías que vertices para poner	l}
+ 		\STATE{\quad devuelvo false porque mi solParcial es peor que mi solFinal o tengo mas cajas vacías que vértices para poner	l}
  		\STATE{Si NO}
 		\STATE{\quad para cada i desde 1 hasta cantidadSubConjuntos: }
  		\STATE{\quad\quad agrego el numeroVertice al subconjunto i en SolParcial}
@@ -104,7 +104,7 @@ Para improvisar una mejora en la poda al comparar los pesos de nuestras solucion
 De esta manera podrían tomarse otro tipo de soluciones para luego obtener la solución final de menor peso y podar más ramas del Backtracking.	
 
 \subsection{Complejidad}
-Dado que el algoritmo exacto sin las podas prueba todas las soluciones del problema esto hace que sea poco eficiente en términos de tiempo a comparación de las heurísticas que iremos viendo a lo largo del informe. Pero conociendo las soluciones que se van a ir armando pueden definirse podas para evitar seguir resolviendo ramas de la solucion que no me van a llevar a una solución óptima o a una solución que no es mejor que la que ya formé hasta cierto punto.
+Dado que el algoritmo exacto sin las podas prueba todas las soluciones del problema esto hace que sea poco eficiente en términos de tiempo a comparación de las heurísticas que iremos viendo a lo largo del informe. Pero conociendo las soluciones que se van a ir armando pueden definirse podas para evitar seguir resolviendo ramas de la solución que no me van a llevar a una solución óptima o a una solución que no es mejor que la que ya formé hasta cierto punto.
 Dado el algoritmo exacto mostraremos las complejidades de las diferentes partes del mismo para obtener cuál sería la complejidad final.
 
 \begin{algorithm}
@@ -120,7 +120,7 @@ Dado el algoritmo exacto mostraremos las complejidades de las diferentes partes 
   \end{algorithmic}
   \end{algorithm}
 
-Para la funcion check la complejidad final sera $\mathcal{O}(1)$ + $\mathcal{O}(1)$ + $\mathcal{O}(k)$ dando como complejidad total $\mathcal{O}(k)$.
+Para la función check la complejidad final sera $\mathcal{O}(1)$ + $\mathcal{O}(1)$ + $\mathcal{O}(k)$ dando como complejidad total $\mathcal{O}(k)$.
 
 \begin{algorithm}
  \begin{algorithmic}[1]\parskip=1mm
@@ -129,7 +129,7 @@ Para la funcion check la complejidad final sera $\mathcal{O}(1)$ + $\mathcal{O}(
  		\STATE{si resultadoCheck = 0 $\mathcal{O}(1)$}   
  		\STATE{\quad Remplazo mi solFinal por solParcial $\mathcal{O}(k)$}
 		\STATE{si resultadoCheck = 2 $\mathcal{O}(1)$}   
- 		\STATE{\quad devuelvo false porque mi solParcial es peor que mi solFinal o tengo mas cajas vacías que vertices para poner $\mathcal{O}(1)$}
+ 		\STATE{\quad devuelvo false porque mi solParcial es peor que mi solFinal o tengo mas cajas vacías que vértices para poner $\mathcal{O}(1)$}
  		\STATE{Si NO}
 		\STATE{\quad para cada i desde 1 hasta cantidadSubConjuntos: }
  		\STATE{\quad\quad agrego el numeroVertice al subconjunto i en SolParcial}
@@ -142,9 +142,9 @@ Para la funcion check la complejidad final sera $\mathcal{O}(1)$ + $\mathcal{O}(
 El ciclo de las lineas 7-10 se ejecuta k veces en cada llamado iterativo, cada vez que se llama a la función backtracking es por un vértice diferente. 
 Para el primer nodo tenemos k conjuntos para probar, luego con el segundo vértice tenemos para cada uno de esos conjuntos donde coloqué el primer nodo k alternativas de conjuntos para probar quedándonos $k^2$ combinaciones para esos dos vértices. Luego para cada una de esas $k^2$ combinaciones tenemos k conjuntos quedando $k^3$ combinaciones, y así seguirá en las llamadas recursivas por todos los vértices. Con lo cual con el vértice n tendremos $k^n$ combinaciones para este vértice.
 
-Por lo tanto la complejidad total del algortimo es del orden de $\mathcal{O}(k^n)$ siendo $k$ la cantidad de subconjuntos y $n$ la cantidad de vértices del grafo.
+Por lo tanto la complejidad total del algoritmo es del orden de $\mathcal{O}(k^n)$ siendo $k$ la cantidad de subconjuntos y $n$ la cantidad de vértices del grafo.
 
-\subsection{Experimentacion}
+\subsection{Experimentación}
 Para el análisis de este algoritmo se generaron 30 instancias de manera random de grafos completos con vértices entre 1 y 20 elegidos de manera aleatoria mediante un script en python con la función randint.
 Luego para esas instancias se corrió el algoritmo asignando 5, 10 y 15 subconjuntos para ver como se comportaba el algoritmo, obteniéndose como resultado lo siguiente:\\
 \includegraphics[scale=0.5]{Ej2/k5.jpg}
@@ -153,10 +153,10 @@ Luego para esas instancias se corrió el algoritmo asignando 5, 10 y 15 subconju
 
 Se puede ver cómo la curva se hace más pronunciada al cambiar la cantidad de subconjuntos, con esto se ve que al cambiar el k la complejidad va aumentando de manera exponencial.
 
-Por otro lado realizamos un analisis sobre las podas, para esto primero generamos 30 instancias de grafos para ver cómo se comportaba el algoritmo con grafos sin aristas, obteniendo el siguiente resultado:\\
+Por otro lado realizamos un análisis sobre las podas, para esto primero generamos 30 instancias de grafos para ver cómo se comportaba el algoritmo con grafos sin aristas, obteniendo el siguiente resultado:\\
 \includegraphics[scale=0.5]{Ej2/sinAristas.jpg}\\
 Como puede verse en el gráfico, los tiempos de ejecución son similares a una lineal, esto se debe a que como la solución inicial tiene peso 0 ya que no tiene aristas, en cada llamado recursivo se devuelve false porque no se obtiene nada mejor en cuestión de peso del conjunto.
-Por otro lado como mencionamos en el desarrollo del algoritmo, se agregó una genacion de una solucion inicial alternativa a poner todos los vértices en un solo subconjunto, por lo que realizamos una experimentación para ver cómo afectaba la no presencia de esta solución alternativa, corrimos las mismas instancias de grafos para 15 subconjuntos que corrimos en los primeros test donde se encontraba esta solución alternativa y obtuvimos lo siguiente:\\
+Por otro lado como mencionamos en el desarrollo del algoritmo, se agregó una generación de una solución inicial alternativa a poner todos los vértices en un solo subconjunto, por lo que realizamos una experimentación para ver cómo afectaba la no presencia de esta solución alternativa, corrimos las mismas instancias de grafos para 15 subconjuntos que corrimos en los primeros test donde se encontraba esta solución alternativa y obtuvimos lo siguiente:\\
 \includegraphics[scale=0.5]{Ej2/sinAlternativa.jpg}\\
 
-Como puede observarse los tiempos empeoran ya que la primera solución a nuestro problema es el grafo con todos las aristas y esto puede no podar muchas ramas del backtracking que con la solución alternativa sí se están podando. Concluyendo que podrían mejorar los tiempos si estamos eligiendo una buena solucion inicial.
+Como puede observarse los tiempos empeoran ya que la primera solución a nuestro problema es el grafo con todos las aristas y esto puede no podar muchas ramas del backtracking que con la solución alternativa sí se están podando. Concluyendo que podrían mejorar los tiempos si estamos eligiendo una buena solución inicial.
