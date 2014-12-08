@@ -1,4 +1,4 @@
-\section{Introducci\'on}
+\section{Introducción\'on}
 
 En esta sección se implementarán heurísticas de búsqueda local para tratar de resolver el problema de $k-PMP$, intentando con diferentes métodos para alcanzar una solución y diferentes vecindades.
 
@@ -11,19 +11,19 @@ Como primera idea para una vecindad tomaremos cada nodo del grafo, vemos cuánto
 
 Otra vecindad que plantearemos será buscar el nodo que más peso está generando en la suma intrapartición, quitarlo de la partición donde se encuentra y agregarlo a alguna otra.
 
-Finalmente se implementará una tercera busqueda local que quite dos nodos que están en una misma partición e intente buscar alguna otra donde los mismos sumen un menor peso intrapartición.
+Finalmente se implementará una tercera búsqueda local que quite dos nodos que están en una misma partición e intente buscar alguna otra donde los mismos sumen un menor peso intrapartición.
 
 Los algoritmos escritos de manera formal serán así:
 
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
-		 \caption{ Busqueda1(SoluciónInicial) }
+		 \caption{ Búsqueda1(SoluciónInicial) }
 		 	\STATE{Guardo SoluciónInicial en SolucionPrevia}
 	 		\STATE{Mientras en el paso anterior se haya mejorado SolucionPrevia} 
 				\STATE{\quad Para todo nodo $i$ de $1$ a $n$ del grafo ~~~~ $\mathcal{O}(n)$}
 		 		\STATE{\quad Miro que peso agrega el nodo $i$ en el conjunto asignado por SolucionPrevia  $\mathcal{O}(n)$}
-		 		\STATE{\quad Miro que peso agrega el nodo $i$ quitandolo del conjunto asignado y poniendolo en los demas $\mathcal{O}(n)$}
-				\STATE{\quad \quad Si algun conjunto $M$ obtengo un peso menor, modifico SolucionPrevia $\mathcal{O}(n^2)$}
+		 		\STATE{\quad Miro que peso agrega el nodo $i$ quitándolo del conjunto asignado y poniéndolo en los demás $\mathcal{O}(n)$}
+				\STATE{\quad \quad Si algún conjunto $M$ obtengo un peso menor, modifico SolucionPrevia $\mathcal{O}(n^2)$}
 				\STATE{\quad \quad Asigno $i$ al conjunto $M$ $\mathcal{O}(1)$}   
 				\STATE{\quad \quad Itero}
 	\end{algorithmic}
@@ -35,14 +35,14 @@ Dada nuestra implementación de conjunto con listas simplemente enlazadas, encon
 
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
-		 \caption{ Busqueda2(SoluciónInicial) }
+		 \caption{ Búsqueda2(SoluciónInicial) }
 			\STATE{Guardo SoluciónInicial en SolucionPrevia}
 	 		\STATE{Mientras en el paso anterior se haya mejorado SolucionPrevia}
 			\STATE{Asigno $j = 1$}
 				\STATE{\quad Tomo el j-esimo nodo mas pesado de la SolucionPrevia, al que llamo $i$ $\mathcal{O}(1)$}
 		 		\STATE{\quad Miro que peso agrega el nodo $i$ en el conjunto asignado por SolucionPrevia $\mathcal{O}(n)$}
-		 		\STATE{\quad Miro que peso agrega el nodo $i$ quitandolo del conjunto asignado y poniendolo en los demas $\mathcal{O}(n)$}
-				\STATE{\quad \quad Si En algun conjunto $M$ obtengo un peso menor}   
+		 		\STATE{\quad Miro que peso agrega el nodo $i$ quitándolo del conjunto asignado y poniéndolo en los demás $\mathcal{O}(n)$}
+				\STATE{\quad \quad Si En algún conjunto $M$ obtengo un peso menor}   
 				\STATE{\quad \quad \quad modifico SolucionPrevia y asigno $i$ al conjunto $M$ $\mathcal{O}(n^2)$}
 				\STATE{\quad \quad \quad Itero}
 				\STATE{\quad \quad Si no, sumo $1$ a $j$}
@@ -55,14 +55,14 @@ Dada nuestra implementación de conjunto con listas simplemente enlazadas, encon
 
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
-		 \caption{ Busqueda3(SoluciónInicial) }
+		 \caption{ Búsqueda3(SoluciónInicial) }
 		 	\STATE{Guardo SoluciónInicial en SolucionPrevia}
 	 		\STATE{Mientras en el paso anterior se haya mejorado SolucionPrevia} 
 				\STATE{\quad Para todo nodo $i$ de $1$ a $n$ del grafo $\mathcal{O}(n)$}
 				\STATE{\quad\quad Tomo otro nodo $k$ del mismo conjunto de $i$ $\mathcal{O}(1)$}
 		 		\STATE{\quad\quad Miro que peso agrega el nodo $i$ y $k$ en el conjunto asignado por SolucionPrevia $\mathcal{O}(n)$}
-		 		\STATE{\quad\quad Miro que peso agrega el nodo $i$ y $k$ quitandolo del conjunto asignado y poniendolo en los demas $\mathcal{O}(n)$}
-				\STATE{\quad\quad \quad Si algun conjunto $M$ obtengo un peso menor, modifico SolucionPrevia $\mathcal{O}(n^2)$}
+		 		\STATE{\quad\quad Miro que peso agrega el nodo $i$ y $k$ quitándolo del conjunto asignado y poniéndolo en los demás $\mathcal{O}(n)$}
+				\STATE{\quad\quad \quad Si algún conjunto $M$ obtengo un peso menor, modifico SolucionPrevia $\mathcal{O}(n^2)$}
 				\STATE{\quad\quad \quad Asigno $i$ y $k$ al conjunto $M$ $\mathcal{O}(1)$}   
 				\STATE{\quad\quad \quad Itero}
 	\end{algorithmic}
@@ -79,7 +79,7 @@ Luego podemos acotar a $k$ por $n$ con lo que se obtendría una complejidad igua
 
 Para el segundo algoritmo, por cada iteración del algoritmo la complejidad será $O(n^2)$ para calcular el nodo con mayor peso del grafo. $O(n)$ para determinar si existe una mejor partición donde este nodo pueda estar y, en el caso de que exista, $O(n^2)$ para quitarlo de la partición anterior y agregarlo a la nueva. Luego, nuevamente acotando $k$ por $n$, se obtiene una complejidad para cada paso de la iteración de $O(n^2)$.
 
-El tercer algoritmo es simplemente el primer algoritmo pero esta vez para cada nodo además tomo un vecino, y realizo el mismo procedimiento que antes, esto para cada vecino, suponiendo que en el peor caso, para un nodo todos los otros nodos esten en el mismo conjunto, se tendrá que realizar el procedimiento de antes la misma cantidad de veces solo que ahora para dos nodos distintos, luego la complejidad continúa siendo $O(n^2 (n + n k + n^2))$. Acotando nuevamente $k$, obtenemos que el algoritmo es: $O(n^3)$
+El tercer algoritmo es simplemente el primer algoritmo pero esta vez para cada nodo además tomo un vecino, y realizo el mismo procedimiento que antes, esto para cada vecino, suponiendo que en el peor caso, para un nodo todos los otros nodos estén en el mismo conjunto, se tendrá que realizar el procedimiento de antes la misma cantidad de veces solo que ahora para dos nodos distintos, luego la complejidad continúa siendo $O(n^2 (n + n k + n^2))$. Acotando nuevamente $k$, obtenemos que el algoritmo es: $O(n^3)$
 
 \section{Testing}
 
@@ -105,7 +105,7 @@ Para poner más en evidencia esto, dividiremos por las complejidades teóricas p
 
 Como puede verse, en los tres casos las heurísticas están acotadas por las complejidades calculadas en el apartado anterior.
 
-Veamos como se comportan las busquedas locales contra el algoritmo exactos para $K_23$ con peso en las aristas entre $1$ a $100$ elegidos de forma uniforme, tomaremos 100 muestras y compararemos los resultados contra el algoritmo de backtracking.
+Veamos como se comportan las búsquedas locales contra el algoritmo exactos para $K_23$ con peso en las aristas entre $1$ a $100$ elegidos de forma uniforme, tomaremos 100 muestras y compararemos los resultados contra el algoritmo de backtracking.
 
 \includegraphics[scale=0.5]{Ej4/solucionestodos.jpg}
 
@@ -115,4 +115,4 @@ Además, para estas instancias se realiza a modo comparativo un promedio de los 
 
 \includegraphics[scale=0.5]{Ej4/tiempotodos.jpg}
 
-Por lo que en primera instancia, el algoritmo de búsqueda local 1 es bastantemente superior en todo sentido a los otros dos, ya que encuentra soluciones exactas y obtiene tiempos empíricos mucho mejores que los otros dos algoritmos.
+Por lo que en primera instancia, el algoritmo de búsqueda local 1 es muy superior en todo sentido a los otros dos, ya que encuentra soluciones exactas y obtiene tiempos empíricos mucho mejores que los otros dos algoritmos.

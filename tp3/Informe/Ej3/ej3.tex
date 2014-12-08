@@ -8,17 +8,17 @@ Más formalizado el algoritmo quedará de la siguiente manera:
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
  \caption{ Goloso()}
- 		\STATE{Numero los vertices de $1$ a $n$} 
-		\STATE{Creo una cantidad $k$ de conjuntos donde iré guardando vertices}
+ 		\STATE{Numero los vértices de $1$ a $n$} 
+		\STATE{Creo una cantidad $k$ de conjuntos donde iré guardando vértices}
  		\STATE{Para cada nodo $i$ de $1$ a $n$: }
 		\STATE{\quad Para cada conjunto}
-			\STATE{\quad\quad Sumo todos los pesos de las aristas de ($i$,$j$) con $j$ los vertices que estan en el conjunto}
- 		\STATE{\quad Agrego la el vertice $i$ para el cual la suma dio menor}
-		\STATE{Imprimo por salida estandar la respuesta}
+			\STATE{\quad\quad Sumo todos los pesos de las aristas de ($i$,$j$) con $j$ los vértices que están en el conjunto}
+ 		\STATE{\quad Agrego la el vértice $i$ para el cual la suma dio menor}
+		\STATE{Imprimo por salida estándar la respuesta}
   \end{algorithmic}
   \end{algorithm}
 
-Claramente este algoritmo no devuelve la solución exacta, y como se verá mas adelante, la solución que devuelve puede estar tan lejos como se quiera de la optima, lo que lo hace un algoritmo no muy bueno.
+Claramente este algoritmo no devuelve la solución exacta, y como se verá mas adelante, la solución que devuelve puede estar tan lejos como se quiera de la óptima, lo que lo hace un algoritmo no muy bueno.
 
 El análisis de complejidad es sencillo, se itera por cada vértice sobre cada conjunto. Dado que cada nodo sólo estará en un conjunto, entre todos los conjuntos a lo sumo tendrán $n$ nodos, lo que hace que se deba iterar $n$ veces a lo sumo sobre $n$ nodos, luego la complejidad será $O(n^2)$, por lo que, al menos en lo que respecta a tiempos, es ampliamente superior que el algoritmo exacto.
 
@@ -57,10 +57,10 @@ Tomando el promedio, las respuestas que se obtuvieron son las siguientes:
 
 \includegraphics[scale=0.5]{Ej3/Soluciones.jpg}
 
-Como puede verse el algoritmo goloso, en promedio, da soluciónes significativamente peores que la respuesta exacta.
+Como puede verse el algoritmo goloso, en promedio, da soluciones significativamente peores que la respuesta exacta.
 
 De las anteriores 100 muestras también se calculó el tiempo que se tardó en obtener las respuestas, nuevamente promediando se obtiene:
 
 \includegraphics[scale=0.5]{Ej3/tiempos.jpg}
 
-Donde se ve que el algoritmo goloso es $6$ órdenes de magnitud más rapido que el backtrack, incluso para una instancia modesta de $23$ nodos.
+Donde se ve que el algoritmo goloso es $6$ órdenes de magnitud más rápido que el backtrack, incluso para una instancia modesta de $23$ nodos.

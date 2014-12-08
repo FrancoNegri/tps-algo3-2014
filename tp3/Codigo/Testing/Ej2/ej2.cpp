@@ -128,7 +128,7 @@ void imprimirResultado(Solucion& solParcial, int n)
 	vector<int> aux;
 	aux.resize(n);
 
-	cout << solParcial.peso << endl;
+	cout << solParcial.peso << " ";
  	// for(int i = 0; i < solParcial.conjuntos.size(); i++)
  	// {
 		// stack<int> copia = solParcial.conjuntos[i];
@@ -206,9 +206,9 @@ int main()
 	cin >> k;
 
 
-					//PARA MEDIR TIEMPOS
-					auto begin = std::chrono::high_resolution_clock::now();
-					//PARA MEDIR TIEMPOS
+	//PARA MEDIR TIEMPOS
+	auto begin = std::chrono::high_resolution_clock::now();
+	//PARA MEDIR TIEMPOS
 
 
 	vector< vector< int> >adyacencias  = vector< vector< int> >(n, vector<int> (n, 0));
@@ -253,18 +253,21 @@ int main()
 
 
 
-					//PARA MEDIR TIEMPOS
-					auto end = std::chrono::high_resolution_clock::now();
-				  	cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << endl;
-					//PARA MEDIR TIEMPOS
+		//PARA MEDIR TIEMPOS
+		auto end = std::chrono::high_resolution_clock::now();
+		auto tiempo_total = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
+	  	
+		//PARA MEDIR TIEMPOS
+		
 
 
 
 
 
 
-
+		cout << n << " ";
 		imprimirResultado(solFinal, n);
+		cout << tiempo_total << endl;
 		//[>solParcial.clear();<]
 		//[>solFinal.clear();<]
 	//break;

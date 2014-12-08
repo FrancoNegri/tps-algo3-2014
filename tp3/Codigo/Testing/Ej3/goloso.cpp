@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <queue>
 #include <set>
+
 //#include <chrono>
 
 using namespace std;
@@ -23,7 +24,7 @@ using namespace std;
 
 //idea: en cada paso, tomo un vertice, me fijo en que subconjunto minimiza la suma, y lo agrego ahí.
 
-vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &noseusa, int k, int n){
+Solucion goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &noseusa, int k, int n){
 	//hasta aca cree todos las estructuras de datos que voy a necesitar.
 	vector< vector< int> > subconjuntos;
 
@@ -54,10 +55,12 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 
 	subconjuntos[0].push_back(nodos[0]);
 
+	int menorSuma = INFINITO;
+
 	for(int i = 1; i < n; i++ )
 	{
 		//tomo el vertice i
-		int menorSuma = INFINITO;
+		
 		int menorConjunto = 0;
 
 		for(int j = 0; j < k; j++)
@@ -86,5 +89,8 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 	}
 	noseusa = subconjuntos;
 	//complejidad O(kn^2) creo.
-	return en_que_subconjunto_esta_cada_nodo;
+	Solucion sol;
+	sol.conjuntos = en_que_subconjunto_esta_cada_nodo;
+	sol.peso = menorSuma;
+	return sol;
 }
