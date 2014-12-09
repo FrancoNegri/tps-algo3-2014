@@ -13,7 +13,6 @@
 #include <algorithm>
 #include <queue>
 #include <set>
-#include "../Ej3/goloso.cpp"
 #include "../Ej4/busqueda_local.cpp"
 #include "../Ej4/busqueda_local3.cpp"
 #include <chrono>
@@ -23,6 +22,105 @@ using namespace std;
 #ifndef INFINITO
 #define INFINITO INT_MAX
 #endif
+
+
+#define PORCENTAJEDEMEJORES 40
+
+vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &noseusa, int k, int n){
+	
+	//int cuantosMejores = (PORCENTAJEDEMEJORES*n)/100;
+	int cuantosMejores = (PORCENTAJEDEMEJORES*k)/100;
+	
+	int resultados[cuantosMejores];
+	int indices[cuantosMejores];
+	
+	vector< vector< int> > subconjuntos;
+
+	for(int i = 0; i < k; i++)
+	{
+		vector< int> aux;
+		subconjuntos.push_back(aux);
+	}
+
+	vector<int> en_que_subconjunto_esta_cada_nodo;
+
+	//meto el nodo 1 en cualquiera de los conjuntos, por ahora son todos iguales.
+	en_que_subconjunto_esta_cada_nodo.push_back(0);
+	//del punto de arriba, el nodo 1 va a ir en el subconjunto 1, asi que tambien digo eso.
+	en_que_subconjunto_esta_cada_nodo.resize(n);
+	subconjuntos[0].push_back(0);
+	for(int i = 1; i < n; i++ )
+	{
+		
+		for(int l = 0; l < cuantosMejores ; l++)
+		{
+			resultados[l] = INFINITO;
+			indices[l] = -1; 
+		}
+
+		//tomo el vertice i
+
+		for(int j = 0; j < k; j++)
+		{
+			//para cada conjunto
+			int aux = 0;
+				
+			for(int w = 0; w < subconjuntos[j].size(); w++)
+			{
+				//veo cuanto "peso" suma agregar este vertice a este conjunto determinado
+				int candidato = subconjuntos[j][w];
+				aux += matriz_de_adyacencias[i][candidato];
+			}
+
+			//me guardo los x conjuntos que minimizan la suma
+			bool encontreNegativo = false;
+			bool indiceMax = 0;
+			int w = 0;
+			while(w<cuantosMejores){
+				if(indices[w]==-1 && ! encontreNegativo){
+					encontreNegativo = true;
+					resultados[w] = aux;
+					indices[w] = j;
+					break;
+				}
+				if(resultados[w] > resultados[indiceMax])
+				{
+					indiceMax = w;			
+				}
+				w++;
+			}
+
+			if(!encontreNegativo && aux < resultados[indiceMax]){
+				resultados[indiceMax] = aux;
+				indices[indiceMax] = j;
+			}	
+
+
+			//for(int w = 0; w < cuantosMejores&& !encontre; w++)
+			//{
+				//if(aux < resultados[w])
+				//{
+					//resultados[w] = aux;
+					//indices[w] = j;
+					//encontre =  true;
+				//}
+			//}
+		}
+		int valorQueTomo = rand() % cuantosMejores; // tomo un valor Al Azar entre estos valores
+
+		//agrego el verice i al conjunto que minimiza la suma
+		
+		int index = indices[valorQueTomo];
+		subconjuntos[index].push_back(i);
+		//esto es para dar la respuesta de una y no tener que andar buscando los valores despues
+		en_que_subconjunto_esta_cada_nodo[i] = indices[valorQueTomo];
+	}
+	//noseusa = subconjuntos;
+	//complejidad O(kn^2) creo.
+	return en_que_subconjunto_esta_cada_nodo;
+}
+
+
 
 vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n)
 {
