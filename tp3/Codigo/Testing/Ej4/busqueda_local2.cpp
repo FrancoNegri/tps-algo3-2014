@@ -24,13 +24,26 @@ using namespace std;
 
 vector<int> busqueda_local2(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n, vector <int> en_que_subconjunto_esta_cada_nodo)
 {
+
+	if(n <= k)
+	{
+		en_que_subconjunto_esta_cada_nodo.clear();
+		for(int i = 0; i < n; i++)
+		{
+			en_que_subconjunto_esta_cada_nodo.push_back(i);
+			subconjuntos[i].clear();
+			subconjuntos[i].push_back(i);
+		}
+		return en_que_subconjunto_esta_cada_nodo;
+	}
+
+
 	//aca tengo que empezar a buscar localmente
 	bool SeEncontroMejorSol = true;
 
 	vector<int> nodosDelGrafo;
 	for(int i = 0; i < n; i++)
 		nodosDelGrafo.push_back(i);
-
 
 	while(SeEncontroMejorSol)
 	{

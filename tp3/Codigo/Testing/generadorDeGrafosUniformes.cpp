@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 	//tomo las primeras m aristas mezcladas que tengo en el vector.
 	for(int i = 0; i < m ; i++)
 	{
-		myfile << ejes[i].x + 1 << " " << ejes[i].y + 1 << " " << rand() % max + 1 << endl; 
+		myfile << ejes[i].x + 1 << " " << ejes[i].y + 1 << " " << 1 << endl; 
 	}
 
 	myfile.close();

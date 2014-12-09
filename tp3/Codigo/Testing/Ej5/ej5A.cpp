@@ -35,6 +35,9 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 	
 	vector< vector< int> > subconjuntos;
 
+	cout << cuantosMejores << endl;
+
+
 	for(int i = 0; i < k; i++)
 	{
 		vector< int> aux;
@@ -134,7 +137,10 @@ vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 	//for (int h = 0; h < 10000000; ++h)
 	while(cantidadDeVecesQueSeLlegoAmejorSol < 1000 )
 	{
+
+
 		en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
+
 
 		en_que_subconjunto_esta_cada_nodo = busqueda_local2(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
 
@@ -191,9 +197,9 @@ int main()
 	}
 
 
-					//PARA MEDIR TIEMPOS
-					auto begin = std::chrono::high_resolution_clock::now();
-					//PARA MEDIR TIEMPOS
+	//PARA MEDIR TIEMPOS
+	auto begin = std::chrono::high_resolution_clock::now();
+	//PARA MEDIR TIEMPOS
 
 
 	//lo que hace este algoritmo es usar primero greedy para obtener una sol y despues en base a esa sol
@@ -203,47 +209,39 @@ int main()
 	en_que_subconjunto_esta_cada_nodo = grasp(matriz_de_adyacencias, subconjuntos, k, n);
 
 
-					//PARA MEDIR TIEMPOS
-					auto end = std::chrono::high_resolution_clock::now();
-				  	cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count() << " ";
-					//PARA MEDIR TIEMPOS
-
-
-
-
-
-
-
-	cout << "Respuesta Final:" << endl;
-
-	for(int i = 0; i < n; i++)
-		cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
-	cout << endl;
-
-	cout << "matriz adyacencias:" << endl;
-	for(int i = 0; i < n; i++){
-		for(int j = 0; j < n; j++){
-			cout << matriz_de_adyacencias[i][j] << " " ;
-		}
-		cout << endl;
-	}
-	cout << endl;
-	cout << endl << "Datos Utiles:" << endl;
-
+	//Esto es para ver que tan buen resultado encontró
+	//======= COMENTAR ANTES DE ENTREGAR================
 	int total = 0;
 	for(int j = 0; j < k; j++)
 	{
 		int aux = 0;
-		for(int i = 0; i < subconjuntos[j].size(); i++){
-			for(int w = i; w < subconjuntos[j].size(); w++){
+		for(int i = 0; i < subconjuntos[j].size(); i++)
+			for(int w = i; w < subconjuntos[j].size(); w++)
 				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
-			}
-	
-		}
-		cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
 		total += aux;
 	}
-	cout << "Peso total: " << total << endl;
+	cout << n << " ";
+	cout << total << " ";
+	
+	//======= COMENTAR ANTES DE ENTREGAR================
+
+	//Esta es la respuesta que tenemos que escribir por pantalla
+	//========DESCOMENBTAR ANTES DE ENTREGAR ==================
+
+	// for(int i = 0; i < n; i++)
+	// 	cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
+	// cout << endl;
+
+	//=======DESCOMENTAR=======================================
+
+
+
+
+	//PARA MEDIR TIEMPOS
+	auto end = std::chrono::high_resolution_clock::now();
+	auto tiempo_total = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
+	cout << tiempo_total << endl;
+
 
 
 	return 0;

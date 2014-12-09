@@ -128,13 +128,8 @@ int main()
 	en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
 
 
-	//PARA MEDIR TIEMPOS
-	auto end = std::chrono::high_resolution_clock::now();
-	//PARA MEDIR TIEMPOS
-
-	auto tiempo_total = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
-
-
+	//Esto es para ver que tan buen resultado encontró
+	//======= COMENTAR ANTES DE ENTREGAR================
 	int total = 0;
 	for(int j = 0; j < k; j++)
 	{
@@ -142,31 +137,29 @@ int main()
 		for(int i = 0; i < subconjuntos[j].size(); i++)
 			for(int w = i; w < subconjuntos[j].size(); w++)
 				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
-		//cout <<"El Conjunto " << j+1 << " pesa: " <<  aux << endl;
 		total += aux;
 	}
-
-
 	cout << n << " ";
 	cout << total << " ";
-	cout << tiempo_total << endl;
+	
+	//======= COMENTAR ANTES DE ENTREGAR================
 
-
-
-
-
-
-
-	// cout << "Respuesta que hay que dar:" << endl;
+	//Esta es la respuesta que tenemos que escribir por pantalla
+	//========DESCOMENBTAR ANTES DE ENTREGAR ==================
 
 	// for(int i = 0; i < n; i++)
 	// 	cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
 	// cout << endl;
 
-	//save it for the mornig after
+	//=======DESCOMENTAR=======================================
 
 
-	//cout << endl << "Datos Utiles:" << endl;
+
+
+	//PARA MEDIR TIEMPOS
+	auto end = std::chrono::high_resolution_clock::now();
+	auto tiempo_total = std::chrono::duration_cast<std::chrono::nanoseconds>(end-begin).count();
+	cout << tiempo_total << endl;
 
 	
 

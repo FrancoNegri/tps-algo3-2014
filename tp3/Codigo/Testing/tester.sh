@@ -6,31 +6,31 @@ DIR="testing"
 rm $DIR/*
 
 echo "Compilando Codigo..."
-g++ -O2 -std=c++0x generador_de_entrada.cpp -o $DIR/generador_de_entrada
-# g++ -O2 -std=c++0x Ej2/ej2.cpp -o $DIR/ej2
-# g++ -O2 -std=c++0x Ej3/ej3.cpp -o $DIR/ej3
+ g++ -O2 -std=c++0x generador_de_entrada.cpp -o $DIR/generador_de_entrada
+ g++ -O2 -std=c++0x Ej2/ej2.cpp -o $DIR/ej2
+ g++ -O2 -std=c++0x Ej3/ej3.cpp -o $DIR/ej3
  g++ -O2 -std=c++0x Ej4/ej4.1.cpp -o $DIR/ej4.1
  g++ -O2 -std=c++0x Ej4/ej4.2.cpp -o $DIR/ej4.2
  g++ -O2 -std=c++0x Ej4/ej4.3.cpp -o $DIR/ej4.3
-# g++ -O2 -std=c++0x Ej5/ej5A.cpp -o $DIR/ej5A
-# g++ -O2 -std=c++0x Ej5/ej5B.cpp -o $DIR/ej5B
+ g++ -O2 -std=c++0x Ej5/ej5A.cpp -o $DIR/ej5A
+ g++ -O2 -std=c++0x Ej5/ej5B.cpp -o $DIR/ej5B
 
 echo "OK!"
 
-for numeroDeNodos in {10..100}
+for numeroDeNodos in {6..6}
 do
     echo "generada entrada para n:" $(( $numeroDeNodos ))
     ./$DIR/generador_de_entrada  $(( $numeroDeNodos ))  $(( $numeroDeNodos * ($numeroDeNodos - 1) / 2  )) 5
 
     for j in {1..1}
     do
-	    #./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
-        #./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
+	    ./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
+        ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
         ./$DIR/ej4.1 < $DIR/test.txt >> $DIR/resultados4.txt
         ./$DIR/ej4.2 < $DIR/test.txt >> $DIR/resultados5.txt
         ./$DIR/ej4.3 < $DIR/test.txt >> $DIR/resultados6.txt
-        #./$DIR/ej5A < $DIR/test.txt >> $DIR/resultados7.txt
-        #./$DIR/ej5B < $DIR/test.txt >> $DIR/resultados8.txt
+        ./$DIR/ej5A < $DIR/test.txt >> $DIR/resultados7.txt
+        ./$DIR/ej5B < $DIR/test.txt >> $DIR/resultados8.txt
     done
         echo "OK!"
         #echo "" >> $DIR/resultados3.txt
