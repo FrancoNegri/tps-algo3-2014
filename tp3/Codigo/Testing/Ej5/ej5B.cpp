@@ -27,7 +27,7 @@ using namespace std;
 #define PORCENTAJEDEMEJORES 25
 #endif
 #ifndef CANTIDADDEEXITOS
-#define CANTIDADDEEXITOS 10000
+#define CANTIDADDEEXITOS 1000
 #endif
 
 
