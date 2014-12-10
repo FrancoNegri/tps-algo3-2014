@@ -11,9 +11,9 @@ g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=0 -o $DIR/G2
 g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=0 -o $DIR/G3
 echo "OK!"
 echo "Corriendo Test"
-    ./$DIR/G1 < $DIR/test.txt >> $DIR/r1.txt
-    ./$DIR/G2 < $DIR/test.txt >> $DIR/r2.txt
-    ./$DIR/G3 < $DIR/test.txt >> $DIR/r3.txt
+    ./$DIR/G1 < $DIR/test.in >> $DIR/r1.txt
+    ./$DIR/G2 < $DIR/test.in >> $DIR/r2.txt
+    ./$DIR/G3 < $DIR/test.in >> $DIR/r3.txt
 echo "OK!"
 
 echo "Compilando Codigo con PORCENTAJEDEMEJORES = 25"
@@ -22,9 +22,9 @@ g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=25 -o $DIR/G2
 g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=25 -o $DIR/G3
 echo "OK!"
 echo "Corriendo Test"
-    ./$DIR/G1 < $DIR/test.txt >> $DIR/r1.txt
-    ./$DIR/G2 < $DIR/test.txt >> $DIR/r2.txt
-    ./$DIR/G3 < $DIR/test.txt >> $DIR/r3.txt
+    ./$DIR/G1 < $DIR/test.in >> $DIR/r1.txt
+    ./$DIR/G2 < $DIR/test.in >> $DIR/r2.txt
+    ./$DIR/G3 < $DIR/test.in >> $DIR/r3.txt
 echo "OK!"
 
 echo "Compilando Codigo con PORCENTAJEDEMEJORES = 50"
@@ -33,9 +33,9 @@ g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=50 -o $DIR/G2
 g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=50 -o $DIR/G3
 echo "OK!"
 echo "Corriendo Test"
-    ./$DIR/G1 < $DIR/test.txt >> $DIR/r1.txt
-    ./$DIR/G2 < $DIR/test.txt >> $DIR/r2.txt
-    ./$DIR/G3 < $DIR/test.txt >> $DIR/r3.txt
+    ./$DIR/G1 < $DIR/test.in >> $DIR/r1.txt
+    ./$DIR/G2 < $DIR/test.in >> $DIR/r2.txt
+    ./$DIR/G3 < $DIR/test.in >> $DIR/r3.txt
 echo "OK!"
 
 echo "Compilando Codigo con PORCENTAJEDEMEJORES = 75"
@@ -44,9 +44,9 @@ g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=75 -o $DIR/G2
 g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=75 -o $DIR/G3
 echo "OK!"
 echo "Corriendo Test"
-    ./$DIR/G1 < $DIR/test.txt >> $DIR/r1.txt
-    ./$DIR/G2 < $DIR/test.txt >> $DIR/r2.txt
-    ./$DIR/G3 < $DIR/test.txt >> $DIR/r3.txt
+    ./$DIR/G1 < $DIR/test.in >> $DIR/r1.txt
+    ./$DIR/G2 < $DIR/test.in >> $DIR/r2.txt
+    ./$DIR/G3 < $DIR/test.in >> $DIR/r3.txt
 echo "OK!"
 
 echo "Compilando Codigo con PORCENTAJEDEMEJORES = 100"
@@ -55,9 +55,9 @@ g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=100 -o $DIR/G2
 g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=100 -o $DIR/G3
 echo "OK!"
 echo "Corriendo Test"
-    ./$DIR/G1 < $DIR/test.txt >> $DIR/r1.txt
-    ./$DIR/G2 < $DIR/test.txt >> $DIR/r2.txt
-    ./$DIR/G3 < $DIR/test.txt >> $DIR/r3.txt
+    ./$DIR/G1 < $DIR/test.in >> $DIR/r1.txt
+    ./$DIR/G2 < $DIR/test.in >> $DIR/r2.txt
+    ./$DIR/G3 < $DIR/test.in >> $DIR/r3.txt
 echo "OK!"
 
 echo "Procesando Resultados..."
