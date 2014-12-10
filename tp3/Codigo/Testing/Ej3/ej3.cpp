@@ -139,7 +139,6 @@ int main()
 				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
 		total += aux;
 	}
-	cout << n << " ";
 	cout << total << " ";
 	
 	//======= COMENTAR ANTES DE ENTREGAR================
