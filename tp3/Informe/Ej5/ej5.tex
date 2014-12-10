@@ -37,7 +37,7 @@ A continuación se formaliza de manera más precisa el algoritmo:
 		 	\STATE{\quad Corro el Algoritmo Goloso desarrollado previamente}
 		 	\STATE{\quad Utilizo búsqueda local 2 para mejorar la solución obtenida previamente}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
-		 	\STATE{\quad Si tras 1000 iteraciones no se pudo conseguir una mejor solución}
+		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
 		 	\STATE{\quad\quad Devuelvo la solución}
 	\end{algorithmic}
 \end{algorithm}
@@ -50,31 +50,34 @@ A continuación se formaliza de manera más precisa el algoritmo:
 		 	\STATE{\quad Utilizo búsqueda local 1 para mejorar la solución obtenida previamente}
 		 	\STATE{\quad Utilizo búsqueda local 3 para mejorar la solución}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
-		 	\STATE{\quad Si tras 1000 iteraciones no se pudo conseguir una mejor solución}
+		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
 		 	\STATE{\quad\quad Devuelvo la mejor solución}
 	\end{algorithmic}
 \end{algorithm}
 
+En estos dos casos $z$ será un numero entero entre $1$ e infinito.
+
+En el siguiente apartado de experimentación se intentarán calibrar tanto los parametros $x$ y $z$ para así obtener los mejores resultados posibles, tratando siempre de equilibrar performance y exactitud de los reslutados.
+
 \section{Experimentación}
 
-Ahora haremos una experimentación donde compararemos los tiempos de ejecución y los resultados del algoritmo de GRASP contra la solución exacta obtenida por backtracking.
+Para la primera parte de experimentación variaremos el parametro $x$ dejando fijo $z = 10000$ y veremos como varían las soluciones.
 
-Primero tomamos grafos de $25$ a $100$ nodos completos con aristas uniformemente distribuidas de $1$ a $100$ y analizamos los tiempos que dan los algoritmos:
+Para eso tomamos un grafo completo de $500$ nodos tal que las aristas tienen pesos enteros aleatorios entre $1$ y $100$. Corremos el algoritmo con $x=1$, lo que equivale a una solución inicial obtenida por el algoritmo goloso deterministico, $x=k$ una solución inicial completamente aleatoria, y luego soluciones intermedias para $x = 0.25 k$, $x = 0.50k$ y $x = 0.75 k$.
 
-\includegraphics[scale=0.5]{Ej5/tiempog1.png}
+Dado que la solución depende fuertemente de $k$ al grafo antes mencionado, le variaremos el $k$ para tres instancias diferentes con $k = 50$, $k = 200$ y $k = 400$.
 
-\includegraphics[scale=0.5]{Ej5/tiempog2.png}
+Luego los resultados obtenidos para el grafo con $500$ nodos y $k = 50$ son los siguientes:
 
-Si bien se puede ver que no es exponencial, estas metaheurísticas dependen tanto de factores inherentes al algoritmo que se vuelve difícil de encontrar una complejidad de peor caso.
+\includegraphics[scale=0.5]{Ej5/comparacionEntreGrasp50.jpg}
 
-Además, se comparan como en los casos anteriores, las soluciones dadas por las dos heurísticas contra la solución exacta. La experimentación para este caso es igual a la realizada para el algoritmo goloso y para las búsquedas locales:
+Para el grafo de $500$ nodos y $k = 200$:
 
-\includegraphics[scale=0.5]{Ej5/graspSol.jpg}
+\includegraphics[scale=0.5]{Ej5/comparacionEntreGrasp200.jpg}
 
-Puede verse aquí que la mejor de las heurísticas es la del GRASP 2, que no sólo encuentra soluciones más cercanas a la original, sino que en 17 de los 100 casos, logra encontrar la solución exacta. Esto, seguramente debido a que usa la búsqueda local 1, que como ya habíamos constatado en su experimentación, también lograba alcanzar soluciones exactas.
 
-Finalmente, para los mismos casos de prueba antes vistos, también se miden los tiempos que tardan en encontrar la respuesta, obteniéndose los siguientes resultados:
+Para el grafo de $500$ nodos y $k = 400$:
 
-\includegraphics[scale=0.5]{Ej5/tiempos.jpg}
+\includegraphics[scale=0.5]{Ej5/comparacionEntreGrasp400.jpg}
 
-Puede verse que el hecho de encontrar soluciones exactas tiene su contrapartida en el hecho de que la metaheurística tarde significativamente más que la que no los encuentra.
+Acá digo: bueno, ya determiné que $x = ??$. Ahora varío la cantidad de iteraciones.

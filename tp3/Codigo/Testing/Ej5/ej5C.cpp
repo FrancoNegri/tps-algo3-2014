@@ -13,7 +13,7 @@
 #include <algorithm>
 #include <queue>
 #include <set>
-#include "../Ej4/busqueda_local2.cpp"
+#include "../Ej4/busqueda_local3.cpp"
 #include <chrono>
 
 using namespace std;
@@ -22,7 +22,6 @@ using namespace std;
 #define INFINITO INT_MAX
 #endif
 
-//Para el testeo puedo hacer g++ -O2 -std=c++11 ej5B.cpp -D PORCENTAJEDEMEJORES=50 y redefinirlo sin tener que tocar codigo
 #ifndef PORCENTAJEDEMEJORES
 #define PORCENTAJEDEMEJORES 25
 #endif
@@ -30,10 +29,8 @@ using namespace std;
 #define CANTIDADDEEXITOS 10000
 #endif
 
-
-
 vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &noseusa, int k, int n){
-
+	
 	//int cuantosMejores = (PORCENTAJEDEMEJORES*n)/100;
 	int cuantosMejores = (PORCENTAJEDEMEJORES*k)/100;
 	
@@ -145,7 +142,9 @@ vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 	{
 		en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
 
-		en_que_subconjunto_esta_cada_nodo = busqueda_local2(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
+		en_que_subconjunto_esta_cada_nodo = busqueda_local3(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
+
+
 
 		int total = 0;
 		for(int j = 0; j < k; j++)

@@ -14,7 +14,6 @@
 #include <queue>
 #include <set>
 #include "../Ej4/busqueda_local.cpp"
-#include "../Ej4/busqueda_local2.cpp"
 #include <chrono>
 
 using namespace std;
@@ -23,13 +22,21 @@ using namespace std;
 #define INFINITO INT_MAX
 #endif
 
-#define PORCENTAJEDEMEJORES 40
+#ifndef PORCENTAJEDEMEJORES
+#define PORCENTAJEDEMEJORES 25
+#endif
+#ifndef CANTIDADDEEXITOS
+#define CANTIDADDEEXITOS 10000
+#endif
 
 vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &noseusa, int k, int n){
 	
 	//int cuantosMejores = (PORCENTAJEDEMEJORES*n)/100;
 	int cuantosMejores = (PORCENTAJEDEMEJORES*k)/100;
 	
+	if(cuantosMejores == 0)
+		cuantosMejores = 1;
+
 	int resultados[cuantosMejores];
 	int indices[cuantosMejores];
 	
@@ -132,14 +139,14 @@ vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 	vector <int> en_que_subconjunto_esta_cada_nodo;
 	
 	//for (int h = 0; h < 10000000; ++h)
-	while(cantidadDeVecesQueSeLlegoAmejorSol < 1000 )
+	while(cantidadDeVecesQueSeLlegoAmejorSol < CANTIDADDEEXITOS )
 	{
 
 
 		en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
 
 
-		en_que_subconjunto_esta_cada_nodo = busqueda_local2(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
+		en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
 
 		//en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
 
