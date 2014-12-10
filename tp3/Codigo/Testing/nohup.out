@@ -4385,3 +4385,71 @@ OK!
 Prosesando Resultados...
 Limpiando Archivos
 OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 0
+OK!
+Corriendo Test
+./grasp_tester.sh: línea 14: testing/test.txt: No existe el archivo o el directorio
+./grasp_tester.sh: línea 15: testing/test.txt: No existe el archivo o el directorio
+./grasp_tester.sh: línea 16: testing/test.txt: No existe el archivo o el directorio
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 25
+OK!
+Corriendo Test
+./grasp_tester.sh: línea 25: testing/test.txt: No existe el archivo o el directorio
+./grasp_tester.sh: línea 26: testing/test.txt: No existe el archivo o el directorio
+./grasp_tester.sh: línea 27: testing/test.txt: No existe el archivo o el directorio
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 50
+OK!
+Corriendo Test
+./grasp_tester.sh: línea 36: testing/test.txt: No existe el archivo o el directorio
+./grasp_tester.sh: línea 37: testing/test.txt: No existe el archivo o el directorio
+./grasp_tester.sh: línea 38: testing/test.txt: No existe el archivo o el directorio
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 75
+OK!
+Corriendo Test
+./grasp_tester.sh: línea 47: testing/test.txt: No existe el archivo o el directorio
+./grasp_tester.sh: línea 48: testing/test.txt: No existe el archivo o el directorio
+./grasp_tester.sh: línea 49: testing/test.txt: No existe el archivo o el directorio
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 100
+OK!
+Corriendo Test
+./grasp_tester.sh: línea 58: testing/test.txt: No existe el archivo o el directorio
+./grasp_tester.sh: línea 59: testing/test.txt: No existe el archivo o el directorio
+./grasp_tester.sh: línea 60: testing/test.txt: No existe el archivo o el directorio
+OK!
+Procesando Resultados...
+sed: no se puede leer testing/r1.txt: No existe el archivo o el directorio
+sed: no se puede leer testing/r2.txt: No existe el archivo o el directorio
+sed: no se puede leer testing/r3.txt: No existe el archivo o el directorio
+sed: no se puede leer testing/r1.txt: No existe el archivo o el directorio
+sed: no se puede leer testing/r2.txt: No existe el archivo o el directorio
+sed: no se puede leer testing/r3.txt: No existe el archivo o el directorio
+Limpiando Archivos
+OK!
+rm: no se puede borrar «testing/*.txt»: No existe el archivo o el directorio
+Compilando Codigo con PORCENTAJEDEMEJORES = 0
+OK!
+Corriendo Test
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 25
+OK!
+Corriendo Test
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 50
+OK!
+Corriendo Test
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 75
+OK!
+Corriendo Test
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 100
+OK!
+Corriendo Test
+OK!
+Procesando Resultados...
+Limpiando Archivos
+OK!

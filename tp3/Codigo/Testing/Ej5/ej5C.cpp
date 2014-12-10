@@ -121,7 +121,7 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 		//esto es para dar la respuesta de una y no tener que andar buscando los valores despues
 		en_que_subconjunto_esta_cada_nodo[i] = indices[valorQueTomo];
 	}
-	//noseusa = subconjuntos;
+	noseusa = subconjuntos;
 	//complejidad O(kn^2) creo.
 	return en_que_subconjunto_esta_cada_nodo;
 }

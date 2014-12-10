@@ -53,14 +53,15 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 
 	vector<int> en_que_subconjunto_esta_cada_nodo;
 
-	//meto el nodo 1 en cualquiera de los conjuntos, por ahora son todos iguales.
-	en_que_subconjunto_esta_cada_nodo.push_back(0);
 	//del punto de arriba, el nodo 1 va a ir en el subconjunto 1, asi que tambien digo eso.
 	en_que_subconjunto_esta_cada_nodo.resize(n);
+
+	//meto el nodo 1 en cualquiera de los conjuntos, por ahora son todos iguales.
+	en_que_subconjunto_esta_cada_nodo[0] = 0;
+
 	subconjuntos[0].push_back(0);
 	for(int i = 1; i < n; i++ )
 	{
-		
 		for(int l = 0; l < cuantosMejores ; l++)
 		{
 			resultados[l] = INFINITO;
@@ -124,7 +125,7 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 		//esto es para dar la respuesta de una y no tener que andar buscando los valores despues
 		en_que_subconjunto_esta_cada_nodo[i] = indices[valorQueTomo];
 	}
-	//noseusa = subconjuntos;
+	noseusa = subconjuntos;
 	//complejidad O(kn^2) creo.
 	return en_que_subconjunto_esta_cada_nodo;
 }
