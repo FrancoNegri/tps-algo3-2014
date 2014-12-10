@@ -3,6 +3,8 @@
 
 DIR="testing"
 
+rm $DIR/*.txt
+
 echo "Compilando Codigo con PORCENTAJEDEMEJORES = 0"
 g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=0 -o $DIR/G1
 g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=0 -o $DIR/G2
