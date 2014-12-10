@@ -4453,3 +4453,27 @@ OK!
 Procesando Resultados...
 Limpiando Archivos
 OK!
+rm: cannot remove `testing/*.txt': No such file or directory
+Compilando Codigo con PORCENTAJEDEMEJORES = 0
+OK!
+Corriendo Test
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 25
+OK!
+Corriendo Test
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 50
+OK!
+Corriendo Test
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 75
+OK!
+Corriendo Test
+OK!
+Compilando Codigo con PORCENTAJEDEMEJORES = 100
+OK!
+Corriendo Test
+OK!
+Procesando Resultados...
+Limpiando Archivos
+OK!
