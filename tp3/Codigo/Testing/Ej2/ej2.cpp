@@ -128,7 +128,7 @@ void imprimirResultado(Solucion& solParcial, int n)
 	vector<int> aux;
 	aux.resize(n);
 
-	cout << solParcial.peso << " ";
+	cout << solParcial.peso << endl;
  	// for(int i = 0; i < solParcial.conjuntos.size(); i++)
  	// {
 		// stack<int> copia = solParcial.conjuntos[i];
@@ -265,7 +265,7 @@ int main()
 
 
 
-		cout << n << " ";
+		//cout << n << " ";
 		imprimirResultado(solFinal, n);
 		cout << tiempo_total << endl;
 		//[>solParcial.clear();<]

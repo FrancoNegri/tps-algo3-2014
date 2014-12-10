@@ -35,9 +35,6 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 	
 	vector< vector< int> > subconjuntos;
 
-	cout << cuantosMejores << endl;
-
-
 	for(int i = 0; i < k; i++)
 	{
 		vector< int> aux;
@@ -220,7 +217,7 @@ int main()
 				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
 		total += aux;
 	}
-	cout << total << " ";
+	cout << total << endl;
 	
 	//======= COMENTAR ANTES DE ENTREGAR================
 

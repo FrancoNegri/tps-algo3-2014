@@ -80,7 +80,7 @@ int main()
 				aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
 		total += aux;
 	}
-	cout << total << " ";
+	cout << total << endl;
 	//======= COMENTAR ANTES DE ENTREGAR================
 
 	//Esta es la respuesta que tenemos que escribir por pantalla
