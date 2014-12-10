@@ -3,9 +3,24 @@
 
 Para la metaheurística de GRASP, tomaremos el algoritmo goloso previamente implementado y lo combinaremos con las diferentes búsquedas locales también previamente implementadas.
 
-La idea es la siguiente, para cada paso del algoritmo, corremos primero la heurística golosa con un orden aleatorio en sus nodos. Este orden aleatorio, como ya hemos demostrado en el apartado del algoritmo goloso, podrá ir produciendo diferentes respuestas, cada una con una mejor o peor aproximación a la respuesta exacta.
+La idea es la siguiente, para cada paso del algoritmo, corremos una versión modificada del goloso de manera tal de permitir sierta aleatoriedad en los resultados. El algoritmo goloso será modificado de la siguiente manera:
 
-Luego a la solución obtenida por el algoritmo goloso se le aplicarán una o varias de las búsquedas locales implementadas en un intento de aproximar más aún la respuesta al óptimo.
+\begin{algorithm}
+  \begin{algorithmic}[1]\parskip=1mm
+ \caption{ Goloso()}
+ 		\STATE{Numero los vértices de $1$ a $n$} 
+		\STATE{Creo una cantidad $k$ de conjuntos donde iré guardando vértices}
+ 		\STATE{Para cada nodo $i$ de $1$ a $n$: }
+		\STATE{\quad Para cada conjunto}
+			\STATE{\quad\quad Sumo todos los pesos de las aristas de ($i$,$j$) con $j$ los vértices que están en el conjunto}
+ 		\STATE{\quad Del los mejores $x$ resultados, tomo uno al azar y pongo a $i$ en ese conjunto}
+		\STATE{Devuelvo la respuesta}
+\end{algorithmic}
+\end{algorithm} 
+
+Notar que si $x=1$ entonces estamos obteniendo el mismo algoritmo goloso que en el apartado anterior. En cambio, si tomo $x = k$ (esto es, tomo los $k$ mejores resultados, osea todos), estaría generando una solución complemtamente aleatoria. Cualquier solución en medio tomará una solución golosa, pero con sierto grado de aleatoriedad.
+
+Luego a la solución obtenida por el algoritmo goloso modificado se le aplicarán una o varias de las búsquedas locales implementadas en un intento de mejorar aún mas la respuesta al óptimo.
 
 Como primer criterio de corte el algoritmo se correrá un número finito de veces, que será determinado en el momento de experimentación.
 
@@ -18,9 +33,9 @@ A continuación se formaliza de manera más precisa el algoritmo:
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
 		 \caption{ GRASP1(SoluciónInicial) }
-		 \STATE{while(1)}
-		 	\STATE{\quad Genero una solución inicial a partir del Algoritmo Goloso}
-		 	\STATE{\quad Utilizo búsqueda local 2 para mejorar la solución inicial}
+		 \STATE{while(true)}
+		 	\STATE{\quad Corro el Algoritmo Goloso desarrollado previamente}
+		 	\STATE{\quad Utilizo búsqueda local 2 para mejorar la solución obtenida previamente}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
 		 	\STATE{\quad Si tras 1000 iteraciones no se pudo conseguir una mejor solución}
 		 	\STATE{\quad\quad Devuelvo la solución}
@@ -30,9 +45,9 @@ A continuación se formaliza de manera más precisa el algoritmo:
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
 		 \caption{ GRASP2(SoluciónInicial) }
-		 \STATE{while(1)}
-		 	\STATE{\quad Genero una solución inicial a partir del Algoritmo Goloso}
-		 	\STATE{\quad Utilizo búsqueda local 1 para mejorar la solución}
+		 \STATE{while(true)}
+		 	\STATE{\quad Corro el Algoritmo Goloso desarrollado previamente}
+		 	\STATE{\quad Utilizo búsqueda local 1 para mejorar la solución obtenida previamente}
 		 	\STATE{\quad Utilizo búsqueda local 3 para mejorar la solución}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
 		 	\STATE{\quad Si tras 1000 iteraciones no se pudo conseguir una mejor solución}
