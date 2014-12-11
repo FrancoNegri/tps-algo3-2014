@@ -61,7 +61,9 @@ En el siguiente apartado de experimentación se intentarán calibrar tanto los p
 
 \section{Experimentación}
 
-Para la primera parte de experimentación variaremos el parametro $x$ dejando fijo $z = 10000$ y veremos como varían las soluciones.
+Para cada uno de los algoritmos seteamos ambos parametros $x$ y $z$ de manera arbitraria para obtener resultados mas o menos adecuados.
+
+Luego para aproximar mas estos resultados comenzamos a variar $x$ dejando fijo $z$ y viendo cuales son los cambios en la performance de cada uno de los GRASPs.
 
 Para eso tomamos un grafo completo de $500$ nodos tal que las aristas tienen pesos enteros aleatorios entre $1$ y $100$. Corremos el algoritmo con $x=1$, lo que equivale a una solución inicial obtenida por el algoritmo goloso deterministico, $x=k$ una solución inicial completamente aleatoria, y luego soluciones intermedias para $x = 0.25 k$, $x = 0.50k$ y $x = 0.75 k$.
 
@@ -80,4 +82,7 @@ Para el grafo de $500$ nodos y $k = 400$:
 
 \includegraphics[scale=0.5]{Ej5/comparacionEntreGrasp400.jpg}
 
-Acá digo: bueno, ya determiné que $x = ??$. Ahora varío la cantidad de iteraciones.
+De esta manera determinamos que los mejores resultados para este testeo se obtienen con un $x$ fijo igual a $1$. Para ajustar mejor el valor de $x$, ahora tomamos otro grafo de $500$ nodos, y variamos nuevamente el $x$ para valores proximos a $1$. Nuevamente variamos tambien el $k$ para ver como se ven afectados los resultados.
+
+
+
