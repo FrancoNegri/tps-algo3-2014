@@ -14,6 +14,8 @@
 #include <queue>
 #include <set>
 #include "../Ej4/busqueda_local2.cpp"
+#include "../Ej4/busqueda_local3.cpp"
+#include "../Ej4/busqueda_local.cpp"
 #include <chrono>
 
 using namespace std;
@@ -31,12 +33,13 @@ using namespace std;
 #endif
 
 
-
 vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &noseusa, int k, int n){
-
-	//int cuantosMejores = (PORCENTAJEDEMEJORES*n)/100;
-	int cuantosMejores = (PORCENTAJEDEMEJORES*k)/100;
 	
+	//int cuantosMejores = (PORCENTAJEDEMEJORES*n)/100;
+	//int cuantosMejores = (PORCENTAJEDEMEJORES*k)/100;
+	int cuantosMejores = PORCENTAJEDEMEJORES;
+
+
 	if(cuantosMejores == 0)
 		cuantosMejores = 1;
 
@@ -53,15 +56,14 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 
 	vector<int> en_que_subconjunto_esta_cada_nodo;
 
+	//meto el nodo 1 en cualquiera de los conjuntos, por ahora son todos iguales.
+	en_que_subconjunto_esta_cada_nodo.push_back(0);
 	//del punto de arriba, el nodo 1 va a ir en el subconjunto 1, asi que tambien digo eso.
 	en_que_subconjunto_esta_cada_nodo.resize(n);
-
-	//meto el nodo 1 en cualquiera de los conjuntos, por ahora son todos iguales.
-	en_que_subconjunto_esta_cada_nodo[0] = 0;
-
 	subconjuntos[0].push_back(0);
 	for(int i = 1; i < n; i++ )
 	{
+		
 		for(int l = 0; l < cuantosMejores ; l++)
 		{
 			resultados[l] = INFINITO;
@@ -104,7 +106,7 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 				resultados[indiceMax] = aux;
 				indices[indiceMax] = j;
 			}	
-
+			
 
 			//for(int w = 0; w < cuantosMejores&& !encontre; w++)
 			//{
@@ -132,10 +134,11 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 
 
 
+
 vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n)
 {
 
-	srand(unsigned(time(NULL)));
+	srand(0);
 	int cantidadDeVecesQueSeLlegoAmejorSol = 0;
 	int min_total = INFINITO;
 	vector <int> mejor_solucion;
@@ -146,8 +149,13 @@ vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 	{
 		en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
 
+
+		en_que_subconjunto_esta_cada_nodo = busqueda_local3(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
+
 		en_que_subconjunto_esta_cada_nodo = busqueda_local2(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
 
+		en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
+		
 		int total = 0;
 		for(int j = 0; j < k; j++)
 		{

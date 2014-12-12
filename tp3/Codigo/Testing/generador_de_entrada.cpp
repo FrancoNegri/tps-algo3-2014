@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 	random_shuffle (ejes.begin(), ejes.end());
 
 	ofstream myfile;
-	myfile.open ("testing/test.txt");
+	myfile.open ("testing/test.in");
 
 	myfile << n << " " << m << " " << k << endl;
 
