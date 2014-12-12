@@ -9,23 +9,132 @@ g++ -O2 -std=c++0x generador_de_entrada.cpp -o $DIR/tester
 
 
 
-for equis in {2..10}
-do
+# for equis in {2..100}
+# do
+#     echo "Compilando Codigo con x =" $equis
+#     g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G1
+#     g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G2
+#     g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G3
+#     echo "OK!"
+#     echo "Corriendo Tests"
+#     for test in {1..4}
+#     do
+#         ./$DIR/tester 500 124750 100
+#         ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
+#         ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
+#         ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
+#     done
+#     echo "OK!"
+# done
+
+
     echo "Compilando Codigo con x =" $equis
-    g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G1
-    g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G2
-    g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G3
+    g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=0 -o $DIR/G1
+    g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=0 -o $DIR/G2
+    g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=0 -o $DIR/G3
     echo "OK!"
     echo "Corriendo Tests"
-    for test in {1..100}
+    for test in {1..4}
     do
-        ./$DIR/tester 50 1225 10
+        ./$DIR/tester 500 124750 100
         ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
         ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
         ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
     done
     echo "OK!"
-done
+
+        echo "Compilando Codigo con x =" $equis
+    g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=25 -o $DIR/G1
+    g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=25 -o $DIR/G2
+    g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=25 -o $DIR/G3
+    echo "OK!"
+    echo "Corriendo Tests"
+    for test in {1..4}
+    do
+        ./$DIR/tester 500 124750 100
+        ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
+        ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
+        ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
+    done
+    echo "OK!"
+
+        echo "Compilando Codigo con x =" $equis
+    g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=50 -o $DIR/G1
+    g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=50 -o $DIR/G2
+    g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=50 -o $DIR/G3
+    echo "OK!"
+    echo "Corriendo Tests"
+    for test in {1..4}
+    do
+        ./$DIR/tester 500 124750 100
+        ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
+        ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
+        ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
+    done
+    echo "OK!"
+
+        echo "Compilando Codigo con x =" $equis
+    g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=75 -o $DIR/G1
+    g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=75 -o $DIR/G2
+    g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=75 -o $DIR/G3
+    echo "OK!"
+    echo "Corriendo Tests"
+    for test in {1..4}
+    do
+        ./$DIR/tester 500 124750 100
+        ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
+        ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
+        ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
+    done
+    echo "OK!"
+
+        echo "Compilando Codigo con x =" $equis
+    g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=100 -o $DIR/G1
+    g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=100 -o $DIR/G2
+    g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=100 -o $DIR/G3
+    echo "OK!"
+    echo "Corriendo Tests"
+    for test in {1..4}
+    do
+        ./$DIR/tester 500 124750 100
+        ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
+        ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
+        ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
+    done
+    echo "OK!"
+
+#testeo si es un valor fijo de "oro" o es un porcentaje que varía con k
+# echo "Compilando Codigo con x =" $equis
+# g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=30 -o $DIR/G1
+# g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=30 -o $DIR/G2
+# g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=30 -o $DIR/G3
+# echo "OK!"
+# echo "Corriendo Tests"
+# for test in {1..4}
+# do
+#     ./$DIR/tester 500 124750 100
+#     ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
+#     ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
+#     ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
+# done
+# echo "OK!"
+
+
+# echo "Compilando Codigo con x =" $equis
+# g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=3 -o $DIR/G1
+# g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=3 -o $DIR/G2
+# g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=3 -o $DIR/G3
+# echo "OK!"
+# echo "Corriendo Tests"
+# for test in {1..4}
+# do
+#     ./$DIR/tester 500 124750 100
+#     ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
+#     ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
+#     ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
+# done
+# echo "OK!"
+
 
 echo "Procesando Resultados..."
 #tiempos son las lineas pares
@@ -76,6 +185,6 @@ do
 done
 echo "Limpiando Archivos"
 rm -rf $DIR/tester
-rm -rf $DIR/G*
+#rm -rf $DIR/G*
 rm -rf $DIR/*.txt
 echo "OK!"
