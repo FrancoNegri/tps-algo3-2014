@@ -20,19 +20,15 @@ La idea es la siguiente, para cada paso del algoritmo, corremos una versión mod
 
 Notar que si $x=1$ entonces estamos obteniendo el mismo algoritmo goloso que en el apartado anterior. En cambio, si tomo $x = k$ (esto es, tomo los $k$ mejores resultados, osea todos), estaría generando una solución complemtamente aleatoria. Cualquier solución en medio tomará una solución golosa, pero con sierto grado de aleatoriedad.
 
-Luego a la solución obtenida por el algoritmo goloso modificado se le aplicarán una o varias de las búsquedas locales implementadas en un intento de mejorar aún mas la respuesta al óptimo.
+Luego a la solución obtenida por el algoritmo goloso modificado se le aplicarán una de las búsquedas locales implementadas en un intento de mejorar aún mas la respuesta al óptimo.
 
-Como primer criterio de corte el algoritmo se correrá un número finito de veces, que será determinado en el momento de experimentación.
+Como criterio de corte se correrá el goloso aleatorizado y la busqueda local hasta que luego de un número $x$, a determinar, de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
 
-Como segundo criterio de corte se realizarán estos mismos pasos hasta que luego de un número $x$ a determinar de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
-
-Tras realizar diversas experimentaciones nos quedamos con dos versiones de GRASP, una que en el paso de búsqueda local usa la búsqueda local 2, y otra que en el paso de búsqueda local primero utiliza una búsqueda local 1 y luego una búsqueda local 3.
-
-A continuación se formaliza de manera más precisa el algoritmo:
+Dado que tenemos tres busquedas locales, se decide desarrollár tres GRASPs diferentes. Uno con cada una de las busquedas locales. A continuación se formaliza de manera más precisa los algoritmos de cada una:
 
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
-		 \caption{ GRASP1(SoluciónInicial) }
+		 \caption{ GRASP 1(SoluciónInicial) }
 		 \STATE{while(true)}
 		 	\STATE{\quad Corro el Algoritmo Goloso desarrollado previamente}
 		 	\STATE{\quad Utilizo búsqueda local 2 para mejorar la solución obtenida previamente}
@@ -44,20 +40,31 @@ A continuación se formaliza de manera más precisa el algoritmo:
 
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
-		 \caption{ GRASP2(SoluciónInicial) }
+		 \caption{ GRASP 2(SoluciónInicial) }
 		 \STATE{while(true)}
 		 	\STATE{\quad Corro el Algoritmo Goloso desarrollado previamente}
-		 	\STATE{\quad Utilizo búsqueda local 1 para mejorar la solución obtenida previamente}
-		 	\STATE{\quad Utilizo búsqueda local 3 para mejorar la solución}
+		 	\STATE{\quad Utilizo búsqueda local 2 para mejorar la solución obtenida previamente}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
 		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
-		 	\STATE{\quad\quad Devuelvo la mejor solución}
+		 	\STATE{\quad\quad Devuelvo la solución}
+	\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  	\begin{algorithmic}[1]\parskip=1mm
+		 \caption{ GRASP 3(SoluciónInicial) }
+		 \STATE{while(true)}
+		 	\STATE{\quad Corro el Algoritmo Goloso desarrollado previamente}
+		 	\STATE{\quad Utilizo búsqueda local 2 para mejorar la solución obtenida previamente}
+		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
+		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
+		 	\STATE{\quad\quad Devuelvo la solución}
 	\end{algorithmic}
 \end{algorithm}
 
 En estos dos casos $z$ será un numero entero entre $1$ e infinito.
 
-En el siguiente apartado de experimentación se intentarán calibrar tanto los parametros $x$ y $z$ para así obtener los mejores resultados posibles, tratando siempre de equilibrar performance y exactitud de los reslutados.
+En el siguiente apartado de experimentación se intentarán calibrar tanto el parametros $x$ como el parametro $z$ para así obtener los mejores resultados posibles con estas metaeuristicas, tratando siempre de equilibrar performance y exactitud de los reslutados.
 
 \section{Experimentación}
 
@@ -71,12 +78,15 @@ Luego los resultados obtenidos para el grafo con $500$ nodos y $k = 50$ son los 
 
 \includegraphics[scale=0.5]{Ej5/comparacionEntreGrasp50.jpg}
 
-Para el grafo de $500$ nodos y $k = 200$:
+Hasta aquí los resultados parecerían indicar que tomando $x = 1$ pequeño se obtienen resultados muy superiores a los demas casos, tanto en los tiempos obtenidos, como en los conjuntos encontrados.
+
+Se procede a realizar la experimentación para el mismo grafo de $500$ nodos, pero ahora con $k = 200$:
 
 \includegraphics[scale=0.5]{Ej5/comparacionEntreGrasp200.jpg}
 
+Nuevamente podemos observar que para $x = 1$ se obtienen los mejores resultados tanto en performance como en tiempo.
 
-Para el grafo de $500$ nodos y $k = 400$:
+Ahora realizando la experimentación con $k = 400$, se obtiene:
 
 \includegraphics[scale=0.5]{Ej5/comparacionEntreGrasp400.jpg}
 
