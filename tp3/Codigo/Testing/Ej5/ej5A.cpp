@@ -26,7 +26,7 @@ using namespace std;
 #define PORCENTAJEDEMEJORES 25
 #endif
 #ifndef CANTIDADDEEXITOS
-#define CANTIDADDEEXITOS 10
+#define CANTIDADDEEXITOS 30
 #endif
 
 vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &noseusa, int k, int n){
