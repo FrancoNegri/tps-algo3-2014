@@ -9,17 +9,17 @@ g++ -O2 -std=c++0x generador_de_entrada.cpp -o $DIR/tester
 
 
 
-for equis in {0..100}
+for test in {1..100}
 do
-    echo "Compilando Codigo con x =" $equis
-    g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G1
-    g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G2
-    g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G3
-    echo "OK!"
-    echo "Corriendo Tests"
-    for test in {1..4}
+    echo "Corriendo Test:" $test
+    ./$DIR/tester 500 124750 100
+    for equis in {0..100}
     do
-        ./$DIR/tester 500 124750 100
+        #echo "Compilando Codigo con x =" $equis
+        g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G1
+        g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G2
+        g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G3
+        #echo "OK!"
         ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
         ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
         ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
