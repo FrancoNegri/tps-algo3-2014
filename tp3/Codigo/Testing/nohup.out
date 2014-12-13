@@ -5225,3 +5225,203 @@ sed: no se puede leer testing/r2100.txt: No existe el archivo o el directorio
 sed: no se puede leer testing/r3100.txt: No existe el archivo o el directorio
 Limpiando Archivos
 OK!
+rm: no se puede borrar «testing/*»: No existe el archivo o el directorio
+Compilando Codigo con x =
+OK!
+Corriendo Tests
+rm: no se puede borrar «testing/*»: No existe el archivo o el directorio
+Compilando Codigo con x = 0
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 1
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 2
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 3
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 4
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 5
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 6
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 7
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 8
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 9
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 10
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 11
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 12
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 13
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 14
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 15
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 16
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 17
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 18
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 19
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 20
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 21
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 22
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 23
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 24
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 25
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 26
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 27
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 28
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 29
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 30
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 31
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 32
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 33
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 34
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 35
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 36
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 37
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 38
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 39
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 40
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 41
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 42
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 43
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 44
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 45
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 46
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 47
+OK!
+Corriendo Tests
+OK!
+Compilando Codigo con x = 48
+OK!
+Corriendo Tests
