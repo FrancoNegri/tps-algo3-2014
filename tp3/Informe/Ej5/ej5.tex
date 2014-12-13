@@ -3,7 +3,7 @@
 
 Para la metaheurística de GRASP, tomaremos el algoritmo goloso previamente implementado y lo combinaremos con las diferentes búsquedas locales también previamente implementadas.
 
-La idea es la siguiente, para cada paso del algoritmo, corremos una versión modificada del goloso de manera tal de permitir sierta aleatoriedad en los resultados. El algoritmo goloso será modificado de la siguiente manera:
+La idea es la siguiente, para cada paso del algoritmo, corremos una versión modificada del goloso de manera tal de permitir cierta aleatoriedad en los resultados. El algoritmo goloso será modificado de la siguiente manera:
 
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
@@ -13,25 +13,25 @@ La idea es la siguiente, para cada paso del algoritmo, corremos una versión mod
  		\STATE{Para cada nodo $i$ de $1$ a $n$: }
 		\STATE{\quad Para cada conjunto}
 			\STATE{\quad\quad Sumo todos los pesos de las aristas de ($i$,$j$) con $j$ los vértices que están en el conjunto}
- 		\STATE{\quad Del los mejores $x$ resultados, tomo uno al azar y pongo a $i$ en ese conjunto}
+ 		\STATE{\quad De los mejores $x$ resultados, tomo uno al azar y pongo a $i$ en ese conjunto}
 		\STATE{Devuelvo la respuesta}
 \end{algorithmic}
 \end{algorithm} 
 
-Notar que si $x=1$ entonces estamos obteniendo el mismo algoritmo goloso que en el apartado anterior. En cambio, si tomo $x = k$ (esto es, tomo los $k$ mejores resultados, osea todos), estaría generando una solución complemtamente aleatoria. Cualquier solución en medio tomará una solución golosa, pero con sierto grado de aleatoriedad.
+Notar que si $x=1$ entonces estamos obteniendo el mismo algoritmo goloso que en el apartado anterior. En cambio, si tomo $x = k$ (esto es, tomo los $k$ mejores resultados, o sea todos), estaría generando una solución completamente aleatoria. Cualquier solución en medio tomará una solución golosa, pero con cierto grado de aleatoriedad.
 
-Luego a la solución obtenida por el algoritmo goloso modificado se le aplicarán una de las búsquedas locales implementadas en un intento de mejorar aún mas la respuesta al óptimo.
+Luego a la solución obtenida por el algoritmo goloso modificado se le aplicarán una de las búsquedas locales implementadas en un intento de acercar aún mas la respuesta al óptimo.
 
-Como criterio de corte se correrá el goloso aleatorizado y la busqueda local hasta que luego de un número $x$, a determinar, de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
+Como criterio de corte se correrá el goloso aleatorizado y la busqueda local hasta que luego de que un número $x$, a determinar, de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
 
-Dado que tenemos tres busquedas locales, se decide desarrollár tres GRASPs diferentes. Uno con cada una de las busquedas locales. A continuación se formaliza de manera más precisa los algoritmos de cada una:
+Dado que tenemos tres busquedas locales, se decide desarrollar tres GRASPs diferentes. Uno con cada una de las busquedas locales. A continuación se formaliza de manera más precisa los algoritmos de cada una:
 
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
 		 \caption{ GRASP 1(SoluciónInicial) }
 		 \STATE{while(true)}
 		 	\STATE{\quad Corro el Algoritmo Goloso modificado}
-		 	\STATE{\quad Utilizo búsqueda local 2 para mejorar la solución obtenida previamente}
+		 	\STATE{\quad Utilizo búsqueda local 1 para mejorar la solución obtenida previamente}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
 		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
 		 	\STATE{\quad\quad Devuelvo la solución}
@@ -55,26 +55,26 @@ Dado que tenemos tres busquedas locales, se decide desarrollár tres GRASPs dife
 		 \caption{ GRASP 3(SoluciónInicial) }
 		 \STATE{while(true)}
 		 	\STATE{\quad Corro el Algoritmo Goloso modificado}
-		 	\STATE{\quad Utilizo búsqueda local 2 para mejorar la solución obtenida previamente}
+		 	\STATE{\quad Utilizo búsqueda local 3 para mejorar la solución obtenida previamente}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
 		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
 		 	\STATE{\quad\quad Devuelvo la solución}
 	\end{algorithmic}
 \end{algorithm}
 
-En estos dos casos $z$ será un numero entero entre $1$ e infinito.
+En estos tres casos $z$ será un numero entero entre $1$ e infinito.
 
-En el siguiente apartado de experimentación se intentarán calibrar tanto el parametros $x$ como el parametro $z$ para así obtener los mejores resultados posibles con estas metaeuristicas, tratando siempre de equilibrar performance y exactitud de los reslutados.
+En el siguiente apartado de experimentación se intentarán calibrar tanto el parámetro $x$ como el parámetro $z$ para así obtener los mejores resultados posibles con estas metaheurísticas, tratando siempre de equilibrar performance y exactitud de los resultados.
 
 \section{Experimentación}
 
-Para cada uno de los algoritmos seteamos ambos parametros $x$ y $z$ de manera arbitraria para obtener resultados mas o menos adecuados.
+Para cada uno de los algoritmos seteamos ambos parametros $x$ y $z$ de manera arbitraria para obtener resultados más o menos adecuados.
 
-Luego para aproximar mas estos resultados comenzamos a variar $x$ dejando fijo $z$ y viendo cuales son los cambios en la performance de cada uno de los GRASPs.
+Luego para aproximar más estos resultados comenzamos a variar $x$ dejando fijo $z$ y viendo cuales son los cambios en la performance de cada uno de los GRASPs.
 
-Para eso tomamos un grafo completo de $500$ nodos tal que las aristas tienen pesos enteros aleatorios entre $1$ y $100$. Corremos el algoritmo con $x=1$, lo que equivale a una solución inicial obtenida por el algoritmo goloso deterministico, $x=k$ una solución inicial completamente aleatoria, y luego soluciones intermedias para $x = 0.25 k$, $x = 0.50k$ y $x = 0.75 k$.
+Para eso tomamos un grafo completo de $500$ nodos tal que las aristas tienen pesos enteros aleatorios entre $1$ y $100$. Corremos el algoritmo con $x=1$, lo que equivale a una solución inicial obtenida por el algoritmo goloso determinístico, $x=k$ una solución inicial completamente aleatoria, y luego soluciones intermedias para $x = \lfloor0.25 k\rfloor$, $x = \lfloor0.50 k\rfloor$ y $x = \lfloor0.75 k\rfloor$.
 
-Dado que la solución depende fuertemente de $k$ al grafo antes mencionado, le variaremos el $k$ para tres instancias diferentes con $k = 50$, $k = 200$ y $k = 400$.
+Dado que la solución depende fuertemente de $k$ para el grafo antes mencionado, le variaremos el $k$ para tres instancias diferentes con $k = 50$, $k = 200$ y $k = 400$.
 
 Luego los resultados obtenidos para el grafo con $500$ nodos y $k = 50$ son los siguientes:
 
