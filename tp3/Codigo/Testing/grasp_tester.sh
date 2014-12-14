@@ -13,12 +13,12 @@ for test in {1..100}
 do
     echo "Corriendo Test:" $test
     ./$DIR/tester 500 124750 100
-    for equis in {0..100}
+    for equis in {0..10}
     do
         #echo "Compilando Codigo con x =" $equis
-        g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G1
-        g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G2
-        g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=$equis -o $DIR/G3
+        g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=$(( $equis*10 )) -o $DIR/G1
+        g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=$(( $equis*10 )) -o $DIR/G2
+        g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=$(( $equis*10 )) -o $DIR/G3
         #echo "OK!"
         ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
         ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
