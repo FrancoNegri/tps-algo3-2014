@@ -3,7 +3,7 @@
 
 Para la metaheurística de GRASP, tomaremos el algoritmo goloso previamente implementado y lo combinaremos con las diferentes búsquedas locales también previamente implementadas.
 
-La idea es la siguiente, para cada paso del algoritmo, corremos una versión modificada del goloso de manera tal de permitir cierta aleatoriedad en los resultados. El algoritmo goloso será modificado de la siguiente manera:
+La idea es la siguiente, para cada paso del algoritmo, correremos una versión modificada del goloso de manera tal de permitir cierta aleatoriedad en los resultados. El algoritmo goloso será modificado de la siguiente manera:
 
 \begin{algorithm}
   \begin{algorithmic}[1]\parskip=1mm
@@ -18,13 +18,13 @@ La idea es la siguiente, para cada paso del algoritmo, corremos una versión mod
 \end{algorithmic}
 \end{algorithm} 
 
-Notar que si $x=1$ entonces estamos obteniendo el mismo algoritmo goloso que en el apartado anterior. En cambio, si tomo $x = k$ (esto es, tomo los $k$ mejores resultados, o sea todos), estaría generando una solución completamente aleatoria. Cualquier solución en medio tomará una solución golosa, pero con cierto grado de aleatoriedad.
+Notar que si $x=1$ entonces estaríamos obteniendo el mismo algoritmo goloso que en el apartado anterior. En cambio, si tomo $x = k$ (esto es, tomo los $k$ mejores resultados, o sea todos), estaría generando una solución completamente aleatoria. Cualquier solución en medio tomará una solución golosa, pero con cierto grado de aleatoriedad.
 
-Luego a la solución obtenida por el algoritmo goloso modificado se le aplicarán una de las búsquedas locales implementadas en un intento de acercar aún mas la respuesta al óptimo.
+Luego, a la solución obtenida por el algoritmo goloso modificado, se le aplicarán una o varias de las búsquedas locales implementadas, en un intento de acercarnos aún más a la respuesta óptima.
 
-Como criterio de corte se correrá el goloso aleatorizado y la busqueda local hasta que luego de que un número $x$, a determinar, de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
+Como criterio de corte se correrá el goloso aleatorizado y la busqueda local hasta que luego de que un número $z$, a determinar, de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
 
-Dado que tenemos tres busquedas locales, se decide desarrollar tres GRASPs diferentes. Uno con cada una de las busquedas locales. A continuación se formaliza de manera más precisa los algoritmos de cada una:
+Teniendo a nuestra disposición tres búsquedas locales distintas, decidimos desarrollar tres GRASPs de tal manera que combinen de forma diferente estas búsquedas. El primero sólo utiliza la búsqueda local $1$, el segundo utiliza las tres búsquedas locales en orden descendente, es decir, primero la $3$, luego la $2$ y por último la $1$, y finalmente, el tercer y último GRASP utiliza dos búsquedas locales, en primer lugar la $3$ y luego la $1$. A continuación se formaliza de manera más precisa los algoritmos de cada uno:
 
 \begin{algorithm}
   	\begin{algorithmic}[1]\parskip=1mm
@@ -43,7 +43,9 @@ Dado que tenemos tres busquedas locales, se decide desarrollar tres GRASPs difer
 		 \caption{ GRASP 2(SoluciónInicial) }
 		 \STATE{while(true)}
 		 	\STATE{\quad Corro el Algoritmo Goloso modificado}
-		 	\STATE{\quad Utilizo búsqueda local 2 para mejorar la solución obtenida previamente}
+		 	\STATE{\quad Utilizo búsqueda local 3 para mejorar la solución obtenida previamente}
+		 	\STATE{\quad Utilizo búsqueda local 2 para mejorar aún más la solución obtenida previamente}
+		 	\STATE{\quad Utilizo búsqueda local 1 para nuevamente mejorar la solución obtenida previamente}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
 		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
 		 	\STATE{\quad\quad Devuelvo la solución}
@@ -56,6 +58,7 @@ Dado que tenemos tres busquedas locales, se decide desarrollar tres GRASPs difer
 		 \STATE{while(true)}
 		 	\STATE{\quad Corro el Algoritmo Goloso modificado}
 		 	\STATE{\quad Utilizo búsqueda local 3 para mejorar la solución obtenida previamente}
+		 	\STATE{\quad Utilizo búsqueda local 1 para mejorar aún más la solución obtenida previamente}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
 		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
 		 	\STATE{\quad\quad Devuelvo la solución}
@@ -68,31 +71,44 @@ En el siguiente apartado de experimentación se intentarán calibrar tanto el pa
 
 \section{Experimentación}
 
-Para cada uno de los algoritmos seteamos ambos parametros $x$ y $z$ de manera arbitraria para obtener resultados más o menos adecuados.
+Para poder llegar a nuestro objetivo de encontrar los mejores parámetros $x$ y $z$ a utilizar en las metaheurísticas, procederemos a hacer pruebas dejando fijo uno de los dos valores y variando el otro.
+En primer lugar tomaremos un valor fijo arbitrario para $z$ y variaremos $x$. Esta prueba consistirá en tomar un grafo y un $k$ fijo, y correr cada metaheurística con ese grafo como entrada y variando el parámetro $x$. Una vez hecho esto, analizaremos para cuál valor de $x$ se llegó a una mejor solución, es decir, el que más minimizó el peso total. Este parámetro $x$ no podrá ser mayor que $k$ ya que si tengo $k$ conjuntos carece de sentido elegir entre los mejores $k'$ conjuntos siendo $k'>k$. Debido a lo previamente mencionado decidimos que $x$ sea un porcentaje de $k$, que variaremos entre $0$ y $100$ saltando de a 10, es decir, $x$ tomará los valores $0$, $10$, $20$,...,$90$ y $100$ 
 
-Luego para aproximar más estos resultados comenzamos a variar $x$ dejando fijo $z$ y viendo cuales son los cambios en la performance de cada uno de los GRASPs.
+Realizamos un primer experimento que consistió en lo siguiente:
+Como primer paso generamos un grafo completo de $500$ nodos para tomarlo como entrada de los GRASPs junto a un $k=100$ fijo. Luego para cada valor de $x$ corrimos los tres GRASPs. Para cada uno de los GRASPs se obtuvo un $x$ ganador, es decir, el $x$ que minimizó el peso en cada caso. Este proceso se realizó 100 veces, siempre generando un grafo completo con pesos distintos en las aristas y en cada caso consiguiendo un $x$ ganador. A continuación se presenta un gráfico, en cual se encuentran los tres GRASPs, que muestra para cada $x$ cuántas de las 100 veces "ganó". 
 
-Para eso tomamos un grafo completo de $500$ nodos tal que las aristas tienen pesos enteros aleatorios entre $1$ y $100$. Corremos el algoritmo con $x=1$, lo que equivale a una solución inicial obtenida por el algoritmo goloso determinístico, $x=k$ una solución inicial completamente aleatoria, y luego soluciones intermedias para $x = \lfloor0.25 k\rfloor$, $x = \lfloor0.50 k\rfloor$ y $x = \lfloor0.75 k\rfloor$.
+%ACÁ EL GRÁFICO DE LOS 3 GRASP PARA 500 NODOS.
 
-Dado que la solución depende fuertemente de $k$ para el grafo antes mencionado, le variaremos el $k$ para tres instancias diferentes con $k = 50$, $k = 200$ y $k = 400$.
+Por lo que se ve en el gráfico, puede inferirse que para $x=10$ se logran los mejores resultados en los tres GRASPs, al menos para el caso de 500 nodos. Para no quedarnos solamente con esta prueba, realizamos este mismo experimento nuevamente pero esta vez con $1000$ nodos. A continuación el gráfico correspondiente.
 
-Luego los resultados obtenidos para el grafo con $500$ nodos y $k = 50$ son los siguientes:
+%ACÁ EL GRÁFICO DE LOS 3 GRASP PARA 1000 NODOS
 
-\includegraphics[scale=0.5]{Ej5/comparacionEntreGrasp50.jpg}
+Los resultados son claros, nuevamente $x=10$ es el ganador. Con esto podemos concluir con cierto grado de seguridad que el mejor valor para $x$ es $10$.
 
-Hasta aquí los resultados parecerían indicar que tomando $x = 1$ pequeño se obtienen resultados muy superiores a los demas casos, tanto en los tiempos obtenidos, como en los conjuntos encontrados.
+%------------------REVISAR ESTO---------------------
+Respecto al tiempo que tardan los algoritmos, no se aprecian diferencias significativas, se podría decir que son despreciables.
+%En realidad me parece que con un menor numero de cuantosMejores debería tardar menos... pero hay que fijarse lo que dieron las pruebas.
 
-Se procede a realizar la experimentación para el mismo grafo de $500$ nodos, pero ahora con $k = 200$:
+Observando las soluciones que se obtienen eligiendo el mejor valor para $x$, podemos decir que hay mejoras de aproximadamente un $1\%$.
+%------------------REVISAR ESTO---------------------
 
-\includegraphics[scale=0.5]{Ej5/comparacionEntreGrasp200.jpg}
+Una vez obtenido el mejor valor para $x$, pasamos a buscar el mejor valor para $z$, con lo cual dejaremos fijo $x=10$ y variaremos el $z$.
 
-Nuevamente podemos observar que para $x = 1$ se obtienen los mejores resultados tanto en performance como en tiempo.
+Realizamos el segundo experimento, el cual consistió en hacer exactamente lo mismo que en el primer experimento pero esta vez variando $z$. A continuación se muestran los gráficos asociados.
 
-Ahora realizando la experimentación con $k = 400$, se obtiene:
+%ACÁ EL GRÁFICO DE 500 NODOS
+%Y ACÁ EL GRÁFICO DE 1000 NODOS
 
-\includegraphics[scale=0.5]{Ej5/comparacionEntreGrasp400.jpg}
+Como se puede ver en los gráficos, el resultado final no mejora por el hecho de iterar más veces una vez que no se llegó a una solución mejor, con lo cual se deduce que un bajo valor de $z$ será lo mejor ya que se estarían haciendo menos iteraciones y por lo tanto se reduciría el tiempo del algoritmo.
 
-De esta manera determinamos que los mejores resultados para este testeo se obtienen con un $x$ fijo igual a $1$. Para ajustar mejor el valor de $x$, ahora tomamos otro grafo de $500$ nodos, y variamos nuevamente el $x$ para valores proximos a $1$. Nuevamente variamos tambien el $k$ para ver como se ven afectados los resultados.
+Finalmente con estos valores para $x$ y $z$, realizamos un último experimento para comparar las soluciones y los tiempos de cada GRASP.
 
+Este último experimento consistió en:
+%Bueno acá rellenar con lo que se hizo para comparar los GRASPs.
 
+A continuación el gráfico que representa esta última comparación.
+%Y poner el gráfico o los gráficos correspondientes acá (SOLUCIONES Y QUIZÁS TIEMPO)
 
+Como se puede apreciar en el gráfico, el GRASP $...RELLENE AQUÍ...$ es el que llega a una mejor solución. Respecto a los tiempos se puede ver que ... %Bueno acá hay que poner algo coherente con lo que dieron los tiempos.
+
+Para concluir, con todo lo visto hasta aquí, podemos afirmar con bastante certeza que el GRASP $...RELLENE AQUÍ...$ con los parámetros $x=10$ y $z=RELLENE AQUÍ$ es la metaheurística que mejor funciona, la más efectiva, es decir, la que mejor soluciones consigue en la relación al tiempo que tarda.
