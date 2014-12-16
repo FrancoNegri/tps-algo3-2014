@@ -1,4 +1,4 @@
-\section{Introducción\'on}
+\subsection{Introducción\'on}
 
 En esta sección se implementarán heurísticas de búsqueda local para tratar de resolver el problema de $k-PMP$, intentando con diferentes métodos para alcanzar una solución y diferentes vecindades.
 
@@ -70,7 +70,7 @@ Dada nuestra implementación de conjunto con listas simplemente enlazadas, encon
 
 \newpage
 
-\section{Análisis de Complejidades}
+\subsection{Análisis de Complejidades}
 
 Aquí analizaremos las complejidades de los diferentes algoritmos. Para cada uno de ellos elegimos una implementación con matriz de adyacencias para modelar el peso de las aristas y un vector de longitud variable para implementar los diferentes conjuntos.
 
@@ -81,7 +81,7 @@ Para el segundo algoritmo, por cada iteración del algoritmo la complejidad ser�
 
 El tercer algoritmo es simplemente el primer algoritmo pero esta vez para cada nodo además tomo un vecino, y realizo el mismo procedimiento que antes, esto para cada vecino, suponiendo que en el peor caso, para un nodo todos los otros nodos estén en el mismo conjunto, se tendrá que realizar el procedimiento de antes la misma cantidad de veces solo que ahora para dos nodos distintos, luego la complejidad continúa siendo $O(n^2 (n + n k + n^2))$. Acotando nuevamente $k$, obtenemos que el algoritmo es: $O(n^3)$
 
-\section{Testing}
+\subsection{Testing}
 
 En esta sección comprobaremos de manera empírica las complejidades antes calculadas y luego una comparación entre las tres diferentes heurísticas.
 
