@@ -24,13 +24,13 @@ do
 
     for j in {1..1}
     do
-        ./$DIR/ej2 < $DIR/test.txt >> $DIR/resultados2.txt
-        ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
-        ./$DIR/ej4.1 < $DIR/test.txt >> $DIR/resultados4.txt
-        #./$DIR/ej4.2 < $DIR/test.txt >> $DIR/resultados5.txt
-        #./$DIR/ej4.3 < $DIR/test.txt >> $DIR/resultados6.txt
-        ./$DIR/ej5A < $DIR/test.txt >> $DIR/resultados7.txt
-        #./$DIR/ej5B < $DIR/test.txt >> $DIR/resultados8.txt
+        ./$DIR/ej2 < $DIR/test.in >> $DIR/resultados2.txt
+        ./$DIR/ej3 < $DIR/test.in >> $DIR/resultados3.txt
+        ./$DIR/ej4.1 < $DIR/test.in >> $DIR/resultados4.txt
+        #./$DIR/ej4.2 < $DIR/test.in >> $DIR/resultados5.txt
+        #./$DIR/ej4.3 < $DIR/test.in >> $DIR/resultados6.txt
+        ./$DIR/ej5A < $DIR/test.in >> $DIR/resultados7.txt
+        #./$DIR/ej5B < $DIR/test.in >> $DIR/resultados8.txt
     done
         echo "OK!"
 done
@@ -46,12 +46,12 @@ do
         #pongo estas lineas para que no me rompa toda la estructura de los txt
         echo "0" >>  $DIR/resultados2.txt
         echo "0" >>  $DIR/resultados2.txt
-        ./$DIR/ej3 < $DIR/test.txt >> $DIR/resultados3.txt
-        ./$DIR/ej4.1 < $DIR/test.txt >> $DIR/resultados4.txt
-        #./$DIR/ej4.2 < $DIR/test.txt >> $DIR/resultados5.txt
-        #./$DIR/ej4.3 < $DIR/test.txt >> $DIR/resultados6.txt
-        ./$DIR/ej5A < $DIR/test.txt >> $DIR/resultados7.txt
-        #./$DIR/ej5B < $DIR/test.txt >> $DIR/resultados8.txt
+        ./$DIR/ej3 < $DIR/test.in >> $DIR/resultados3.txt
+        ./$DIR/ej4.1 < $DIR/test.in >> $DIR/resultados4.txt
+        #./$DIR/ej4.2 < $DIR/test.in >> $DIR/resultados5.txt
+        #./$DIR/ej4.3 < $DIR/test.in >> $DIR/resultados6.txt
+        ./$DIR/ej5A < $DIR/test.in >> $DIR/resultados7.txt
+        #./$DIR/ej5B < $DIR/test.in >> $DIR/resultados8.txt
     done
         echo "OK!"
 done
