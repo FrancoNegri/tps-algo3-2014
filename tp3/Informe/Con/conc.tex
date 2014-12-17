@@ -1,18 +1,35 @@
-\section{Experimentación Final}
+\subsection{Experimentación Final}
 
-Para concluir este trabajo, tomamos todos los algoritmos antes vistos y realizamos una experimentación conjunta entre todos para mostrar como se comparan entre sí.
+Para concluir este trabajo, tomamos el algoritmo de backtracking, el algoritmo goloso, el de busqueda local 1 y GRASP 1 y mediremos las diferencias de performance y de tiempos en cada uno para intentar sacar conclusiones.
 
-La primera de las experimentaciones se realizará con grafos completos de 23 vertices con pesos de las aristas elegidas al azar de forma  del 1 al 100. Sobre cada una de estas instancias se correrán todos los algoritmos antes descriptos, se tomarán cual es la mejor solucion encontrada por el mismo y cuanto tarda en encontrarla y en base a los resultados obtenidos se graficarán en una tabla comparativa donde puedan verse los resultados.
+Comenzaremos con un pequeño experimento variando $n$. Tomaremos grafos completos con $k = 5$, pesos aleaotrios en las aristas y variando la cantidad de nodos desde $1$ a $19$ y mediremos cuales son los k-PMP encontrados por cada algoritmo.
 
-De esta experimentación, se obitiene que:
+Los resultados arrojados por la experimentación pueden verse en el siguiente grafico:
 
-\includegraphics[scale=0.5]{Con/result.jpg}
+\includegraphics[scale=0.5]{Con/performance1.png}
 
-Nuevamente puede observarse que las mejores heuristicas son las de busqueda local 1 y GRASP 2.
+Lo primero que podemos observar es que para casos triviales con $n$ <= $k$ todos son capaces de encontrar la respuesta optima.
 
-Y los tiempos obtenidos son:
+Lo segundo que podemos observar, es que salvo un caso, el algoritmo goloso siempre pareciera ser el que encuentra las peores soluciones, llegando a obtener una respuesta un $33 \%$ alejada de la optima en el caso de $19$ nodos. (k-PMP encontrado por el backtrack: 644, k-PMP encontrado por la heuristica golosa: 860).
 
-\includegraphics[scale=0.5]{Con/tiempos.jpg}
+Las respuestas obtenidas por la busqueda local y el GRASP, resultan en general, en mucho mejores k-PMPs, desviandose hasta un $10\%$ de la respuesta por backtracking.
+
+Ademas de estos 19 casos, podemos ver que el algoritmo goloso encuentra $6$ soluciones exactas (las 5 triviales y una para $n = 9$), la busqueda local encuentra $10$ respuestas exactas y el GRASP encuentra $11$ respuestas exactas. Si bien este el set de datos no es muy significativo, ya es posible ver las ventajas que representan las dos ultimas heuristicas frente a la primera.
+
+Ademas, para estos 19 casos, medimos los tiempos que tardan en obtener una respuesta:
+
+\includegraphics[scale=0.5]{Con/tiempos1Back.png}
+
+\includegraphics[scale=0.5]{Con/tiempos1Otros.png}
+
+Como era de esperar, mietras que las heuristicas escalan de manera mas o menos polinomial, el backtracking escala de manera exponencial ascendiendo un orden de magnitud cada vez que asciende en uno el valor de $n$, hasta el punto que pasados los $19$ nodos, los tiempos empiezan a ser inviables.
+
+\subsection{Experimentación Final}
+
+En esta sección analizaremos cuantas respuestas exactas puede dar cada algoritmo para un grafo elegido mas o menos al azar. Para eso correremos el Backtrack sobre $100$ grafos de $19$ nodos completos, con pesos en las aristas aleaotrios entre 1 y 100 y $k = 4$ y veremos en cuantos casos cada algoritmo encuentra la respuesta exacta.
+
+Las respuestas obtenidas son las siguientes:
+
 
 \section{Conclusión}
 

@@ -1,0 +1,597 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title></title>
+	<meta name="generator" content="LibreOffice 4.2.7.2 (Linux)">
+	<meta name="created" content="0;0">
+	<meta name="changed" content="0;0">
+	
+	<style type="text/css"><!-- 
+		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Liberation Sans"; font-size:x-small }
+		 -->
+	</style>
+	
+</head>
+
+<body text="#000000">
+<table cellspacing="0" border="0">
+	<colgroup width="33"></colgroup>
+	<colgroup span="13" width="85"></colgroup>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left">Backtrack</td>
+		<td align="left">Goloso</td>
+		<td align="left">Busqueda Local 1</td>
+		<td align="left">GRASP 1</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="1" sdnum="1033;">1</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="6" sdnum="1033;">6</td>
+		<td align="right" sdval="10" sdnum="1033;">10</td>
+		<td align="right" sdval="11" sdnum="1033;">11</td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="2" sdnum="1033;">2</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="3" sdnum="1033;">3</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="4" sdnum="1033;">4</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="5" sdnum="1033;">5</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="6" sdnum="1033;">6</td>
+		<td align="right" sdval="11" sdnum="1033;">11</td>
+		<td align="right" sdval="36" sdnum="1033;">36</td>
+		<td align="right" sdval="11" sdnum="1033;">11</td>
+		<td align="right" sdval="11" sdnum="1033;">11</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-25" sdnum="1033;">-25</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="7" sdnum="1033;">7</td>
+		<td align="right" sdval="23" sdnum="1033;">23</td>
+		<td align="right" sdval="30" sdnum="1033;">30</td>
+		<td align="right" sdval="57" sdnum="1033;">57</td>
+		<td align="right" sdval="23" sdnum="1033;">23</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-7" sdnum="1033;">-7</td>
+		<td align="right" sdval="-34" sdnum="1033;">-34</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="8" sdnum="1033;">8</td>
+		<td align="right" sdval="52" sdnum="1033;">52</td>
+		<td align="right" sdval="95" sdnum="1033;">95</td>
+		<td align="right" sdval="52" sdnum="1033;">52</td>
+		<td align="right" sdval="52" sdnum="1033;">52</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-43" sdnum="1033;">-43</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="9" sdnum="1033;">9</td>
+		<td align="right" sdval="54" sdnum="1033;">54</td>
+		<td align="right" sdval="54" sdnum="1033;">54</td>
+		<td align="right" sdval="65" sdnum="1033;">65</td>
+		<td align="right" sdval="54" sdnum="1033;">54</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="-11" sdnum="1033;">-11</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="10" sdnum="1033;">10</td>
+		<td align="right" sdval="96" sdnum="1033;">96</td>
+		<td align="right" sdval="165" sdnum="1033;">165</td>
+		<td align="right" sdval="96" sdnum="1033;">96</td>
+		<td align="right" sdval="96" sdnum="1033;">96</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-69" sdnum="1033;">-69</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="11" sdnum="1033;">11</td>
+		<td align="right" sdval="124" sdnum="1033;">124</td>
+		<td align="right" sdval="149" sdnum="1033;">149</td>
+		<td align="right" sdval="132" sdnum="1033;">132</td>
+		<td align="right" sdval="149" sdnum="1033;">149</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-25" sdnum="1033;">-25</td>
+		<td align="right" sdval="-8" sdnum="1033;">-8</td>
+		<td align="right" sdval="-25" sdnum="1033;">-25</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="12" sdnum="1033;">12</td>
+		<td align="right" sdval="179" sdnum="1033;">179</td>
+		<td align="right" sdval="231" sdnum="1033;">231</td>
+		<td align="right" sdval="219" sdnum="1033;">219</td>
+		<td align="right" sdval="225" sdnum="1033;">225</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-52" sdnum="1033;">-52</td>
+		<td align="right" sdval="-40" sdnum="1033;">-40</td>
+		<td align="right" sdval="-46" sdnum="1033;">-46</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="13" sdnum="1033;">13</td>
+		<td align="right" sdval="206" sdnum="1033;">206</td>
+		<td align="right" sdval="247" sdnum="1033;">247</td>
+		<td align="right" sdval="206" sdnum="1033;">206</td>
+		<td align="right" sdval="212" sdnum="1033;">212</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-41" sdnum="1033;">-41</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="-6" sdnum="1033;">-6</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="14" sdnum="1033;">14</td>
+		<td align="right" sdval="267" sdnum="1033;">267</td>
+		<td align="right" sdval="336" sdnum="1033;">336</td>
+		<td align="right" sdval="267" sdnum="1033;">267</td>
+		<td align="right" sdval="302" sdnum="1033;">302</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-69" sdnum="1033;">-69</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="right" sdval="-35" sdnum="1033;">-35</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="15" sdnum="1033;">15</td>
+		<td align="right" sdval="292" sdnum="1033;">292</td>
+		<td align="right" sdval="400" sdnum="1033;">400</td>
+		<td align="right" sdval="346" sdnum="1033;">346</td>
+		<td align="right" sdval="307" sdnum="1033;">307</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-108" sdnum="1033;">-108</td>
+		<td align="right" sdval="-54" sdnum="1033;">-54</td>
+		<td align="right" sdval="-15" sdnum="1033;">-15</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="16" sdnum="1033;">16</td>
+		<td align="right" sdval="434" sdnum="1033;">434</td>
+		<td align="right" sdval="478" sdnum="1033;">478</td>
+		<td align="right" sdval="498" sdnum="1033;">498</td>
+		<td align="right" sdval="474" sdnum="1033;">474</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-44" sdnum="1033;">-44</td>
+		<td align="right" sdval="-64" sdnum="1033;">-64</td>
+		<td align="right" sdval="-40" sdnum="1033;">-40</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="17" sdnum="1033;">17</td>
+		<td align="right" sdval="422" sdnum="1033;">422</td>
+		<td align="right" sdval="566" sdnum="1033;">566</td>
+		<td align="right" sdval="528" sdnum="1033;">528</td>
+		<td align="right" sdval="566" sdnum="1033;">566</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-144" sdnum="1033;">-144</td>
+		<td align="right" sdval="-106" sdnum="1033;">-106</td>
+		<td align="right" sdval="-144" sdnum="1033;">-144</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="18" sdnum="1033;">18</td>
+		<td align="right" sdval="531" sdnum="1033;">531</td>
+		<td align="right" sdval="744" sdnum="1033;">744</td>
+		<td align="right" sdval="646" sdnum="1033;">646</td>
+		<td align="right" sdval="531" sdnum="1033;">531</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-213" sdnum="1033;">-213</td>
+		<td align="right" sdval="-115" sdnum="1033;">-115</td>
+		<td align="right" sdval="0" sdnum="1033;">0</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="right" sdval="19" sdnum="1033;">19</td>
+		<td align="right" sdval="644" sdnum="1033;">644</td>
+		<td align="right" sdval="860" sdnum="1033;">860</td>
+		<td align="right" sdval="805" sdnum="1033;">805</td>
+		<td align="right" sdval="797" sdnum="1033;">797</td>
+		<td align="left"><br></td>
+		<td align="right" sdval="-216" sdnum="1033;">-216</td>
+		<td align="right" sdval="-161" sdnum="1033;">-161</td>
+		<td align="right" sdval="-153" sdnum="1033;">-153</td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+	</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td colspan=8 rowspan=21 align="left"><br><img src="respuestas_html_6a808e84.png" width=605 height=340 hspace=42 vspace=19>
+		</td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+	<tr>
+		<td height="17" align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		<td align="left"><br></td>
+		</tr>
+</table>
+<!-- ************************************************************************** -->
+</body>
+
+</html>

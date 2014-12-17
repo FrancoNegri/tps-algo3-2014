@@ -7,184 +7,30 @@ DIR="testing"
 rm $DIR/*
 g++ -O2 -std=c++0x generador_de_entrada.cpp -o $DIR/tester
 
-
-
-for test in {1..100}
-do
-    echo "Corriendo Test:" $test
-    ./$DIR/tester 500 124750 100
-    for equis in {0..10}
-    do
-        #echo "Compilando Codigo con x =" $equis
-        g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=$(( $equis*10 )) -o $DIR/G1
-        g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=$(( $equis*10 )) -o $DIR/G2
-        g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=$(( $equis*10 )) -o $DIR/G3
-        #echo "OK!"
-        ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
-        ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
-        ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
-    done
-    echo "OK!"
-done
-
-
-#     echo "Compilando Codigo con x =" $equis
-#     g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=20 -o $DIR/G1
-#     g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=20 -o $DIR/G2
-#     g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=20 -o $DIR/G3
-#     echo "OK!"
-#     echo "Corriendo Tests"
-#     for test in {1..100}
-#     do
-#         ./$DIR/tester 500 124750 100
-#         ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
-#         ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
-#         ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
-#     done
-#     echo "OK!"
-
-#         echo "Compilando Codigo con x =" $equis
-#     g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=25 -o $DIR/G1
-#     g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=25 -o $DIR/G2
-#     g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=25 -o $DIR/G3
-#     echo "OK!"
-#     echo "Corriendo Tests"
-#     for test in {1..100}
-#     do
-#         ./$DIR/tester 500 124750 100
-#         ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
-#         ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
-#         ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
-#     done
-#     echo "OK!"
-
-#         echo "Compilando Codigo con x =" $equis
-#     g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=30 -o $DIR/G1
-#     g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=30 -o $DIR/G2
-#     g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=30 -o $DIR/G3
-#     echo "OK!"
-#     echo "Corriendo Tests"
-#     for test in {1..100}
-#     do
-#         ./$DIR/tester 500 124750 100
-#         ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
-#         ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
-#         ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
-#     done
-#     echo "OK!"
-
-#         echo "Compilando Codigo con x =" $equis
-#     g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=35 -o $DIR/G1
-#     g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=35 -o $DIR/G2
-#     g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=35 -o $DIR/G3
-#     echo "OK!"
-#     echo "Corriendo Tests"
-#     for test in {1..100}
-#     do
-#         ./$DIR/tester 500 124750 100
-#         ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
-#         ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
-#         ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
-#     done
-#     echo "OK!"
-
-#         echo "Compilando Codigo con x =" $equis
-#     g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=40 -o $DIR/G1
-#     g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=40 -o $DIR/G2
-#     g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=40 -o $DIR/G3
-#     echo "OK!"
-#     echo "Corriendo Tests"
-#     for test in {1..100}
-#     do
-#         ./$DIR/tester 500 124750 100
-#         ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
-#         ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
-#         ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
-#     done
-#     echo "OK!"
-
-#testeo si es un valor fijo de "oro" o es un porcentaje que varía con k
-# echo "Compilando Codigo con x =" $equis
-# g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=30 -o $DIR/G1
-# g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=30 -o $DIR/G2
-# g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=30 -o $DIR/G3
-# echo "OK!"
-# echo "Corriendo Tests"
-# for test in {1..4}
-# do
-#     ./$DIR/tester 500 124750 100
-#     ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
-#     ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
-#     ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
-# done
-# echo "OK!"
-
-
-# echo "Compilando Codigo con x =" $equis
-# g++ -O2 -std=c++0x Ej5/ej5A.cpp -D PORCENTAJEDEMEJORES=3 -o $DIR/G1
-# g++ -O2 -std=c++0x Ej5/ej5B.cpp -D PORCENTAJEDEMEJORES=3 -o $DIR/G2
-# g++ -O2 -std=c++0x Ej5/ej5C.cpp -D PORCENTAJEDEMEJORES=3 -o $DIR/G3
-# echo "OK!"
-# echo "Corriendo Tests"
-# for test in {1..4}
-# do
-#     ./$DIR/tester 500 124750 100
-#     ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
-#     ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
-#     ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
-# done
-# echo "OK!"
-
-
-echo "Procesando Resultados..."
-#tiempos son las lineas pares
-for test in {1..100}
-do
-    sed -n 2~2p $DIR/r1$test.txt > $DIR/t1$test.txt
-    sed -n 2~2p $DIR/r2$test.txt > $DIR/t2$test.txt
-    sed -n 2~2p $DIR/r3$test.txt > $DIR/t3$test.txt
-    # #performanece en las lineas impares
-    sed -n 1~2p $DIR/r1$test.txt > $DIR/p1$test.txt
-    sed -n 1~2p $DIR/r2$test.txt > $DIR/p2$test.txt
-    sed -n 1~2p $DIR/r3$test.txt > $DIR/p3$test.txt
-done
-
-echo "" > $DIR/resultados1
-echo "" > $DIR/tiempos1
-echo "" > $DIR/resultados2
-echo "" > $DIR/tiempos2
-echo "" > $DIR/resultados3
-echo "" > $DIR/tiempos3
-
+ g++ -O2 -std=c++0x Ej2/ej2.cpp -o $DIR/ej2
+ g++ -O2 -std=c++0x Ej3/ej3.cpp -o $DIR/ej3
+ g++ -O2 -std=c++0x Ej4/ej4.1.cpp -o $DIR/ej4.1
+ g++ -O2 -std=c++0x Ej5/ej5A.cpp -o $DIR/ej5A
 
 for test in {1..100}
 do
-    paste $DIR/resultados1 $DIR/t1$test.txt > $DIR/aux1.txt
-    paste $DIR/resultados2 $DIR/t2$test.txt > $DIR/aux2.txt
-    paste $DIR/resultados3 $DIR/t3$test.txt > $DIR/aux3.txt
-    
-    paste $DIR/tiempos1 $DIR/p1$test.txt > $DIR/aux4.txt
-    paste $DIR/tiempos2 $DIR/p2$test.txt > $DIR/aux5.txt
-    paste $DIR/tiempos3 $DIR/p3$test.txt > $DIR/aux6.txt
-
-    rm $DIR/resultados1
-    rm $DIR/resultados2
-    rm $DIR/resultados3
-
-    rm $DIR/tiempos1
-    rm $DIR/tiempos2
-    rm $DIR/tiempos3
-
-    cp $DIR/aux1.txt $DIR/resultados1
-    cp $DIR/aux2.txt $DIR/resultados2
-    cp $DIR/aux3.txt $DIR/resultados3
-
-    cp $DIR/aux4.txt $DIR/tiempos1
-    cp $DIR/aux5.txt $DIR/tiempos2
-    cp $DIR/aux6.txt $DIR/tiempos3
+    ./$DIR/generador_de_entrada 19 171 4
+    ./$DIR/ej2 < $DIR/test.in >> $DIR/resultados2.txt
+    ./$DIR/ej3 < $DIR/test.in >> $DIR/resultados3.txt
+    ./$DIR/ej4.1 < $DIR/test.in >> $DIR/resultados4.txt
+    #./$DIR/ej4.2 < $DIR/test.in >> $DIR/resultados5.txt
+    #./$DIR/ej4.3 < $DIR/test.in >> $DIR/resultados6.txt
+    ./$DIR/ej5A < $DIR/test.in >> $DIR/resultados7.txt
+    #./$DIR/ej5B < $DIR/test.in >> $DIR/resultados8.txt
 done
-echo "Limpiando Archivos"
-rm -rf $DIR/tester
-#rm -rf $DIR/G*
-rm -rf $DIR/*.txt
-echo "OK!"
+
+for i in 2 3 4 7
+do
+    sed -n 2~2p resultados$i.txt > tiempo$i
+    sed -n 1~2p resultados$i.txt > respuesta$i
+done
+
+paste tiempo2 tiempo3 tiempo4 tiempo7 > tiempos
+paste respuesta2 respuesta3 respuesta4 respuesta7 > respuestas
+
+rm $DIR/*.txt

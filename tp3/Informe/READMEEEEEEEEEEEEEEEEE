@@ -1,5 +1,1 @@
-Para el testing se tomó 100 grafos competos con n = 23 y k = 2.
-Los pesos de las aristas se toman con un generador random, equidistribuidos entre 1 y 100.
-Luego se promediaron los resultados, y se muestra mas o menos que tan buenos son los algoritmos comparados con el backtrack o entre ellos.
-Dato para mencionar: De las 100 muestras, la busqueda local 1 encuentra 12 resultados exactos y el GRASP 2 encuentra 17 resultados exactos.
-Los demas no encuentran resultados exactos para los grafos completos.
+Varios graficos dicen MPM en vez de PMP, corregir
