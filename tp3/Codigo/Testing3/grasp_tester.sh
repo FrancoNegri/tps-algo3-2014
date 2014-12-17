@@ -14,6 +14,7 @@ g++ -O2 -std=c++0x generador_de_entrada.cpp -o $DIR/tester
 
 for test in {1..100}
 do
+	echo "Test: " $test
     ./$DIR/tester 19 171 4
     ./$DIR/ej2 < $DIR/test.in >> $DIR/resultados2.txt
     ./$DIR/ej3 < $DIR/test.in >> $DIR/resultados3.txt
@@ -22,6 +23,7 @@ do
     #./$DIR/ej4.3 < $DIR/test.in >> $DIR/resultados6.txt
     ./$DIR/ej5A < $DIR/test.in >> $DIR/resultados7.txt
     #./$DIR/ej5B < $DIR/test.in >> $DIR/resultados8.txt
+    echo "Ok"
 done
 
 for i in 2 3 4 7
@@ -34,3 +36,5 @@ paste $DIR/tiempo2.txt $DIR/tiempo3.txt $DIR/tiempo4.txt $DIR/tiempo7.txt > $DIR
 paste $DIR/respuesta2.txt $DIR/respuesta3.txt $DIR/respuesta4.txt $DIR/respuesta7.txt > $DIR/respuestas
 
 rm $DIR/*.txt
+
+echo "Fin"
