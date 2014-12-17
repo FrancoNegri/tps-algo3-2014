@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	
 	int n = atoi(argv[1]);
 	int m = n*(n-1)/2;
-	int k = 9;
+	int k = n/5;
 
 	//genero todas las posibles aristas del grafo
 	for(int i = 0; i < n; i++)
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 	for(int i = 0; i < m ; i++)
 	{
 		if(i < n*(n-1)/4) //Un cuarto de las aristas son 1000 y tres cuartos son 1
-			myfile << ejes[i].x + 1 << " " << ejes[i].y + 1 << " " << 1000 << endl; 
+			myfile << ejes[i].x + 1 << " " << ejes[i].y + 1 << " " << 100000 << endl; 
 		else
 			myfile << ejes[i].x + 1 << " " << ejes[i].y + 1 << " " << 1 << endl; 
 	}
