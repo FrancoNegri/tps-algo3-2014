@@ -79,30 +79,30 @@ Para poder llegar a nuestro objetivo de encontrar los mejores parámetros $\alph
 En primer lugar tomaremos un valor fijo arbitrario para $z$ y variaremos $\alpha$. Esta prueba consistirá en tomar un grafo y un $k$ fijo, y correr cada metaheurística con ese grafo como entrada y variando el parámetro $\alpha$. Una vez hecho esto, analizaremos para cuál valor de $\alpha$ se llegó a una mejor solución, es decir, el que más minimizó el peso total. Este parámetro $\alpha$ no podrá ser mayor que $k$ ya que si tengo $k$ conjuntos carece de sentido elegir entre los mejores $k'$ conjuntos siendo $k'>k$. Debido a lo previamente mencionado decidimos que $\alpha$ sea un porcentaje de $k$, que variaremos entre $0$ y $100$ saltando de a 10, es decir, $\alpha$ tomará los valores $0$, $10$, $20$,...,$90$ y $100$ 
 
 Realizamos un primer experimento que consistió en lo siguiente:
+
 Como primer paso generamos un grafo completo de $500$ nodos, con pesos en las aristas aleatorios enteros de $1$ a $100$, con $k=100$. Luego para cada valor de $\alpha$ corrimos los tres GRASPs. Para cada uno de los GRASPs se obtuvo un $\alpha$ ganador, es decir, el $\alpha$ que minimizó el peso en cada caso. Este proceso se realizó $100$ veces, siempre generando un grafo completo con pesos distintos en las aristas y en cada caso consiguiendo un $\alpha$ ganador. A continuación se presenta un gráfico, en cual se encuentran los tres GRASPs, que muestra para cada $\alpha$ cuántas de las 100 veces "ganó". 
 
 \includegraphics[scale=0.7]{Ej5/respuestasAlfa1.png}\\
 
-Por lo que se ve en el gráfico, puede inferirse que para $\alpha=10$ se logran los mejores resultados en los tres GRASPs, al menos para el caso de 500 nodos. Para no quedarnos solamente con esta prueba, realizamos este mismo experimento nuevamente pero esta vez con $1000$ nodos y $k=200$. A continuación el gráfico correspondiente.
-
-%ACÁ EL GRÁFICO DE LOS 3 GRASP PARA 1000 NODOS
-
-Los resultados son claros, nuevamente $\alpha=10$ es el ganador. Con esto podemos concluir con cierto grado de seguridad que el mejor valor para $\alpha$ es $10$.
-
-%------------------REVISAR ESTO---------------------
-Respecto al tiempo que tardan los algoritmos, para los 100 grafos antes mencionados, tambien medimos el tiempo que tardaron, aquí se puede ver en promedio cuanto tardó cada uno:
+Por lo que se ve en el gráfico, puede inferirse que para $\alpha=10$ se logran los mejores resultados en los tres GRASPs, al menos para el caso de 500 nodos. Respecto al tiempo que tardan los algoritmos, para los 100 grafos antes mencionados, tambien medimos el tiempo que tardaron, aquí se puede ver en promedio cuanto tardó cada uno:
 
 \includegraphics[scale=0.7]{Ej5/tiemposAlfa.png}\\
 
 No se aprecian diferencias significativas, salvo con $\alpha$ igual a 0, ya que este a decir verdad no es un GRASP ya que no tiene aleatoriedad al momento de elegir a donde irá el nodo.
 
-%En realidad me parece que con un menor numero de cuantosMejores debería tardar menos... pero hay que fijarse lo que dieron las pruebas.
-
 Observando las soluciones que se obtienen eligiendo el mejor valor para $\alpha$ y no otro valor, se obtienen mejoras que varían entre $1\%$ y $9\%$. Para ejemplificar, lo que queremos decir se muestra en el siguiente grafico, los distintas soluciones soluciónes que arrojó el GRASP 1 sobre un mismo grafo y variando el $\alpha$:
 
-\includegraphics[scale=0.7]{Ej5/ejemploAlfa.png}\\
+\includegraphics[scale=0.7]{Ej5/ejemploAlfa1.png}\\
 
-%------------------REVISAR ESTO---------------------
+Para comprobar de manera feaciente que $\alpha$ esta relacionado de manera lineal con $k$ y que el tamaño del RCL siempre es el optimo, realizamos este mismo experimento nuevamente pero esta vez con $1000$ nodos y $k=200$. A continuación el gráfico correspondiente.
+
+\includegraphics[scale=0.7]{Ej5/respuestasAlfa2.png}\\
+
+Los resultados son claros, nuevamente $\alpha=10$ es el ganador. Con esto podemos concluir con cierto grado de seguridad que el mejor valor para $\alpha$ es tomar el $10\%$ de $k$.
+
+Ademas nuevamente tomado este valor de alfa, pueden verse como en general, las respuestas mejoran entre un $1 \%$ y un $10 \%$:
+
+\includegraphics[scale=0.7]{Ej5/ejemploAlfa2.png}\\
 
 Una vez obtenido el mejor valor para $\alpha$, pasamos a buscar el mejor valor para $z$, con lo cual dejaremos fijo $\alpha=10$ y variaremos el $z$.
 
@@ -121,16 +121,14 @@ Este último experimento consistió en, tomando $100$ nuevos grafos completos de
 
 \includegraphics[scale=0.7]{Ej5/CompetenciaGRASPs1.png}\\
 
-Dicho con palabras, entre los GRASPs, el GRASP 1 encontró 79 veces la menor solución (comparandolo con GRASP 2 y GRASP 3), el GRASP 2 la encontró 46 veces y el GRASP 3, 52. El hecho de que la suma de mayor a $100$ proviene de que en varias ocaciones mas de un algoritmos encontró la menor solución.
+Dicho con palabras, entre los GRASPs, el GRASP 1 encontró 79 veces la menor solución (comparandolo con GRASP 2 y GRASP 3), el GRASP 2 la encontró 46 veces y el GRASP 3, 52. El hecho de que la suma de mayor a $100$ proviene de que en varias ocaciones mas de un GRASP encontró la menor solución.
 
-Idem para $250$ nodos, $k = 40$
+Realizamos la misma experimentación para $100$ grafos de $250$ nodos, $k = 40$ y para otros $100$ grafos de $500$ nodos, $k = 70$:
 
 \includegraphics[scale=0.7]{Ej5/CompetenciaGRASPs2.png}\\
-
-Idem para $500$ nodos, $k = 70$
 
 \includegraphics[scale=0.7]{Ej5/CompetenciaGRASPs3.png}\\
 
 Luego, tras todo este testeo podemos concluír que el GRASP $1$ es mejor para un numero mayor de casos que los otros dos algoritmos implementados.
 
-En la sección siguiente utilizaremos el GRASP 1 y lo compararemos contra los otros algoritmos implementados. Asi podremos obtener resultados mas precisos de cuanto por encima de la solución exacta se encuentra, sobre que tipo de grafos es conveniente usarlo, etc.
+En la sección siguiente utilizaremos el GRASP $1$ y lo compararemos contra los otros algoritmos implementados. Asi podremos obtener resultados mas precisos de cuanto por encima de la solución exacta se encuentra, sobre que tipo de grafos es conveniente usarlo, etc.
