@@ -7119,3 +7119,207 @@ OK!
 generada entrada para n: 14
 OK!
 generada entrada para n: 15
+rm: cannot remove `testing/*': No such file or directory
+Test:  1
+Ok
+Test:  2
+Ok
+Test:  3
+Ok
+Test:  4
+Ok
+Test:  5
+Ok
+Test:  6
+Ok
+Test:  7
+Ok
+Test:  8
+Ok
+Test:  9
+Ok
+Test:  10
+Ok
+Test:  11
+Ok
+Test:  12
+Ok
+Test:  13
+Ok
+Test:  14
+Ok
+Test:  15
+Ok
+Test:  16
+Ok
+Test:  17
+Ok
+Test:  18
+Ok
+Test:  19
+Ok
+Test:  20
+Ok
+Test:  21
+Ok
+Test:  22
+Ok
+Test:  23
+Ok
+Test:  24
+Ok
+Test:  25
+Ok
+Test:  26
+Ok
+Test:  27
+Ok
+Test:  28
+Ok
+Test:  29
+Ok
+Test:  30
+Ok
+Test:  31
+Ok
+Test:  32
+Ok
+Test:  33
+Ok
+Test:  34
+Ok
+Test:  35
+Ok
+Test:  36
+Ok
+Test:  37
+Ok
+Test:  38
+Ok
+Test:  39
+Ok
+Test:  40
+Ok
+Test:  41
+Ok
+Test:  42
+Ok
+Test:  43
+Ok
+Test:  44
+Ok
+Test:  45
+Ok
+Test:  46
+Ok
+Test:  47
+Ok
+Test:  48
+Ok
+Test:  49
+Ok
+Test:  50
+Ok
+Test:  51
+Ok
+Test:  52
+Ok
+Test:  53
+Ok
+Test:  54
+Ok
+Test:  55
+Ok
+Test:  56
+Ok
+Test:  57
+Ok
+Test:  58
+Ok
+Test:  59
+Ok
+Test:  60
+Ok
+Test:  61
+Ok
+Test:  62
+Ok
+Test:  63
+Ok
+Test:  64
+Ok
+Test:  65
+Ok
+Test:  66
+Ok
+Test:  67
+Ok
+Test:  68
+Ok
+Test:  69
+Ok
+Test:  70
+Ok
+Test:  71
+Ok
+Test:  72
+Ok
+Test:  73
+Ok
+Test:  74
+Ok
+Test:  75
+Ok
+Test:  76
+Ok
+Test:  77
+Ok
+Test:  78
+Ok
+Test:  79
+Ok
+Test:  80
+Ok
+Test:  81
+Ok
+Test:  82
+Ok
+Test:  83
+Ok
+Test:  84
+Ok
+Test:  85
+Ok
+Test:  86
+Ok
+Test:  87
+Ok
+Test:  88
+Ok
+Test:  89
+Ok
+Test:  90
+Ok
+Test:  91
+Ok
+Test:  92
+Ok
+Test:  93
+Ok
+Test:  94
+Ok
+Test:  95
+Ok
+Test:  96
+Ok
+Test:  97
+Ok
+Test:  98
+Ok
+Test:  99
+Ok
+Test:  100
+Ok
+sed: can't read testing/resultados2.txt: No such file or directory
+sed: can't read testing/resultados2.txt: No such file or directory
+Fin
