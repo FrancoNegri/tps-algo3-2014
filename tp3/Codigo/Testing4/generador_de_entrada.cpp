@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	
-	int n = 19;
-	int m = 19*18/2;
+	int n = atoi(argv[1]);
+	int m = n*(n-1)/2;
 	int k = 9;
 
 	//genero todas las posibles aristas del grafo
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 	//tomo las primeras m aristas mezcladas que tengo en el vector.
 	for(int i = 0; i < m ; i++)
 	{
-		if(i < 19*18/4) //Un cuarto de las aristas son 1000 y tres cuartos son 1
+		if(i < n*(n-1)/4) //Un cuarto de las aristas son 1000 y tres cuartos son 1
 			myfile << ejes[i].x + 1 << " " << ejes[i].y + 1 << " " << 1000 << endl; 
 		else
 			myfile << ejes[i].x + 1 << " " << ejes[i].y + 1 << " " << 1 << endl; 
