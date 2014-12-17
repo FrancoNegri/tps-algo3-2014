@@ -26,11 +26,11 @@ done
 
 for i in 2 3 4 7
 do
-    sed -n 2~2p resultados$i.txt > tiempo$i
-    sed -n 1~2p resultados$i.txt > respuesta$i
+    sed -n 2~2p resultados$i.txt > tiempo$i.txt
+    sed -n 1~2p resultados$i.txt > respuesta$i.txt
 done
 
-paste tiempo2 tiempo3 tiempo4 tiempo7 > tiempos
-paste respuesta2 respuesta3 respuesta4 respuesta7 > respuestas
+paste tiempo2.txt tiempo3.txt tiempo4.txt tiempo7.txt > tiempos
+paste respuesta2.txt respuesta3.txt respuesta4.txt respuesta7.txt > respuestas
 
 rm $DIR/*.txt
