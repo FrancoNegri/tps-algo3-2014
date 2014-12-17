@@ -14,7 +14,7 @@ g++ -O2 -std=c++0x generador_de_entrada.cpp -o $DIR/tester
 
 for test in {1..100}
 do
-    ./$DIR/generador_de_entrada 19 171 4
+    ./$DIR/tester 19 171 4
     ./$DIR/ej2 < $DIR/test.in >> $DIR/resultados2.txt
     ./$DIR/ej3 < $DIR/test.in >> $DIR/resultados3.txt
     ./$DIR/ej4.1 < $DIR/test.in >> $DIR/resultados4.txt
