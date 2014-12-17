@@ -6537,3 +6537,595 @@ OK!
 Procesando Resultados...
 Limpiando Archivos
 OK!
+rm: no se puede borrar «testing/*»: No existe el archivo o el directorio
+Compilando Codigo...
+/usr/bin/ld: cannot open output file testing/generador_de_entrada: No such file or directory
+collect2: ld devolvió el estado de salida 1
+/usr/bin/ld: cannot open output file testing/ej2: No such file or directory
+collect2: ld devolvió el estado de salida 1
+/usr/bin/ld: cannot open output file testing/ej3: No such file or directory
+collect2: ld devolvió el estado de salida 1
+/usr/bin/ld: cannot open output file testing/ej4.1: No such file or directory
+collect2: ld devolvió el estado de salida 1
+/usr/bin/ld: cannot open output file testing/ej5A: No such file or directory
+collect2: ld devolvió el estado de salida 1
+OK!
+generada entrada para n: 1
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 2
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 3
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 4
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 5
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 6
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 7
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 8
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 9
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 10
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 11
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 12
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 13
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 14
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 15
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 16
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 17
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 18
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 19
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 20
+./tester.sh: línea 23: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 27: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 28: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 29: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 32: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 30
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 40
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 50
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 60
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 70
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 80
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 90
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 100
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 110
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 120
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 130
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 140
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 150
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 160
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 170
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 180
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 190
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 200
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 210
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 220
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 230
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 240
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 250
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 260
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 270
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 280
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 290
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 300
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 310
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 320
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 330
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 340
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 350
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 360
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 370
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 380
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 390
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 400
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 410
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 420
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 430
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 440
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 450
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 460
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 470
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 480
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 490
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+generada entrada para n: 500
+./tester.sh: línea 41: ./testing/generador_de_entrada: No existe el archivo o el directorio
+./tester.sh: línea 47: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 48: testing/resultados2.txt: No existe el archivo o el directorio
+./tester.sh: línea 49: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 50: testing/test.in: No existe el archivo o el directorio
+./tester.sh: línea 53: testing/test.in: No existe el archivo o el directorio
+OK!
+Procesando Resultados...
+./tester.sh: línea 62: testing/tiempos2.txt: No existe el archivo o el directorio
+./tester.sh: línea 63: testing/tiempos3.txt: No existe el archivo o el directorio
+./tester.sh: línea 64: testing/tiempos4.txt: No existe el archivo o el directorio
+./tester.sh: línea 67: testing/tiempos7.txt: No existe el archivo o el directorio
+./tester.sh: línea 71: testing/performanece2.txt: No existe el archivo o el directorio
+./tester.sh: línea 72: testing/performanece3.txt: No existe el archivo o el directorio
+./tester.sh: línea 73: testing/performanece4.txt: No existe el archivo o el directorio
+./tester.sh: línea 76: testing/performanece7.txt: No existe el archivo o el directorio
+./tester.sh: línea 80: testing/Performance: No existe el archivo o el directorio
+./tester.sh: línea 84: testing/Tiempo: No existe el archivo o el directorio
+Limpiando Archivos
+OK!
+rm: no se puede borrar «testing/*»: No existe el archivo o el directorio
+Compilando Codigo...
+OK!
+generada entrada para n: 1
+OK!
+generada entrada para n: 2
+OK!
+generada entrada para n: 3
+OK!
+generada entrada para n: 4
+OK!
+generada entrada para n: 5
+OK!
+generada entrada para n: 6
+OK!
+generada entrada para n: 7
+OK!
+generada entrada para n: 8
+OK!
+generada entrada para n: 9
+OK!
+generada entrada para n: 10
+OK!
+generada entrada para n: 11
+OK!
+generada entrada para n: 12
+OK!
+generada entrada para n: 13
+OK!
+generada entrada para n: 14
+OK!
+generada entrada para n: 15
+OK!
+generada entrada para n: 16
+OK!
+generada entrada para n: 17
+OK!
+generada entrada para n: 18
+OK!
+generada entrada para n: 19
+OK!
+generada entrada para n: 20
