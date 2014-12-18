@@ -1,5 +1,4 @@
-\subsection{Idea}
-
+\subsection{Idea General}
 
 Para la meta-heurística de GRASP, tomaremos el algoritmo goloso previamente implementado y lo combinaremos con las diferentes búsquedas locales también previamente implementadas.
 
@@ -75,6 +74,8 @@ En el siguiente apartado de experimentación se intentarán calibrar tanto el pa
 
 \subsection{Experimentación}
 
+\subsubsection{Busqueda del $\alpha$ óptimo}
+
 Para poder llegar a nuestro objetivo de encontrar los mejores parámetros $\alpha$ y $z$ a utilizar en las meta-heurísticas, procederemos a hacer pruebas dejando fijo uno de los dos valores y variando el otro.
 En primer lugar tomaremos un valor fijo arbitrario para $z$ y variaremos $\alpha$. Esta prueba consistirá en tomar un grafo y un $k$ fijo, y correr cada meta-heurística con ese grafo como entrada y variando el parámetro $\alpha$. Una vez hecho esto, analizaremos para cuál valor de $\alpha$ se llegó a una mejor solución, es decir, el que más minimizó el peso total. Este parámetro $\alpha$ no podrá ser mayor que $k$ ya que si tengo $k$ conjuntos carece de sentido elegir entre los mejores $k'$ conjuntos siendo $k'>k$. Debido a lo previamente mencionado decidimos que $\alpha$ sea un porcentaje de $k$, que variaremos entre $0$ y $100$ saltando de a 10, es decir, $\alpha$ tomará los valores $0$, $10$, $20$,...,$90$ y $100$ 
 
@@ -104,6 +105,8 @@ Además nuevamente tomado este valor de alfa, pueden verse como en general, las 
 
 \includegraphics[scale=0.7]{Ej5/ejemploAlfa2.png}\\
 
+\subsubsection{Busqueda del $z$ óptimo}
+
 Una vez obtenido el mejor valor para $\alpha$, pasamos a buscar el mejor valor para $z$, con lo cual dejaremos fijo $\alpha=10$ y variaremos el $z$.
 
 Realizamos el segundo experimento, el cual consistió en tomar grafos completos de $250$ nodos y $k = 70$ variando $z$ desde $z = 4$ hasta $z = 40$ (para valores mayores de $z$ los tiempos de ejecución resultaban excesivos) para ver como respondía la metaheuristica ante estos cambios. Luego a los valores obtenidos de k-PMP se promedian para ver como varían en promedio los resultados al variar este parámetro.
@@ -114,6 +117,8 @@ Los resultados pueden verse aquí:
 \includegraphics[scale=0.7]{Ej5/tiemposZ.png}\\
 
 Como se puede ver en el gráfico de tiempos, al aumentar la cantidad de iteraciones aumenta de manera lineal el tiempo de ejecución. Sin embargo las respuestas arrojadas por los algoritmos no mejoran con la misma pendiente, sino que lo hacen con una mucho mas moderada. Se decide tomar $z = 34$ para los tres GRASPs que se considera un valor que equilibra tanto las respuestas obtenidas, como un tiempo de ejecución apropiado. 
+
+\subsubsection{Comparación entre Los Diferentes GRASPs}
 
 Finalmente con estos valores para $\alpha$ y $z$, realizamos un último experimento para comparar las soluciones y los tiempos de cada GRASP.
 
