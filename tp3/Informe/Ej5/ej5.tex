@@ -109,6 +109,12 @@ Además nuevamente tomado este valor de alfa, pueden verse como en general, las 
 
 \includegraphics[scale=0.7]{Ej5/ejemploAlfa2.png}\\
 
+Ahora la pregunta que sucede si el valor de $k$ es bajo. Para $k < 20$ obtenemos que $\alpha = 1$ obteniendo asi un algoritmo deterministico. Tomamos nuevamente $100$ grafos completos con $n=100$ con aristas aleatorias entre $1$ y $100$ y $k = 7$. Y graficamos de la misma manera que antes:
+
+\includegraphics[scale=0.7]{Ej5/respuestasAlfa3.png}\\
+
+Vemos que aunque el algoritmo en este caso no tiene ningun grado de aleatoriedad, continúa obteniendo las mejores respuestas. Luego se decide que para estos casos se permita que $\alpha$ sea igual a $1$.
+
 \subsubsection{Busqueda del $z$ óptimo}
 
 Una vez obtenido el mejor valor para $\alpha$, pasamos a buscar el mejor valor para $z$, con lo cual dejaremos fijo $\alpha=0.1k$ y variaremos el $z$.
