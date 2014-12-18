@@ -18,7 +18,7 @@ do
 		g++ -O2 -std=c++0x Ej5/ej5B.cpp -o $DIR/G2 -D PORCENTAJEDEMEJORES=$(($equis*10))
 		g++ -O2 -std=c++0x Ej5/ej5C.cpp -o $DIR/G3 -D PORCENTAJEDEMEJORES=$(($equis*10))
         ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
-        ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
+#        ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
         ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
     done
     echo "OK!"
