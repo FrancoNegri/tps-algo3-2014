@@ -1,6 +1,6 @@
 \subsection{Idea General}
 
-Para la meta-heurística de GRASP, tomaremos el algoritmo goloso previamente implementado y lo combinaremos con las diferentes búsquedas locales también previamente implementadas.
+Para la meta-heurística de GRASP, trataremos de combinar el algoritmo goloso previamente implementado y las diferentes búsquedas locales también previamente implementadas, para así mejorar aun mas las respuestas obtenidas.
 
 La idea es la siguiente, para cada paso del algoritmo, correremos una versión modificada del goloso de manera tal de permitir cierta aleatoriedad en los resultados. El algoritmo goloso será modificado de la siguiente manera:
 
@@ -11,19 +11,19 @@ La idea es la siguiente, para cada paso del algoritmo, correremos una versión m
 		\STATE{Creo una cantidad $k$ de conjuntos donde iré guardando vértices}
  		\STATE{Para cada nodo $i$ de $1$ a $n$: }
 		\STATE{\quad Para cada conjunto}
-			\STATE{\quad\quad Sumo todos los pesos de las aristas de ($i$,$j$) con $j$ los vértices que están en el conjunto}
- 		\STATE{\quad De los mejores $\alpha$ resultados, tomo uno al azar y pongo a $i$ en ese conjunto}
+			\STATE{\quad\quad Sumo todos los pesos de las aristas de ($i$,$j$) con $j$, los vértices que están en el conjunto}
+ 		\STATE{\quad De los mejores $\alpha$ resultados obtenidos en el paso anterior, tomo uno al azar y pongo a $i$ en ese conjunto}
 		\STATE{Devuelvo la respuesta}
 \end{algorithmic}
 \end{algorithm} 
 
-Luego la RCL para cada nodo serán los $\alpha$ conjuntos para los cuales el peso es menor que agregarlo en cualquier otro conjunto. Notar que si $\alpha=1$ entonces estaríamos obteniendo el mismo algoritmo goloso que en el apartado anterior. En cambio, si tomo $\alpha = k$ (esto es, tomo los $k$ mejores resultados, o sea todos), estaría generando una solución completamente aleatoria. Cualquier solución en medio tomará una solución golosa, pero con cierto grado de aleatoriedad.
+Luego de esto se desprende que la RCL (restricted candidate list) para cada nodo serán los $\alpha$ conjuntos para los cuales el peso es menor que agregarlo en cualquier otro conjunto. Notar que si $\alpha=1$ entonces estaríamos obteniendo el mismo algoritmo goloso que en el apartado anterior. En cambio, si tomo $\alpha = k$ (esto es, tomo los $k$ mejores resultados, o sea todos), estaría generando una solución completamente aleatoria. Cualquier solución en medio tomará una solución golosa, pero con cierto grado de aleatoriedad.
 
 Otro posible criterio que consideramos fue buscar para cada nodo cual era el conjunto que minimizaba el peso de agregarlo en el mismo, y luego agregar en su RCL todos los conjuntos que estuvieran un porcentaje $\beta$ por sobre ese valor.
 
 Finalmente y por cuestiones de tiempos se decidió solo implementar el primer algoritmo goloso descripto anteriormente.
 
-Luego, a la solución obtenida por el algoritmo goloso randomizado, se le aplicarán una o varias de las búsquedas locales implementadas, en un intento de acercarnos aún más a la respuesta óptima.
+Luego, a la solución obtenida por el algoritmo goloso randomizado, se le aplicarán una o varias de las búsquedas locales implementadas, en un intento de acercarnos aún más a la respuesta exacta.
 
 Como criterio de corte se correrá el goloso aleatorizado y la búsqueda local hasta que luego de que un número $z$, a determinar, de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
 
@@ -37,7 +37,7 @@ Teniendo a nuestra disposición tres búsquedas locales distintas, decidimos des
 		 	\STATE{\quad Utilizo búsqueda local 1 para mejorar la solución obtenida previamente}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
 		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
-		 	\STATE{\quad\quad Devuelvo la solución}
+		 	\STATE{\quad\quad Devuelvo la mejor solución encontrada}
 	\end{algorithmic}
 \end{algorithm}
 
@@ -51,7 +51,7 @@ Teniendo a nuestra disposición tres búsquedas locales distintas, decidimos des
 		 	\STATE{\quad Utilizo búsqueda local 1 para nuevamente mejorar la solución obtenida previamente}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
 		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
-		 	\STATE{\quad\quad Devuelvo la solución}
+		 	\STATE{\quad\quad Devuelvo la mejor solución encontrada}
 	\end{algorithmic}
 \end{algorithm}
 
@@ -64,24 +64,28 @@ Teniendo a nuestra disposición tres búsquedas locales distintas, decidimos des
 		 	\STATE{\quad Utilizo búsqueda local 1 para mejorar aún más la solución obtenida previamente}
 		 	\STATE{\quad Si conseguí una mejor solución que antes, la guardo}
 		 	\STATE{\quad Si tras $z$ iteraciones no se pudo conseguir una mejor solución}
-		 	\STATE{\quad\quad Devuelvo la solución}
+		 	\STATE{\quad\quad Devuelvo la mejor solución encontrada}
 	\end{algorithmic}
 \end{algorithm}
 
-En estos tres casos $z$ será un numero entero entre $1$ e infinito.
+En estos tres casos $z$ puede ser un numero entero entre $1$ e infinito.
 
-En el siguiente apartado de experimentación se intentarán calibrar tanto el parámetro $\alpha$ como el parámetro $z$ para así obtener los mejores resultados posibles con estas meta-heurísticas, tratando siempre de equilibrar performance y exactitud de los resultados.
+En el siguiente apartado de experimentación se intentarán calibrar tanto el parámetro $\alpha$ como el parámetro $z$ para así obtener los mejores resultados posibles con estas meta-heurísticas, tratando siempre de equilibrar tiempo de ejecución y exactitud de los resultados.
 
 \subsection{Experimentación}
 
 \subsubsection{Busqueda del $\alpha$ óptimo}
 
-Para poder llegar a nuestro objetivo de encontrar los mejores parámetros $\alpha$ y $z$ a utilizar en las meta-heurísticas, procederemos a hacer pruebas dejando fijo uno de los dos valores y variando el otro.
-En primer lugar tomaremos un valor fijo arbitrario para $z$ y variaremos $\alpha$. Esta prueba consistirá en tomar un grafo y un $k$ fijo, y correr cada meta-heurística con ese grafo como entrada y variando el parámetro $\alpha$. Una vez hecho esto, analizaremos para cuál valor de $\alpha$ se llegó a una mejor solución, es decir, el que más minimizó el peso total. Este parámetro $\alpha$ no podrá ser mayor que $k$ ya que si tengo $k$ conjuntos carece de sentido elegir entre los mejores $k'$ conjuntos siendo $k'>k$. Debido a lo previamente mencionado decidimos que $\alpha$ sea un porcentaje de $k$, que variaremos entre $0$ y $100$ saltando de a 10, es decir, $\alpha$ tomará los valores $0$, $10$, $20$,...,$90$ y $100$ 
+Para poder llegar a nuestro objetivo de encontrar los mejores parámetros $\alpha$ y $z$ a utilizar en las metaheurísticas, procederemos a hacer pruebas dejando fijo uno de los dos valores y variando el otro.
+En primer lugar tomaremos un valor fijo arbitrario para $z$ y variaremos $\alpha$. Esta prueba consistirá en tomar un grafo y un $k$ fijo, y correr cada metaheurística con ese grafo como entrada y variando el parámetro $\alpha$. Una vez hecho esto, analizaremos para cuál valor de $\alpha$ se llegó a una mejor solución, es decir, el que más minimizó el peso total. Este parámetro $\alpha$ no podrá ser mayor que $k$ ya que si tengo $k$ conjuntos carece de sentido elegir entre los mejores $k'$ conjuntos siendo $k'>k$.
+
+Tomamos como hipotesis que $\alpha$ depende de manera lineal a $k$, luego tomaremos $\alpha = 0.1 k,\alpha = 0.2 k,...,\alpha = k $, o lo que es lo mismo tomamos $\alpha$ igual al $10\%$ de k,$\alpha$ igual al $20\%$ de k, etc. Ademas simplemente para ver el comportamiento, tambien tomamos $\alpha$ igual a $1$, aunque este no sea tecnicamente un GRASP (Es un algoritmo goloso deterministico).
 
 Realizamos un primer experimento que consistió en lo siguiente:
 
-Como primer paso generamos un grafo completo de $500$ nodos, con pesos en las aristas aleatorios enteros de $1$ a $100$, con $k=100$. Luego para cada valor de $\alpha$ corrimos los tres GRASPs. Para cada uno de los GRASPs se obtuvo un $\alpha$ ganador, es decir, el $\alpha$ que minimizó el peso en cada caso. Este proceso se realizó $100$ veces, siempre generando un grafo completo con pesos distintos en las aristas y en cada caso consiguiendo un $\alpha$ ganador. A continuación se presenta un gráfico, en cual se encuentran los tres GRASPs, que muestra para cada $\alpha$ cuántas de las 100 veces "ganó". 
+Como primer paso generamos un grafo completo de $500$ nodos, con pesos en las aristas aleatorios enteros de $1$ a $100$, con $k=100$. Consideramos este un caso lo suficientemente general y sin ningun tipo de patologías sobre el cual "entrenar" a nuestro algoritmo.
+
+Luego para cada valor de $\alpha$ corrimos los tres GRASPs. Para cada uno de los GRASPs se obtuvo un $\alpha$ ganador, es decir, el $\alpha$ que obtubo una solución de peso menor que los demas $\alpha$s. Este proceso se realizó $100$ veces, siempre generando un grafo completo con pesos distintos en las aristas y en cada caso consiguiendo un $\alpha$ ganador. A continuación se presenta un gráfico, en cual se encuentran los tres GRASPs, que muestra para cada $\alpha$ cuántas de las $100$ veces "ganó". 
 
 \includegraphics[scale=0.7]{Ej5/respuestasAlfa1.png}\\
 
@@ -89,9 +93,9 @@ Por lo que se ve en el gráfico, puede inferirse que para $\alpha=10$ se logran 
 
 \includegraphics[scale=0.7]{Ej5/tiemposAlfa.png}\\
 
-No se aprecian diferencias significativas, salvo con $\alpha$ igual a 0, ya que este a decir verdad no es un GRASP ya que no tiene aleatoriedad al momento de elegir a donde irá el nodo.
+No se aprecian diferencias significativas, salvo con $\alpha$ igual a $0 \%$, ya que este como hemos destacado antes, no es realmente una metaeuristica GRASP.
 
-Observando las soluciones que se obtienen eligiendo el mejor valor para $\alpha$ y no otro valor, se obtienen mejoras que varían entre $1\%$ y $9\%$. Para ejemplificar, lo que queremos decir se muestra en el siguiente gráfico, los distintas soluciones soluciones que arrojó el GRASP 1 sobre un mismo grafo y variando el $\alpha$:
+Observando las soluciones que se obtienen eligiendo el mejor valor para $\alpha$ y no otro valor, se obtienen mejoras que varían entre $1\%$ y $9\%$. Para ejemplificar, lo que queremos decir se muestra en el siguiente gráfico, los distintas soluciones que arrojó el GRASP 1 sobre un mismo grafo y variando el $\alpha$:
 
 \includegraphics[scale=0.7]{Ej5/ejemploAlfa1.png}\\
 
@@ -107,7 +111,7 @@ Además nuevamente tomado este valor de alfa, pueden verse como en general, las 
 
 \subsubsection{Busqueda del $z$ óptimo}
 
-Una vez obtenido el mejor valor para $\alpha$, pasamos a buscar el mejor valor para $z$, con lo cual dejaremos fijo $\alpha=10$ y variaremos el $z$.
+Una vez obtenido el mejor valor para $\alpha$, pasamos a buscar el mejor valor para $z$, con lo cual dejaremos fijo $\alpha=0.1k$ y variaremos el $z$.
 
 Realizamos el segundo experimento, el cual consistió en tomar grafos completos de $250$ nodos y $k = 70$ variando $z$ desde $z = 4$ hasta $z = 40$ (para valores mayores de $z$ los tiempos de ejecución resultaban excesivos) para ver como respondía la metaheuristica ante estos cambios. Luego a los valores obtenidos de k-PMP se promedian para ver como varían en promedio los resultados al variar este parámetro.
 Los resultados pueden verse aquí:

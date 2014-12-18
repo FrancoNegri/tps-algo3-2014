@@ -4,33 +4,75 @@
 DIR="testing"
 
 
-# rm $DIR/*
-# g++ -O2 -std=c++0x generador_de_entrada.cpp -o $DIR/tester
+rm $DIR/*
+g++ -O2 -std=c++0x generador_de_entrada.cpp -o $DIR/tester
 
-#  g++ -O2 -std=c++0x Ej2/ej2.cpp -o $DIR/ej2
-#  g++ -O2 -std=c++0x Ej3/ej3.cpp -o $DIR/ej3
-#  g++ -O2 -std=c++0x Ej4/ej4.1.cpp -o $DIR/ej4.1
-#  g++ -O2 -std=c++0x Ej5/ej5A.cpp -o $DIR/ej5A
-
-# for test in {1..100}
-# do
-#     ./$DIR/tester 19 171 4
-#     ./$DIR/ej2 < $DIR/test.in >> $DIR/resultados2.txt
-#     ./$DIR/ej3 < $DIR/test.in >> $DIR/resultados3.txt
-#     ./$DIR/ej4.1 < $DIR/test.in >> $DIR/resultados4.txt
-#     #./$DIR/ej4.2 < $DIR/test.in >> $DIR/resultados5.txt
-#     #./$DIR/ej4.3 < $DIR/test.in >> $DIR/resultados6.txt
-#     ./$DIR/ej5A < $DIR/test.in >> $DIR/resultados7.txt
-#     #./$DIR/ej5B < $DIR/test.in >> $DIR/resultados8.txt
-# done
-
-for i in 2 3 4 7
+for test in {1..100}
 do
-    sed -n 2~2p $DIR/resultados$i.txt > $DIR/tiempo$i.txt
-    sed -n 1~2p $DIR/resultados$i.txt > $DIR/respuesta$i.txt
+    echo "Corriendo Test:" $test
+    ./$DIR/tester 100 4950 7
+    for equis in {0..10}
+    do 
+        #echo "OK!"
+        g++ -O2 -std=c++0x Ej5/ej5A.cpp -o $DIR/G1 -D PORCENTAJEDEMEJORES=$(($equis*10))
+		g++ -O2 -std=c++0x Ej5/ej5B.cpp -o $DIR/G2 -D PORCENTAJEDEMEJORES=$(($equis*10))
+		g++ -O2 -std=c++0x Ej5/ej5C.cpp -o $DIR/G3 -D PORCENTAJEDEMEJORES=$(($equis*10))
+        ./$DIR/G1 < $DIR/test.in >> $DIR/r1$test.txt
+        ./$DIR/G2 < $DIR/test.in >> $DIR/r2$test.txt
+        ./$DIR/G3 < $DIR/test.in >> $DIR/r3$test.txt
+    done
+    echo "OK!"
 done
 
-paste $DIR/tiempo2.txt $DIR/tiempo3.txt $DIR/tiempo4.txt $DIR/tiempo7.txt > $DIR/tiempos
-paste $DIR/respuesta2.txt $DIR/respuesta3.txt $DIR/respuesta4.txt $DIR/respuesta7.txt > $DIR/respuestas
+echo "Procesando Resultados..."
+#tiempos son las lineas pares
+for test in {1..100}
+do
+    sed -n 2~2p $DIR/r1$test.txt > $DIR/t1$test.txt
+    sed -n 2~2p $DIR/r2$test.txt > $DIR/t2$test.txt
+    sed -n 2~2p $DIR/r3$test.txt > $DIR/t3$test.txt
+    # #performanece en las lineas impares
+    sed -n 1~2p $DIR/r1$test.txt > $DIR/p1$test.txt
+    sed -n 1~2p $DIR/r2$test.txt > $DIR/p2$test.txt
+    sed -n 1~2p $DIR/r3$test.txt > $DIR/p3$test.txt
+done
 
-rm $DIR/*.txt
+echo "" > $DIR/resultados1
+echo "" > $DIR/tiempos1
+echo "" > $DIR/resultados2
+echo "" > $DIR/tiempos2
+echo "" > $DIR/resultados3
+echo "" > $DIR/tiempos3
+
+
+for test in {1..100}
+do
+    paste $DIR/resultados1 $DIR/t1$test.txt > $DIR/aux1.txt
+    paste $DIR/resultados2 $DIR/t2$test.txt > $DIR/aux2.txt
+    paste $DIR/resultados3 $DIR/t3$test.txt > $DIR/aux3.txt
+    
+    paste $DIR/tiempos1 $DIR/p1$test.txt > $DIR/aux4.txt
+    paste $DIR/tiempos2 $DIR/p2$test.txt > $DIR/aux5.txt
+    paste $DIR/tiempos3 $DIR/p3$test.txt > $DIR/aux6.txt
+
+    rm $DIR/resultados1
+    rm $DIR/resultados2
+    rm $DIR/resultados3
+
+    rm $DIR/tiempos1
+    rm $DIR/tiempos2
+    rm $DIR/tiempos3
+
+    cp $DIR/aux1.txt $DIR/resultados1
+    cp $DIR/aux2.txt $DIR/resultados2
+    cp $DIR/aux3.txt $DIR/resultados3
+
+    cp $DIR/aux4.txt $DIR/tiempos1
+    cp $DIR/aux5.txt $DIR/tiempos2
+    cp $DIR/aux6.txt $DIR/tiempos3
+done
+echo "Limpiando Archivos"
+rm -rf $DIR/tester
+#rm -rf $DIR/G*
+rm -rf $DIR/*.txt
+echo "OK!"
