@@ -2,57 +2,57 @@
 
 \subsubsection{Idea}
 
-Para concluir este trabajo, tomamos el algoritmo de backtracking, el algoritmo goloso, el de busqueda local 1 y GRASP 1 y mediremos las diferencias de performance y de tiempos en cada uno para intentar sacar conclusiones.
+Para concluir este trabajo, tomamos el algoritmo de backtracking, el algoritmo goloso, el de búsqueda local 1 y GRASP 1 y mediremos las diferencias de performance y de tiempos en cada uno para intentar sacar conclusiones.
 
-Comenzaremos con un pequeño experimento variando $n$. Tomaremos grafos completos con $k = 5$, pesos aleaotrios en las aristas y variando la cantidad de nodos desde $1$ a $19$ y mediremos cuales son los k-PMP encontrados por cada algoritmo.
+Comenzaremos con un pequeño experimento variando $n$. Tomaremos grafos completos con $k = 5$, pesos aleatorios en las aristas y variando la cantidad de nodos desde $1$ a $19$ y mediremos cuales son los k-PMP encontrados por cada algoritmo.
 
 \subsubsection{Experimentación}
 
-Los resultados arrojados por la experimentación pueden verse en el siguiente grafico:
+Los resultados arrojados por la experimentación pueden verse en el siguiente gráfico:
 
 \includegraphics[scale=0.7]{Con/performance1.png}
 
-Lo primero que podemos observar es que para casos triviales con $n <= k$ todos son capaces de encontrar la respuesta optima.
+Lo primero que podemos observar es que para casos triviales con $n <= k$ todos son capaces de encontrar la respuesta óptima.
 
-Lo segundo que podemos observar, es que salvo un caso, el algoritmo goloso siempre pareciera ser el que encuentra las peores soluciones, llegando a obtener una respuesta un $33 \%$ alejada de la optima en el caso de $19$ nodos. (k-PMP encontrado por el backtrack: 644, k-PMP encontrado por la heuristica golosa: 860).
+Lo segundo que podemos observar, es que salvo un caso, el algoritmo goloso siempre pareciera ser el que encuentra las peores soluciones, llegando a obtener una respuesta un $33 \%$ alejada de la óptima en el caso de $19$ nodos. (k-PMP encontrado por el backtrack: 644, k-PMP encontrado por la heurística golosa: 860).
 
-Las respuestas obtenidas por la busqueda local y el GRASP, resultan en general, en mucho mejores k-PMPs, desviandose hasta un $10\%$ de la respuesta por backtracking.
+Las respuestas obtenidas por la búsqueda local y el GRASP, resultan en general, en mucho mejores k-PMPs, desviándose hasta un $10\%$ de la respuesta por backtracking.
 
-Ademas de estos 19 casos, podemos ver que el algoritmo goloso encuentra $6$ soluciones exactas (las 5 triviales y una para $n = 9$), la busqueda local encuentra $10$ respuestas exactas y el GRASP encuentra $11$ respuestas exactas. Si bien este el set de datos no es muy significativo, ya es posible ver las ventajas que representan las dos ultimas heuristicas frente a la primera.
+Además de estos 19 casos, podemos ver que el algoritmo goloso encuentra $6$ soluciones exactas (las 5 triviales y una para $n = 9$), la búsqueda local encuentra $10$ respuestas exactas y el GRASP encuentra $11$ respuestas exactas. Si bien este el set de datos no es muy significativo, ya es posible ver las ventajas que representan las dos ultimas heurísticas frente a la primera.
 
-Ademas, para estos 19 casos, medimos los tiempos que tardan en obtener una respuesta:
+Además, para estos 19 casos, medimos los tiempos que tardan en obtener una respuesta:
 
 \includegraphics[scale=0.7]{Con/tiempos1Back.png}
 
 \includegraphics[scale=0.7]{Con/tiempos1Otros.png}
 
-Como era de esperar, mietras que las heuristicas escalan de manera mas o menos polinomial, el backtracking escala de manera exponencial ascendiendo un orden de magnitud cada vez que asciende en uno el valor de $n$, hasta el punto que pasados los $19$ nodos, los tiempos empiezan a ser inviables.
+Como era de esperar, mientras que las heurísticas escalan de manera mas o menos polinomial, el backtracking escala de manera exponencial ascendiendo un orden de magnitud cada vez que asciende en uno el valor de $n$, hasta el punto que pasados los $19$ nodos, los tiempos empiezan a ser inviables.
 
-\subsubsection{Conclución}
+\subsubsection{Conclusión}
 
-==COMPLETAR AQUI==
+==COMPLETAR AQUÍ==
 
-\subsection{Experimentación sobre grafos Faciles}
+\subsection{Experimentación sobre grafos Fáciles}
 
 \subsubsection{Idea}
 
-En esta sección buscaremos determinar cuanto mejor es el GRASP sobre la familia de grafos para la que fue entrenada (grafos completos, con aristas tomadas al azar entre $1$ y $100$) y que consideramos que será sobre la cual tenga mejor desempeño. De esta manera intentaremos mostrar las ventajas que representa frente a los otros algoritmos. Para eso correremos el Backtrack sobre $100$ grafos de $18$ nodos completos, con pesos en las aristas aleaotrios entre 1 y 100 y $k = 4$ y veremos en cuantos casos cada algoritmo encuentra la respuesta exacta, e intentaremos sacar concluciones sobre los datos obtenidos.
+En esta sección buscaremos determinar cuanto mejor es el GRASP sobre la familia de grafos para la que fue entrenada (grafos completos, con aristas tomadas al azar entre $1$ y $100$) y que consideramos que será sobre la cual tenga mejor desempeño. De esta manera intentaremos mostrar las ventajas que representa frente a los otros algoritmos. Para eso correremos el Backtrack sobre $100$ grafos de $18$ nodos completos, con pesos en las aristas aleatorios entre 1 y 100 y $k = 4$ y veremos en cuantos casos cada algoritmo encuentra la respuesta exacta, e intentaremos sacar conclusiones sobre los datos obtenidos.
 
 \subsubsection{Experimentación}
 
-De las respuestas arrojadas por el testing podemos sacar las siguientes concluciónes. El algoritmo Goloso logró encontrar una respuesta exacta, al comparar los resultados del mismo con las de backtracking. El algoritmo de busqueda local y el GRASP, lograron encontrar 6 respuestas correctas cada uno.
+De las respuestas arrojadas por el testing podemos sacar las siguientes conclusiones. El algoritmo Goloso logró encontrar una respuesta exacta, al comparar los resultados del mismo con las de backtracking. El algoritmo de búsqueda local y el GRASP, lograron encontrar 6 respuestas correctas cada uno.
 
-Por otra parte, para cada respuesta obtenida por una heuristica, sacamos el porcentaje de que tan alejada se encontraba de la respuesta exacta, y luego promediamos los valores para cada una de las heuristicas. Lo que obtuvimos fue que, en promedio, la busqueda local se aleja un $25 \%$ de la respuesta exacta con un desvio estandar igual a $9$. La busqueda local se aleja un $12 \%$ de la respuesta exacta con un desvío estandar igual a $9$ y el GRASP se aleja un $11 \%$ de la respuesta exacta con un desvio estandar igual a $8$.
+Por otra parte, para cada respuesta obtenida por una heurística, sacamos el porcentaje de que tan alejada se encontraba de la respuesta exacta, y luego promediamos los valores para cada una de las heurísticas. Lo que obtuvimos fue que, en promedio, la búsqueda local se aleja un $25 \%$ de la respuesta exacta con un desvío estándar igual a $9$. La búsqueda local se aleja un $12 \%$ de la respuesta exacta con un desvío estándar igual a $9$ y el GRASP se aleja un $11 \%$ de la respuesta exacta con un desvío estándar igual a $8$.
 
-\subsubsection{Conclución}
+\subsubsection{Conclusión}
 
-Lo que podemos concluir de estos resultados es que el GRASP no solo obtiene mejores resultados sinó que la disperción de los mismos tambien es menor en comparación con los demas algoritmos. 
+Lo que podemos concluir de estos resultados es que el GRASP no solo obtiene mejores resultados sino que la dispersión de los mismos también es menor en comparación con los demás algoritmos. 
 
-\subsection{Experimentación sobre grafos dificiles}
+\subsection{Experimentación sobre grafos difíciles}
 
 \subsubsection{Idea}
 
-Para poner realmente a prueba las tres heuristicas diseñamos una nueva familia de grafos que consideramos difil de resolver para nuestros algoritmos. Los grafos de esta famila se describien asi: dada una cantidad de nodos $n$ y una cantidad de aristas igual a $n*(n-1)/2$, tomamos la mitad de las aristas con peso igual a $1$ y la otra mitad con peso igual a $100000$. Ademas k debe ser igual a $n/6$.
+Para poner realmente a prueba las tres heurísticas diseñamos una nueva familia de grafos que consideramos difícil de resolver para nuestros algoritmos. Los grafos de esta familia se describen así: dada una cantidad de nodos $n$ y una cantidad de aristas igual a $n*(n-1)/2$, tomamos la mitad de las aristas con peso igual a $1$ y la otra mitad con peso igual a $100000$. Además k debe ser igual a $n/6$.
 
 \subsubsection{Experimentación}
 
@@ -64,20 +64,20 @@ Fijamos $n=250$ y tomamos $100$ de estos grafos. Para ejemplificar lo obtenido, 
 
 \includegraphics[scale=0.7]{Con/dificil3.png}
 
-Notar que los graficos estan en escala logaritmica, lo que quiere decir, que en el caso uno por ejemplo, el algoritmo goloso (k-PMP encontrado: 500502) y el GRASP (k-PMP encontrado: 100501) obtuvieron respuestas aproximadamente un $100100 \%$ peor que la Busqueda local (k-PMP encontrado: 501).
+Notar que los gráficos están en escala logarítmica, lo que quiere decir, que en el caso uno por ejemplo, el algoritmo goloso (k-PMP encontrado: 500502) y el GRASP (k-PMP encontrado: 100501) obtuvieron respuestas aproximadamente un $100100 \%$ peor que la Búsqueda local (k-PMP encontrado: 501).
 
-De ahora en adelante, en este apartado, llamaremos a una respuesta, "buena", si se encuentra entre 0 y $1000$. Notar que una respuesta puede ser "buena", pero no necesariamente ser la respuesta exacta para el k-PMP. Para esta cantidad de vertices, ya es imposible encontrar una respuesta por backtracking.
+De ahora en adelante, en este apartado, llamaremos a una respuesta, "buena", si se encuentra entre 0 y $1000$. Notar que una respuesta puede ser "buena", pero no necesariamente ser la respuesta exacta para el k-PMP. Para esta cantidad de vértices, ya es imposible encontrar una respuesta por backtracking.
 
-Analizando los datos, vemos que el algoritmo goloso solo logró llegar a una respuesta buena, 4 veces, mientras que el tanto el grasp, como la busqueda local lograron obtener $51$ respuestas buenas en estos grafos (no necesariamente en el mismo grafo, como puede notarse en las figuras)
+Analizando los datos, vemos que el algoritmo goloso solo logró llegar a una respuesta buena, 4 veces, mientras que el tanto el GRASP, como la búsqueda local lograron obtener $51$ respuestas buenas en estos grafos (no necesariamente en el mismo grafo, como puede notares en las figuras)
 
-\subsubsection{Conclución}
+\subsubsection{Conclusión}
 
-Si bien un $50 \%$ de respuestas buenas puede ser una cantidad aceptable, una posible idea para mejorar aun mas los resultados, sería entrenar nuevamente al GRASP con este set de datos, y intentar conseguir un nuevo $\alpha$ y un nuevo $z$ de tal manera que se maximicen las posivilidades de encontrar la respuesta. Otro posible solición sería encontrar alguna propiedad especifica para esta familia de grafos que facilite su resolución con alguna otra heuristica mas apropiada.
+Si bien un $50 \%$ de respuestas buenas puede ser una cantidad aceptable, una posible idea para mejorar aun mas los resultados, sería entrenar nuevamente al GRASP con este set de datos, y intentar conseguir un nuevo $\alpha$ y un nuevo $z$ de tal manera que se maximicen las posibilidades de encontrar la respuesta. Otro posible solución sería encontrar alguna propiedad especifica para esta familia de grafos que facilite su resolución con alguna otra heurística mas apropiada.
 
-\section{Conclusiónes Generales y Trabajo Futuro}
+\section{Conclusiones Generales y Trabajo Futuro}
 
-Concluimos que dado que el problema de $k-PMP$ resulta extremadamente dificil de resolver de manera exacta, es posible encontrar heuristicas que nos aproximen a una buena solución en un tiempo razonable, siempre teniendo en cuenta que pagamos tiempo con exactitud.
+Concluimos que dado que el problema de $k-PMP$ resulta extremadamente difícil de resolver de manera exacta, es posible encontrar heurísticas que nos aproximen a una buena solución en un tiempo razonable, siempre teniendo en cuenta que pagamos tiempo con exactitud.
 
-Vimos que la técnica de Metaheurística GRASP es una combinación válida entre distintos esquemas de algoritmos y trata de combinarlas para explorar el espacio de soluciones de una manera eficiente. En nuestro caso particular vimos que la implementación de GRASP 1, lograba ser bastante efectivo dentro de la familia de grafos para las fue entrenado. Aunque como se vio en el apartado de "Experimentación sobre un grafo dificil" al ser utilizado para resover casos patologicos, puede obtener respuestas equiparables con un algoritmo mas simple de busqueda local.
+Vimos que la técnica de Metaheuristica GRASP es una combinación válida entre distintos esquemas de algoritmos y trata de combinarlas para explorar el espacio de soluciones de una manera eficiente. En nuestro caso particular vimos que la implementación de GRASP 1, lograba ser bastante efectivo dentro de la familia de grafos para las fue entrenado. Aunque como se vio en el apartado de "Experimentación sobre un grafo difícil" al ser utilizado para resolver casos patológicos, puede obtener respuestas equiparables con un algoritmo mas simple de búsqueda local.
 
-Como trabajo futuro, podría intentar implementarse un backtracking que primero corra una buena metaeuristica de manera de comenzar con una buena solución inicial. De esa manera, las podas que podría aplicar el algoritmo, serían en teoría mucho mejores, lo que sin duda ayudaría a bajar los tiempos de ejecución.
+Como trabajo futuro, podría intentar implementarse un backtracking que primero corra una buena metaheuristica de manera de comenzar con una buena solución inicial. De esa manera, las podas que podría aplicar el algoritmo, serían en teoría mucho mejores, lo que sin duda ayudaría a bajar los tiempos de ejecución.

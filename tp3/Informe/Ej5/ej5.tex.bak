@@ -1,7 +1,7 @@
 \subsection{Idea}
 
 
-Para la meta-heurística de GRASP, tomaremos el algoritmo goloso previamente implementado y lo combinaremos con las diferentes búsquedas locales también previamente implementadas.
+Para la metaheurística de GRASP, tomaremos el algoritmo goloso previamente implementado y lo combinaremos con las diferentes búsquedas locales también previamente implementadas.
 
 La idea es la siguiente, para cada paso del algoritmo, correremos una versión modificada del goloso de manera tal de permitir cierta aleatoriedad en los resultados. El algoritmo goloso será modificado de la siguiente manera:
 
@@ -26,7 +26,7 @@ Finalmente y por cuestiones de tiempos se decidió solo implementar el primer al
 
 Luego, a la solución obtenida por el algoritmo goloso randomizado, se le aplicarán una o varias de las búsquedas locales implementadas, en un intento de acercarnos aún más a la respuesta óptima.
 
-Como criterio de corte se correrá el goloso aleatorizado y la búsqueda local hasta que luego de que un número $z$, a determinar, de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
+Como criterio de corte se correrá el goloso aleatorizado y la busqueda local hasta que luego de que un número $z$, a determinar, de intentos no haya sido posible mejorar la solución. En este punto se entrega la mejor respuesta obtenida hasta el momento.
 
 Teniendo a nuestra disposición tres búsquedas locales distintas, decidimos desarrollar tres GRASPs de tal manera que combinen de forma diferente estas búsquedas. El primero sólo utiliza la búsqueda local $1$, el segundo utiliza las tres búsquedas locales en orden descendente, es decir, primero la $3$, luego la $2$ y por último la $1$, y finalmente, el tercer y último GRASP utiliza dos búsquedas locales, en primer lugar la $3$ y luego la $1$. A continuación se formaliza de manera más precisa los algoritmos de cada uno:
 
@@ -71,12 +71,12 @@ Teniendo a nuestra disposición tres búsquedas locales distintas, decidimos des
 
 En estos tres casos $z$ será un numero entero entre $1$ e infinito.
 
-En el siguiente apartado de experimentación se intentarán calibrar tanto el parámetro $\alpha$ como el parámetro $z$ para así obtener los mejores resultados posibles con estas meta-heurísticas, tratando siempre de equilibrar performance y exactitud de los resultados.
+En el siguiente apartado de experimentación se intentarán calibrar tanto el parámetro $\alpha$ como el parámetro $z$ para así obtener los mejores resultados posibles con estas metaheurísticas, tratando siempre de equilibrar performance y exactitud de los resultados.
 
 \subsection{Experimentación}
 
-Para poder llegar a nuestro objetivo de encontrar los mejores parámetros $\alpha$ y $z$ a utilizar en las meta-heurísticas, procederemos a hacer pruebas dejando fijo uno de los dos valores y variando el otro.
-En primer lugar tomaremos un valor fijo arbitrario para $z$ y variaremos $\alpha$. Esta prueba consistirá en tomar un grafo y un $k$ fijo, y correr cada meta-heurística con ese grafo como entrada y variando el parámetro $\alpha$. Una vez hecho esto, analizaremos para cuál valor de $\alpha$ se llegó a una mejor solución, es decir, el que más minimizó el peso total. Este parámetro $\alpha$ no podrá ser mayor que $k$ ya que si tengo $k$ conjuntos carece de sentido elegir entre los mejores $k'$ conjuntos siendo $k'>k$. Debido a lo previamente mencionado decidimos que $\alpha$ sea un porcentaje de $k$, que variaremos entre $0$ y $100$ saltando de a 10, es decir, $\alpha$ tomará los valores $0$, $10$, $20$,...,$90$ y $100$ 
+Para poder llegar a nuestro objetivo de encontrar los mejores parámetros $\alpha$ y $z$ a utilizar en las metaheurísticas, procederemos a hacer pruebas dejando fijo uno de los dos valores y variando el otro.
+En primer lugar tomaremos un valor fijo arbitrario para $z$ y variaremos $\alpha$. Esta prueba consistirá en tomar un grafo y un $k$ fijo, y correr cada metaheurística con ese grafo como entrada y variando el parámetro $\alpha$. Una vez hecho esto, analizaremos para cuál valor de $\alpha$ se llegó a una mejor solución, es decir, el que más minimizó el peso total. Este parámetro $\alpha$ no podrá ser mayor que $k$ ya que si tengo $k$ conjuntos carece de sentido elegir entre los mejores $k'$ conjuntos siendo $k'>k$. Debido a lo previamente mencionado decidimos que $\alpha$ sea un porcentaje de $k$, que variaremos entre $0$ y $100$ saltando de a 10, es decir, $\alpha$ tomará los valores $0$, $10$, $20$,...,$90$ y $100$ 
 
 Realizamos un primer experimento que consistió en lo siguiente:
 
@@ -84,36 +84,36 @@ Como primer paso generamos un grafo completo de $500$ nodos, con pesos en las ar
 
 \includegraphics[scale=0.7]{Ej5/respuestasAlfa1.png}\\
 
-Por lo que se ve en el gráfico, puede inferirse que para $\alpha=10$ se logran los mejores resultados en los tres GRASPs, al menos para el caso de 500 nodos. Respecto al tiempo que tardan los algoritmos, para los 100 grafos antes mencionados, también medimos el tiempo que tardaron, aquí se puede ver en promedio cuanto tardó cada uno:
+Por lo que se ve en el gráfico, puede inferirse que para $\alpha=10$ se logran los mejores resultados en los tres GRASPs, al menos para el caso de 500 nodos. Respecto al tiempo que tardan los algoritmos, para los 100 grafos antes mencionados, tambien medimos el tiempo que tardaron, aquí se puede ver en promedio cuanto tardó cada uno:
 
 \includegraphics[scale=0.7]{Ej5/tiemposAlfa.png}\\
 
 No se aprecian diferencias significativas, salvo con $\alpha$ igual a 0, ya que este a decir verdad no es un GRASP ya que no tiene aleatoriedad al momento de elegir a donde irá el nodo.
 
-Observando las soluciones que se obtienen eligiendo el mejor valor para $\alpha$ y no otro valor, se obtienen mejoras que varían entre $1\%$ y $9\%$. Para ejemplificar, lo que queremos decir se muestra en el siguiente gráfico, los distintas soluciones soluciones que arrojó el GRASP 1 sobre un mismo grafo y variando el $\alpha$:
+Observando las soluciones que se obtienen eligiendo el mejor valor para $\alpha$ y no otro valor, se obtienen mejoras que varían entre $1\%$ y $9\%$. Para ejemplificar, lo que queremos decir se muestra en el siguiente grafico, los distintas soluciones soluciónes que arrojó el GRASP 1 sobre un mismo grafo y variando el $\alpha$:
 
 \includegraphics[scale=0.7]{Ej5/ejemploAlfa1.png}\\
 
-Para comprobar de manera fehaciente que $\alpha$ esta relacionado de manera lineal con $k$ y que el tamaño del RCL siempre es el óptimo, realizamos este mismo experimento nuevamente pero esta vez con $1000$ nodos y $k=200$. A continuación el gráfico correspondiente.
+Para comprobar de manera feaciente que $\alpha$ esta relacionado de manera lineal con $k$ y que el tamaño del RCL siempre es el optimo, realizamos este mismo experimento nuevamente pero esta vez con $1000$ nodos y $k=200$. A continuación el gráfico correspondiente.
 
 \includegraphics[scale=0.7]{Ej5/respuestasAlfa2.png}\\
 
 Los resultados son claros, nuevamente $\alpha=10$ es el ganador. Con esto podemos concluir con cierto grado de seguridad que el mejor valor para $\alpha$ es tomar el $10\%$ de $k$.
 
-Además nuevamente tomado este valor de alfa, pueden verse como en general, las respuestas mejoran entre un $1 \%$ y un $10 \%$:
+Ademas nuevamente tomado este valor de alfa, pueden verse como en general, las respuestas mejoran entre un $1 \%$ y un $10 \%$:
 
 \includegraphics[scale=0.7]{Ej5/ejemploAlfa2.png}\\
 
 Una vez obtenido el mejor valor para $\alpha$, pasamos a buscar el mejor valor para $z$, con lo cual dejaremos fijo $\alpha=10$ y variaremos el $z$.
 
-Realizamos el segundo experimento, el cual consistió en tomar grafos completos de $250$ nodos y $k = 70$ variando $z$ desde $z = 4$ hasta $z = 40$ (para valores mayores de $z$ los tiempos de ejecución resultaban excesivos) para ver como respondía la metaheuristica ante estos cambios. Luego a los valores obtenidos de k-PMP se promedian para ver como varían en promedio los resultados al variar este parámetro.
+Realizamos el segundo experimento, el cual consistió en tomar grafos completos de $250$ nodos y $k = 70$ variando $z$ desde $z = 4$ hasta $z = 40$ (para valores mayores de $z$ los tiempos de ejecución resultaban excesivos) para ver como respondía la metaheuristica ante estos cambios. Luego a los valores obtenidos de k-MPM se promedian para ver como varían en promedio los resultados al variar este parametro.
 Los resultados pueden verse aquí:
 
 \includegraphics[scale=0.7]{Ej5/promedioZ.png}\\
 
 \includegraphics[scale=0.7]{Ej5/tiemposZ.png}\\
 
-Como se puede ver en el gráfico de tiempos, al aumentar la cantidad de iteraciones aumenta de manera lineal el tiempo de ejecución. Sin embargo las respuestas arrojadas por los algoritmos no mejoran con la misma pendiente, sino que lo hacen con una mucho mas moderada. Se decide tomar $z = 34$ para los tres GRASPs que se considera un valor que equilibra tanto las respuestas obtenidas, como un tiempo de ejecución apropiado. 
+Como se puede ver en el grafico de tiempos, al aumentar la cantidad de iteraciones aumenta de manera lineal el tiempo de ejecución. Sin embargo las respuestas arrojadas por los algoritmos no mejoran con la misma pendiente, sinó que lo hacen con una mucho mas moderada. Se decide tomar $z = 34$ para los tres GRASPs que se considera un valor que equilibra tanto las respuestas obtenidas, como un tiempo de ejecución apropiado. 
 
 Finalmente con estos valores para $\alpha$ y $z$, realizamos un último experimento para comparar las soluciones y los tiempos de cada GRASP.
 
@@ -121,7 +121,7 @@ Este último experimento consistió en, tomando $100$ nuevos grafos completos de
 
 \includegraphics[scale=0.7]{Ej5/CompetenciaGRASPs1.png}\\
 
-Dicho con palabras, entre los GRASPs, el GRASP 1 encontró 79 veces la menor solución (comparándolo con GRASP 2 y GRASP 3), el GRASP 2 la encontró 46 veces y el GRASP 3, 52. El hecho de que la suma de mayor a $100$ proviene de que en varias ocasiones mas de un GRASP encontró la menor solución.
+Dicho con palabras, entre los GRASPs, el GRASP 1 encontró 79 veces la menor solución (comparandolo con GRASP 2 y GRASP 3), el GRASP 2 la encontró 46 veces y el GRASP 3, 52. El hecho de que la suma de mayor a $100$ proviene de que en varias ocaciones mas de un GRASP encontró la menor solución.
 
 Realizamos la misma experimentación para $100$ grafos de $250$ nodos, $k = 40$ y para otros $100$ grafos de $500$ nodos, $k = 70$:
 
@@ -129,6 +129,6 @@ Realizamos la misma experimentación para $100$ grafos de $250$ nodos, $k = 40$ 
 
 \includegraphics[scale=0.7]{Ej5/CompetenciaGRASPs3.png}\\
 
-Luego, tras todo este testeo podemos concluir que el GRASP $1$ es mejor para un numero mayor de casos que los otros dos algoritmos implementados.
+Luego, tras todo este testeo podemos concluír que el GRASP $1$ es mejor para un numero mayor de casos que los otros dos algoritmos implementados.
 
-En la sección siguiente utilizaremos el GRASP $1$ y lo compararemos contra los otros algoritmos implementados. Así podremos obtener resultados mas precisos de cuanto por encima de la solución exacta se encuentra, sobre que tipo de grafos es conveniente usarlo, etc.
+En la sección siguiente utilizaremos el GRASP $1$ y lo compararemos contra los otros algoritmos implementados. Asi podremos obtener resultados mas precisos de cuanto por encima de la solución exacta se encuentra, sobre que tipo de grafos es conveniente usarlo, etc.

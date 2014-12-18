@@ -94,13 +94,13 @@
 \clearpage
 
 
-\section{Heurística Golosa Constructiva} 
+\section{Heuristica Golosa Constructiva} 
 \input{Ej3/ej3.tex}
 
 
 \clearpage
 
-\section{Heurística de Búsqueda Local} 
+\section{Heuristica de Busqueda Local} 
 \input{Ej4/ej4.tex}
 
 \clearpage
