@@ -7119,3 +7119,5 @@ OK!
 generada entrada para n: 14
 OK!
 generada entrada para n: 15
+rm: cannot remove `testing/*': No such file or directory
+Test:  1
