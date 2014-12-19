@@ -94,7 +94,7 @@ int main()
         matriz_de_adyacencias[j - 1][h - 1] = p;
         matriz_de_adyacencias[h - 1][j - 1] = p;
     }
-    en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n); ó
+    en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
     for (int i = 0; i < n; i++)
         cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
     cout << endl;
