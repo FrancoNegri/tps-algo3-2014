@@ -34,28 +34,18 @@ using namespace std;
 
 vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &noseusa, int k, int n)
 {
-
-    //int cuantosMejores = (PORCENTAJEDEMEJORES*n)/100;
-    //int cuantosMejores = PORCENTAJEDEMEJORES;
     int cuantosMejores = (PORCENTAJEDEMEJORES * k) / 100;
-
-
     if (cuantosMejores == 0)
         cuantosMejores = 1;
-
     int resultados[cuantosMejores];
     int indices[cuantosMejores];
-
     vector< vector< int> > subconjuntos;
-
     for (int i = 0; i < k; i++)
     {
         vector< int> aux;
         subconjuntos.push_back(aux);
     }
-
     vector<int> en_que_subconjunto_esta_cada_nodo;
-
     //meto el nodo 1 en cualquiera de los conjuntos, por ahora son todos iguales.
     en_que_subconjunto_esta_cada_nodo.push_back(0);
     //del punto de arriba, el nodo 1 va a ir en el subconjunto 1, asi que tambien digo eso.
@@ -63,27 +53,22 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
     subconjuntos[0].push_back(0);
     for (int i = 1; i < n; i++ )
     {
-
         for (int l = 0; l < cuantosMejores ; l++)
         {
             resultados[l] = INFINITO;
             indices[l] = -1;
         }
-
         //tomo el vertice i
-
         for (int j = 0; j < k; j++)
         {
             //para cada conjunto
             int aux = 0;
-
             for (int w = 0; w < subconjuntos[j].size(); w++)
             {
                 //veo cuanto "peso" suma agregar este vertice a este conjunto determinado
                 int candidato = subconjuntos[j][w];
                 aux += matriz_de_adyacencias[i][candidato];
             }
-
             //me guardo los x conjuntos que minimizan la suma
             bool encontreNegativo = false;
             bool indiceMax = 0;
@@ -103,28 +88,14 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
                 }
                 w++;
             }
-
             if (!encontreNegativo && aux < resultados[indiceMax])
             {
                 resultados[indiceMax] = aux;
                 indices[indiceMax] = j;
             }
-
-
-            //for(int w = 0; w < cuantosMejores&& !encontre; w++)
-            //{
-            //if(aux < resultados[w])
-            //{
-            //resultados[w] = aux;
-            //indices[w] = j;
-            //encontre =  true;
-            //}
-            //}
         }
         int valorQueTomo = rand() % cuantosMejores; // tomo un valor Al Azar entre estos valores
-
         //agrego el verice i al conjunto que minimiza la suma
-
         int index = indices[valorQueTomo];
         subconjuntos[index].push_back(i);
         //esto es para dar la respuesta de una y no tener que andar buscando los valores despues
@@ -140,25 +111,18 @@ vector<int> goloso(vector< vector< int> > &matriz_de_adyacencias, vector< vector
 
 vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector< int> > &subconjuntos, int k, int n)
 {
-
     srand(0);
     int cantidadDeVecesQueSeLlegoAmejorSol = 0;
     int min_total = INFINITO;
     vector <int> mejor_solucion;
     vector <int> en_que_subconjunto_esta_cada_nodo;
-
     //for (int h = 0; h < 10000000; ++h)
     while (cantidadDeVecesQueSeLlegoAmejorSol < CANTIDADDEEXITOS )
     {
         en_que_subconjunto_esta_cada_nodo = goloso(matriz_de_adyacencias, subconjuntos, k, n);
-
-
         en_que_subconjunto_esta_cada_nodo = busqueda_local3(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
-
         en_que_subconjunto_esta_cada_nodo = busqueda_local2(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
-
         en_que_subconjunto_esta_cada_nodo = busqueda_local(matriz_de_adyacencias, subconjuntos, k, n, en_que_subconjunto_esta_cada_nodo);
-
         int total = 0;
         for (int j = 0; j < k; j++)
         {
@@ -168,7 +132,6 @@ vector <int> grasp(vector< vector< int> > &matriz_de_adyacencias, vector< vector
                     aux += matriz_de_adyacencias[subconjuntos[j][i]][subconjuntos[j][w]];
             total += aux;
         }
-
         if (total < min_total)
         {
             min_total = total;
@@ -187,18 +150,14 @@ int main()
     cin >> n;
     cin >> m;
     cin >> k;
-
     vector< vector< int> > matriz_de_adyacencias  = vector< vector< int> >(n, vector<int> (n, 0));
     vector< vector< int> > subconjuntos;
     vector <int> en_que_subconjunto_esta_cada_nodo;
-
     for (int i = 0; i < k; i++)
     {
         vector< int> aux;
         subconjuntos.push_back(aux);
     }
-
-
     for (int i = 0; i < m; i++)
     {
         int j, k, p;
@@ -208,10 +167,7 @@ int main()
         matriz_de_adyacencias[j - 1][k - 1] = p;
         matriz_de_adyacencias[k - 1][j - 1] = p;
     }
-
     en_que_subconjunto_esta_cada_nodo = grasp(matriz_de_adyacencias, subconjuntos, k, n);
-
-
     // //Esto es para ver que tan buen resultado encontró
     // //======= COMENTAR ANTES DE ENTREGAR================
     // int total = 0;
@@ -224,18 +180,11 @@ int main()
     //     total += aux;
     // }
     // cout << total << endl;
-
     // //======= COMENTAR ANTES DE ENTREGAR================
-
     // //Esta es la respuesta que tenemos que escribir por pantalla
     // //========DESCOMENBTAR ANTES DE ENTREGAR ==================
-
-    for(int i = 0; i < n; i++)
-     cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
+    for (int i = 0; i < n; i++)
+        cout << en_que_subconjunto_esta_cada_nodo[i] + 1 << " ";
     cout << endl;
-
-
-
-
     return 0;
 }
